@@ -9,4 +9,11 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/faq', (req, res) => {
+  res.render('faq', {
+    title: "FAQ"
+  });
+});
+
+
 module.exports = router;

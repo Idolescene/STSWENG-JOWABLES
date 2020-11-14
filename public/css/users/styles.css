@@ -126,3 +126,53 @@ h1, h2, h3, h4, h5, h6, p, a {
   color: #cfcfcf;
   background-color: #0A0A0A;
 }
+
+/* FAQ Page */
+.faq-group {
+  display: flex;
+  position: relative;
+  left: 25%;
+}
+
+.faq-header {
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.faq-qa {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.faq-question {
+  text-align: justify;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 42px;
+  color: #000000;
+  width: 322px;
+  height: 42px;
+}
+
+.faq-body {
+  text-align: justify;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  width: 901px;
+  height: 102px;
+}
