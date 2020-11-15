@@ -260,3 +260,18 @@ h1, h2, h3, h4, h5, h6, p, a {
 .cont-calign {
   text-align: center;
 }
+
+.cont-left-img {
+  position: relative;
+  left: 21%;
+}
+
+.cont-mid-img {
+  position: relative;
+  left: 41%;
+}
+
+.cont-right-img {
+  position: relative;
+  left: 57%;
+}
