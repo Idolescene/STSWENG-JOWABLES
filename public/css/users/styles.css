@@ -186,3 +186,77 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 
 /* Contact Us Page */
+.cont-group {
+  display: flex;
+}
+
+.cont-header {
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.cont-bigtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.cont-medtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 34px;
+  color: #000000;
+}
+
+.cont-smtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.cont-center {
+  position: relative;
+  left: 33%;
+}
+
+.cont-left {
+  position: relative;
+  left: 18%;
+}
+
+.cont-right {
+  position: relative;
+  left: 48%;
+}
+
+.cont-center2 {
+  position: relative;
+  left: 38%;
+}
+
+.cont-left2 {
+  position: relative;
+  left: 19%;
+}
+
+.cont-right2 {
+  position: relative;
+  left: 50%;
+}
+
+.cont-calign {
+  text-align: center;
+}
