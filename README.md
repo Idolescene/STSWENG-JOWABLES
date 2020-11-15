@@ -24,8 +24,9 @@
 * Run `nodemon index.js` in the command line or terminal.
 * Open [http://localhost:3000]() in a browser to see the app running.
 
-## UI Features (Currently Updated as of November 11, 2020)
+## UI Features (Currently Updated as of November 15, 2020)
 * Navigation bar
 * Footer
 * Homepage
 * FAQs
+* Contact Us
