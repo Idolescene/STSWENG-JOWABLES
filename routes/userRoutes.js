@@ -15,5 +15,10 @@ router.get('/faq', (req, res) => {
   });
 });
 
+router.get('/contact', (req, res) => {
+  res.render('contact', {
+    title: "Contact Us"
+  });
+});
 
 module.exports = router;
