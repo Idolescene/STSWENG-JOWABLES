@@ -30,6 +30,7 @@ const userRouter = require('./routes/userRoutes');
 
 // use routes
 app.use('/', userRouter);
+app.use('/login', userRouter);
 app.use('/faq', userRouter);
 app.use('/contact', userRouter);
 

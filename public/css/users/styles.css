@@ -275,3 +275,40 @@ h1, h2, h3, h4, h5, h6, p, a {
   position: relative;
   left: 57%;
 }
+
+/* Login Page */
+.login-bigtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  letter-spacing: 0.08em;
+  color: rgba(10, 10, 10, 0.8);
+}
+
+.login-smtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-size: 16px;
+  color: #000000;
+}
+
+.login-col{
+  width: 50%;
+  text-align: center;
+}
+
+.form-rounded {
+  width: 500px;
+  height: 40px;
+}
+
+.btn-dark {
+  width: 120px;
+  height: 30px;
+}
+
+input[type="text"], input[type="password"]{
+  background-color: #F5DDA5;
+}
