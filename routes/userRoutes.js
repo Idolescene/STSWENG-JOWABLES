@@ -18,13 +18,27 @@ router.get('/catalogue', (req, res) => {
   });
 });
 
-module.exports = router;
+/*
+  Login and Registration Page
+*/
+router.get('/login', (req, res) => {
+  res.render('login', {
+    title: "Login and Register"
+  });
+});
+
+/*
+  Frequently Asked Questions Page
+*/
 router.get('/faq', (req, res) => {
   res.render('faq', {
     title: "FAQ"
   });
 });
 
+/*
+  Contact Us Page
+*/
 router.get('/contact', (req, res) => {
   res.render('contact', {
     title: "Contact Us"
