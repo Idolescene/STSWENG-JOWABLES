@@ -2,12 +2,19 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+html{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
   background-color: #FFA600 !important;
   width: auto;
   height: auto;
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Navbar */
@@ -151,8 +158,255 @@ body {
 }
 
 .apparel-card {
-  padding-top: 10px;
+  padding: 10px 10px 0 10px;
   margin: 0 10px 10px 0;
   border: none;
   background-color: #ffeccc94;
+}
+
+.catalogue-drop {
+  background-color: #0A0600;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+}
+
+.item-information-div {
+  width: 100%;
+  padding-left: 50px;
+  color: #FFFBFB;
+}
+
+.item-information-div p {
+  opacity: 70%;
+}
+
+.item-information-div hr.white-line {
+  border-top: 1px solid #fffbfb67;
+}
+
+.item-information-btn {
+  display: flex;
+}
+
+.add-to-cart-btn {
+  color: #FFFFFF !important;
+  padding: 10px 20px 10px 20px !important;
+  margin-left: 150px;
+  border: 1px solid #fffbfb67 !important;
+}
+
+.add-to-cart-btn:hover {
+  border: 1px solid #fffbfb !important;
+}
+
+.size + input {
+  display: none;
+}
+
+.size {
+  border-radius: 50%;
+  padding: 10px 10px 10px 10px;
+  margin-right: 10px;
+  border: 1px solid #fffbfb67 !important;
+}
+
+#small, #medium, #large {
+  padding: 10px 15px 10px 15px;
+}
+
+.size:hover {
+  border: 1px solid #fffbfb !important;
+}
+
+.size:checked {
+  border: 1px solid #fffbfb !important;
+}
+
+.apparel-card-div {
+  cursor: pointer;
+}
+
+.apparel-card-div + input {
+  display: none;
+}
+
+.apparel-card-div + input + div {
+  display: none;
+}
+
+.apparel-card-div + input:checked + div {
+  display: block;
+}
+
+/* Cart */
+.navbar-cart {
+  color: #0a0a0a90; 
+}
+
+.navbar-cart:hover {
+  color: #0a0a0ac4;
+}
+
+.fa-shopping-cart {
+  padding-top: 12px;
+}
+
+.fa-trash-o {
+  font-size: 21px !important; 
+}
+
+.cart-item-dropdown:hover {
+  background-color: #ffe3b4 !important;
+}
+
+.checkout-button {
+  margin: 0 20px 10px 0;
+}
+
+.checkout-button .btn {
+  color: #FFFFFF;
+  background-color: #0A0A0A !important;
+  padding: 10px 30px 10px 30px;
+}
+
+.checkout-button .btn:hover {
+  color: #cfcfcf;
+}
+
+.dropdown-menu {
+  min-width: 600px !important;
+  background-color: #FFECCC !important;
+  box-shadow: #0a0a0a50;
+}
+
+/* Catalogue */
+.apparel-card-div {
+  position: absolute;
+  display: block;
+}
+
+/* FAQ Page */
+.faq-group {
+  display: flex;
+  position: relative;
+  left: 25%;
+}
+
+.faq-header {
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.faq-qa {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.faq-question {
+  text-align: justify;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 42px;
+  color: #000000;
+  width: 322px;
+  height: 42px;
+}
+
+.faq-body {
+  text-align: justify;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  width: 901px;
+  height: 102px;
+}
+
+/* Contact Us Page */
+.cont-group {
+  display: flex;
+}
+
+.cont-header {
+  text-align: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.cont-bigtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.cont-medtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 34px;
+  color: #000000;
+}
+
+.cont-smtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.cont-center {
+  position: relative;
+  left: 33%;
+}
+
+.cont-left {
+  position: relative;
+  left: 18%;
+}
+
+.cont-right {
+  position: relative;
+  left: 48%;
+}
+
+.cont-center2 {
+  position: relative;
+  left: 38%;
+}
+
+.cont-left2 {
+  position: relative;
+  left: 19%;
+}
+
+.cont-right2 {
+  position: relative;
+  left: 50%;
+}
+
+.cont-calign {
+  text-align: center;
 }
