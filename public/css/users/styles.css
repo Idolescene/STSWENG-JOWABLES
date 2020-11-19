@@ -279,6 +279,46 @@ body {
   box-shadow: #0a0a0a50;
 }
 
+/* Checkout */
+.checkout-img-name p {
+  padding-left: 20px;
+}
+
+.checkout-card {
+  background-color: #FFECCC !important;
+  border: 1px solid #0a0a0a50 !important;
+  text-align: center !important;
+}
+
+.checkout-img-name {
+  display: inline-flex;
+}
+
+.checkout-section .btn {
+  color: #FFFFFF;
+  background-color: #0A0A0A !important;
+  padding: 10px 30px 10px 30px;
+}
+
+.checkout-section .btn:hover {
+  color: #cfcfcf;
+}
+
+/* Shipping */
+.payment-method-btn {
+  background-color: #ffeeee !important;
+}
+
+.shipping-checkout-btn, .modal-btn {
+  color: #FFFFFF !important;
+  background-color: #0A0A0A !important;
+  padding: 10px 30px 10px 30px !important;
+}
+
+.shipping-checkout-btn:hover, .modal-btn:hover {
+  color: #cfcfcf !important;
+}
+
 /* Catalogue */
 .apparel-card-div {
   position: absolute;
@@ -459,6 +499,6 @@ body {
   height: 30px;
 }
 
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="email"] {
   background-color: #F5DDA5;
 }

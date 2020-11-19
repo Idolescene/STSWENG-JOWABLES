@@ -45,4 +45,22 @@ router.get('/contact', (req, res) => {
   });
 });
 
+/*
+  Checkout Page
+*/
+router.get('/checkout', (req, res) => {
+  res.render('checkout', {
+    title: 'Your Cart'
+  });
+});
+
+/*
+  Shipping Page
+*/
+router.get('/shipping', (req, res) => {
+  res.render('shipping', {
+    title: 'Shipping Details and Payment Options'
+  });
+});
+
 module.exports = router;
