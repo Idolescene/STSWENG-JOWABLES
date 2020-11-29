@@ -27,12 +27,11 @@ app.use(bodyParser.urlencoded({
 
 // initialize routes
 const userRouter = require('./routes/userRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 // use routes
 app.use('/', userRouter);
-app.use('/login', userRouter);
-app.use('/faq', userRouter);
-app.use('/contact', userRouter);
+app.use('/admin', adminRouter);
 
 // use express application
 app.use(express.static('public'));
