@@ -32,7 +32,9 @@ router.get('/login', (req, res) => {
 */
 router.get('/faq', (req, res) => {
   res.render('faq', {
-    title: "FAQ"
+    title: "FAQ",
+    question: "What is this question? What is this question? What is this question? What is this question? What is this question? ",
+    answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer."
   });
 });
 
