@@ -489,17 +489,17 @@ body {
   text-align: center;
 }
 
-.form-rounded {
+.login-form {
   width: 500px;
   height: 40px;
 }
 
-.btn-dark {
+.login-btn {
   width: 120px;
   height: 30px;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+.login-input {
   background-color: #F5DDA5;
 }
 
@@ -524,4 +524,59 @@ input[type="text"], input[type="password"], input[type="email"] {
 .order-status-button {
   background-color: #0A0A0A !important;
   border: none !important;
+}
+
+/*edit pages*/
+.edit-title {
+  position: relative;
+  height: 45px;
+  left: 20%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: rgba(10, 10, 10, 0.8);
+}
+
+.edit-category {
+  position: relative;
+  height: 45px;
+  left: 20%;
+  font-family: Poppins;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: rgba(10, 10, 10, 0.8);
+}
+
+.edit-titlebox {
+  position: relative;
+  width: 1139px;
+  height: 102px;
+  left: 20%;
+  background: #FEFEFE;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+.edit-contentbox {
+  position: relative;
+  width: 1139px;
+  height: 401px;
+  left: 20%;
+  background: #FEFEFE;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  border-radius: 50px;
+  padding-left: 25px;
+}
+
+.edit-btn {
+  position: relative;
+  width: 193px;
+  height: 39px;
+  left: 45%;
 }
