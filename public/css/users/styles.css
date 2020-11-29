@@ -562,6 +562,17 @@ body {
   border-radius: 50px;
 }
 
+.edit-smbox {
+  position: relative;
+  width: 1139px;
+  height: 40px;
+  left: 20%;
+  background: #FEFEFE;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
 .edit-contentbox {
   position: relative;
   width: 1139px;
