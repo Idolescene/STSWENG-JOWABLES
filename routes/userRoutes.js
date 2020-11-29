@@ -43,7 +43,11 @@ router.get('/faq', (req, res) => {
 */
 router.get('/contact', (req, res) => {
   res.render('contact', {
-    title: "Contact Us"
+    title: "Contact Us",
+    fblink: "www.facebook.com/SalawalCo",
+    iglink: "www.instagram.com/SalawalCo",
+    phonenum: "+ 63 961 801 4235",
+    email: "salawalco.ph@gmail.com"
   });
 });
 
