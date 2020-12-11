@@ -69,4 +69,31 @@ router.get('/shipping', (req, res) => {
   });
 });
 
+/*
+  Profile Page
+*/
+router.get('/profile', (req, res) => {
+  res.render('profile', {
+    title: 'Profile',
+    name: 'Your Baby',
+    date: '11/11/2011',
+    full: 'Mamma Mia',
+    contno: '09777777777',
+    emad: 'email@address',
+    hno: '1',
+    barangay: 'brng',
+    city: 'city',
+    province: 'province'
+  })
+})
+/*
+  About Us Page
+*/
+router.get('/about', (req,res) => {
+  res.render('about', {
+    title: 'Title',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.'
+  })
+})
+
 module.exports = router;

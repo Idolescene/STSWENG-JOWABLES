@@ -1,0 +1,106 @@
+<br><br>
+
+
+<div class = 'container'>
+    <div class = 'row'>
+        <div class = 'col-sm-5'>
+            <h4>User: {{name}}</h4>
+        </div>
+        <div class = 'col-sm-5'>
+            <h4>Date Joined: {{date}}</h4>
+        </div>
+        <div class = 'col-sm-2'></div>
+    </div>
+    <br><br>
+    <div class = 'row'>
+        <div class='col-sm-4 panel-group'>
+            <div class = 'panel panel-default'>
+                <div class = 'panel-heading text-center'><h5>Shipping Details</h5></div>
+                <i data-toggle='collapse' data-target ='#profileshipping' class="fa fa-plus-circle fa-2x fa-search"></i>
+                <div id="profileshipping" class = 'collapse'>
+                    <div class = 'panel-body'>
+                        <div class = 'table-responsive'>
+                            <table class = 'table table-striped'>
+                                <tr>
+                                    <th>
+                                        Full name
+                                    </th>
+                                    <td>
+                                        <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "fullname" placeholder ={{full}}>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Contact Number</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "contno" placeholder ={{contno}}></td>
+                                </tr>
+                                <tr>
+                                    <th>Email Address</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "email" placeholder ={{emad}}></td>
+                                </tr>
+                                <tr>
+                                    <th>House Number</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "houseno" placeholder ={{hno}}></td>
+                                </tr>
+                                <tr>
+                                    <th>barangay</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "brngy" placeholder ={{barangay}}></td>
+                                </tr>
+                                <tr>
+                                    <th>City</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "city" placeholder ={{city}}></td>
+                                </tr>
+                                <tr>
+                                    <th>province</th>
+                                    <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "prov" placeholder ={{province}}></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" class="profile-form form-rounded rounded-pill border-white login-input" value ="Save Shippings">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class ='col-sm-8'>
+            <div class = 'panel panel-default'>
+                <div class = 'panel-heading text-center'> <h5>Order History</h5></div>
+                <div class = 'panel-body'>
+                    <div class = 'table-responsive'>
+                        <table class = 'table table-striped'>
+                            <tr>
+                                <th>Order Date</th>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>11/11/2020</td>
+                                <td>Medium</td>
+                                <td>2</td>
+                                <td>20.00</td>
+                                <td>Received</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class = 'text-right'>
+                                    <i data-toggle='collapse' data-target ='#profileorder' class="fa fa-minus-circle fa-2x fa-search"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br>
+<br><br><br><br><br>

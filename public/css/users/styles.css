@@ -164,6 +164,7 @@ body {
   background-color: #ffeccc94;
 }
 
+
 .catalogue-drop {
   background-color: #0A0600;
   padding: 20px 20px 20px 20px;
@@ -590,4 +591,23 @@ body {
   width: 193px;
   height: 39px;
   left: 45%;
+}
+
+.profile-form {
+  width: 200px;
+  height: 40px
+}
+.profile-size {
+  width: 40px;
+  height: 40px
+}
+
+.profile-modal {
+  color: #0a0a0a90;
+  background-color: #FFA600
+}
+
+.profile-modal-footer {
+  background-color: #0A0A0A;
+  color: #FFFFFF90
 }
