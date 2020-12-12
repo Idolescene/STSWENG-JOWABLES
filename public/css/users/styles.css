@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100%;
-  overflow-x: hidden;
+  min-width: 100%;
 }
 
 /* Navbar */
@@ -424,8 +424,7 @@ body {
 }
 
 .cont-left {
-  position: relative;
-  left: 18%;
+  text-align: left;
 }
 
 .cont-right {
@@ -445,7 +444,7 @@ body {
 
 .cont-right2 {
   position: relative;
-  left: 50%;
+  left: 48%;
 }
 
 .cont-calign {
