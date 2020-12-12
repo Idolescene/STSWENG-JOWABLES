@@ -91,8 +91,9 @@ router.get('/profile', (req, res) => {
 */
 router.get('/about', (req,res) => {
   res.render('about', {
-    title: 'Title',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.'
+    title: 'About Us',
+    story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
+    about: 'De kalidad na mga salawal na gawang Bulacan.'
   })
 })
 

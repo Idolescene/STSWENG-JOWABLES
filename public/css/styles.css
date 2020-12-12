@@ -511,6 +511,34 @@ body {
   background-color: #F5DDA5;
 }
 
+/*About Us*/
+.au-bigtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.au-smtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+  text-align: left;
+}
+
+.au-center {
+  text-align: center;
+}
+
+.au-left {
+  text-align: left;
+}
+
 /* Admin - Summary of All Orders */
 .summary-finances,
 .summary-finances thead,
