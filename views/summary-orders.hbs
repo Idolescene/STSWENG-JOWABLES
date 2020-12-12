@@ -1,6 +1,24 @@
 <div class="container-fluid">
   <br><br>
-  <h4>{{title}}</h4>
+  <div class="row summary-finances-title">
+    <div class="col-2">
+      <h4>{{title}}</h4>
+    </div>
+    <div class="col-8 d-flex flex-row">
+      <div class="p-2">
+        <h5>From:</h5>
+      </div>
+      <div class="p-2">
+        <input class="form-control rounded-pill date-range" type="date" id="from-date-range" name="from-date-range">
+      </div>
+      <div class="p-2">
+        <h5>To:</h5>
+      </div>
+      <div class="p-2">
+        <input class="form-control rounded-pill date-range" type="date" id="to-date-range" name="to-date-range">
+      </div>
+    </div>
+  </div>
   <br>
   <div class="summary-finances-div">
     <table class="table table-borderless text-center summary-finances">
@@ -44,7 +62,25 @@
         </thead>
         <tbody>
           <tr>
-            {{>all-orders-cell}}
+            <td>0101010</td>
+            <td>John Smith</td>
+            <td>10/20/2020</td>
+            <td>&#8369; 520.00</td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Processing
+                </button>
+                <div class="dropdown-menu drop-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Payment Received</a>
+                  <a class="dropdown-item" href="#">Shipped</a>
+                  <a class="dropdown-item" href="#">Delivered</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row1');"></i>
+            </td>
           </tr>
           <tr class="hidden-row" id="hidden-row1">
             <td colspan="6" class="text-center">
@@ -52,7 +88,25 @@
             </td>
           </tr>
           <tr>
-            {{>all-orders-cell}}
+            <td>0101010</td>
+            <td>John Smith</td>
+            <td>10/20/2020</td>
+            <td>&#8369; 520.00</td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Processing
+                </button>
+                <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Payment Received</a>
+                  <a class="dropdown-item" href="#">Shipped</a>
+                  <a class="dropdown-item" href="#">Delivered</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row2');"></i>
+            </td>
           </tr>
           <tr class="hidden-row" id="hidden-row2">
             <td colspan="6" class="text-center">
@@ -60,7 +114,25 @@
             </td>
           </tr>
           <tr>
-            {{>all-orders-cell}}
+            <td>0101010</td>
+            <td>John Smith</td>
+            <td>10/20/2020</td>
+            <td>&#8369; 520.00</td>
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Processing
+                </button>
+                <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Payment Received</a>
+                  <a class="dropdown-item" href="#">Shipped</a>
+                  <a class="dropdown-item" href="#">Delivered</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row3');"></i>
+            </td>
           </tr>
           <tr class="hidden-row" id="hidden-row3">
             <td colspan="6" class="text-center">
