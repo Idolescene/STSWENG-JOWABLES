@@ -9,12 +9,12 @@ html{
 
 body {
   background-color: #FFA600 !important;
-  width: auto;
   height: auto;
-  margin: 0;
+  width: auto;
   padding: 0;
   max-width: 100%;
-  min-width: 100%;
+  min-width: 1800px;
+  margin: 0 auto;
 }
 
 /* Navbar */
@@ -424,7 +424,8 @@ body {
 }
 
 .cont-left {
-  text-align: left;
+  position: relative;
+  left: 18%;
 }
 
 .cont-right {
