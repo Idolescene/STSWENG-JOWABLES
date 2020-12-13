@@ -6,7 +6,6 @@ html {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
 body {
@@ -80,11 +79,11 @@ body {
 }
 
 .footer-section .social-media-section {
-  padding-left: 100px;
+  padding-left: 50px;
 }
 
 .footer-section .contact-section {
-  padding-right: 100px;
+  padding-right: 120px;
 }
 
 .footer-section .follow-title {
@@ -368,8 +367,7 @@ body {
 }
 
 .faq-header {
-  position: absolute;
-  left: 38%;
+  text-align: center;
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
