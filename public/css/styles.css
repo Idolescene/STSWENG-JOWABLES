@@ -25,6 +25,11 @@ body {
   box-shadow: 0 0 8px 0 #0a0a0a90;
 }
 
+.navbar-collapse {
+  background-color: #FFA600 !important;
+  padding-left: 20px !important;
+}
+
 .navbar-search {
   border: 2px solid #49505769;
 }
@@ -52,6 +57,10 @@ body {
   font-style: italic;
   border: none;
   background-color: transparent !important;
+}
+
+.form-control.search-bar:focus {
+  box-shadow: none;
 }
 
 /* Footer */
