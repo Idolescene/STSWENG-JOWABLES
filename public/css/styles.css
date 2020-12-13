@@ -6,16 +6,12 @@ html {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  height: auto;
+  width: auto;
 }
 
 body {
   background-color: #FFA600 !important;
-  height: auto;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
   min-width: 1800px;
   margin: 0 auto;
 }
@@ -69,7 +65,7 @@ body {
 /* Footer */
 .footer-section {
   background-color: #0A0A0A;
-  height: 180px;
+  height: 200px;
 }
 
 .footer-section img {
