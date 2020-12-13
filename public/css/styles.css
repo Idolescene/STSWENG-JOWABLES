@@ -207,7 +207,7 @@ body {
 .add-to-cart-btn {
   color: #FFFFFF !important;
   padding: 10px 20px 10px 20px !important;
-  margin-left: 150px;
+  margin-left: 390px;
   border: 1px solid #fffbfb67 !important;
 }
 
@@ -220,6 +220,8 @@ body {
 }
 
 .size {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   padding: 10px 10px 10px 10px;
   margin-right: 10px;
