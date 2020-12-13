@@ -107,6 +107,15 @@ body {
   font-size: 22px;
 }
 
+#admin.fa-user-circle-o {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+#admin.fa-user-circle-o:hover {
+  opacity: 0.9;
+}
+
 .copyright {
   font-size: 14px;
   color: white;
@@ -284,7 +293,7 @@ body {
   color: #cfcfcf;
 }
 
-.dropdown-menu {
+.cart-drop-menu {
   min-width: 600px !important;
   background-color: #FFECCC !important;
   box-shadow: #0a0a0a50;
@@ -622,12 +631,14 @@ body {
 .edit-titlebox {
   position: relative;
   width: 1139px;
-  height: 102px;
+  height: 40px;
   left: 28%;
   background: #FEFEFE;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
+  padding-left: 25px;
+  font-size: 20px;
 }
 
 .edit-smbox {
@@ -639,18 +650,22 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
+  padding-left: 25px;
+  font-size: 20px;
 }
 
 .edit-contentbox {
   position: relative;
   width: 1139px;
-  height: 401px;
+  height: 301px;
   left: 28%;
   background: #FEFEFE;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
   padding-left: 25px;
+  padding-top: 15px;
+  font-size: 20px;
 }
 
 .edit-btn {
