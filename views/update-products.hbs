@@ -1,5 +1,4 @@
 <br><br>
-    <h4 class = "text-indent">{{title}}</h4>
 <section class="catalogue-section">
     <div class="row">
         <div class="catalogue-sidebar col-sm-3">
@@ -36,15 +35,24 @@
             </ul>
         </div>
         <div class="display-catalogue-div col-sm-8 text-center">
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <h4 class = "text-indent">{{title}}</h4>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <button type="button" class="btn btn-dark rounded-pill login-btn" data-toggle ='modal' data-target='#addModal'>Add Product</button>
+                </div>
+            </div>
             {{>product-display}}
             {{>product-display}}
             {{>product-display}}
             <br>
-            <button type="button" class="btn btn-dark rounded-pill login-btn" data-toggle ='modal' data-target='#addModal'>Add Product</button>
         </div>
     </div>
 </section>
 
+<br>
+<br>
 <!-- Modal -->
 
 <div id="addModal" class="modal fade" role="dialog">
