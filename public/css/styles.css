@@ -25,6 +25,11 @@ body {
   box-shadow: 0 0 8px 0 #0a0a0a90;
 }
 
+.navbar-collapse {
+  background-color: #FFA600 !important;
+  padding-left: 20px !important;
+}
+
 .navbar-search {
   border: 2px solid #49505769;
 }
@@ -52,6 +57,10 @@ body {
   font-style: italic;
   border: none;
   background-color: transparent !important;
+}
+
+.form-control.search-bar:focus {
+  box-shadow: none;
 }
 
 /* Footer */
@@ -96,6 +105,15 @@ body {
 .social-media-section .social-media-icons-group i {
   padding-right: 10px;
   font-size: 22px;
+}
+
+#admin.fa-user-circle-o {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+#admin.fa-user-circle-o:hover {
+  opacity: 0.9;
 }
 
 .copyright {
@@ -275,7 +293,7 @@ body {
   color: #cfcfcf;
 }
 
-.dropdown-menu {
+.cart-drop-menu {
   min-width: 600px !important;
   background-color: #FFECCC !important;
   box-shadow: #0a0a0a50;
