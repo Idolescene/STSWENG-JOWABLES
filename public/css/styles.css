@@ -700,3 +700,11 @@ body {
 .profile-section {
   height: calc(100vh - 300px);
 }
+
+.about-section {
+  height: calc(100vh - 300px);
+}
+
+.contact-section-page {
+  height: calc(100vh - 300px);
+}
