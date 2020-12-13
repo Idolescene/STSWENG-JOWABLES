@@ -281,6 +281,10 @@ body {
   box-shadow: #0a0a0a50;
 }
 
+.out-of-stock p{
+  padding: 5px 5px 5px 5px;
+}
+
 /* Checkout */
 .checkout-img-name p {
   padding-left: 20px;
