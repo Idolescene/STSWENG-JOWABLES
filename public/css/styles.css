@@ -574,6 +574,9 @@ body {
 }
 
 /* Admin - Summary of All Orders */
+.summary-orders-section {
+  padding-bottom: 200px;
+}
 
 .summary-finances,
 .summary-finances thead,
