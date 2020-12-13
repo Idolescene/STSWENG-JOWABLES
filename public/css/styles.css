@@ -310,6 +310,10 @@ body {
   color: #cfcfcf;
 }
 
+.checkout-out-of-stock {
+  padding: 5px;
+}
+
 /* Shipping */
 .payment-method-btn {
   background-color: #ffeeee !important;
@@ -478,6 +482,10 @@ body {
   left: 57%;
 }
 
+.contact-section-page {
+  height: calc(100vh - 300px);
+}
+
 /* Login Page */
 .login-bigtext {
   font-family: Poppins;
@@ -543,7 +551,12 @@ body {
   text-align: left;
 }
 
+.about-section {
+  height: calc(100vh - 300px);
+}
+
 /* Admin - Summary of All Orders */
+
 .summary-finances,
 .summary-finances thead,
 .summary-finances tbody,
@@ -564,6 +577,12 @@ body {
 .order-status-button {
   background-color: #0A0A0A !important;
   border: none !important;
+}
+
+.cancel-btn {
+  background-color: #006676 !important;
+  color: #ffffff !important;
+  padding: 10px 30px 10px 30px !important;
 }
 
 /*edit pages*/
@@ -649,4 +668,8 @@ body {
 .profile-modal-footer {
   background-color: #0A0A0A;
   color: #FFFFFF90
+}
+
+.profile-section {
+  height: calc(100vh - 300px);
 }
