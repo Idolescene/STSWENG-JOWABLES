@@ -1,0 +1,151 @@
+<br><br>
+<section class="catalogue-section">
+    <div class="row">
+        <div class="catalogue-sidebar col-sm-3">
+            <h5>Categories</h5>
+            <ul class="list-group-flush w-75">
+                <li class="list-group-item">
+                    <a href="#">All Items</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Shorts</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Shorter Shorts</a>
+                </li>
+            </ul>
+            <br><br>
+            <h5>Filter By</h5>
+            <ul class="list-group-flush w-75">
+                <li class="list-group-item">
+                    <a href="#">No Filter</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Size: Small</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Size: Medium</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Size: Large</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">Size: X-Large</a>
+                </li>
+            </ul>
+        </div>
+        <div class="display-catalogue-div col-sm-8 text-center">
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <h4 class = "text-indent">{{title}}</h4>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <button type="button" class="btn btn-dark rounded-pill login-btn" data-toggle ='modal' data-target='#addModal'>Add Product</button>
+                </div>
+            </div>
+            {{>product-display}}
+            {{>product-display}}
+            {{>product-display}}
+            <br>
+        </div>
+    </div>
+</section>
+
+<br>
+<br>
+<!-- Modal -->
+
+<div id="addModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header profile-modal">
+        <h4 class="modal-title">Add Product</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body profile-modal text-left">
+        <table>
+          <tr>
+            <th>
+              Name
+            </th>
+            <td>
+              <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "addname" placeholder = "">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Price
+            </th>
+            <td>
+              <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "addprice" placeholder = "">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Category
+            </th>
+            <td>
+              <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "addcat" placeholder = "">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Style
+            </th>
+            <td>
+              <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "addflam" placeholder = "">
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>              
+              Stock:
+            </th>
+            <th>
+              S
+            </th>
+            <td>
+              <input type="text" class="profile-size form-rounded rounded-pill border-white login-input" id = "adds" placeholder = "00">
+            </td>
+            <th>              
+              M
+            </th>
+            <td>
+              <input type="text" class="profile-size form-rounded rounded-pill border-white login-input" id = "addm" placeholder = "00">
+            </td>
+            <th>
+              L
+            </th>
+            <td>
+              <input type="text" class="profile-size form-rounded rounded-pill border-white login-input" id = "addl" placeholder = "00">
+            </td>
+            <th>
+              XL
+            </th>
+            <td>
+              <input type="text" class="profile-size form-rounded rounded-pill border-white login-input" id = "addxl" placeholder = "00">
+            </td>
+          </tr>
+        </table>
+        
+        <br>
+        <div class = "form-group">
+          <b>Description</b>
+          <br>
+          <textarea class = "form-control" rows="3" id="description"></textarea>
+        </div>
+        <br>
+
+        <b>Image:</b>
+        <button type="button" class="btn btn-dark rounded-pill login-btn">Upload</button>
+      </div>
+      <div class="modal-footer profile-modal-footer">
+        <button type="button" class="btn btn-dark rounded-pill login-btn mr-auto" data-dismiss="modal">Update</button>
+        <button type="button" class="btn btn-dark rounded-pill login-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

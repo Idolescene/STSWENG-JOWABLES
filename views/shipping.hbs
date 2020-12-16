@@ -1,0 +1,143 @@
+<br><br>
+<div class="container shipping-section">
+  <h5>{{title}}</h5>
+  <hr>
+  <div class="row text-center">
+    <div class="col">
+      <h5>Full Name</h5>
+      <input type="text" class="form-control rounded-pill" id="fullname-shipping">
+    </div>
+    <div class="col">
+      <h5>Contact No.</h5>
+      <input type="text" class="form-control rounded-pill" id="contactnum-shipping">
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h5>Email Address</h5>
+      <input type="email" class="form-control rounded-pill" id="emailadd-shipping">
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h5>House Number, Building, Street</h5>
+      <input type="text" class="form-control rounded-pill" id="streetadd-shipping">
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h5>Barangay</h5>
+      <input type="text" class="form-control rounded-pill" id="barangay-shipping">
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h5>City</h5>
+      <input type="text" class="form-control rounded-pill" id="city-shipping">
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h5>Province</h5>
+      <input type="text" class="form-control rounded-pill" id="province-shipping">
+    </div>
+  </div>
+  <br>
+  <hr>
+  <h5>Payment Method</h5>
+  <div class="payment-method-section row text-center">
+    <div class="col">
+      <button class="btn payment-method-btn">GCash</button>
+    </div>
+    <div class="col">
+      <button class="btn payment-method-btn">Bank Transfer</button>
+    </div>
+    <div class="col">
+      <button class="btn payment-method-btn">COD</button>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="text-center">
+    <button class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping">
+      Checkout
+    </button>
+  </div>
+  <br>
+  <br>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="success-shipping" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <img src="./img/check.png" width="200px">
+        <br><br>
+        <div class="row">
+          <div class="col text-right">
+            <p>Order Number</p>
+          </div>
+          <div class="col text-left">
+            <p>0X1249481MAM</p>
+          </div>
+        </div>
+        <p>Summary of Order</p>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <p>Flamingo Shorter Shorts</p>
+          </div>
+          <div class="col">
+            <p>Small</p>
+          </div>
+          <div class="col">
+            <p>1</p>
+          </div>
+          <div class="col">
+            <p>350.00</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <p>Flamingo Shorter Shorts</p>
+          </div>
+          <div class="col">
+            <p>Small</p>
+          </div>
+          <div class="col">
+            <p>1</p>
+          </div>
+          <div class="col">
+            <p>350.00</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <p>Flamingo Shorter Shorts</p>
+          </div>
+          <div class="col">
+            <p>Small</p>
+          </div>
+          <div class="col">
+            <p>1</p>
+          </div>
+          <div class="col">
+            <p>350.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="justify-content-center">
+        <button type="button" class="btn modal-btn rounded-pill" data-dismiss="modal">
+          Continue Shipping
+        </button>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

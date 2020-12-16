@@ -1,0 +1,113 @@
+<br><br>
+<div class = 'container'>
+<h4>User: {{name}}</h4>
+<h4>Date Joined: {{date}}</h4>
+<br><br>
+<div class = 'row'>
+    <div class='col-sm-5 panel-group'>
+        <div class = 'panel panel-default'>
+            <div class = 'panel-body'>
+                <div class = 'table-responsive'>
+                    <table class = 'table table-striped' id='table-detail'>
+                        <tr>
+                            <th>Shipping Details</th>
+                            <td class = 'text-right'>
+                                <i onclick="showHideDetails('shiprows');" class="fa fa-plus-circle fa-2x fa-search" id = 'shipbutton'></i>
+                            </td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shiprows'>
+                            <th>
+                                Full name
+                            </th>
+                            <td>
+                                <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "fullname" placeholder ={{full}}>
+                            </td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shipcontno'>
+                            <th>Contact Number</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "contno" placeholder ={{contno}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shipemad'>
+                            <th>Email Address</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "email" placeholder ={{emad}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shiphonu'>
+                            <th>House Number</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "houseno" placeholder ={{hno}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id= 'shipbar'>
+                            <th>barangay</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "brngy" placeholder ={{barangay}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shipcity'>
+                            <th>City</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "city" placeholder ={{city}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shipprov'>
+                            <th>province</th>
+                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "prov" placeholder ={{province}}></td>
+                        </tr>
+                        <tr class = 'hidden-row' id = 'shipsubmit'>
+                            <td></td>
+                            <td>
+                                <input type="submit" class="profile-form form-rounded rounded-pill border-white login-input" value ="Save Shippings">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div class ='col-sm-7'>
+        <div class = 'panel panel-default'>
+            <div class = 'panel-heading text-center'> <h5>Order History</h5></div>
+            <div class = 'panel-body'>
+                <div class = 'table-responsive'>
+                    <table class = 'table table-striped'>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>11/11/2020</td>
+                            <td>Medium</td>
+                            <td>2</td>
+                            <td>20.00</td>
+                            <td>Received</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class = 'text-right'>
+                                <i data-toggle='collapse' data-target ='#profileorder' class="fa fa-minus-circle fa-2x fa-search"></i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br><br><br><br><br>
+<br>
+<br>
+
+<script type="text/javascript"> 
+  function showHideDetails(e) { 
+      $("#" + e).toggle();
+      $('#shipcontno').toggle();
+      $('#shipemad').toggle();
+      $('#shiphonu').toggle();
+      $('#shipbar').toggle();
+      $('#shipcity').toggle();
+      $('#shipprov').toggle();
+      $('#shipsubmit').toggle();
+      $("#shipbutton").toggleClass('fa-minus-circle fa-plus-circle')
+  } 
+</script>
