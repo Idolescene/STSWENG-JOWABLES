@@ -69,6 +69,7 @@ body {
 .footer-section {
   background-color: #0A0A0A;
   height: 180px;
+  width: 100%;
 }
 
 .footer-section img {
@@ -362,8 +363,7 @@ body {
 .faq-group {
   display: flex;
   position: relative;
-  left: 35%;
-  right: 35%;
+  left: 30%;
 }
 
 .faq-header {
@@ -389,12 +389,12 @@ body {
   text-align: justify;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 28px;
   line-height: 42px;
   color: #000000;
   width: 901px;
-  height: 90px;
+  height: 65px;
 }
 
 .faq-body {
