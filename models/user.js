@@ -1,13 +1,4 @@
-const mongoose = require('mongoose');
-
-const databaseURL = /*db url here*/;
-
-const options = { useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-};
-
-mongoose.connect(databaseURL, options);
+const mongoose = require('./connection');
 
 const userSchema = new mongoose.Schema(
     {
