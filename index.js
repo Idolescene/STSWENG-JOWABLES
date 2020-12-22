@@ -17,9 +17,6 @@ app.engine('hbs', exphbs({
   partialsDir: path.join(__dirname, '/views/partials')
 }));
 
-// initialize database models 
-const userModel = require('./models/user');
-
 // set up handlebars as template
 app.set('view engine', 'hbs');
 
