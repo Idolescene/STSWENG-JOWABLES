@@ -3,11 +3,11 @@ const mongoose = require('./connection');
 const cartSchema = new mongoose.Schema({
   product: [
     {
-      id: {type: Number, required: true}, //change to product ID from product schema later
+      id: {type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true},
       qty: {type: Number, required: true}
     }
   ],
-  user: {type: Number, required: true}, //change to user ID from product schema later
+  user: {type: mongoose.Schema.Types.ObjectId, required: true},
   checkout: {type: Boolean, required: true}
 });
 
