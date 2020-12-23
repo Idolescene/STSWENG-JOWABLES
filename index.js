@@ -4,7 +4,6 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
 // initialize express application
 const app = express();

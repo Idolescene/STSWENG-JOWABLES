@@ -23,7 +23,8 @@ router.get('/catalogue', (req, res) => {
 */
 router.get('/login', (req, res) => {
   res.render('login', {
-    title: "Login and Register"
+    title: "Login and Register",
+    scripts: "js/loginscript.js"
   });
 });
 
@@ -96,5 +97,48 @@ router.get('/about', (req,res) => {
     about: 'De kalidad na mga salawal na gawang Bulacan.'
   })
 })
+
+/*POSTS*/
+/*Posts for Login Page*/
+
+router.post('/searchUserExist',(req,res) => {
+  userModel.findOne({username: req.body.user.email, password: req.body.user.password}, (err, user) => {
+    var result = {cont: user, ok: true};
+    if (err)
+      console.log('There is an error when searching for a user.');
+    console.log("User: " + user);
+    if (user == null)
+        result.ok = false;
+    else
+        result.ok = true;
+    console.log("Result: " + result.ok);
+    res.send(result);
+  });
+});
+
+router.post('/createNewUser',(req, res) => {
+      var user = new userModel({
+          fullname:  req.body.fullname,
+          username:  req.body.username,
+          email: req.body.email,
+          password:  req.body.password,
+
+      });
+      var result;
+      user.save((err, user) => {
+          if (err){
+              console.log(err.errors);
+              result = {success: false, message: "new user was not created"};
+              res.send(result);
+          }
+          else {
+              console.log("new user added");
+              console.log(user);
+              result = {success: true, message: "new user was created"};
+              res.send(result);
+          }
+      });
+});
+
 
 module.exports = router;
