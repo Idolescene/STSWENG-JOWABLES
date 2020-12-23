@@ -104,7 +104,7 @@ router.get('/about', (req,res) => {
 /*Posts for Login Page*/
 
 router.post('/searchUserExist',(req,res) => {
-  userModel.findOne({username: req.body.user.email, password: req.body.user.password}, (err, user) => {
+  userModel.findOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
     var result = {cont: user, ok: true};
     if (err)
       console.log('There is an error when searching for a user.');
