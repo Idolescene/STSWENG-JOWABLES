@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const userModel = require('../models/user');
 
 /*
   Homepage for both guest and logged in users
