@@ -5,7 +5,7 @@ const router = require('express').Router();
 */
 router.get('/', (req, res) => {
   res.render('home', {
-    title: "Testing"
+    title: "Home"
   });
 });
 
@@ -14,8 +14,9 @@ router.get('/', (req, res) => {
 */
 router.get('/catalogue', (req, res) => {
   res.render('catalogue', {
-    title: 'Testing'
+    title: 'Catalogue'
   });
+  res.json({message: 'catalogue page'});
 });
 
 /*
