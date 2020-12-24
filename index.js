@@ -4,6 +4,10 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
+const mongoose = require('./models/connection');
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo')(session);
 
 // initialize express application
 const app = express();
@@ -25,9 +29,21 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// sessions - server configuration
+app.use(session({
+  secret: 'thisisthesecretkeytothesession',
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
+  resave: false,
+  saveUninitialized: true.valueOf,
+  cookie: {secure: false, maxAge: 1000 * 60 * 60 * 24 * 7}
+}));
+
+app.use(flash());
+
 // initialize routes
 const userRouter = require('./routes/userRoutes');
 const adminRouter = require('./routes/adminRoutes');
+const { mongo } = require('./models/connection');
 
 // use routes
 app.use('/', userRouter);
