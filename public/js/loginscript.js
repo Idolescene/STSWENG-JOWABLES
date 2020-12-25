@@ -12,10 +12,14 @@ $(document).ready(function () {
             password: accntpass
         }
 
-        if (accntfname == "" || accntpass == ""||accntpass!=accntpass2
-        ||accntuname==""||accntpass==""||accntpass2==""||accntemail=="")
+        if (accntfname == "" || accntpass == "" || accntuname=="" || accntpass=="" || accntpass2=="" || accntemail=="")
         {
-            alert("Invalid Registration.");
+            alert("Invalid Registration. One or more fields are blank.");
+            return false;
+        }
+        else if (accntpass!=accntpass2)
+        {
+            alert("Invalid Registration. Passwords do not match.");
             return false;
         }
         else

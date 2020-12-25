@@ -105,87 +105,42 @@ router.get('/about', (req,res) => {
 
 /*POSTS*/
 /*Posts for Login Page*/
+router.post('/searchUserExist',(req,res) => {
+  userModel.getOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
+     var result = {cont: user, ok: true};
+     if (err)
+       console.log('There is an error when searching for a user.');
+     console.log("User: " + user);
+     if (user == null)
+         result.ok = false;
+     else
+         result.ok = true;
+     console.log("Result: " + result.ok);
+     res.send(result);
+   });
+ });
 
-// router.post('/searchUserExist',(req,res) => {
-//   userModel.findOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
-//     var result = {cont: user, ok: true};
-//     if (err)
-//       console.log('There is an error when searching for a user.');
-//     console.log("User: " + user);
-//     if (user == null)
-//         result.ok = false;
-//     else
-//         result.ok = true;
-//     console.log("Result: " + result.ok);
-//     res.send(result);
-//   });
-// });
-
-// router.post('/createNewUser',(req, res) => {
-//       var user = new userModel({
-//           fullname:  req.body.fullname,
-//           username:  req.body.username,
-//           email: req.body.email,
-//           password:  req.body.password,
-
-//       });
-//       var result;
-//       user.save((err, user) => {
-//           if (err){
-//               console.log(err.errors);
-//               result = {success: false, message: "new user was not created"};
-//               res.send(result);
-//           }
-//           else {
-//               console.log("new user added");
-//               console.log(user);
-//               result = {success: true, message: "new user was created"};
-//               res.send(result);
-//           }
-//       });
-// });
-
-// temp register new user post method
-router.post('/new_user_registration', (req, res) => {
-  const errors = validationResult(req);
-  if(errors.isEmpty()) {
-    const {fullname, username, email, password} = req.body;
-    console.log(req.body.name); //testing
-    userModel.getOne({email: email}, (err, result) => {
-      if(result) {
-        console.log(result); //testing
-        console.log('User already exists.') //testing
-        res.redirect('/login');
-      }
-      else {
-        const saltRounds = 10;
-        bcrypt.hash(password, saltRounds, (err, hashed) => {
-          const newUser = {
-            fullname: fullname,
-            username: username,
-            email: email,
-            password: hashed
-          };
-          userModel.create(newUser, (err, user) => {
-            if(err) {
-              console.log('Error creating new account.'); //testing
-              res.redirect('/login');
-            }
-            else {
-              console.log(user); //testing
-              req.session.user = user._id;
-              req.session.name = user.fullname;
-              res.redirect('/');
-            }
-          });
-        });
-      }
-    });
-  }
-  else {
-    console.log('Error registering.'); //testing
-    res.redirect('/login');
-  }
+ router.post('/createNewUser',(req, res) => {
+   var user = {
+     fullname:  req.body.fullname,
+     username:  req.body.username,
+     email: req.body.email,
+     password:  req.body.password
+   };
+   var result;
+   userModel.create(user,(err, user) => {
+     if (err){
+       console.log(err.errors);
+       result = {success: false, message: "new user was not created"};
+       res.send(result);
+     }
+     else {
+     console.log("new user added");
+     console.log(user);
+     result = {success: true, message: "new user was created"};
+     res.send(result);
+     }
+  });
 });
 
 module.exports = router;
