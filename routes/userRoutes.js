@@ -120,6 +120,66 @@ router.post('/searchUserExist',(req,res) => {
    });
  });
 
+ router.post('/searchUserName',(req,res) => {
+   userModel.getOne({username: req.body.user.username}, (err, user) => {
+      var result = {cont: user, ok: true};
+      if (err)
+        console.log('There is an error when searching for a user.');
+      console.log("User: " + user);
+      if (user == null)
+          result.ok = false;
+      else
+          result.ok = true;
+      console.log("Result: " + result.ok);
+      res.send(result);
+    });
+  });
+
+  router.post('/searchUserEmail',(req,res) => {
+    userModel.getOne({email: req.body.user.email}, (err, user) => {
+       var result = {cont: user, ok: true};
+       if (err)
+         console.log('There is an error when searching for a user.');
+       console.log("User: " + user);
+       if (user == null)
+           result.ok = false;
+       else
+           result.ok = true;
+       console.log("Result: " + result.ok);
+       res.send(result);
+     });
+   });
+
+   router.post('/loginUserEmail',(req,res) => {
+     userModel.getOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
+        var result = {cont: user, ok: true};
+        if (err)
+          console.log('There is an error when searching for a user.');
+        console.log("User: " + user);
+        if (user == null)
+            result.ok = false;
+        else
+            result.ok = true;
+        console.log("Result: " + result.ok);
+        res.send(result);
+      });
+    });
+
+    router.post('/loginUserName',(req,res) => {
+      userModel.getOne({username: req.body.user.email, password: req.body.user.password}, (err, user) => {
+         var result = {cont: user, ok: true};
+         if (err)
+           console.log('There is an error when searching for a user.');
+         console.log("User: " + user);
+         if (user == null)
+             result.ok = false;
+         else
+             result.ok = true;
+         console.log("Result: " + result.ok);
+         res.send(result);
+       });
+     });
+
  router.post('/createNewUser',(req, res) => {
    var user = {
      fullname:  req.body.fullname,

@@ -24,14 +24,20 @@ $(document).ready(function () {
         }
         else
         {
-            $.post('searchUserExist', {user: newuser}, (data, status) => {
+            $.post('searchUserEmail', {user: newuser}, (data, status) => {
                 if(!data.ok) {
-                    alert("Registration Successful!")
-                    $.post("createNewUser", newuser, (data, status) => {
+                  $.post('searchUserName', {user: newuser}, (data, status) => {
+                      if(!data.ok) {
+                          alert("Registration Successful!")
+                          $.post("createNewUser", newuser, (data, status) => {
 
-                    });
+                          });
+                      } else {
+                        alert("Username already in use.");
+                      }
+                  });
                 } else {
-                  alert("User already exists!");
+                  alert("Email already in use.");
                 }
             });
         }
@@ -51,9 +57,16 @@ $(document).ready(function () {
         }
         else
         {
-          $.post('searchUserExist', {user: newuser},(data, status) => {
+          $.post('loginUserEmail', {user: newuser},(data, status) => {
               if(!data.ok) {
-                alert("Invalid Login.");
+                $.post('loginUserName', {user: newuser},(data, status) => {
+                    if(!data.ok) {
+                      alert("Invalid Login.");
+                    } else {
+                      $(location).attr("href", "/");
+                      alert("Welcome!");
+                    }
+                });
               } else {
                 $(location).attr("href", "/");
                 alert("Welcome!");
