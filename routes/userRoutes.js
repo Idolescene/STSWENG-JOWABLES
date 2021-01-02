@@ -4,12 +4,15 @@ const userModel = require('../models/user');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 
+var curr_user = {username: ""};
+
 /*
   Homepage for both guest and logged in users
 */
 router.get('/', (req, res) => {
   res.render('home', {
-    title: "Home"
+    title: "Home",
+    curr_username: curr_user.username
   });
 });
 
@@ -18,7 +21,8 @@ router.get('/', (req, res) => {
 */
 router.get('/catalogue', (req, res) => {
   res.render('catalogue', {
-    title: 'Catalogue'
+    title: 'Catalogue',
+    curr_username: curr_user.username
   });
   res.json({message: 'catalogue page'});
 });
@@ -29,7 +33,8 @@ router.get('/catalogue', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('login', {
     title: "Login and Register",
-    scripts: "js/loginscript.js"
+    scripts: "js/loginscript.js",
+    curr_username: curr_user.username
   });
 });
 
@@ -39,6 +44,7 @@ router.get('/login', (req, res) => {
 router.get('/faq', (req, res) => {
   res.render('faq', {
     title: "FAQ",
+    curr_username: curr_user.username,
     question: "What is this question?",
     answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer."
   });
@@ -50,6 +56,7 @@ router.get('/faq', (req, res) => {
 router.get('/contact', (req, res) => {
   res.render('contact', {
     title: "Contact Us",
+    curr_username: curr_user.username,
     fblink: "www.facebook.com/SalawalCo",
     iglink: "www.instagram.com/SalawalCo",
     phonenum: "+ 63 961 801 4235",
@@ -62,7 +69,8 @@ router.get('/contact', (req, res) => {
 */
 router.get('/checkout', (req, res) => {
   res.render('checkout', {
-    title: 'Your Cart'
+    title: 'Your Cart',
+    curr_username: curr_user.username
   });
 });
 
@@ -71,27 +79,34 @@ router.get('/checkout', (req, res) => {
 */
 router.get('/shipping', (req, res) => {
   res.render('shipping', {
-    title: 'Shipping Details and Payment Options'
+    title: 'Shipping Details and Payment Options',
+    curr_username: curr_user.username
   });
 });
 
 /*
   Profile Page
 */
-router.get('/profile', (req, res) => {
-  res.render('profile', {
-    title: 'Profile',
-    name: 'Your Baby',
-    date: '11/11/2011',
-    full: 'Mamma Mia',
-    contno: '09777777777',
-    emad: 'email@address',
-    hno: '1',
-    barangay: 'brng',
-    city: 'city',
-    province: 'province'
-  })
-})
+router.get('/profile-:param', (req, res) => {
+  var user = req.params.param;
+  userModel.getOne({username: user}, (err, user) => {
+     if (err)
+       console.log('There is an error when searching for a user.');
+
+     res.render('profile', {
+       title: 'Profile',
+       name: user.username,
+       date: user.datejoined,
+       full: user.fullname,
+       contno: user.contactnum,
+       emad: user.email,
+       hno: user.housenum,
+       barangay: user.barangay,
+       city: user.city,
+       province: user.province
+     });
+   });;
+});
 /*
   About Us Page
 */

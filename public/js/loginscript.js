@@ -66,13 +66,16 @@ $(document).ready(function () {
                     if(!data.ok) {
                       alert("Invalid Login.");
                     } else {
+                      curr_user = data.cont;
+                      alert("Welcome " + curr_user.username + "!");
                       $(location).attr("href", "/");
-                      alert("Welcome!");
                     }
                 });
               } else {
+                curr_user = data.cont;
+                alert("Welcome " + curr_user.username + "!");
                 $(location).attr("href", "/");
-                alert("Welcome!");
+
               }
           });
         }
