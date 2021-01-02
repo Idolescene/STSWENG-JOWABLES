@@ -185,7 +185,13 @@ router.post('/searchUserExist',(req,res) => {
      fullname:  req.body.fullname,
      username:  req.body.username,
      email: req.body.email,
-     password:  req.body.password
+     password:  req.body.password,
+     datejoined: req.body.datejoined,
+     contactnum: "TBA",
+     housenum: "TBA",
+     barangay: "TBA",
+     city: "TBA",
+     province: "TBA"
    };
    var result;
    userModel.create(user,(err, user) => {

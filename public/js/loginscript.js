@@ -5,11 +5,14 @@ $(document).ready(function () {
         var accntpass = $("#reg-pass").val();
         var accntpass2 = $("#reg-cpass").val();
         var accntemail = $("#reg-email").val();
+        var today = new Date();
+        var accntdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
         var newuser = {
             fullname: accntfname,
             username: accntuname,
             email: accntemail,
-            password: accntpass
+            password: accntpass,
+            datejoined: accntdate
         }
 
         if (accntfname == "" || accntpass == "" || accntuname=="" || accntpass=="" || accntpass2=="" || accntemail=="")

@@ -4,7 +4,13 @@ const userSchema = new mongoose.Schema({
   fullname: {type: String, required: true},
   username: {type: String, required: true},
   email: {type: String, required: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  datejoined: {type: String, required: true},
+  contactnum: {type: String, required: true},
+  housenum: {type: String, required: true},
+  barangay: {type: String, required: true},
+  city: {type: String, required: true},
+  province: {type: String, required: true}
 });
 
 const userModel = mongoose.model('users', userSchema);
