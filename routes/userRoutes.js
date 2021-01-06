@@ -121,15 +121,13 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
         console.log(result); //testing
         console.log('User already exists.') //testing
         res.redirect('/login');
-      }
-      else {
+      } else {
         userModel.getOne({username: regun}, (err, result) => {
           if(result) {
             console.log(result); //testing
             console.log('User already exists.') //testing
             res.redirect('/login');
-          }
-          else {
+          } else {
             var today = new Date();
             var accntdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
             const saltRounds = 10;
@@ -150,8 +148,7 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
                 if(err) {
                   console.log('Error creating new account.'); //testing
                   res.redirect('/login');
-                }
-                else {
+                } else {
                   console.log(user); //testing
                   console.log("Registration successful."); //testing
                   res.redirect('/login');
@@ -162,8 +159,67 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
         });
       }
     });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    res.redirect('/login');
   }
-  else {
+});
+
+router.post('/user-login', userLoginValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {logemail, logpass} = req.body;
+    //console.log(req.body.name); //testing
+    // search user via email
+    userModel.getOne({email: logemail}, (err, user) => {
+      if(err) {
+        console.log(err); //testing
+        console.log('An error has occurred while searching for a user.') //testing
+        res.redirect('/login');
+      } else {
+        if(user) {
+          bcrypt.compare(logpass, user.password, (err, result) => {
+            if (result) {
+              req.session.user = user._id;
+              req.session.username = user.username;
+              console.log(req.session);
+              res.redirect('/');
+            } else {
+              console.log('Incorrect password. Please try again.'); //testing
+              res.redirect('/login');
+            }
+          });
+        } else {
+          //search user via username
+          userModel.getOne({username: logemail}, (err, user2) => {
+            if(err) {
+              console.log(err); //testing
+              console.log('An error has occurred while searching for a user.') //testing
+              res.redirect('/login');
+            } else {
+              if(user2) {
+                bcrypt.compare(logpass, user2.password, (err, result) => {
+                  if (result) {
+                    req.session.user = user2._id;
+                    req.session.username = user2.username;
+                    console.log(req.session);
+                    res.redirect('/');
+                  } else {
+                    console.log('Incorrect password. Please try again.'); //testing
+                    res.redirect('/login');
+                  }
+                });
+              } else {
+                console.log('User not found. Please try again.'); //testing
+                res.redirect('/login');
+              }
+            }
+          });
+        }
+      }
+    });
+  } else {
     const messages = errors.array().map((item) => item.msg);
     console.log(messages.join(' ')); //testing
     res.redirect('/login');
