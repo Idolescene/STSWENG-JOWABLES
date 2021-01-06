@@ -78,8 +78,9 @@ router.get('/shipping', (req, res) => {
 /*
   Profile Page
 */
-router.get('/profile-:param', (req, res) => {
-  var user = req.params.param;
+router.get('/profile', (req, res) => {
+  var user = req.session.username;
+
   userModel.getOne({username: user}, (err, user) => {
      if (err)
        console.log('There is an error when searching for a user.');
@@ -96,7 +97,7 @@ router.get('/profile-:param', (req, res) => {
        city: user.city,
        province: user.province
      });
-   });;
+   });
 });
 /*
   About Us Page
