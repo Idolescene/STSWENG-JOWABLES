@@ -1,18 +1,15 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
-
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-
-var curr_user = {username: ""};
+const {userRegisterValidation, userLoginValidation} = require('../validators.js');
 
 /*
   Homepage for both guest and logged in users
 */
 router.get('/', (req, res) => {
   res.render('home', {
-    title: "Home",
-    curr_username: curr_user.username
+    title: "Home"
   });
 });
 
@@ -21,8 +18,7 @@ router.get('/', (req, res) => {
 */
 router.get('/catalogue', (req, res) => {
   res.render('catalogue', {
-    title: 'Catalogue',
-    curr_username: curr_user.username
+    title: 'Catalogue'
   });
   res.json({message: 'catalogue page'});
 });
@@ -33,8 +29,7 @@ router.get('/catalogue', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('login', {
     title: "Login and Register",
-    scripts: "js/loginscript.js",
-    curr_username: curr_user.username
+    scripts: ""
   });
 });
 
@@ -44,7 +39,6 @@ router.get('/login', (req, res) => {
 router.get('/faq', (req, res) => {
   res.render('faq', {
     title: "FAQ",
-    curr_username: curr_user.username,
     question: "What is this question?",
     answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer."
   });
@@ -56,7 +50,6 @@ router.get('/faq', (req, res) => {
 router.get('/contact', (req, res) => {
   res.render('contact', {
     title: "Contact Us",
-    curr_username: curr_user.username,
     fblink: "www.facebook.com/SalawalCo",
     iglink: "www.instagram.com/SalawalCo",
     phonenum: "+ 63 961 801 4235",
@@ -69,8 +62,7 @@ router.get('/contact', (req, res) => {
 */
 router.get('/checkout', (req, res) => {
   res.render('checkout', {
-    title: 'Your Cart',
-    curr_username: curr_user.username
+    title: 'Your Cart'
   });
 });
 
@@ -79,8 +71,7 @@ router.get('/checkout', (req, res) => {
 */
 router.get('/shipping', (req, res) => {
   res.render('shipping', {
-    title: 'Shipping Details and Payment Options',
-    curr_username: curr_user.username
+    title: 'Shipping Details and Payment Options'
   });
 });
 
@@ -120,108 +111,63 @@ router.get('/about', (req,res) => {
 
 /*POSTS*/
 /*Posts for Login Page*/
-router.post('/searchUserExist',(req,res) => {
-  userModel.getOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
-     var result = {cont: user, ok: true};
-     if (err)
-       console.log('There is an error when searching for a user.');
-     console.log("User: " + user);
-     if (user == null)
-         result.ok = false;
-     else
-         result.ok = true;
-     console.log("Result: " + result.ok);
-     res.send(result);
-   });
- });
-
- router.post('/searchUserName',(req,res) => {
-   userModel.getOne({username: req.body.user.username}, (err, user) => {
-      var result = {cont: user, ok: true};
-      if (err)
-        console.log('There is an error when searching for a user.');
-      console.log("User: " + user);
-      if (user == null)
-          result.ok = false;
-      else
-          result.ok = true;
-      console.log("Result: " + result.ok);
-      res.send(result);
+router.post('/user-register', userRegisterValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {regfn, regun, regemail, regpass} = req.body;
+    //console.log(req.body.name); //testing
+    userModel.getOne({email: regemail}, (err, result) => {
+      if(result) {
+        console.log(result); //testing
+        console.log('User already exists.') //testing
+        res.redirect('/login');
+      }
+      else {
+        userModel.getOne({username: regun}, (err, result) => {
+          if(result) {
+            console.log(result); //testing
+            console.log('User already exists.') //testing
+            res.redirect('/login');
+          }
+          else {
+            var today = new Date();
+            var accntdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            const saltRounds = 10;
+            bcrypt.hash(regpass, saltRounds, (err, hashed) => {
+              const newUser = {
+                fullname: regfn,
+                username: regun,
+                email: regemail,
+                password: hashed,
+                datejoined: accntdate,
+                contactnum: "NONE",
+                housenum: "NONE",
+                barangay: "NONE",
+                city: "NONE",
+                province: "NONE",
+              };
+              userModel.create(newUser, (err, user) => {
+                if(err) {
+                  console.log('Error creating new account.'); //testing
+                  res.redirect('/login');
+                }
+                else {
+                  console.log(user); //testing
+                  console.log("Registration successful."); //testing
+                  res.redirect('/login');
+                }
+              });
+            });
+          }
+        });
+      }
     });
-  });
-
-  router.post('/searchUserEmail',(req,res) => {
-    userModel.getOne({email: req.body.user.email}, (err, user) => {
-       var result = {cont: user, ok: true};
-       if (err)
-         console.log('There is an error when searching for a user.');
-       console.log("User: " + user);
-       if (user == null)
-           result.ok = false;
-       else
-           result.ok = true;
-       console.log("Result: " + result.ok);
-       res.send(result);
-     });
-   });
-
-   router.post('/loginUserEmail',(req,res) => {
-     userModel.getOne({email: req.body.user.email, password: req.body.user.password}, (err, user) => {
-        var result = {cont: user, ok: true};
-        if (err)
-          console.log('There is an error when searching for a user.');
-        console.log("User: " + user);
-        if (user == null)
-            result.ok = false;
-        else
-            result.ok = true;
-        console.log("Result: " + result.ok);
-        res.send(result);
-      });
-    });
-
-    router.post('/loginUserName',(req,res) => {
-      userModel.getOne({username: req.body.user.email, password: req.body.user.password}, (err, user) => {
-         var result = {cont: user, ok: true};
-         if (err)
-           console.log('There is an error when searching for a user.');
-         console.log("User: " + user);
-         if (user == null)
-             result.ok = false;
-         else
-             result.ok = true;
-         console.log("Result: " + result.ok);
-         res.send(result);
-       });
-     });
-
- router.post('/createNewUser',(req, res) => {
-   var user = {
-     fullname:  req.body.fullname,
-     username:  req.body.username,
-     email: req.body.email,
-     password:  req.body.password,
-     datejoined: req.body.datejoined,
-     contactnum: "TBA",
-     housenum: "TBA",
-     barangay: "TBA",
-     city: "TBA",
-     province: "TBA"
-   };
-   var result;
-   userModel.create(user,(err, user) => {
-     if (err){
-       console.log(err.errors);
-       result = {success: false, message: "new user was not created"};
-       res.send(result);
-     }
-     else {
-     console.log("new user added");
-     console.log(user);
-     result = {success: true, message: "new user was created"};
-     res.send(result);
-     }
-  });
+  }
+  else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    res.redirect('/login');
+  }
 });
 
 module.exports = router;
