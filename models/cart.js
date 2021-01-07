@@ -39,36 +39,36 @@ exports.getAll = (query, next) => {
 exports.getByUser = (user, next) => {
   cartModel.findOne({user: user}).exec((err, cart) => {
     if (err) throw err;
+    if (cart) {
+      var prodIds = [];
+      cart.prod.forEach((item) => {
+        prodIds.push(item.id);
+      });
+      productModel.getAllIds(prodIds, (err, products) => {
+        var totalPrice = 0;
+        var subPrice = 0;
+        var prodArray = [];
+        products.forEach((item) => {
+          var index = cart.prod.findIndex(x => x.id.equals(item.id));
+          var product = {};
+
+          subPrice = item.price * cart.product[index].qty;
+          totalPrice += subPrice;
+
+          product['name'] = item.name;
+          product['img'] = item.img;
+          product['subPrice'] = subPrice.toFixed(2);
+          product['qty'] = cart.prod[index];
+          product['id'] = item._id;
+          product['slug'] = item.slug;
+
+          prodArray.push(product);
+        });
+        next(err, {_id: cart._id, products: prodArray, total: totalPrice.toFixed(2)});
+      });
+    }
     else {
-      if (!cart) next(err, cart);
-      else {
-        var prodIds = [];
-        cart.prod.forEach((item) => {
-          prodIds.push(item.id);
-        });
-        productModel.getAllIds(prodIds, (err, products) => {
-          var totalPrice = 0;
-          var subPrice = 0;
-          var prodArray = [];
-          products.forEach((item) => {
-            var index = cart.prod.findIndex(x => x.id.equals(item.id));
-            var product = {};
-
-            subPrice = item.price * cart.product[index].qty;
-            totalPrice += subPrice;
-
-            product['name'] = item.name;
-            product['img'] = item.img;
-            product['subPrice'] = subPrice.toFixed(2);
-            product['qty'] = cart.prod[index];
-            product['id'] = item._id;
-            product['slug'] = item.slug;
-
-            prodArray.push(product);
-          });
-          next(err, {_id: cart._id, products: prodArray, total: totalPrice.toFixed(2)});
-        });
-      }
+      next(err, cart);
     }
   });
 };
