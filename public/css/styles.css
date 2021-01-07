@@ -14,12 +14,19 @@ body {
   margin: 0 auto;
 }
 
+.logout-btn {
+  color: #FFFFFF !important;
+  padding: 10px 30px 10px 30px !important;
+  background-color: #0A0A0A !important;
+}
+
 /* Navbar */
 .navbar {
   background-color: #FFA600;
   height: 100px;
   width: 100%;
   box-shadow: 0 0 8px 0 #0a0a0a90;
+  overflow: visible;
 }
 
 .navbar-collapse {

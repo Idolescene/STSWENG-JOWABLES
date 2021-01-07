@@ -38,7 +38,16 @@ app.use(session({
   cookie: {secure: false, maxAge: 1000 * 60 * 60 * 24 * 7}
 }));
 
+// flash
 app.use(flash());
+
+// global variable messages
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.isAuthenticated = req.session.user ? true : false;
+  next();
+});
 
 // initialize routes
 const userRouter = require('./routes/userRoutes');

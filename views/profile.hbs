@@ -1,7 +1,18 @@
 <br><br>
 <div class = 'container-fluid'>
-<h4>User: {{name}}</h4>
-<h4>Date Joined: {{date}}</h4>
+    <div class="row">
+        <div class="col">
+            <h4>User: {{name}}</h4>
+        </div>
+        <div class="col text-right">
+            <a href="/logout" type="button" class="btn logout-btn rounded-pill">
+            <strong>Logout</strong>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Date Joined: {{date}}</h4>
+    </div>
 <br><br>
 <div class = 'row'>
     <div class='col-sm-4 panel-group'>
