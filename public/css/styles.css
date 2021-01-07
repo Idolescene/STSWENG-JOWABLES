@@ -304,6 +304,10 @@ body {
   box-shadow: #0a0a0a50;
 }
 
+.dropdown:hover > .cart-drop-menu {
+  display: block !important;
+}
+
 .out-of-stock p{
   padding: 5px 5px 5px 5px;
 }
