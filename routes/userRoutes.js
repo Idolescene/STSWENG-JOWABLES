@@ -255,9 +255,9 @@ router.post('/user-login', userLoginValidation, (req, res) => {
 router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    const {fullname, contno, email, houseno, brngy, city, prov} = req.body;
-    var newvals = { $set: {fullname: fullname, email: email, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
-    userModel.updateOne({email: email}, newvals, (err, result) => {
+    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    var newvals = { $set: {fullname: fullname, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
+    userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
       if (err) {
         console.log(err); //testing
         console.log('An error has occurred while searching for a user.') //testing
