@@ -14,6 +14,8 @@
         <h4>Date Joined: {{date}}</h4>
     </div>
 <br><br>
+{{> messages}}
+<br><br>
 <div class = 'row'>
     <div class='col-sm-4 panel-group'>
         <div class = 'panel panel-default'>
@@ -26,44 +28,46 @@
                                 <i onclick="showHideDetails('shiprows');" class="fa fa-plus-circle fa-2x fa-search" id = 'shipbutton'></i>
                             </td>
                         </tr>
-                        <tr class = 'hidden-row' id = 'shiprows'>
-                            <th>
-                                Full name
-                            </th>
-                            <td>
-                                <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "fullname" placeholder ={{full}}>
-                            </td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shipcontno'>
-                            <th>Contact Number</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "contno" placeholder ={{contno}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shipemad'>
-                            <th>Email Address</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "email" placeholder ={{emad}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shiphonu'>
-                            <th>House Number</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "houseno" placeholder ={{hno}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id= 'shipbar'>
-                            <th>barangay</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "brngy" placeholder ={{barangay}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shipcity'>
-                            <th>City</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "city" placeholder ={{city}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shipprov'>
-                            <th>province</th>
-                            <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "prov" placeholder ={{province}}></td>
-                        </tr>
-                        <tr class = 'hidden-row' id = 'shipsubmit'>
-                            <td></td>
-                            <td>
-                                <input type="submit" class="profile-form form-rounded rounded-pill border-white login-input" value ="Save Shippings">
-                            </td>
-                        </tr>
+                        <form action="/update-user-shipping" method="POST">
+                          <tr class = 'hidden-row' id = 'shiprows'>
+                              <th>
+                                  Full name
+                              </th>
+                              <td>
+                                  <input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "fullname" name="fullname" value="{{full}}">
+                              </td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shipcontno'>
+                              <th>Contact Number</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "contno" name="contno" value="{{contno}}"></td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shipemad'>
+                              <th>Email Address</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "email" name="email" value="{{emad}}" readonly></td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shiphonu'>
+                              <th>House Number</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "houseno" name="houseno" value="{{hno}}"></td>
+                          </tr>
+                          <tr class = 'hidden-row' id= 'shipbar'>
+                              <th>barangay</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "brngy" name="brngy" value="{{barangay}}"></td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shipcity'>
+                              <th>City</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "city" name="city" value="{{city}}"></td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shipprov'>
+                              <th>province</th>
+                              <td><input type="text" class="profile-form form-rounded rounded-pill border-white login-input" id = "prov" name="prov" value="{{province}}"></td>
+                          </tr>
+                          <tr class = 'hidden-row' id = 'shipsubmit'>
+                              <td></td>
+                              <td>
+                                  <input type="submit" class="profile-form form-rounded rounded-pill border-white login-input" value ="Save Shipping Details">
+                              </td>
+                          </tr>
+                        </form>
                     </table>
                 </div>
             </div>
@@ -119,8 +123,8 @@
 <br>
 <br>
 
-<script type="text/javascript"> 
-  function showHideDetails(e) { 
+<script type="text/javascript">
+  function showHideDetails(e) {
       $("#" + e).toggle();
       $('#shipcontno').toggle();
       $('#shipemad').toggle();
@@ -130,7 +134,7 @@
       $('#shipprov').toggle();
       $('#shipsubmit').toggle();
       $("#shipbutton").toggleClass('fa-minus-circle fa-plus-circle')
-  } 
+  }
 </script>
 
 <script type="text/javascript">

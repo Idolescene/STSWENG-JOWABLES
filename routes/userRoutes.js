@@ -3,7 +3,7 @@ const userModel = require('../models/user');
 const userController = require('../controllers/userController');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-const {userRegisterValidation, userLoginValidation} = require('../validators.js');
+const {userRegisterValidation, userLoginValidation, updateShippingValidation} = require('../validators.js');
 
 /*
   Homepage for both guest and logged in users
@@ -248,6 +248,32 @@ router.post('/user-login', userLoginValidation, (req, res) => {
     req.flash('error_msg', messages.join(' '));
     console.log(messages.join(' ')); //testing
     res.redirect('/login');
+  }
+});
+
+/*Posts for Profile Page*/
+router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {fullname, contno, email, houseno, brngy, city, prov} = req.body;
+    var newvals = { $set: {fullname: fullname, email: email, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
+    userModel.updateOne({email: email}, newvals, (err, result) => {
+      if (err) {
+        console.log(err); //testing
+        console.log('An error has occurred while searching for a user.') //testing
+        req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
+        res.redirect('/profile');
+      } else {
+        console.log('Shipping details updated successfully!') //testing
+        req.flash('success_msg', 'Shipping details updated successfully!');
+        res.redirect('/profile');
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/profile');
   }
 });
 

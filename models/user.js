@@ -29,3 +29,10 @@ exports.getOne = (query, next) => {
         next(err, user);
     });
 };
+
+// update a user with new values based on the query
+exports.updateOne = (query, newvalues, next) => {
+    userModel.updateOne(query, newvalues, (err, user) => {
+        next(err, user);
+    });
+};
