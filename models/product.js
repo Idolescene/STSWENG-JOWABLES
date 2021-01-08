@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
   img: {type: String, required: true}
 });
 
-const productModel = mongoose.model('product', productSchema);
+const productModel = mongoose.model('products', productSchema);
 
 /** ADMIN FUNCTIONS **/
 // 1) Create/Add a new product

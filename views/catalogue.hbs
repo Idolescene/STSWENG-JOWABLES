@@ -40,19 +40,55 @@
       <!-- Display catalogue -->
       <div class="display-catalogue-div col-sm-8">
         <div class="section-1">
-          <h4 class="text-center">Regular Urban Shorts</h4>
-          <br>
-          {{>display-catalogue}}
-        </div>
-        <br><br>
-        <div class="section-2">
           <h4 class="text-center">Shorter Urban Shorts</h4>
           <br>
-          {{>display-catalogue}}
-          {{>display-catalogue-dropdown}}
-          <br>
-          {{>display-catalogue}}
-          {{>display-catalogue}}
+          <div class="row" id="apparel-card-row">
+            {{#if products}}
+              {{#each products}}
+                <div class="apparel-card-div col-lg-3 col-sm-6" id="{{slug}}">
+                  <button class="text-left apparel-card" id="view-product-details" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <img src="{{img}}" height="200px">
+                    <p class="apparel-title">{{name}}</p>
+                    <p><b>₱ {{price}}</b></p>
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <!-- Product Information -->
+                        <form action="/add-to-cart/{{_id}}" method="POST">
+                          {{>messages}}
+                          <div class="product-information catalogue-drop" id="drop-div" style="background-color: #0a0a0a;">
+                            <div class="row">
+                              <div class="col">
+                                <img src="{{this.img}}" width="300px">
+                              </div>
+                              <div class="col text-white">
+                                <h4>{{this.name}}</h4>
+                                <h4>₱ {{this.price}}</h4>
+                                <hr class="white-line">
+                                <p>100% cotton. Stylish. Confortable. 100% Filipino Made</p>
+                                <hr class="white-line">
+                                {{>size-chart}}
+                                <button class="btn rounded-pill text-white" style="border:1px solid white" type="submit" name="btnPressed" value="Add to Cart">
+                                  Add to Cart
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- END -->
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              {{/each}}
+            {{else}}
+            <h4>No products</h4>
+            {{/if}}
+          </div>
         </div>
       </div><!-- End -->
 

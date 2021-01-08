@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
 const userController = require('../controllers/userController');
+const productController = require("../controllers/productController");
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 const {userRegisterValidation, userLoginValidation, updateShippingValidation} = require('../validators.js');
@@ -18,13 +19,7 @@ router.get('/', (req, res) => {
 /*
   Catalogue page for both guest and logged in users
 */
-router.get('/catalogue', (req, res) => {
-  res.render('catalogue', {
-    title: 'Catalogue',
-    loggedIn: req.session.user
-  });
-  //res.json({message: 'catalogue page'});
-});
+router.get('/catalogue', productController.getAllProducts);
 
 /*
   Login and Registration Page
