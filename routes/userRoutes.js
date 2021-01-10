@@ -71,10 +71,37 @@ router.get('/checkout', (req, res) => {
   Shipping Page
 */
 router.get('/shipping', (req, res) => {
-  res.render('shipping', {
-    title: 'Shipping Details and Payment Options',
-    loggedIn: req.session.user
-  });
+  var user = req.session.username;
+
+  userModel.getOne({username: user}, (err, user) => {
+     if (err)
+       console.log('There is an error when searching for a user.');
+     if (user)  {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         fullname: user.fullname,
+         contactnum: user.contactnum,
+         email: user.email,
+         housenum: user.housenum,
+         barangay: user.barangay,
+         city: user.city,
+         province: user.province,
+         loggedIn: req.session.user
+       });
+     } else {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         fullname: "",
+         contactnum: "",
+         email: "",
+         housenum: "",
+         barangay: "",
+         city: "",
+         province: "",
+         loggedIn: req.session.user
+       });
+     }
+   });
 });
 
 /*
