@@ -31,4 +31,15 @@ const updateShippingValidation = [
   body('prov').not().isEmpty().withMessage("Province is required."),
 ];
 
-module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation };
+/*User Checkout Shipping*/
+const checkoutShippingValidation = [
+  body('fullname').not().isEmpty().withMessage("Full Name is required."),
+  body('contno').isLength({ min: 11, max: 11 }).withMessage("Contact number should be 11 digits in length."),
+  body('email').not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email."),
+  body('houseno').not().isEmpty().withMessage("House Number is required."),
+  body('brngy').not().isEmpty().withMessage("Barangay is required."),
+  body('city').not().isEmpty().withMessage("City is required."),
+  body('prov').not().isEmpty().withMessage("Province is required."),
+];
+
+module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation };
