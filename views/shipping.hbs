@@ -50,23 +50,29 @@
       </div>
     </div>
     <br>
+    <div class="row text-center">
+      <div class="col">
+        <input type="text" class="form-control rounded-pill" id="payment-shipping" value="" name="payment" hidden>
+      </div>
+    </div>
+    <br>
     <hr>
     <h5>Payment Method</h5>
     <div class="payment-method-section row text-center">
       <div class="col">
-        <button class="btn payment-method-btn">GCash</button>
+        <button type="button" class="btn payment-method-btn" id="gcash-btn">GCash</button>
       </div>
       <div class="col">
-        <button class="btn payment-method-btn">Bank Transfer</button>
+        <button type="button" class="btn payment-method-btn" id="bank-btn">Bank Transfer</button>
       </div>
       <div class="col">
-        <button class="btn payment-method-btn">COD</button>
+        <button type="button" class="btn payment-method-btn" id="cod-btn">COD</button>
       </div>
     </div>
     <br>
     <br>
     <div class="text-center">
-      <button class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping">
+      <button type="submit "class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping">
         Checkout
       </button>
     </div>

@@ -40,6 +40,7 @@ const checkoutShippingValidation = [
   body('brngy').not().isEmpty().withMessage("Barangay is required."),
   body('city').not().isEmpty().withMessage("City is required."),
   body('prov').not().isEmpty().withMessage("Province is required."),
+  body('payment').not().isEmpty().withMessage("Please select a method of payment."),
 ];
 
 module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation };

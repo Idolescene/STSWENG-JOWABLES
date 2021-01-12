@@ -79,6 +79,7 @@ router.get('/shipping', (req, res) => {
      if (user)  {
        res.render('shipping', {
          title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
          fullname: user.fullname,
          contactnum: user.contactnum,
          email: user.email,
@@ -91,6 +92,7 @@ router.get('/shipping', (req, res) => {
      } else {
        res.render('shipping', {
          title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
          fullname: "",
          contactnum: "",
          email: "",
@@ -305,6 +307,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   if(errors.isEmpty()) {
     const {fullname, contno, houseno, brngy, city, prov} = req.body;
     //stuff
+    res.redirect('/shipping');
   } else {
     const messages = errors.array().map((item) => item.msg);
     console.log(messages.join(' ')); //testing
