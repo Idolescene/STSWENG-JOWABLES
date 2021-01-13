@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 const productController = require("../controllers/productController");
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-const {userRegisterValidation, userLoginValidation, updateShippingValidation} = require('../validators.js');
+const {userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation} = require('../validators.js');
 
 /*
   Homepage for both guest and logged in users
@@ -71,10 +71,39 @@ router.get('/checkout', (req, res) => {
   Shipping Page
 */
 router.get('/shipping', (req, res) => {
-  res.render('shipping', {
-    title: 'Shipping Details and Payment Options',
-    loggedIn: req.session.user
-  });
+  var user = req.session.username;
+
+  userModel.getOne({username: user}, (err, user) => {
+     if (err)
+       console.log('There is an error when searching for a user.');
+     if (user)  {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
+         fullname: user.fullname,
+         contactnum: user.contactnum,
+         email: user.email,
+         housenum: user.housenum,
+         barangay: user.barangay,
+         city: user.city,
+         province: user.province,
+         loggedIn: req.session.user
+       });
+     } else {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
+         fullname: "",
+         contactnum: "",
+         email: "",
+         housenum: "",
+         barangay: "",
+         city: "",
+         province: "",
+         loggedIn: req.session.user
+       });
+     }
+   });
 });
 
 /*
@@ -271,5 +300,21 @@ router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
     res.redirect('/profile');
   }
 });
+
+/*Posts for Shipping Page*/
+router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    //stuff
+    res.redirect('/shipping');
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/shipping');
+  }
+});
+
 
 module.exports = router;
