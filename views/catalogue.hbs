@@ -7,14 +7,19 @@
         <h5>Categories</h5>
         <ul class="list-group-flush w-75">
           <li class="list-group-item">
-            <a href="#">All Items</a>
+            <div class = 'form-check'>
+              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio'>
+              <label for='noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+            </div>
           </li>
+          {{#each categories}}
           <li class="list-group-item">
-            <a href="#">Shorts</a>
+            <div class = 'form-check'>
+              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = "{{this}}Radio">
+              <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
+            </div>
           </li>
-          <li class="list-group-item">
-            <a href="#">Shorter Shorts</a>
-          </li>
+          {{/each}}
         </ul>
         <br><br>
         <h5>Filter By</h5>

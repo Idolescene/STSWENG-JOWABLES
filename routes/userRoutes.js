@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
   Catalogue page for both guest and logged in users
 */
 router.get('/catalogue', productController.getAllProducts);
+router.post('/catalogue',productController.refreshProducts);
 
 /*
   Login and Registration Page
