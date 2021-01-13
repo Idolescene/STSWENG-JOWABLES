@@ -10,7 +10,10 @@ exports.getUserCart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        res.send(results);
+        res.render('navbar', {
+          loggedIn: req.session.user,
+          cartProducts: result
+        });
       });
     }
   }
@@ -23,7 +26,7 @@ exports.getUserCart = (req, res) => {
 exports.addToCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    var product = req.params.id;
+    var product = req.body.id;
     var user = req.session.user;
     var quantity = 1;
 

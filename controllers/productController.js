@@ -17,7 +17,6 @@ exports.getAllProducts = (req, res) => {
 exports.getAProduct = (req, res) => {
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
-    console.log(product);
     res.render('catalogue', {
       loggedIn: req.session.user,
       productImg: product.img
