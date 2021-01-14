@@ -9,14 +9,14 @@
           <li class="list-group-item">
             <div class = 'form-check'>
               <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio'>
-              <label for='noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+              <label for = 'noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
             </div>
           </li>
           {{#each categories}}
           <li class="list-group-item">
             <div class = 'form-check'>
-              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = "{{this}}Radio">
-              <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
+            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio'>
+            <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
             </div>
           </li>
           {{/each}}
