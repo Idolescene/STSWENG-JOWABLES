@@ -49,14 +49,15 @@ exports.refreshProducts = (req, res) => {
   });
 }
 exports.getAProduct = (req, res) => {
-  let id = req.body.id;
-  let name = req.body.name;
-
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
-    res.render('catalogue', {
+    res.render('product-details', {
       loggedIn: req.session.user,
-      productImg: product.img
-    })
-  })
-}
+      productName: product.name,
+      productPrice: product.price.toFixed(2),
+      productDesc: product.description,
+      productImg: product.img,
+      sizeChart: "./img/size-chart-short.jpg"
+    });
+  });
+};

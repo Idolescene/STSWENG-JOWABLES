@@ -42,85 +42,10 @@
         </ul>
       </div><!-- End -->
 
-      <!-- Display catalogue -->
-      <div class="display-catalogue-div col-sm-8">
-        <div class="section-1">
-          <h4 class="text-center">Shorter Urban Shorts</h4>
-          <br>
-          <div class="row" id="apparel-card-row">
-            {{#if products}}
-              {{#each products}}
-
-                <div class="apparel-card-div col-lg-3 col-sm-6">
-                  <button class="text-left apparel-card" id="view-product-details-{{slug}}" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    <img src="{{this.img}}" height="200px">
-                    <p class="apparel-title" id="product-name">{{this.name}}</p>
-                    <p id="product-price"><b>₱ {{this.price}}</b></p>
-                    <p id="product-id" hidden>{{this._id}}</p>
-                    <p id="product-desc" hidden>{{this.description}}</p>
-                    <p id="product-slug" hidden>{{this.slug}}</p>
-                  </button>
-
-                  <!-- Modal -->
-                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                      <div class="modal-content">
-                        <!-- Product Information -->
-                        <form>
-                          {{>messages}}
-                          <div class="product-information catalogue-drop" id="drop-div" style="background-color: #0a0a0a;">
-                            <div class="row">
-                              <div class="col">
-                                <img src="{{this.img}}" width="300px">
-                              </div>
-                              <div class="col text-white">
-                                <h4>{{this.name}}</h4>
-                                <h4>₱ {{this.price}}</h4>
-                                <hr class="white-line">
-                                <p id="product-desc">100% cotton. Stylish. Confortable. 100% Filipino Made.</p>
-                                <hr class="white-line">
-                                {{>size-chart}}
-                                <button class="btn rounded-pill text-white" style="border:1px solid white" type="button">
-                                  Add to Cart
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                        <!-- END -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              {{/each}}
-            {{else}}
-            <h4>No products</h4>
-            {{/if}}
-          </div>
-        </div>
-      </div><!-- End -->
-
+      <!-- Display Products -->
+      {{>display-products}}
+      
     </div>
   </section>
   <br><br>
 </div>
-
-<script>
-  $(document).ready(() => {
-
-  $('#view-product-details').on('click', () => {
-    console.log("VIEW PRODUCT DETAILS WORKS"); //testing
-
-    let id = $('#product-id').text();
-    let name = $('#product-name').text();
-    let desc = $('#product-desc').text();
-    let price = $('#product-price').text();
-
-
-    console.log(id);
-    console.log(name);
-    console.log(desc);
-    console.log(price);
-  })
-});
-</script>
