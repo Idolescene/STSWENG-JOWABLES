@@ -1,12 +1,12 @@
 const productModel = require('../models/product');
 
 exports.getAllProducts = (req, res) => {
-  var query = {archive: false};
+  var query = {};
   var sort = {name: 1};
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
   }
-  productModel.getMany({},sort, (err, products) => {
+  productModel.getMany(query,sort, (err, products) => {
     if (err) throw err;
     console.log(products);
     
@@ -29,19 +29,19 @@ exports.getAllProducts = (req, res) => {
 };
 
 exports.refreshProducts = (req, res) => {
-  var query = {archive: false};
+  var query = {};
   var sort = {name: 1};
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
   }
-  
-  productModel.getMany({}, sort , (err, products) => {
+  console.log('beep')
+  productModel.getMany(query, sort, (err, products) => {
     if (err) throw err;
     console.log(products);
     products.forEach((item) => {
       item.price = item.price.toFixed(2);
     });
-    res.render('catalogue', {
+    res.render('products', {
       loggedIn: req.session.user,
       products: products,
       layout:null
@@ -51,7 +51,7 @@ exports.refreshProducts = (req, res) => {
 exports.getAProduct = (req, res) => {
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
-    res.render('catalogue', {
+    res.render('products', {
       loggedIn: req.session.user,
       productImg: product.img
     })

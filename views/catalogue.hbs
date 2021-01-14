@@ -9,14 +9,14 @@
           <li class="list-group-item">
             <div class = 'form-check'>
               <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio'>
-              <label for='noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+              <label for = 'noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
             </div>
           </li>
           {{#each categories}}
           <li class="list-group-item">
             <div class = 'form-check'>
-              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = "{{this}}Radio">
-              <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
+            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio'>
+            <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
             </div>
           </li>
           {{/each}}
@@ -41,10 +41,13 @@
           </li>
         </ul>
       </div><!-- End -->
-
-      <!-- Display catalogue -->
-      <div class="display-catalogue-div col-sm-8">
+      
+      <div class="display-catalogue-div display-items col-sm-8">
+        
+      {{> display-products}}
+      <!-- Display catalogue >
         <div class="section-1">
+          
           <h4 class="text-center">Shorter Urban Shorts</h4>
           <br>
           <div class="row" id="apparel-card-row">
@@ -57,11 +60,11 @@
                     <p><b>₱ {{price}}</b></p>
                   </button>
 
-                  <!-- Modal -->
+                  <!-- Modal 
                   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                       <div class="modal-content">
-                        <!-- Product Information -->
+                        <!-- Product Information 
                         <form>
                           {{>messages}}
                           <div class="product-information catalogue-drop" id="drop-div" style="background-color: #0a0a0a;">
@@ -83,7 +86,7 @@
                             </div>
                           </div>
                         </form>
-                        <!-- END -->
+                        <!-- END 
                       </div>
                     </div>
                   </div>
@@ -94,9 +97,29 @@
             {{/if}}
           </div>
         </div>
-      </div><!-- End -->
-
+      </div> End -->
     </div>
   </section>
   <br><br>
 </div>
+
+<script>
+  
+function changedRadio() { 
+  $.post('/catalogue/', {
+    category: $('input[name="categoryRadio"]:checked').val()
+  }, function(result){
+    $(".display-items").html(result);
+  });
+}
+
+
+$(function() {
+  $("#noFilterRadio").prop("checked", true);
+  $("#nameRadio").prop("checked", true);
+
+  $(".categoryRadio").on("change", changedRadio);
+});
+
+
+</script>
