@@ -49,6 +49,9 @@ exports.refreshProducts = (req, res) => {
   });
 }
 exports.getAProduct = (req, res) => {
+  let id = req.body.id;
+  let name = req.body.name;
+
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
     res.render('products', {
