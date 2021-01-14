@@ -31,8 +31,8 @@ exports.getAll = (query, next) => {
 };
 
 // Get a specific group of products
-exports.getMany = (query, next) => {
-  productModel.find(query).exec((err, products) => {
+exports.getMany = (query,sort,next) => {
+  productModel.find(query).sort(sort).exec((err, products) => {
     if (err) throw err;
     const productObjects = [];
     products.forEach((doc) => {
