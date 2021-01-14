@@ -2,6 +2,7 @@
   <br>
   <h4>{{title}}</h4>
   <br>
+  {{#if cartProducts}}
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -14,16 +15,21 @@
     </thead>
     <tbody>
       <tr class="checkout-card">
-        {{>checkout-item}}
-      </tr>
-      <tr class="checkout-card">
-        {{>checkout-item}}
-      </tr>
-      <tr class="checkout-card">
-        {{>checkout-item}}
-      </tr>
-      <tr class="checkout-card">
-        {{>checkout-item}}
+        <th class="checkout-img-name">
+          <img src="{{this.img}}" width="150px">
+          <p>{{this.name}}</p>
+          {{#if this.status}}
+          <p></p>
+          {{else}}
+          <p class="text-danger"><span class="checkout-out-of-stock border border-danger">Out of Stock</span></p>
+          {{/if}}
+        </th>
+        <th>Medium</th>
+        <th>₱ {{this.price}}</th>
+        <th>{{this.qty}}</th>
+        <th>
+          <h1>X</h1>
+        </th>
       </tr>
     </tbody>
   </table>
@@ -57,5 +63,10 @@
     <br>
     <a href="/shipping" type="button" class="btn rounded-pill">Order</a>
   </div>
+  {{else}}
+  <div style="height: calc(100vh - 400px);">
+    <h4>Your cart is empty :(</h4>
+  </div>
+  {{/if}}
   <br><br>
 </div>

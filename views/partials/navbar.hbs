@@ -31,9 +31,17 @@
             </form>
           </div>
         </li>
+        {{#if loggedIn}}
         <li class="nav-item">
           {{>cart}}
         </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="login">
+            <i class="fa fa-shopping-cart fa-lg navbar-cart"></i>
+          </a>
+        </li>
+        {{/if}}
         <li class="nav-item" id="proficon">
           {{#if loggedIn}}
           <a class="nav-link" href="/profile">

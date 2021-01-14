@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
 const userController = require('../controllers/userController');
+const cartController = require('../controllers/cartController');
 const productController = require("../controllers/productController");
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
@@ -20,6 +21,7 @@ router.get('/', (req, res) => {
   Catalogue page for both guest and logged in users
 */
 router.get('/catalogue', productController.getAllProducts);
+router.post('/catalogue', productController.getAProduct);
 
 /*
   Login and Registration Page
@@ -60,12 +62,7 @@ router.get('/contact', (req, res) => {
 /*
   Checkout Page
 */
-router.get('/checkout', (req, res) => {
-  res.render('checkout', {
-    title: 'Your Cart',
-    loggedIn: req.session.user
-  });
-});
+router.get('/checkout', cartController.getUserCart);
 
 /*
   Shipping Page

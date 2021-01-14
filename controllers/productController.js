@@ -3,7 +3,6 @@ const productModel = require('../models/product');
 exports.getAllProducts = (req, res) => {
   productModel.getMany({}, (err, products) => {
     if (err) throw err;
-    console.log(products);
     products.forEach((item) => {
       item.price = item.price.toFixed(2);
     });
@@ -15,6 +14,9 @@ exports.getAllProducts = (req, res) => {
 };
 
 exports.getAProduct = (req, res) => {
+  let id = req.body.id;
+  let name = req.body.name;
+  
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
     res.render('catalogue', {

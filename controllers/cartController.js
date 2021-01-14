@@ -10,7 +10,8 @@ exports.getUserCart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        res.render('navbar', {
+        res.render('checkout', {
+          title: "Your Cart",
           loggedIn: req.session.user,
           cartProducts: result
         });
