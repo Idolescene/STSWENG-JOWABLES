@@ -43,24 +43,27 @@
       </div><!-- End -->
 
       <!-- Display Products -->
+      <div class="display-catalogue-div display-items col-sm-8">
       {{>display-products}}
-      
+      </div>
     </div>
   </section>
   <br><br>
 </div>
-
 <script>
-  function changedRadio() { 
-    $.post('/catalogue/', {
-      category: $('input[name="categoryRadio"]:checked').val()
-    }, function(result){
-      $(".display-items").html(result);
-    });
-  }
-  $(function() {
-    $("#noFilterRadio").prop("checked", true);
-    $("#nameRadio").prop("checked", true);
-    $(".categoryRadio").on("change", changedRadio);
+function changedRadio() { 
+  $.post('/catalogue/', {
+    category: $('input[name="categoryRadio"]:checked').val(), 
+    sort: $('input[name="sortRadio"]:checked').val()
+  }, function(result){
+    $(".display-items").html(result);
   });
+}
+
+$(function() {
+  $("#noFilterRadio").prop("checked", true);
+  $("#nameRadio").prop("checked", true);
+
+  $(".categoryRadio").on("change", changedRadio);
+});
 </script>
