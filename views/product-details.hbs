@@ -1,11 +1,12 @@
 <div class="container">
   <br>
-  <div class="text-right">
-    <button class="btn logout-btn rounded-pill" style="color: #ffffff !important;">
-      <a href="/catalogue">Back to Catalogue</a>
-    </button>
+  <div class="text-left">
+      <a href="/catalogue">
+        <button class="btn logout-btn rounded-pill">Back to Catalogue</button>
+      </a>
   </div>
   <br><br>
+  {{> messages}}
   <div class="row">
     <div class="col-sm-4">
       <img src=".{{productImg}}" style="max-width: 320px;">
@@ -17,7 +18,7 @@
       <h5>{{productDesc}}</h5>
       <h5>100% cotton. Stylish. Confortable. 100% Filipino Made.</h5>
       <br>
-      <form class="form-div" action="/add_to_cart/{{_id}}" method="POST">
+      <form class="form-control" action="/add_to_cart/{{_id}}" method="POST" style="background-color: transparent; border: none; color: #0a0a0a;">
         <div class="row">
           <div class="col">
             <div class="form-check form-check-inline">
@@ -57,58 +58,3 @@
   </div>
   <br><br><br>
 </div>
-
-
-
-
-
-
-{{!-- <div class="product-details">
-  <div class="container card">
-    <div class="row mt-3">
-      <aside class="col-sm-5">
-          <div>
-            <img src="{{img}}" width="450px">
-          </div>
-      </aside>
-      <aside class="item-desc-card col-sm-7">
-        <article class="card-body p-5">
-          <!-- Product Name -->
-          <h2 class="title mb-3">{{productName}}</h2>
-          <!-- Item Description -->
-          <dl class="item-description text-justify">
-            <dd>
-              <p>{{desc}}</p>
-            </dd>
-          </dl>
-          <form class="form-div" action="/add_to_cart/{{_id}}" method="POST">
-            <div class="row">
-              <div class="col">
-                <!-- Product Price -->
-                <h3 class="price-detail-warp">₱ {{price}}</h3>
-              </div>
-              <div class="col">
-                <!-- Quantity -->
-                <div class="quantity buttons_added">
-                <input type="button" class="btn btn-c-yellow rounded-right btnQty" id="minus" value="-">
-                <input type="number" step="1" min="1" max="99" name="qty" value="1" title="Quantity to Add" class="input-text qty text" size="4" id="itemQty">
-                <input type="button" class="btn btn-c-yellow rounded-left btnQty" id="plus" value="+">
-                </div>
-              </div>
-            </div>
-            <!-- Buttons -->
-            <table class="table table-borderless">
-              <tr>
-                <td><input type="submit" class="btn btn-c-yellow w-100 btnCart" name="btnPressed" value="Add to Cart"></td>
-                <td><input type="submit" class="btn btn-c-pink w-100 btnCart" name="btnPressed" value="Add and Checkout"></td>
-              </tr>
-            </table>
-          </form>
-        </article>
-      </aside>
-    </div>
-    <img src="{{sizeChart}}">
-    <div id="productId" hidden>{{_id}}</div>
-  </div>
-
-</div> --}}

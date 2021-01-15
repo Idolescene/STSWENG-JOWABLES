@@ -40,7 +40,7 @@ exports.addToCart = (req, res) => {
       res.redirect('/login');
     }
     else {
-      if (req.body.btnPressed == "Add to Cart"){
+      if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
           var slug = cart.toObject().slug;
@@ -55,18 +55,6 @@ exports.addToCart = (req, res) => {
               return res.redirect('/product_details/' + slug);
             }
           });
-        });
-      }
-      else if (req.body.btnPressed = "Add and Checkout"){
-        cartModel.addProduct(user, product, quantity, (err, cart) => {
-          if(err) {
-            req.flash('error_msg', 'Could not add product. Please try again.');
-            return res.redirect('/cart');
-          }
-          else {
-            req.flash('success_msg', 'You have added a new product to the cart!');
-            return res.redirect('/cart');
-          }
         });
       }
     }

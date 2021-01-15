@@ -48,6 +48,7 @@ exports.refreshProducts = (req, res) => {
     });
   });
 }
+
 exports.getAProduct = (req, res) => {
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
@@ -57,6 +58,7 @@ exports.getAProduct = (req, res) => {
       productPrice: product.price.toFixed(2),
       productDesc: product.description,
       productImg: product.img,
+      _id: product._id,
       sizeChart: "./img/size-chart-short.jpg"
     });
   });

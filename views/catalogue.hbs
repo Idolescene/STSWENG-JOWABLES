@@ -49,3 +49,18 @@
   </section>
   <br><br>
 </div>
+
+<script>
+  function changedRadio() { 
+    $.post('/catalogue/', {
+      category: $('input[name="categoryRadio"]:checked').val()
+    }, function(result){
+      $(".display-items").html(result);
+    });
+  }
+  $(function() {
+    $("#noFilterRadio").prop("checked", true);
+    $("#nameRadio").prop("checked", true);
+    $(".categoryRadio").on("change", changedRadio);
+  });
+</script>
