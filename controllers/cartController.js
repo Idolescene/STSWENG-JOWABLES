@@ -13,7 +13,9 @@ exports.getUserCart = (req, res) => {
         res.render('checkout', {
           title: "Your Cart",
           loggedIn: req.session.user,
-          cartProducts: result
+          cartProducts: result.products,
+          total: result.total,
+          totalWithShipping: result.totalWithShipping
         });
       });
     }
@@ -27,9 +29,12 @@ exports.getUserCart = (req, res) => {
 exports.addToCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    var product = req.body.id;
+    var product = req.params.id;
     var user = req.session.user;
     var quantity = 1;
+
+    console.log(product);
+    console.log(user);
 
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
@@ -43,6 +48,8 @@ exports.addToCart = (req, res) => {
       if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
+          console.log(cart);
+
           var slug = cart.toObject().slug;
           cartModel.addProduct(user, product, quantity, (err, cart) => {
             console.log('cart(addtocart): ' + cart);

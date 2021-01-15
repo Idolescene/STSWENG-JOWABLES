@@ -38,37 +38,49 @@ exports.getAll = (query, next) => {
 // Retrieve a user's cart
 exports.getByUser = (user, next) => {
   cartModel.findOne({user: user}).exec((err, cart) => {
-    if (err) throw err;
-    if (cart) {
-      var prodIds = [];
-      cart.prod.forEach((item) => {
-        prodIds.push(item.id);
-      });
-      productModel.getAllIds(prodIds, (err, products) => {
-        var totalPrice = 0;
-        var subPrice = 0;
-        var prodArray = [];
-        products.forEach((item) => {
-          var index = cart.prod.findIndex(x => x.id.equals(item.id));
-          var product = {};
-
-          subPrice = item.price * cart.product[index].qty;
-          totalPrice += subPrice;
-
-          product['name'] = item.name;
-          product['img'] = item.img;
-          product['subPrice'] = subPrice.toFixed(2);
-          product['qty'] = cart.prod[index];
-          product['id'] = item._id;
-          product['slug'] = item.slug;
-
-          prodArray.push(product);
-        });
-        next(err, {_id: cart._id, products: prodArray, total: totalPrice.toFixed(2)});
-      });
+    if (err) {
+      console.log(err);
     }
     else {
-      next(err, cart);
+      if (!cart) {
+        next(err, cart);
+      }
+      else {
+        var prodIds = [];
+        cart.prod.forEach((item) => {
+          prodIds.push(item.id);
+        });
+        console.log(prodIds);
+        productModel.getAllIds(prodIds, (err, products) => {
+          var totalPrice = 0;
+          var totalPriceWithShipping = 0;
+          var subPrice;
+          var prodArray = [];
+          products.forEach((item) => {
+            console.log(item);
+            var index = cart.prod.findIndex(x => x.id.equals(item._id));
+            var product = {};
+
+            subPrice = item.price * cart.prod[index].qty;
+            totalPrice += subPrice;
+            totalPriceWithShipping = totalPrice + 50;
+
+            product['name'] = item.name;
+            product['img'] = item.img;
+            product['subPrice'] = subPrice.toFixed(2);
+            product['qty'] = cart.prod[index].qty;
+            product['id'] = item._id;
+            product['slug'] = item.slug;
+
+            prodArray.push(product); 
+          });
+          console.log('before send: ' + totalPrice);
+          next(err, {_id: cart._id, 
+                      products: prodArray, 
+                      total: totalPrice.toFixed(2), 
+                      totalWithShipping: totalPriceWithShipping.toFixed(2)});
+        });
+      }
     }
   });
 };

@@ -6,7 +6,9 @@
       </a>
   </div>
   <br><br>
-  {{> messages}}
+  <div class="row text-center">
+    {{> messages}}
+  </div>
   <div class="row">
     <div class="col-sm-4">
       <img src=".{{productImg}}" style="max-width: 320px;">
@@ -22,28 +24,28 @@
         <div class="row">
           <div class="col">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <input class="form-check-input" type="radio" name="small" id="small" value="S">
               <label class="form-check-label" for="inlineRadio1">S</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="medium" id="medium" value="M">
               <label class="form-check-label" for="inlineRadio2">M</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="large" id="large" value="L">
               <label class="form-check-label" for="inlineRadio2">L</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="x-large" id="x-large" value="XL">
               <label class="form-check-label" for="inlineRadio2">XL</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="xx-large" id="xx-large" value="XXL">
               <label class="form-check-label" for="inlineRadio2">XXL</label>
             </div>
           </div>
           <div class="col">
-            <input type="submit" class="btn logout-btn rounded-pill" name="btnPressed" value="Add to Cart">
+            <input type="submit" class="btn logout-btn rounded-pill" name="btnPressed" id="btnPressed" value="Add to Cart">
           </div>
         </div>
       </form>
