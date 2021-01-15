@@ -10,13 +10,22 @@ exports.getUserCart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        res.render('checkout', {
-          title: "Your Cart",
+        if (!result) {
+          res.render('checkout', {
+            title: "Your Cart",
           loggedIn: req.session.user,
-          cartProducts: result.products,
-          total: result.total,
-          totalWithShipping: result.totalWithShipping
-        });
+          cartProducts: null
+          });
+        }
+        else {
+          res.render('checkout', {
+            title: "Your Cart",
+            loggedIn: req.session.user,
+            cartProducts: result.products,
+            total: result.total,
+            totalWithShipping: result.totalWithShipping
+          });
+        }
       });
     }
   }
@@ -67,3 +76,27 @@ exports.addToCart = (req, res) => {
     }
   }
 };
+
+// Remove a product from cart
+exports.removeFromCart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    var product = req.params.id;
+    var user = req.session.user;
+    if(!user) {
+      res.redirect('/login');
+    }
+    else {
+      cartModel.removeProduct(user, product, (err, cart) => {
+        if (err) {
+          req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
+          return res.redirect('/checkout');
+        } 
+        else {
+          req.flash('success_msg', 'You have removed a product from the cart!');
+          return res.redirect('/checkout');
+        }
+      })
+    }
+  }
+}

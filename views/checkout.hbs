@@ -25,7 +25,9 @@
           <th>₱ {{this.subPrice}}</th>
           <th>{{this.qty}}</th>
           <th>
-            <h1>X</h1>
+            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+              <h1>X</h1>
+            </a>
           </th>
         </tr>
       {{/each}}
@@ -40,10 +42,6 @@
           <div class="col">Total</div>
           <div class="col">₱ {{total}}</div>
         </div>
-        {{!-- <div class="row">
-          <div class="col">Promo</div>
-          <div class="col">-50</div>
-        </div> --}}
         <div class="row">
           <div class="col">Shipping Fee</div>
           <div class="col">+ ₱ 50.00</div>

@@ -20,6 +20,10 @@ body {
   background-color: #0A0A0A !important;
 }
 
+.remove-product:hover {
+  text-decoration: none;
+}
+
 /* Navbar */
 .navbar {
   background-color: #FFA600;
