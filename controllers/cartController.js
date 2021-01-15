@@ -10,11 +10,22 @@ exports.getUserCart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        res.render('checkout', {
-          title: "Your Cart",
+        if (!result) {
+          res.render('checkout', {
+            title: "Your Cart",
           loggedIn: req.session.user,
-          cartProducts: result
-        });
+          cartProducts: null
+          });
+        }
+        else {
+          res.render('checkout', {
+            title: "Your Cart",
+            loggedIn: req.session.user,
+            cartProducts: result.products,
+            total: result.total,
+            totalWithShipping: result.totalWithShipping
+          });
+        }
       });
     }
   }
@@ -27,9 +38,12 @@ exports.getUserCart = (req, res) => {
 exports.addToCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    var product = req.body.id;
+    var product = req.params.id;
     var user = req.session.user;
     var quantity = 1;
+
+    console.log(product);
+    console.log(user);
 
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
@@ -40,9 +54,11 @@ exports.addToCart = (req, res) => {
       res.redirect('/login');
     }
     else {
-      if (req.body.btnPressed == "Add to Cart"){
+      if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
+          console.log(cart);
+
           var slug = cart.toObject().slug;
           cartModel.addProduct(user, product, quantity, (err, cart) => {
             console.log('cart(addtocart): ' + cart);
@@ -57,18 +73,30 @@ exports.addToCart = (req, res) => {
           });
         });
       }
-      else if (req.body.btnPressed = "Add and Checkout"){
-        cartModel.addProduct(user, product, quantity, (err, cart) => {
-          if(err) {
-            req.flash('error_msg', 'Could not add product. Please try again.');
-            return res.redirect('/cart');
-          }
-          else {
-            req.flash('success_msg', 'You have added a new product to the cart!');
-            return res.redirect('/cart');
-          }
-        });
-      }
     }
   }
 };
+
+// Remove a product from cart
+exports.removeFromCart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    var product = req.params.id;
+    var user = req.session.user;
+    if(!user) {
+      res.redirect('/login');
+    }
+    else {
+      cartModel.removeProduct(user, product, (err, cart) => {
+        if (err) {
+          req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
+          return res.redirect('/checkout');
+        } 
+        else {
+          req.flash('success_msg', 'You have removed a product from the cart!');
+          return res.redirect('/checkout');
+        }
+      })
+    }
+  }
+}
