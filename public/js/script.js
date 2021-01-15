@@ -21,6 +21,7 @@ addNewRow = (item, parentDiv) => {
 };
 
 $(document).ready(() => {
+
   $('#add-to-cart').on('click', () => {
     console.log("ADD TO CART WORKS");
     let id = $('#product-desc').val();

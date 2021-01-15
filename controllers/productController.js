@@ -61,3 +61,24 @@ exports.getAProduct = (req, res) => {
     });
   });
 };
+
+exports.getCategories = (req,res) => {
+  var sort = {name: 1}
+  productModel.getMany({},sort,(err,products) => {
+    if (err) throw err
+    
+    var categories = [];
+    var sample = [];
+    products.forEach(function(item){
+      if (!categories.includes(item.category)) {
+        categories.push(item.category);
+        sample.push(item)
+      }
+    });
+    res.render('home', {
+      title: "Home",
+      loggedIn: req.session.user,
+      categories: sample
+    });
+  })
+}

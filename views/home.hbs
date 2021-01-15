@@ -18,15 +18,11 @@
     <h4 class="features-title">Our Styles</h4>
     <br>
     <div class="row">
-      <div class="col-sm">
-        <img src="img/banner.jpg" width="400px">
+      {{#each categories}}
+      <div class="col-sm btn-features">      
+        <button onclick = 'filterBtn({{this.category}});' class="btn rounded-pill {{this.category}}btn" id = '{{this.category}}btn' value = '{{this.category}}'>{{this.category}}</a>
       </div>
-      <div class="col-sm">
-        <img src="img/banner.jpg" width="400px">
-      </div>
-      <div class="col-sm">
-        <img src="img/banner.jpg" width="400px">
-      </div>
+      {{/each}}
     </div>
     <br>
     <div class="btn-features">
@@ -36,3 +32,14 @@
 
   <br><br><br>
 </div>
+
+<script type = 'text/javascript'>
+  function filterBtn (val) {
+    console.log('boop');
+    category = val;
+  }
+  $('#categorybtn').click(function () {
+    console.log("BOOOOOOOOOOOOO")
+    req.body.category = $('input=[id="categorybtn"]').val()
+  })
+</script>

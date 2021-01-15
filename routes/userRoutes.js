@@ -10,12 +10,7 @@ const {userRegisterValidation, userLoginValidation, updateShippingValidation, ch
 /*
   Homepage for both guest and logged in users
 */
-router.get('/', (req, res) => {
-  res.render('home', {
-    title: "Home",
-    loggedIn: req.session.user
-  });
-});
+router.get('/', productController.getCategories);
 
 /*
   Catalogue page for both guest and logged in users

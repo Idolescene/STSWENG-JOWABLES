@@ -54,7 +54,6 @@
 function changedRadio() { 
   $.post('/catalogue/', {
     category: $('input[name="categoryRadio"]:checked').val(), 
-    sort: $('input[name="sortRadio"]:checked').val()
   }, function(result){
     $(".display-items").html(result);
   });
