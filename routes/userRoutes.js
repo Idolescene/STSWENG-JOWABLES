@@ -115,6 +115,7 @@ router.get('/profile', (req, res) => {
 
      res.render('profile', {
        title: 'Profile',
+       scripts: "js/profilescript.js",
        name: user.username,
        date: user.datejoined,
        full: user.fullname,

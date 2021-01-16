@@ -524,7 +524,7 @@ body {
   background-color: #F5DDA5;
 }
 
-#table-detail .hidden-row {
+.hidden-row {
   display: none;
 }
 
@@ -599,6 +599,8 @@ body {
   left: 60%;
 }
 
+/*profile page*/
+
 .profile-form {
   width: 200px;
   height: 40px
@@ -616,4 +618,8 @@ body {
 .profile-modal-footer {
   background-color: #0A0A0A;
   color: #FFFFFF90
+}
+
+.profile-ship-form {
+  background-color: #FFECCC;
 }

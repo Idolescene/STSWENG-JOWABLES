@@ -698,6 +698,10 @@ body {
   height: 40px
 }
 
+.profile-ship-form {
+  background-color: #FFECCC;
+}
+
 .profile-modal {
   color: #0a0a0a90;
   background-color: #FFA600
@@ -718,4 +722,18 @@ body {
 
 .contact-section-page {
   height: calc(100vh - 300px);
+}
+
+.profile-hidden {
+ display: none;
+}
+
+.profile-header {
+  position: relative;
+  left: 14px;
+}
+
+.profile-logout {
+  position: relative;
+  right: 85px;
 }
