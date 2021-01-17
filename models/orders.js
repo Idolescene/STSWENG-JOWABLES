@@ -32,12 +32,24 @@ orderSchema.virtual('totalcount').get(function() {
     return totalcount;
 });
 
+orderSchema.virtual('address').get(function() {
+    var add = this.housenum + ", " + this.barangay + ", " + this.city + ", " + this.province;
+    return add;
+});
+
 const orderModel = mongoose.model('orders', orderSchema);
 
 // Create a new order
 exports.create = (object, next) => {
     const newOrder = new orderModel(object);
     newOrder.save((err, order) => {
+        next(err, order);
+    });
+};
+
+// Get one order
+exports.getOne = (query, next) => {
+    orderModel.findOne(query, (err, order) => {
         next(err, order);
     });
 };
