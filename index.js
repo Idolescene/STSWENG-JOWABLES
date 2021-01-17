@@ -4,6 +4,10 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
+const mongoose = require('./models/connection');
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo')(session);
 
 // initialize express application
 const app = express();
@@ -25,12 +29,35 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// sessions - server configuration
+app.use(session({
+  secret: 'thisisthesecretkeytothesession',
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
+  resave: false,
+  saveUninitialized: true.valueOf,
+  cookie: {secure: false, maxAge: 1000 * 60 * 60 * 24 * 7}
+}));
+
+// flash
+app.use(flash());
+
+// global variable messages
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.isAuthenticated = req.session.user ? true : false;
+  next();
+});
+
 // initialize routes
 const userRouter = require('./routes/userRoutes');
 const adminRouter = require('./routes/adminRoutes');
+const cartRouter = require('./routes/cartRoutes');
+const { mongo } = require('./models/connection');
 
 // use routes
 app.use('/', userRouter);
+app.use('/', cartRouter);
 app.use('/admin', adminRouter);
 
 // use express application

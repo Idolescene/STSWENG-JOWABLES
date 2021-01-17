@@ -1,0 +1,62 @@
+<div class="container">
+  <br>
+  <div class="text-left">
+      <a href="/catalogue">
+        <button class="btn logout-btn rounded-pill">Back to Catalogue</button>
+      </a>
+  </div>
+  <br><br>
+  <div class="row text-center">
+    {{> messages}}
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src=".{{productImg}}" style="max-width: 320px;">
+    </div>
+    <div class="col-sm-8">
+      <h2>{{productName}}</h2>
+      <h4>₱ {{productPrice}}</h4>
+      <br>
+      <h5>{{productDesc}}</h5>
+      <h5>100% cotton. Stylish. Confortable. 100% Filipino Made.</h5>
+      <br>
+      <form class="form-control" action="/add_to_cart/{{_id}}" method="POST" style="background-color: transparent; border: none; color: #0a0a0a;">
+        <div class="row">
+          <div class="col">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="small" id="small" value="Small">
+              <label class="form-check-label" for="inlineRadio1">S</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="medium" id="medium" value="Medium">
+              <label class="form-check-label" for="inlineRadio2">M</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="large" id="large" value="Large">
+              <label class="form-check-label" for="inlineRadio2">L</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="x-large" id="x-large" value="X-Large">
+              <label class="form-check-label" for="inlineRadio2">XL</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="xx-large" id="xx-large" value="XX-Large">
+              <label class="form-check-label" for="inlineRadio2">XXL</label>
+            </div>
+          </div>
+          <div class="col">
+            <input type="submit" class="btn logout-btn rounded-pill" name="btnPressed" id="btnPressed" value="Add to Cart">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col">
+      <h4>Size Chart</h4>
+      <img src=".{{sizeChart}}" style="max-height: 500px;">
+    </div>
+  </div>
+  <br><br><br>
+</div>

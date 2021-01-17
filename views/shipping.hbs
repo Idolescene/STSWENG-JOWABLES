@@ -2,72 +2,81 @@
 <div class="container shipping-section">
   <h5>{{title}}</h5>
   <hr>
-  <div class="row text-center">
-    <div class="col">
-      <h5>Full Name</h5>
-      <input type="text" class="form-control rounded-pill" id="fullname-shipping">
+  {{> messages}}
+  <form action="/shipping-checkout" method="POST">
+    <div class="row text-center">
+      <div class="col">
+        <h5>Full Name</h5>
+        <input type="text" class="form-control rounded-pill" id="fullname-shipping" value="{{fullname}}" name="fullname">
+      </div>
+      <div class="col">
+        <h5>Contact No.</h5>
+        <input type="text" class="form-control rounded-pill" id="contactnum-shipping" value="{{contactnum}}" name="contno">
+      </div>
     </div>
-    <div class="col">
-      <h5>Contact No.</h5>
-      <input type="text" class="form-control rounded-pill" id="contactnum-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <h5>Email Address</h5>
+        <input type="email" class="form-control rounded-pill" id="emailadd-shipping" value="{{email}}" name="email">
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col">
-      <h5>Email Address</h5>
-      <input type="email" class="form-control rounded-pill" id="emailadd-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <h5>House Number, Building, Street</h5>
+        <input type="text" class="form-control rounded-pill" id="streetadd-shipping" value="{{housenum}}" name="houseno">
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col">
-      <h5>House Number, Building, Street</h5>
-      <input type="text" class="form-control rounded-pill" id="streetadd-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <h5>Barangay</h5>
+        <input type="text" class="form-control rounded-pill" id="barangay-shipping" value="{{barangay}}" name="brngy">
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col">
-      <h5>Barangay</h5>
-      <input type="text" class="form-control rounded-pill" id="barangay-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <h5>City</h5>
+        <input type="text" class="form-control rounded-pill" id="city-shipping" value="{{city}}" name="city">
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col">
-      <h5>City</h5>
-      <input type="text" class="form-control rounded-pill" id="city-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <h5>Province</h5>
+        <input type="text" class="form-control rounded-pill" id="province-shipping" value="{{province}}" name="prov">
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row text-center">
-    <div class="col">
-      <h5>Province</h5>
-      <input type="text" class="form-control rounded-pill" id="province-shipping">
+    <br>
+    <div class="row text-center">
+      <div class="col">
+        <input type="text" class="form-control rounded-pill" id="payment-shipping" value="" name="payment" hidden>
+      </div>
     </div>
-  </div>
-  <br>
-  <hr>
-  <h5>Payment Method</h5>
-  <div class="payment-method-section row text-center">
-    <div class="col">
-      <button class="btn payment-method-btn">GCash</button>
+    <br>
+    <hr>
+    <h5>Payment Method</h5>
+    <div class="payment-method-section row text-center">
+      <div class="col">
+        <button type="button" class="btn payment-method-btn" id="gcash-btn">GCash</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn payment-method-btn" id="bank-btn">Bank Transfer</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn payment-method-btn" id="cod-btn">COD</button>
+      </div>
     </div>
-    <div class="col">
-      <button class="btn payment-method-btn">Bank Transfer</button>
+    <br>
+    <br>
+    <div class="text-center">
+      <button type="submit "class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping">
+        Checkout
+      </button>
     </div>
-    <div class="col">
-      <button class="btn payment-method-btn">COD</button>
-    </div>
-  </div>
-  <br>
-  <br>
-  <div class="text-center">
-    <button class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping">
-      Checkout
-    </button>
-  </div>
+  </form>
   <br>
   <br>
 </div>
@@ -133,8 +142,10 @@
         </div>
       </div>
       <div class="justify-content-center">
+        <!--<a href="/catalogue" type = 'button' class = 'btn modal-btn rounded-pill' data-dismiss="modal">
+        </a>-->
         <button type="button" class="btn modal-btn rounded-pill" data-dismiss="modal">
-          Continue Shipping
+          Continue Shopping
         </button>
       </div>
       <br>

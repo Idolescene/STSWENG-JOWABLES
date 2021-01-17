@@ -1,0 +1,25 @@
+
+  <div class="section-1">
+    <h4 class="text-center">Shorter Urban Shorts</h4>
+    <br>
+    <div class="row" id="apparel-card-row">
+      {{#if products}}
+        {{#each products}}
+
+          <div class="apparel-card-div col-lg-3 col-sm-6">
+            <button class="text-left apparel-card" disabled>
+              <a href='/product_details/{{this.slug}}' style="color: #0a0a0a;">
+                <img src="/{{this.img}}" height="200px">
+                <p>{{this.name}} 
+                  <br> 
+                  <strong>₱ {{this.price}}</strong>
+                </p>
+            </a>
+            </button>
+          </div>
+        {{/each}}
+      {{else}}
+      <h4>No products</h4>
+      {{/if}}
+    </div>
+  </div>

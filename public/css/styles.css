@@ -14,12 +14,23 @@ body {
   margin: 0 auto;
 }
 
+.logout-btn {
+  color: #FFFFFF !important;
+  padding: 10px 30px 10px 30px !important;
+  background-color: #0A0A0A !important;
+}
+
+.remove-product:hover {
+  text-decoration: none;
+}
+
 /* Navbar */
 .navbar {
   background-color: #FFA600;
   height: 100px;
   width: 100%;
   box-shadow: 0 0 8px 0 #0a0a0a90;
+  overflow: visible;
 }
 
 .navbar-collapse {
@@ -297,6 +308,10 @@ body {
   box-shadow: #0a0a0a50;
 }
 
+.dropdown:hover > .cart-drop-menu {
+  display: block !important;
+}
+
 .out-of-stock p{
   padding: 5px 5px 5px 5px;
 }
@@ -359,8 +374,7 @@ body {
 .faq-group {
   display: flex;
   position: relative;
-  left: 35%;
-  right: 35%;
+  left: 30%;
 }
 
 .faq-header {
@@ -386,12 +400,12 @@ body {
   text-align: justify;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 28px;
   line-height: 42px;
   color: #000000;
   width: 901px;
-  height: 90px;
+  height: 65px;
 }
 
 .faq-body {
@@ -684,6 +698,10 @@ body {
   height: 40px
 }
 
+.profile-ship-form {
+  background-color: #FFECCC;
+}
+
 .profile-modal {
   color: #0a0a0a90;
   background-color: #FFA600
@@ -704,4 +722,18 @@ body {
 
 .contact-section-page {
   height: calc(100vh - 300px);
+}
+
+.profile-hidden {
+ display: none;
+}
+
+.profile-header {
+  position: relative;
+  left: 14px;
+}
+
+.profile-logout {
+  position: relative;
+  right: 85px;
 }

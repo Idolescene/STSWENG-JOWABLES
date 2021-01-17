@@ -1,29 +1,35 @@
 const router = require('express').Router();
+const userModel = require('../models/user');
+const userController = require('../controllers/userController');
+const cartController = require('../controllers/cartController');
+const productController = require("../controllers/productController");
+const bcrypt = require('bcrypt');
+const {validationResult} = require('express-validator');
+const {userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation} = require('../validators.js');
 
 /*
   Homepage for both guest and logged in users
 */
-router.get('/', (req, res) => {
-  res.render('home', {
-    title: "Testing"
-  });
-});
+router.get('/', productController.getCategories);
 
 /*
   Catalogue page for both guest and logged in users
 */
-router.get('/catalogue', (req, res) => {
-  res.render('catalogue', {
-    title: 'Testing'
-  });
-});
+router.get('/catalogue', productController.getAllProducts);
+router.post('/catalogue',productController.refreshProducts);
+
+/*
+  Product details page for both guest and logged in users
+*/
+router.get('/product_details/:slug', productController.getAProduct);
 
 /*
   Login and Registration Page
 */
 router.get('/login', (req, res) => {
   res.render('login', {
-    title: "Login and Register"
+    title: "Login and Register",
+    scripts: ""
   });
 });
 
@@ -34,7 +40,8 @@ router.get('/faq', (req, res) => {
   res.render('faq', {
     title: "FAQ",
     question: "What is this question?",
-    answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer."
+    answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
+    loggedIn: req.session.user
   });
 });
 
@@ -47,45 +54,81 @@ router.get('/contact', (req, res) => {
     fblink: "www.facebook.com/SalawalCo",
     iglink: "www.instagram.com/SalawalCo",
     phonenum: "+ 63 961 801 4235",
-    email: "salawalco.ph@gmail.com"
+    email: "salawalco.ph@gmail.com",
+    loggedIn: req.session.user
   });
 });
 
 /*
   Checkout Page
 */
-router.get('/checkout', (req, res) => {
-  res.render('checkout', {
-    title: 'Your Cart'
-  });
-});
+router.get('/checkout', cartController.getUserCart);
 
 /*
   Shipping Page
 */
 router.get('/shipping', (req, res) => {
-  res.render('shipping', {
-    title: 'Shipping Details and Payment Options'
-  });
+  var user = req.session.username;
+
+  userModel.getOne({username: user}, (err, user) => {
+     if (err)
+       console.log('There is an error when searching for a user.');
+     if (user)  {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
+         fullname: user.fullname,
+         contactnum: user.contactnum,
+         email: user.email,
+         housenum: user.housenum,
+         barangay: user.barangay,
+         city: user.city,
+         province: user.province,
+         loggedIn: req.session.user
+       });
+     } else {
+       res.render('shipping', {
+         title: 'Shipping Details and Payment Options',
+         scripts: "js/shippingscript.js",
+         fullname: "",
+         contactnum: "",
+         email: "",
+         housenum: "",
+         barangay: "",
+         city: "",
+         province: "",
+         loggedIn: req.session.user
+       });
+     }
+   });
 });
 
 /*
   Profile Page
 */
 router.get('/profile', (req, res) => {
-  res.render('profile', {
-    title: 'Profile',
-    name: 'Your Baby',
-    date: '11/11/2011',
-    full: 'Mamma Mia',
-    contno: '09777777777',
-    emad: 'email@address',
-    hno: '1',
-    barangay: 'brng',
-    city: 'city',
-    province: 'province'
-  })
-})
+  var user = req.session.username;
+
+  userModel.getOne({username: user}, (err, user) => {
+     if (err)
+       console.log('There is an error when searching for a user.');
+
+     res.render('profile', {
+       title: 'Profile',
+       scripts: "js/profilescript.js",
+       name: user.username,
+       date: user.datejoined,
+       full: user.fullname,
+       contno: user.contactnum,
+       emad: user.email,
+       hno: user.housenum,
+       barangay: user.barangay,
+       city: user.city,
+       province: user.province,
+       loggedIn: req.session.user
+     });
+   });
+});
 /*
   About Us Page
 */
@@ -93,8 +136,183 @@ router.get('/about', (req,res) => {
   res.render('about', {
     title: 'About Us',
     story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-    about: 'De kalidad na mga salawal na gawang Bulacan.'
+    about: 'De kalidad na mga salawal na gawang Bulacan.',
+    loggedIn: req.session.user
   })
 })
+
+/*
+  Logout a user
+*/
+router.get('/logout', userController.logoutUser);
+
+/*POSTS*/
+/*Posts for Login Page*/
+router.post('/user-register', userRegisterValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {regfn, regun, regemail, regpass} = req.body;
+    //console.log(req.body.name); //testing
+    userModel.getOne({email: regemail}, (err, result) => {
+      if(result) {
+        console.log(result); //testing
+        console.log('User already exists.') //testing
+        req.flash('error_msg', 'User already exists. Please login.');
+        res.redirect('/login');
+      } else {
+        userModel.getOne({username: regun}, (err, result) => {
+          if(result) {
+            console.log(result); //testing
+            console.log('User already exists.') //testing
+            req.flash('error_msg', 'User already exists. Please login.');
+            res.redirect('/login');
+          } else {
+            var today = new Date();
+            var accntdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            const saltRounds = 10;
+            bcrypt.hash(regpass, saltRounds, (err, hashed) => {
+              const newUser = {
+                fullname: regfn,
+                username: regun,
+                email: regemail,
+                password: hashed,
+                datejoined: accntdate,
+                contactnum: "NONE",
+                housenum: "NONE",
+                barangay: "NONE",
+                city: "NONE",
+                province: "NONE",
+              };
+              userModel.create(newUser, (err, user) => {
+                if(err) {
+                  console.log('Error creating new account.'); //testing
+                  req.flash('error_msg', 'Error creating new account. Please try again.');
+                  res.redirect('/login');
+                } else {
+                  console.log(user); //testing
+                  console.log("Registration successful."); //testing
+                  req.flash('success_msg', 'Registration successful! Please login.');
+                  res.redirect('/login');
+                }
+              });
+            });
+          }
+        });
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/login');
+  }
+});
+
+router.post('/user-login', userLoginValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {logemail, logpass} = req.body;
+    //console.log(req.body.name); //testing
+    // search user via email
+    userModel.getOne({email: logemail}, (err, user) => {
+      if(err) {
+        console.log(err); //testing
+        console.log('An error has occurred while searching for a user.') //testing
+        res.redirect('/login');
+      } else {
+        if(user) {
+          bcrypt.compare(logpass, user.password, (err, result) => {
+            if (result) {
+              req.session.user = user._id;
+              req.session.username = user.username;
+              console.log(req.session);
+              res.redirect('/');
+            } else {
+              console.log('Incorrect password. Please try again.'); //testing
+              req.flash('error_msg', 'Incorrect password. Please try again.');
+              res.redirect('/login');
+            }
+          });
+        } else {
+          //search user via username
+          userModel.getOne({username: logemail}, (err, user2) => {
+            if(err) {
+              console.log(err); //testing
+              console.log('An error has occurred while searching for a user.') //testing
+              req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
+              res.redirect('/login');
+            } else {
+              if(user2) {
+                bcrypt.compare(logpass, user2.password, (err, result) => {
+                  if (result) {
+                    req.session.user = user2._id;
+                    req.session.username = user2.username;
+                    console.log(req.session);
+                    res.redirect('/');
+                  } else {
+                    console.log('Incorrect password. Please try again.'); //testing
+                    req.flash('error_msg', 'Incorrect password. Please try again.');
+                    res.redirect('/login');
+                  }
+                });
+              } else {
+                console.log('User not found. Please try again.'); //testing
+                req.flash('error_msg', 'User not found. Please try again.');
+                res.redirect('/login');
+              }
+            }
+          });
+        }
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    req.flash('error_msg', messages.join(' '));
+    console.log(messages.join(' ')); //testing
+    res.redirect('/login');
+  }
+});
+
+/*Posts for Profile Page*/
+router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    var newvals = { $set: {fullname: fullname, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
+    userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
+      if (err) {
+        console.log(err); //testing
+        console.log('An error has occurred while searching for a user.') //testing
+        req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
+        res.redirect('/profile');
+      } else {
+        console.log('Shipping details updated successfully!') //testing
+        req.flash('success_msg', 'Shipping details updated successfully!');
+        res.redirect('/profile');
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/profile');
+  }
+});
+
+/*Posts for Shipping Page*/
+router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    //stuff
+    res.redirect('/shipping');
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/shipping');
+  }
+});
+
 
 module.exports = router;
