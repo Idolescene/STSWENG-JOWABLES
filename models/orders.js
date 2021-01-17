@@ -42,15 +42,75 @@ exports.create = (object, next) => {
     });
 };
 
-// Get all orders by a user
-exports.getAllByUser = (user, next) => {
+// Get all orders for a user
+exports.getAll = (user, next) => {
   orderModel.find({user: user}).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+
+/*
+// Get orders of a specific user
+exports.getByUser = (user, next) => {
+  orderModel.find({user: user}).exec((err, orders) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      if (!orders) {
+        next(err, orders);
+      }
+      else {
+
+        var prodIds = [];
+        orders.forEach((item) => {
+          item.products.forEach((prod) => {
+            prodIds.push(prod.id);
+          });
+        });
+
+        console.log("Product IDs: " + prodIds); // testing
+
+        productModel.getAllIds(prodIds, (err, products) => {
+          var totalPrice = 0;
+          var prodArray = [];
+          products.forEach((item) => {
+            var product = {};
+
+            totalPrice += item.price;
+
+            // append to prodArray
+            product['name'] = item.name;
+            product['img'] = item.img;
+            product['id'] = item._id;
+
+            prodArray.push(product);
+          });
+
+          var output = {_id: orders._id, products: prodArray, total: totalPrice.toFixed(2)};
+          console.log(output);
+          next(err, output);
+        });
+      }
+    }
+  });
+};
+
+
+// Finds all orders
+exports.getAll = (user, next) => {
+  orderModel.find({}).exec((err, orders) => {
     if (err) throw err;
     const orderObjects = [];
     var prodArray = [];
     var totalPrice = 0;
     var prodIds = [];
-    var ctr = 0;
     orders.forEach((doc) => {
       totalPrice = 0;
       prodArray = [];
@@ -70,7 +130,8 @@ exports.getAllByUser = (user, next) => {
         orderObjects.push(orderInfo);
         next(err, orderObjects);
       });
-      ctr++;
     });
   });
 };
+
+*/

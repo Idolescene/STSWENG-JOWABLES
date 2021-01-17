@@ -4,6 +4,7 @@ const orderModel = require('../models/orders')
 const userController = require('../controllers/userController');
 const cartController = require('../controllers/cartController');
 const productController = require("../controllers/productController");
+const orderController = require('../controllers/orderController');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 const {userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation} = require('../validators.js');
@@ -107,31 +108,31 @@ router.get('/shipping', (req, res) => {
 /*
   Profile Page
 */
-router.get('/profile', (req, res) => {
-  var user = req.session.username;
+// router.get('/profile', (req, res) => {
+//   var user = req.session.username;
 
-  userModel.getOne({username: user}, (err, user) => {
-     if (err)
-       console.log('There is an error when searching for a user.');
-     orderModel.getAllByUser(req.session.user, (err, order) => {
-       res.render('profile', {
-         title: 'Profile',
-         scripts: "js/profilescript.js",
-         name: user.username,
-         date: user.datejoined,
-         full: user.fullname,
-         contno: user.contactnum,
-         emad: user.email,
-         hno: user.housenum,
-         barangay: user.barangay,
-         city: user.city,
-         province: user.province,
-         loggedIn: req.session.user,
-         orders: order
-       });
-     });
-   });
-});
+//   userModel.getOne({username: user}, (err, user) => {
+//      if (err)
+//        console.log('There is an error when searching for a user.');
+
+//      res.render('profile', {
+//        title: 'Profile',
+//        scripts: "js/profilescript.js",
+//        name: user.username,
+//        date: user.datejoined,
+//        full: user.fullname,
+//        contno: user.contactnum,
+//        emad: user.email,
+//        hno: user.housenum,
+//        barangay: user.barangay,
+//        city: user.city,
+//        province: user.province,
+//        loggedIn: req.session.user
+//      });
+//    });
+// });
+router.get('/profile', orderController.getUserOrders);
+
 /*
   About Us Page
 */

@@ -80,35 +80,26 @@
 
 <div class="container">
   <h4>Order History</h4><hr>
-  {{#if orders}}
-  {{#each orders}}
   <div class = 'table-responsive profile-ship-form'>
       <table class = 'table'>
           <tr>
-              <td>{{this.orderinfo.date}}</td>
-              <td>Small</td>
-              <td>{{this.orderinfo.totalcount}}pcs</td>
-              <td>₱ {{this.totalPrice}}</td>
-              <td>{{this.orderinfo.status}}</td>
+              <td>ID</td>
+              <td>Date Ordered</td>
+              <td>Status</td>
               <td class = 'text-right'>
                   <i onclick="showHideOrders('orderrows');" class="fa fa-plus-circle fa-2x fa-search" id = "orderbutton"></i>
               </td>
           </tr>
-            {{#each this.productList}}
+            {{#each orders}}
               <tr class="orderrows">
-                  <th>{{this.name}}</th>
-                  <th>{{lookup orders.orderinfo.products 0}}</th>
-                  <th>quantity</th>
-                  <th>{{this.price}}</th>
-                  <th></th>
+                  <th class="profile-id"><u>{{this.id}}</u></th>
+                  <th>{{this.date}}</th>
+                  <th>{{this.status}}</th>
               </tr>
             {{/each}}
       </table>
   </div>
   <br>
-  {{/each}}
-  {{else}}
-  {{/if}}
 </div>
 </div>
 <br><br><br><br><br><br><br>
