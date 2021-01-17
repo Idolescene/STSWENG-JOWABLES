@@ -1,14 +1,14 @@
-const mongoose = require('./connection');;
+const mongoose = require('./connection');
+const productModel = require('../models/product');
 
 const orderSchema = new mongoose.Schema({
   products: [
     {
       id: {type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true},
-      qty: {type: Number, required: true}
+      qty: {type: Number, required: true},
+      size: {type: String, required: true}
     }
   ],
-  totalcount: {type: Nummber, required: true},
-  totalcost: {type: Number, required: true},
   date: {type: String, required: true},
   status: {type: String, required: true},
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true},
@@ -24,6 +24,14 @@ const orderSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 });
 
+orderSchema.virtual('totalcount').get(function() {
+    var totalcount = 0;
+    this.products.forEach((doc) => {
+      totalcount = totalcount + doc.qty;
+    });
+    return totalcount;
+});
+
 const orderModel = mongoose.model('orders', orderSchema);
 
 // Create a new order
@@ -34,14 +42,35 @@ exports.create = (object, next) => {
     });
 };
 
-// Finds all orders
-exports.getAll = (query, next) => {
-  orderModel.find({}).exec((err, orders) => {
+// Get all orders by a user
+exports.getAllByUser = (user, next) => {
+  orderModel.find({user: user}).exec((err, orders) => {
     if (err) throw err;
     const orderObjects = [];
+    var prodArray = [];
+    var totalPrice = 0;
+    var prodIds = [];
+    var ctr = 0;
     orders.forEach((doc) => {
-      orderObjects.push(doc.toObject());
+      totalPrice = 0;
+      prodArray = [];
+      doc.products.forEach((item) => {
+        prodIds.push(item.id);
+      });
+      productModel.getAllIds(prodIds, (err, products) => {
+        products.forEach((item) => {
+          totalPrice = item.price + totalPrice;
+          prodArray.push(item.toObject());
+        });
+        var orderInfo = {
+          orderinfo: doc.toObject(),
+          productList: prodArray,
+          totalPrice: totalPrice.toFixed(2)
+        }
+        orderObjects.push(orderInfo);
+        next(err, orderObjects);
+      });
+      ctr++;
     });
-    next(err, orderObjects);
   });
 };

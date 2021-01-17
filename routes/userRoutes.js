@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
+const orderModel = require('../models/orders')
 const userController = require('../controllers/userController');
 const cartController = require('../controllers/cartController');
 const productController = require("../controllers/productController");
@@ -112,20 +113,22 @@ router.get('/profile', (req, res) => {
   userModel.getOne({username: user}, (err, user) => {
      if (err)
        console.log('There is an error when searching for a user.');
-
-     res.render('profile', {
-       title: 'Profile',
-       scripts: "js/profilescript.js",
-       name: user.username,
-       date: user.datejoined,
-       full: user.fullname,
-       contno: user.contactnum,
-       emad: user.email,
-       hno: user.housenum,
-       barangay: user.barangay,
-       city: user.city,
-       province: user.province,
-       loggedIn: req.session.user
+     orderModel.getAllByUser(req.session.user, (err, order) => {
+       res.render('profile', {
+         title: 'Profile',
+         scripts: "js/profilescript.js",
+         name: user.username,
+         date: user.datejoined,
+         full: user.fullname,
+         contno: user.contactnum,
+         emad: user.email,
+         hno: user.housenum,
+         barangay: user.barangay,
+         city: user.city,
+         province: user.province,
+         loggedIn: req.session.user,
+         orders: order
+       });
      });
    });
 });
