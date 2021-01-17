@@ -3,7 +3,10 @@
   <div class="dropdown-menu cart-drop-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
       {{#if cartProducts}}
         {{#each cartProducts}}
-        <a class="cart-item-dropdown dropdown-item" href="#">
+        <a class="cart-item-dropdown dropdown-item" href="#" id="cartitem">
+          <div id="test-id">
+            {{test}}
+          </div>
         <br>
           <div class="row cart-item-div" id="cart-item-div">
             <div class="col-sm-3 cart-image">
