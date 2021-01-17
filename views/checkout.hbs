@@ -1,8 +1,8 @@
 <div class="container checkout-section text-center">
   <br>
+  {{#if cartProducts}}
   <h4>{{title}}</h4>
   <br>
-  {{#if cartProducts}}
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -19,7 +19,6 @@
           <th class="checkout-img-name">
             <img src="{{this.img}}" width="150px">
             <p>{{this.name}}</p>
-            {{!-- <p class="text-danger"><span class="checkout-out-of-stock border border-danger">Out of Stock</span></p> --}}
           </th>
           <th>Medium</th>
           <th>₱ {{this.subPrice}}</th>

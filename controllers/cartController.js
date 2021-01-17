@@ -13,8 +13,8 @@ exports.getUserCart = (req, res) => {
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
-          loggedIn: req.session.user,
-          cartProducts: null
+            loggedIn: req.session.user,
+            cartProducts: null
           });
         }
         else {
