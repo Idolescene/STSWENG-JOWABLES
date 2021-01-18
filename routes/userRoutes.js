@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
+const orderModel = require('../models/orders');
+const productModel =  require('../models/product');
 const userController = require('../controllers/userController');
 const cartController = require('../controllers/cartController');
 const productController = require("../controllers/productController");
@@ -64,6 +66,56 @@ router.get('/contact', (req, res) => {
   Checkout Page
 */
 router.get('/checkout', cartController.getUserCart);
+
+/*
+  Order Information Page
+*/
+router.get('/order-information-:param', (req, res) => {
+  var orderid = req.params.param;
+  orderModel.getOne({_id: orderid}, (err, order) => {
+    var prodlist = [];
+    order.products.forEach((prod) =>{
+      prodlist.push(prod.id);
+    });
+    productModel.getAllIds(prodlist, (err, products) => {
+      var totalPrice = 0;
+      var prodArray = [];
+      var ordermain = order;
+      products.forEach((item, i) => {
+        var product = {
+          name: item.name,
+          slug: item.slug,
+          price: item.price,
+          description: item.description,
+          category: item.category,
+          status: item.status,
+          img: item.img,
+          qty: order.products[i].qty,
+          size: order.products[i].size
+        };
+
+        totalPrice = totalPrice + product.price * product.qty;
+        prodArray.push(product);
+      });
+
+      var avesize = prodArray[0].size;
+      prodArray.forEach((item) => {
+        if (avesize != item.size)
+          avesize = "Assorted";
+      })
+
+      res.render('orderinformation', {
+        title: "Order Information",
+        loggedIn: req.session.user,
+        order: order.toObject(),
+        totalPrice: totalPrice,
+        products: prodArray,
+        avesize: avesize
+      });
+    });
+  });
+});
+
 
 /*
   Shipping Page
@@ -131,7 +183,6 @@ router.get('/shipping', (req, res) => {
 //    });
 // });
 router.get('/profile', orderController.getUserOrders);
-
 
 /*
   About Us Page

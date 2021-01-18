@@ -737,3 +737,7 @@ body {
   position: relative;
   right: 85px;
 }
+
+.profile-id {
+  color: blue;
+}

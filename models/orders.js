@@ -9,8 +9,6 @@ const orderSchema = new mongoose.Schema({
       size: {type: String, required: true}
     }
   ],
-  totalcount: {type: Number, required: true},
-  totalcost: {type: Number, required: true},
   date: {type: String, required: true},
   status: {type: String, required: true},
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true},
@@ -26,6 +24,19 @@ const orderSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 });
 
+orderSchema.virtual('totalcount').get(function() {
+    var totalcount = 0;
+    this.products.forEach((doc) => {
+      totalcount = totalcount + doc.qty;
+    });
+    return totalcount;
+});
+
+orderSchema.virtual('address').get(function() {
+    var add = this.housenum + ", " + this.barangay + ", " + this.city + ", " + this.province;
+    return add;
+});
+
 const orderModel = mongoose.model('orders', orderSchema);
 
 // Create a new order
@@ -36,6 +47,27 @@ exports.create = (object, next) => {
     });
 };
 
+// Get one order
+exports.getOne = (query, next) => {
+    orderModel.findOne(query, (err, order) => {
+        next(err, order);
+    });
+};
+
+// Get all orders for a user
+exports.getAll = (user, next) => {
+  orderModel.find({user: user}).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+
+/*
 // Get orders of a specific user
 exports.getByUser = (user, next) => {
   orderModel.find({user: user}).exec((err, orders) => {
@@ -47,7 +79,6 @@ exports.getByUser = (user, next) => {
         next(err, orders);
       }
       else {
-        console.log(orders); // testing
 
         var prodIds = [];
         orders.forEach((item) => {
@@ -62,9 +93,8 @@ exports.getByUser = (user, next) => {
           var totalPrice = 0;
           var prodArray = [];
           products.forEach((item) => {
-            console.log("Items: " + item); // testing
             var product = {};
-            
+
             totalPrice += item.price;
 
             // append to prodArray
@@ -74,22 +104,46 @@ exports.getByUser = (user, next) => {
 
             prodArray.push(product);
           });
-          console.log("Total Price: " + totalPrice); // testing
-          next(err, {_id: orders._id, products: prodArray, total: totalPrice.toFixed(2)});
+
+          var output = {_id: orders._id, products: prodArray, total: totalPrice.toFixed(2)};
+          console.log(output);
+          next(err, output);
         });
       }
     }
   });
 };
 
+
 // Finds all orders
-exports.getAll = (query, next) => {
+exports.getAll = (user, next) => {
   orderModel.find({}).exec((err, orders) => {
     if (err) throw err;
     const orderObjects = [];
+    var prodArray = [];
+    var totalPrice = 0;
+    var prodIds = [];
     orders.forEach((doc) => {
-      orderObjects.push(doc.toObject());
+      totalPrice = 0;
+      prodArray = [];
+      doc.products.forEach((item) => {
+        prodIds.push(item.id);
+      });
+      productModel.getAllIds(prodIds, (err, products) => {
+        products.forEach((item) => {
+          totalPrice = item.price + totalPrice;
+          prodArray.push(item.toObject());
+        });
+        var orderInfo = {
+          orderinfo: doc.toObject(),
+          productList: prodArray,
+          totalPrice: totalPrice.toFixed(2)
+        }
+        orderObjects.push(orderInfo);
+        next(err, orderObjects);
+      });
     });
-    next(err, orderObjects);
   });
 };
+
+*/
