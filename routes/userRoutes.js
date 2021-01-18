@@ -2,6 +2,8 @@ const router = require('express').Router();
 const userModel = require('../models/user');
 const cartModel = require('../models/cart');
 const orderModel = require('../models/orders');
+const aboutModel = require('../models/about');
+const questionModel = require('../models/question');
 const productModel =  require('../models/product');
 const userController = require('../controllers/userController');
 const cartController = require('../controllers/cartController');
@@ -52,21 +54,23 @@ router.get('/faq', (req, res) => {
         }
         else {
           if (result) {
-            res.render('faq', {
-              title: "FAQ",
-              question: "What is this question?",
-              answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
-              loggedIn: req.session.user,
-              cartProducts: result.products
+            questionModel.getQuestions ("", (err, questions) => {
+              res.render('faq', {
+                title: "FAQ",
+                loggedIn: req.session.user,
+                cartProducts: result.products,
+                questions: questions
+              });
             });
           }
           else {
-            res.render('faq', {
-              title: "FAQ",
-              question: "What is this question?",
-              answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
-              loggedIn: req.session.user,
-              cartProducts: null
+            questionModel.getQuestions ("", (err, questions) => {
+              res.render('faq', {
+                title: "FAQ",
+                loggedIn: req.session.user,
+                cartProducts: null,
+                questions: questions
+              });
             });
           }
         }
@@ -74,12 +78,13 @@ router.get('/faq', (req, res) => {
     }
     else {
       // if guest
-      res.render('faq', {
-        title: "FAQ",
-        question: "What is this question?",
-        answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
-        loggedIn: req.session.user,
-        cartProducts: null
+      questionModel.getQuestions ("", (err, questions) => {
+        res.render('faq', {
+          title: "FAQ",
+          loggedIn: req.session.user,
+          cartProducts: null,
+          questions: questions
+        });
       });
     }
   }
@@ -179,17 +184,17 @@ router.get('/order-information-:param', (req, res) => {
                   qty: order.products[i].qty,
                   size: order.products[i].size
                 };
-        
+
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
-        
+
               var avesize = prodArray[0].size;
               prodArray.forEach((item) => {
                 if (avesize != item.size)
                   avesize = "Assorted";
               })
-        
+
               res.render('orderinformation', {
                 title: "Order Information",
                 loggedIn: req.session.user,
@@ -224,17 +229,17 @@ router.get('/order-information-:param', (req, res) => {
                   qty: order.products[i].qty,
                   size: order.products[i].size
                 };
-        
+
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
-        
+
               var avesize = prodArray[0].size;
               prodArray.forEach((item) => {
                 if (avesize != item.size)
                   avesize = "Assorted";
               })
-        
+
               res.render('orderinformation', {
                 title: "Order Information",
                 loggedIn: req.session.user,
