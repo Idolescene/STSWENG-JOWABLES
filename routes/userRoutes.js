@@ -51,13 +51,24 @@ router.get('/faq', (req, res) => {
           console.log(err);
         }
         else {
-          res.render('faq', {
-            title: "FAQ",
-            question: "What is this question?",
-            answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
-            loggedIn: req.session.user,
-            cartProducts: result.products
-          });
+          if (result) {
+            res.render('faq', {
+              title: "FAQ",
+              question: "What is this question?",
+              answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
+              loggedIn: req.session.user,
+              cartProducts: result.products
+            });
+          }
+          else {
+            res.render('faq', {
+              title: "FAQ",
+              question: "What is this question?",
+              answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
+              loggedIn: req.session.user,
+              cartProducts: null
+            });
+          }
         }
       })
     }
@@ -88,15 +99,28 @@ router.get('/contact', (req, res) => {
           console.log(err);
         }
         else {
-          res.render('contact', {
-            title: "Contact Us",
-            fblink: "www.facebook.com/SalawalCo",
-            iglink: "www.instagram.com/SalawalCo",
-            phonenum: "+ 63 961 801 4235",
-            email: "salawalco.ph@gmail.com",
-            loggedIn: req.session.user,
-            cartProducts: result.products
-          });
+          if (result) {
+            res.render('contact', {
+              title: "Contact Us",
+              fblink: "www.facebook.com/SalawalCo",
+              iglink: "www.instagram.com/SalawalCo",
+              phonenum: "+ 63 961 801 4235",
+              email: "salawalco.ph@gmail.com",
+              loggedIn: req.session.user,
+              cartProducts: result.products
+            });
+          }
+          else {
+            res.render('contact', {
+              title: "Contact Us",
+              fblink: "www.facebook.com/SalawalCo",
+              iglink: "www.instagram.com/SalawalCo",
+              phonenum: "+ 63 961 801 4235",
+              email: "salawalco.ph@gmail.com",
+              loggedIn: req.session.user,
+              cartProducts: null
+            });
+          }
         }
       })
     }
@@ -133,49 +157,96 @@ router.get('/order-information-:param', (req, res) => {
         console.log(err);
       }
       else {
-        orderModel.getOne({_id: orderid}, (err, order) => {
-          var prodlist = [];
-          order.products.forEach((prod) =>{
-            prodlist.push(prod.id);
-          });
-          productModel.getAllIds(prodlist, (err, products) => {
-            var totalPrice = 0;
-            var prodArray = [];
-            var ordermain = order;
-            products.forEach((item, i) => {
-              var product = {
-                name: item.name,
-                slug: item.slug,
-                price: item.price,
-                description: item.description,
-                category: item.category,
-                status: item.status,
-                img: item.img,
-                qty: order.products[i].qty,
-                size: order.products[i].size
-              };
-      
-              totalPrice = totalPrice + product.price * product.qty;
-              prodArray.push(product);
+        if (result) {
+          orderModel.getOne({_id: orderid}, (err, order) => {
+            var prodlist = [];
+            order.products.forEach((prod) =>{
+              prodlist.push(prod.id);
             });
-      
-            var avesize = prodArray[0].size;
-            prodArray.forEach((item) => {
-              if (avesize != item.size)
-                avesize = "Assorted";
-            })
-      
-            res.render('orderinformation', {
-              title: "Order Information",
-              loggedIn: req.session.user,
-              order: order.toObject(),
-              totalPrice: totalPrice,
-              products: prodArray,
-              avesize: avesize,
-              cartProducts: result.products
+            productModel.getAllIds(prodlist, (err, products) => {
+              var totalPrice = 0;
+              var prodArray = [];
+              var ordermain = order;
+              products.forEach((item, i) => {
+                var product = {
+                  name: item.name,
+                  slug: item.slug,
+                  price: item.price,
+                  description: item.description,
+                  category: item.category,
+                  status: item.status,
+                  img: item.img,
+                  qty: order.products[i].qty,
+                  size: order.products[i].size
+                };
+        
+                totalPrice = totalPrice + product.price * product.qty;
+                prodArray.push(product);
+              });
+        
+              var avesize = prodArray[0].size;
+              prodArray.forEach((item) => {
+                if (avesize != item.size)
+                  avesize = "Assorted";
+              })
+        
+              res.render('orderinformation', {
+                title: "Order Information",
+                loggedIn: req.session.user,
+                order: order.toObject(),
+                totalPrice: totalPrice,
+                products: prodArray,
+                avesize: avesize,
+                cartProducts: result.products
+              });
             });
           });
-        });
+        }
+        else {
+          orderModel.getOne({_id: orderid}, (err, order) => {
+            var prodlist = [];
+            order.products.forEach((prod) =>{
+              prodlist.push(prod.id);
+            });
+            productModel.getAllIds(prodlist, (err, products) => {
+              var totalPrice = 0;
+              var prodArray = [];
+              var ordermain = order;
+              products.forEach((item, i) => {
+                var product = {
+                  name: item.name,
+                  slug: item.slug,
+                  price: item.price,
+                  description: item.description,
+                  category: item.category,
+                  status: item.status,
+                  img: item.img,
+                  qty: order.products[i].qty,
+                  size: order.products[i].size
+                };
+        
+                totalPrice = totalPrice + product.price * product.qty;
+                prodArray.push(product);
+              });
+        
+              var avesize = prodArray[0].size;
+              prodArray.forEach((item) => {
+                if (avesize != item.size)
+                  avesize = "Assorted";
+              })
+        
+              res.render('orderinformation', {
+                title: "Order Information",
+                loggedIn: req.session.user,
+                order: order.toObject(),
+                totalPrice: totalPrice,
+                products: prodArray,
+                avesize: avesize,
+                cartProducts: null
+              });
+            });
+          });
+        }
       }
     })
   }
@@ -199,19 +270,36 @@ router.get('/shipping', (req, res) => {
            console.log(err);
          }
          else {
-          res.render('shipping', {
-            title: 'Shipping Details and Payment Options',
-            scripts: "js/shippingscript.js",
-            fullname: user.fullname,
-            contactnum: user.contactnum,
-            email: user.email,
-            housenum: user.housenum,
-            barangay: user.barangay,
-            city: user.city,
-            province: user.province,
-            loggedIn: req.session.user,
-            cartProducts: result.products
-          });
+          if(result) {
+            res.render('shipping', {
+              title: 'Shipping Details and Payment Options',
+              scripts: "js/shippingscript.js",
+              fullname: user.fullname,
+              contactnum: user.contactnum,
+              email: user.email,
+              housenum: user.housenum,
+              barangay: user.barangay,
+              city: user.city,
+              province: user.province,
+              loggedIn: req.session.user,
+              cartProducts: result.products
+            });
+          }
+          else {
+            res.render('shipping', {
+              title: 'Shipping Details and Payment Options',
+              scripts: "js/shippingscript.js",
+              fullname: user.fullname,
+              contactnum: user.contactnum,
+              email: user.email,
+              housenum: user.housenum,
+              barangay: user.barangay,
+              city: user.city,
+              province: user.province,
+              loggedIn: req.session.user,
+              cartProducts: null
+            });
+          }
          }
        })
      } else {
@@ -252,13 +340,24 @@ router.get('/about', (req,res) => {
           console.log(err);
         }
         else {
-          res.render('about', {
-            title: 'About Us',
-            story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-            about: 'De kalidad na mga salawal na gawang Bulacan.',
-            loggedIn: req.session.user,
-            cartProducts: result.products
-          });
+          if(result) {
+            res.render('about', {
+              title: 'About Us',
+              story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
+              about: 'De kalidad na mga salawal na gawang Bulacan.',
+              loggedIn: req.session.user,
+              cartProducts: result.products
+            });
+          }
+          else {
+            res.render('about', {
+              title: 'About Us',
+              story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
+              about: 'De kalidad na mga salawal na gawang Bulacan.',
+              loggedIn: req.session.user,
+              cartProducts: null
+            });
+          }
         }
       })
     }
