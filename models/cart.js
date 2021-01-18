@@ -144,13 +144,14 @@ exports.removeProduct = (filter, update, next) => {
   cartModel.findOne({user: filter}).exec((err, cart) => {
     if (err) throw err;
     if (cart) {
+      console.log(cart); // testing
       console.log(cart.prod.some(prod => prod.id == update));
       if (!cart.prod.some(prod => prod.id == update)) {
         next(err, cart);
       }
       else {
         var prodArray = cart.prod;
-        var prodIndex = prodArray.findIndex(x => x.ide == update);
+        var prodIndex = prodArray.findIndex(x => x.id == update);
         cart.prod.splice(prodIndex, 1);
         if (cart.prod.length == 0) {
           cartModel.deleteOne({user: filter}).exec((err, result) => {

@@ -1,9 +1,9 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light" id="navbar">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
 
-        <!-- Left Navbar Items -->
-        <ul class="navbar-nav nav">
+      <!-- Left Navbar Items -->
+      <ul class="navbar-nav nav">
         <li class="nav-item">
           <a class="nav-link" href="/catalogue">Catalogue</a>
         </li>
@@ -16,7 +16,7 @@
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
           <a class="navbar-brand" href="/">
-            <img src="./img/company-logo-horizontal-crop.png" height="70px">
+            <img src="../img/company-logo-horizontal-crop.png" height="70px">
           </a>
         </li>
       </ul><!-- End -->
@@ -34,7 +34,7 @@
         {{#if loggedIn}}
         <li class="nav-item" id="carticon">
           <div id="userid" hidden>{{loggedIn}}</div>
-          {{> cart}}
+          {{> cart1}}
         </li>
         {{else}}
         <li class="nav-item">
@@ -56,5 +56,5 @@
         </li>
       </ul><!-- End -->
 
-      </div>
+    </div>
 </nav>

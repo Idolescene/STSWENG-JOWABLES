@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userModel = require('../models/user');
+const cartModel = require('../models/cart');
 const orderModel = require('../models/orders');
 const productModel =  require('../models/product');
 const userController = require('../controllers/userController');
@@ -40,26 +41,78 @@ router.get('/login', (req, res) => {
   Frequently Asked Questions Page
 */
 router.get('/faq', (req, res) => {
-  res.render('faq', {
-    title: "FAQ",
-    question: "What is this question?",
-    answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
-    loggedIn: req.session.user
-  });
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var user = req.session.user;
+    if (user) {
+      // if user
+      cartModel.getByUser(user, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          res.render('faq', {
+            title: "FAQ",
+            question: "What is this question?",
+            answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
+            loggedIn: req.session.user,
+            cartProducts: result.products
+          });
+        }
+      })
+    }
+    else {
+      // if guest
+      res.render('faq', {
+        title: "FAQ",
+        question: "What is this question?",
+        answer: "Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer. Answer.",
+        loggedIn: req.session.user,
+        cartProducts: null
+      });
+    }
+  }
 });
 
 /*
   Contact Us Page
 */
 router.get('/contact', (req, res) => {
-  res.render('contact', {
-    title: "Contact Us",
-    fblink: "www.facebook.com/SalawalCo",
-    iglink: "www.instagram.com/SalawalCo",
-    phonenum: "+ 63 961 801 4235",
-    email: "salawalco.ph@gmail.com",
-    loggedIn: req.session.user
-  });
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var user = req.session.user;
+    if (user) {
+      // if user
+      cartModel.getByUser(user, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          res.render('contact', {
+            title: "Contact Us",
+            fblink: "www.facebook.com/SalawalCo",
+            iglink: "www.instagram.com/SalawalCo",
+            phonenum: "+ 63 961 801 4235",
+            email: "salawalco.ph@gmail.com",
+            loggedIn: req.session.user,
+            cartProducts: result.products
+          });
+        }
+      })
+    }
+    else {
+      // if guest
+      res.render('contact', {
+        title: "Contact Us",
+        fblink: "www.facebook.com/SalawalCo",
+        iglink: "www.instagram.com/SalawalCo",
+        phonenum: "+ 63 961 801 4235",
+        email: "salawalco.ph@gmail.com",
+        loggedIn: req.session.user,
+        cartProducts: null
+      });
+    }
+  }
 });
 
 /*
@@ -71,49 +124,61 @@ router.get('/checkout', cartController.getUserCart);
   Order Information Page
 */
 router.get('/order-information-:param', (req, res) => {
+  var user = req.session.user;
   var orderid = req.params.param;
-  orderModel.getOne({_id: orderid}, (err, order) => {
-    var prodlist = [];
-    order.products.forEach((prod) =>{
-      prodlist.push(prod.id);
-    });
-    productModel.getAllIds(prodlist, (err, products) => {
-      var totalPrice = 0;
-      var prodArray = [];
-      var ordermain = order;
-      products.forEach((item, i) => {
-        var product = {
-          name: item.name,
-          slug: item.slug,
-          price: item.price,
-          description: item.description,
-          category: item.category,
-          status: item.status,
-          img: item.img,
-          qty: order.products[i].qty,
-          size: order.products[i].size
-        };
 
-        totalPrice = totalPrice + product.price * product.qty;
-        prodArray.push(product);
-      });
-
-      var avesize = prodArray[0].size;
-      prodArray.forEach((item) => {
-        if (avesize != item.size)
-          avesize = "Assorted";
-      })
-
-      res.render('orderinformation', {
-        title: "Order Information",
-        loggedIn: req.session.user,
-        order: order.toObject(),
-        totalPrice: totalPrice,
-        products: prodArray,
-        avesize: avesize
-      });
-    });
-  });
+  if (user) {
+    cartModel.getByUser(user, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        orderModel.getOne({_id: orderid}, (err, order) => {
+          var prodlist = [];
+          order.products.forEach((prod) =>{
+            prodlist.push(prod.id);
+          });
+          productModel.getAllIds(prodlist, (err, products) => {
+            var totalPrice = 0;
+            var prodArray = [];
+            var ordermain = order;
+            products.forEach((item, i) => {
+              var product = {
+                name: item.name,
+                slug: item.slug,
+                price: item.price,
+                description: item.description,
+                category: item.category,
+                status: item.status,
+                img: item.img,
+                qty: order.products[i].qty,
+                size: order.products[i].size
+              };
+      
+              totalPrice = totalPrice + product.price * product.qty;
+              prodArray.push(product);
+            });
+      
+            var avesize = prodArray[0].size;
+            prodArray.forEach((item) => {
+              if (avesize != item.size)
+                avesize = "Assorted";
+            })
+      
+            res.render('orderinformation', {
+              title: "Order Information",
+              loggedIn: req.session.user,
+              order: order.toObject(),
+              totalPrice: totalPrice,
+              products: prodArray,
+              avesize: avesize,
+              cartProducts: result.products
+            });
+          });
+        });
+      }
+    })
+  }
 });
 
 
@@ -124,22 +189,33 @@ router.get('/shipping', (req, res) => {
   var user = req.session.username;
 
   userModel.getOne({username: user}, (err, user) => {
-     if (err)
-       console.log('There is an error when searching for a user.');
+     if (err) {
+      console.log('There is an error when searching for a user.');
+     }
      if (user)  {
-       res.render('shipping', {
-         title: 'Shipping Details and Payment Options',
-         scripts: "js/shippingscript.js",
-         fullname: user.fullname,
-         contactnum: user.contactnum,
-         email: user.email,
-         housenum: user.housenum,
-         barangay: user.barangay,
-         city: user.city,
-         province: user.province,
-         loggedIn: req.session.user
-       });
+       // if user
+       cartModel.getByUser(user, (err, result) => {
+         if (err) {
+           console.log(err);
+         }
+         else {
+          res.render('shipping', {
+            title: 'Shipping Details and Payment Options',
+            scripts: "js/shippingscript.js",
+            fullname: user.fullname,
+            contactnum: user.contactnum,
+            email: user.email,
+            housenum: user.housenum,
+            barangay: user.barangay,
+            city: user.city,
+            province: user.province,
+            loggedIn: req.session.user,
+            cartProducts: result.products
+          });
+         }
+       })
      } else {
+       // if guest
        res.render('shipping', {
          title: 'Shipping Details and Payment Options',
          scripts: "js/shippingscript.js",
@@ -150,7 +226,8 @@ router.get('/shipping', (req, res) => {
          barangay: "",
          city: "",
          province: "",
-         loggedIn: req.session.user
+         loggedIn: req.session.user,
+         cartProducts: null
        });
      }
    });
@@ -159,42 +236,44 @@ router.get('/shipping', (req, res) => {
 /*
   Profile Page
 */
-// router.get('/profile', (req, res) => {
-//   var user = req.session.username;
-
-//   userModel.getOne({username: user}, (err, user) => {
-//      if (err)
-//        console.log('There is an error when searching for a user.');
-
-//      res.render('profile', {
-//        title: 'Profile',
-//        scripts: "js/profilescript.js",
-//        name: user.username,
-//        date: user.datejoined,
-//        full: user.fullname,
-//        contno: user.contactnum,
-//        emad: user.email,
-//        hno: user.housenum,
-//        barangay: user.barangay,
-//        city: user.city,
-//        province: user.province,
-//        loggedIn: req.session.user
-//      });
-//    });
-// });
 router.get('/profile', orderController.getUserOrders);
 
 /*
   About Us Page
 */
 router.get('/about', (req,res) => {
-  res.render('about', {
-    title: 'About Us',
-    story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-    about: 'De kalidad na mga salawal na gawang Bulacan.',
-    loggedIn: req.session.user
-  })
-})
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var user = req.session.user;
+    if (user) {
+      // if user
+      cartModel.getByUser(user, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          res.render('about', {
+            title: 'About Us',
+            story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
+            about: 'De kalidad na mga salawal na gawang Bulacan.',
+            loggedIn: req.session.user,
+            cartProducts: result.products
+          });
+        }
+      })
+    }
+    else {
+      // if guest
+      res.render('about', {
+        title: 'About Us',
+        story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
+        about: 'De kalidad na mga salawal na gawang Bulacan.',
+        loggedIn: req.session.user,
+        cartProducts: null
+      });
+    }
+  }
+});
 
 /*
   Logout a user
