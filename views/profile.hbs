@@ -81,49 +81,28 @@
 <div class="container">
   <h4>Order History</h4><hr>
   <div class = 'table-responsive profile-ship-form'>
-
       <table class = 'table'>
           <tr>
-              <th></th>
-              <td class = "hidden-row" id = "hidden-row0"></td>
-              <td></td>
-              <td></td>
-              <td class = "hidden-row" id = "hidden-row00"></td>
+              <td>ID</td>
+              <td>Date Ordered</td>
+              <td>Status</td>
               <td class = 'text-right'>
-                  <i onclick="showHideOrders('hidden-row');" class="fa fa-plus-circle fa-2x fa-search" id = "orderbutton"></i>
+                  <i onclick="showHideOrders('orderrows');" class="fa fa-plus-circle fa-2x fa-search" id = "orderbutton"></i>
               </td>
           </tr>
-          <tr>
-              <th>Product</th>
-              <th class = "hidden-row" id = "hidden-row1">Order Date</th>
-              <th>Size</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th class = "hidden-row" id = "hidden-row11">Status</th>
-          </tr>
-          <tr>
-              <td>Flamingo Shorter Shorts</td>
-              <td class = "hidden-row" id = "hidden-row2">11/11/2020</td>
-              <td>Medium</td>
-              <td>2</td>
-              <td>20.00</td>
-              <td class = "hidden-row" id = "hidden-row22">Received</td>
-          </tr>
-          <tr>
-              <td>Flamingo Shorter Shorts</td>
-              <td class = "hidden-row" id = "hidden-row3">11/11/2020</td>
-              <td>Assorted</td>
-              <td>5</td>
-              <td>1000.00</td>
-              <td class = "hidden-row" id = "hidden-row33">Received</td>
-          </tr>
+            {{#each orders}}
+              <tr class="orderrows">
+                  <th class="profile-id"><u>{{this.id}}</u></th>
+                  <th>{{this.date}}</th>
+                  <th>{{this.status}}</th>
+              </tr>
+            {{/each}}
       </table>
   </div>
+  <br>
 </div>
 </div>
-<br><br><br><br><br>
-<br>
-<br>
+<br><br><br><br><br><br><br>
 
 <script type="text/javascript">
   function showHideDetails(e) {
@@ -134,11 +113,7 @@
 
 <script type="text/javascript">
     function showHideOrders(e) {
-        var i;
-        for (i = 0;i<= 3;i++) {
-            $('#'+e+i).toggle();
-            $('#'+e+i+i).toggle();
-        }
+        $("." + e).toggle();
         $("#orderbutton").toggleClass('fa-minus-circle fa-plus-circle')
     }
 </script>
