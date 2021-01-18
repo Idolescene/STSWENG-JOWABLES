@@ -346,21 +346,23 @@ router.get('/about', (req,res) => {
         }
         else {
           if(result) {
-            res.render('about', {
-              title: 'About Us',
-              story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-              about: 'De kalidad na mga salawal na gawang Bulacan.',
-              loggedIn: req.session.user,
-              cartProducts: result.products
+            aboutModel.getAll("", (err, paras) => {
+              res.render('about', {
+                title: 'About Us',
+                paras: paras,
+                loggedIn: req.session.user,
+                cartProducts: result.products
+              });
             });
           }
           else {
-            res.render('about', {
-              title: 'About Us',
-              story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-              about: 'De kalidad na mga salawal na gawang Bulacan.',
-              loggedIn: req.session.user,
-              cartProducts: null
+            aboutModel.getAll("", (err, paras) => {
+              res.render('about', {
+                title: 'About Us',
+                paras: paras,
+                loggedIn: req.session.user,
+                cartProducts: null
+              });
             });
           }
         }
@@ -368,12 +370,13 @@ router.get('/about', (req,res) => {
     }
     else {
       // if guest
-      res.render('about', {
-        title: 'About Us',
-        story: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in fermentum orci. Aenean blandit massa tincidunt est interdum tempor. Sed ut consequat quam.',
-        about: 'De kalidad na mga salawal na gawang Bulacan.',
-        loggedIn: req.session.user,
-        cartProducts: null
+      aboutModel.getAll("", (err, paras) => {
+        res.render('about', {
+          title: 'About Us',
+          paras: paras,
+          loggedIn: req.session.user,
+          cartProducts: null
+        });
       });
     }
   }
