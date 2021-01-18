@@ -54,6 +54,7 @@ exports.getAProduct = (req, res) => {
     if (err) throw err;
     res.render('product-details', {
       loggedIn: req.session.user,
+      layout: 'main1',
       productName: product.name,
       productPrice: product.price.toFixed(2),
       productDesc: product.description,

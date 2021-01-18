@@ -34,6 +34,23 @@ exports.getUserCart = (req, res) => {
   }
 }
 
+exports.getACart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    var user = req.session.user;
+    if (user) {
+      cartModel.getByUser(user, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+      });
+    }
+  }
+  else {
+    console.log(errors);
+  }
+}
+
 // Add product to cart
 exports.addToCart = (req, res) => {
   const errors = validationResult(req);
