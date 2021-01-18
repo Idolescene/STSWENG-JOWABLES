@@ -22,23 +22,31 @@ exports.getAllProducts = (req, res) => {
           productModel.getMany(query,sort, (err, products) => {
             if (err) throw err;
             console.log(products);
-            
             var categories = [];
             products.forEach(function(item){
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
               }
             });
-            
             products.forEach((item) => {
               item.price = item.price.toFixed(2);
             });
-            res.render('catalogue', {
-              loggedIn: req.session.user,
-              products: products,
-              categories: categories,
-              cartProducts: result.products
-            });
+            if(result) {
+              res.render('catalogue', {
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: result.products
+              });
+            }
+            else {
+              res.render('catalogue', {
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: null
+              });
+            }
           });
         }
       });
@@ -92,7 +100,7 @@ exports.refreshProducts = (req, res) => {
     res.render('products', {
       loggedIn: req.session.user,
       products: products,
-      layout:null
+      layout: null
     });
   });
 }
@@ -111,17 +119,33 @@ exports.getAProduct = (req, res) => {
         else {
           productModel.getOne({slug: req.params.slug}, (err, product) => {
             if (err) throw err;
-            res.render('product-details', {
-              loggedIn: req.session.user,
-              layout: 'main1',
-              productName: product.name,
-              productPrice: product.price.toFixed(2),
-              productDesc: product.description,
-              productImg: product.img,
-              _id: product._id,
-              sizeChart: "./img/size-chart-short.jpg",
-              cartProducts: result.products
-            });
+
+            if(result) {
+              res.render('product-details', {
+                loggedIn: req.session.user,
+                layout: 'main1',
+                productName: product.name,
+                productPrice: product.price.toFixed(2),
+                productDesc: product.description,
+                productImg: product.img,
+                _id: product._id,
+                sizeChart: "./img/size-chart-short.jpg",
+                cartProducts: result.products
+              });
+            }
+            else {
+              res.render('product-details', {
+                loggedIn: req.session.user,
+                layout: 'main1',
+                productName: product.name,
+                productPrice: product.price.toFixed(2),
+                productDesc: product.description,
+                productImg: product.img,
+                _id: product._id,
+                sizeChart: "./img/size-chart-short.jpg",
+                cartProducts: null
+              });
+            }
           });
         }
       });
@@ -169,12 +193,22 @@ exports.getCategories = (req,res) => {
                 sample.push(item)
               }
             });
-            res.render('home', {
-              title: "Home",
-              loggedIn: req.session.user,
-              categories: sample,
-              cartProducts: result.products
-            });
+            if(result) {
+              res.render('home', {
+                title: "Home",
+                loggedIn: req.session.user,
+                categories: sample,
+                cartProducts: result.products
+              });
+            }
+            else {
+              res.render('home', {
+                title: "Home",
+                loggedIn: req.session.user,
+                categories: sample,
+                cartProducts: null
+              });
+            }
           });
         }
       })

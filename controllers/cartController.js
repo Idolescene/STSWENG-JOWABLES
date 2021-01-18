@@ -117,3 +117,26 @@ exports.removeFromCart = (req, res) => {
     }
   }
 }
+
+// Remove a product from navbar cart
+exports.removeFromNavbarCart = (req, res) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var product = req.params.id;
+    var user = req.session.user;
+    if (!user) {
+      res.redirect('/login');
+    }
+    else {
+      cartModel.removeProduct(user, product, (err, cart) => {
+        if (err) {
+          req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
+          res.send(cart);
+        }
+        else {
+          return res.send(cart);
+        }
+      })
+    }
+  }
+}
