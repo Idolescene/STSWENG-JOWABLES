@@ -17,6 +17,7 @@ const {userRegisterValidation, userLoginValidation, updateShippingValidation, ch
   Homepage for both guest and logged in users
 */
 router.get('/', productController.getCategories);
+router.post('/delete-product-confirmation', productController.postAProduct);
 
 /*
   Catalogue page for both guest and logged in users

@@ -8,12 +8,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Delete this product?
+      <div class="modal-body text-left" id="delete-confirm-div">
+      {{#each results}}
+        <p>{{id}}</p>
+        <p>{{name}}</p>
+        <p>{{price}}</p>
+      {{/each}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="/delete_from_cart/{{this.id}}" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger">
+          <a href="/delete_from_cart/{{this.id}}" style="color: #ffffff;">Delete</button>
+        </button> 
       </div>
     </div>
   </div>

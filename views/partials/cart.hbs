@@ -11,6 +11,7 @@
               </td>
               <td>
                 {{this.name}}
+                <p id="itemid" hidden>{{this.id}}</p>
                 <p>Medium</p>
               </td>
               <td>
@@ -23,17 +24,17 @@
                 {{this.subPrice}}
               </td>
               <td>
-                <a href="/delete_from_cart/{{this.id}}" class="remove-product" style="color: #0a0a0a;">
+                {{!-- <a href="/cart-product-delete/{{id}}" class="remove-product" style="color: #0a0a0a;" data-toggle="modal" data-target="#exampleModal">
                   <h1>x</h1>
-                </a>
+                </a> --}}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" id="deleteitemcartnavbar">
+                  <h1>X</h1>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
-        {{!-- <!-- Button trigger modal -->
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
-          <h1>X</h1>
-        </button> --}}
         {{/each}}
       {{else}}
       <p>Your cart is empty :(</p>
