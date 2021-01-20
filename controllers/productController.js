@@ -193,22 +193,27 @@ exports.getCategories = (req,res) => {
                 sample.push(item)
               }
             });
-            if(result) {
-              res.render('home', {
-                title: "Home",
-                loggedIn: req.session.user,
-                categories: sample,
-                cartProducts: result.products
-              });
-            }
-            else {
-              res.render('home', {
-                title: "Home",
-                loggedIn: req.session.user,
-                categories: sample,
-                cartProducts: null
-              });
-            }
+            productModel.getOne({_id: req.body.id}, (err, product) => {
+              if (err) throw err;
+              if(result) {
+                res.render('home', {
+                  title: "Home",
+                  loggedIn: req.session.user,
+                  categories: sample,
+                  productDetails: product,
+                  cartProducts: result.products
+                });
+              }
+              else {
+                res.render('home', {
+                  title: "Home",
+                  loggedIn: req.session.user,
+                  categories: sample,
+                  productDetails: null,
+                  cartProducts: null
+                });
+              }
+            })
           });
         }
       })
@@ -236,3 +241,11 @@ exports.getCategories = (req,res) => {
     }
   }
 }
+
+exports.postAProduct = (req, res) => {
+  let id = req.body.id;
+  productModel.getOne({_id: id}, (err, results) => {
+    console.log(results);
+    res.send(results);
+  });
+};
