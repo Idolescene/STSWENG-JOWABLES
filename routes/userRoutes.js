@@ -11,7 +11,7 @@ const productController = require("../controllers/productController");
 const orderController = require('../controllers/orderController');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
-const {userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation} = require('../validators.js');
+const {userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation, updateEmailValidation, updatePasswordValidation} = require('../validators.js');
 
 /*
   Homepage for both guest and logged in users
@@ -525,13 +525,71 @@ router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
       if (err) {
         console.log(err); //testing
         console.log('An error has occurred while searching for a user.') //testing
-        req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
+        req.flash('error_msg', 'An error has occurred. Please try again.');
         res.redirect('/profile');
       } else {
         console.log('Shipping details updated successfully!') //testing
         req.flash('success_msg', 'Shipping details updated successfully!');
         res.redirect('/profile');
       }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/profile');
+  }
+});
+
+router.post('/update-user-email', updateEmailValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {editemail} = req.body;
+    var newvals = { $set: {email: editemail} };
+    userModel.getOne({email: editemail}, (err, resemail) => {
+      if (resemail){
+        req.flash('error_msg', 'Email already in use.s');
+        res.redirect('/profile');
+      } else {
+        userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
+          if (err) {
+            console.log(err); //testing
+            console.log('An error has occurred while searching for a user.') //testing
+            req.flash('error_msg', 'An error has occurred. Please try again.');
+            res.redirect('/profile');
+          } else {
+            req.flash('success_msg', 'Email updated successfully!');
+            res.redirect('/profile');
+          }
+        });
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/profile');
+  }
+});
+
+router.post('/update-user-password', updatePasswordValidation, (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {editpassword} = req.body;
+    const saltRounds = 10;
+    bcrypt.hash(editpassword, saltRounds, (err, hashed) => {
+      var newvals = { $set: {password: hashed} };
+      userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
+        if (err) {
+          console.log(err); //testing
+          console.log('An error has occurred while searching for a user.') //testing
+          req.flash('error_msg', 'An error has occurred. Please try again.');
+          res.redirect('/profile');
+        } else {
+          req.flash('success_msg', 'Password updated successfully!');
+          res.redirect('/profile');
+        }
+      });
     });
   } else {
     const messages = errors.array().map((item) => item.msg);

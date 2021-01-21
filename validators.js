@@ -45,10 +45,10 @@ const checkoutShippingValidation = [
 
 /*User Update Password*/
 const updatePasswordValidation = [
-  body('edit-password').isLength({ min: 8 }).withMessage("Password needs to be at least 8 characters long."),
-  body('c-password').isLength({ min: 8 }).withMessage("Confirm password needs to be at least 8 characters long.")
+  body('editpassword').isLength({ min: 8 }).withMessage("Password needs to be at least 8 characters long."),
+  body('cpassword').isLength({ min: 8 }).withMessage("Confirm password needs to be at least 8 characters long.")
     .custom((value, { req }) => {
-      if (value !== req.body.regpass) {
+      if (value !== req.body.editpassword) {
         throw new Error("Passwords need to match.");
       }
       return true;
@@ -57,7 +57,7 @@ const updatePasswordValidation = [
 
 /*User Update Email*/
 const updateEmailValidation = [
-  body('edit-email').trim().not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email.")
+  body('editemail').trim().not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email.")
 ];
 
 module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation, updateEmailValidation, updatePasswordValidation };

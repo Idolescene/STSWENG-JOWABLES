@@ -120,19 +120,19 @@
       <div class="modal-body">
         <form action="/update-user-email" method="POST">
           <h5>Email</h5>
-          <input type="text" class="form-control rounded-pill"  value="{{emad}}" name="edit-email">
+          <input type="text" class="form-control rounded-pill"  value="{{emad}}" name="editemail">
           <br>
-          <button type="button" class="btn logout-btn rounded-pill">Save</button>
+          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
         </form>
         <hr>
         <form action="/update-user-password" method="POST">
           <h5>Password</h5>
-          <input type="password" class="form-control rounded-pill"  value="{{password}}" name="edit-password">
+          <input type="password" class="form-control rounded-pill" name="editpassword">
           <br>
           <h5>Confirm Password</h5>
-          <input type="password" class="form-control rounded-pill"  value="{{password}}" name="c-password">
+          <input type="password" class="form-control rounded-pill" name="cpassword">
           <br>
-          <button type="button" class="btn logout-btn rounded-pill">Save</button>
+          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
         </form>
       </div>
     </div>
