@@ -14,12 +14,6 @@ body {
   margin: 0 auto;
 }
 
-.logout-btn {
-  color: #FFFFFF !important;
-  padding: 10px 30px 10px 30px !important;
-  background-color: #0A0A0A !important;
-}
-
 .remove-product:hover {
   text-decoration: none;
 }
@@ -729,6 +723,17 @@ body {
 .profile-header {
   position: relative;
   left: 14px;
+}
+
+.profile-edit {
+  position: relative;
+  right: 15px;
+}
+
+.logout-btn {
+  color: #FFFFFF !important;
+  padding: 10px 30px 10px 30px !important;
+  background-color: #0A0A0A !important;
 }
 
 .profile-logout {
