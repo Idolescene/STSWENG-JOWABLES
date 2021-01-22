@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
   category: {type: String, required: true},
   price: {type: Number, required: true},
   status: {type: Boolean, required: true}, //true=available, false=out of stock
-  img: {type: String, required: true}
+  img: {type: String, required: true},
 });
 
 const productModel = mongoose.model('products', productSchema);

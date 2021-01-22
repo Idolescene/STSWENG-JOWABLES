@@ -24,23 +24,23 @@
         <div class="row">
           <div class="col">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="small" id="small" value="Small">
+              <input class="form-check-input" type="radio" name="size" id="small" value="Small">
               <label class="form-check-label" for="inlineRadio1">S</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="medium" id="medium" value="Medium">
+              <input class="form-check-input" type="radio" name="size" id="medium" value="Medium">
               <label class="form-check-label" for="inlineRadio2">M</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="large" id="large" value="Large">
+              <input class="form-check-input" type="radio" name="size" id="large" value="Large">
               <label class="form-check-label" for="inlineRadio2">L</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="x-large" id="x-large" value="X-Large">
+              <input class="form-check-input" type="radio" name="size" id="x-large" value="X-Large">
               <label class="form-check-label" for="inlineRadio2">XL</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="xx-large" id="xx-large" value="XX-Large">
+              <input class="form-check-input" type="radio" name="size" id="xx-large" value="XX-Large">
               <label class="form-check-label" for="inlineRadio2">XXL</label>
             </div>
           </div>
@@ -60,3 +60,11 @@
   </div>
   <br><br><br>
 </div>
+
+
+<script>
+
+$(function() {
+  $("#small").prop("checked", true)
+});
+</script>

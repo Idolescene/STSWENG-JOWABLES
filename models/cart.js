@@ -55,6 +55,7 @@ exports.getByUser = (user, next) => {
           var totalPrice = 0;
           var totalPriceWithShipping = 0;
           var subPrice;
+          var status;
           var prodArray = [];
           products.forEach((item) => {
             console.log(item);
@@ -71,7 +72,7 @@ exports.getByUser = (user, next) => {
             product['qty'] = cart.prod[index].qty;
             product['id'] = item._id;
             product['slug'] = item.slug;
-
+            product['status'] = item.status;
             prodArray.push(product); 
           });
           console.log('before send: ' + totalPrice);
