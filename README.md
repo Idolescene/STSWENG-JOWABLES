@@ -25,8 +25,10 @@
 * Open [http://localhost:3000]() in a browser to see the app running.
 
 ## Admin Access
-* The admin page can be accss through this link:
-  * [http://localhost:3000/admin/update-products]()
+* The admin page can be accss through the user's login/register page.
+* Username: `admin`
+* Email: `admin@email.com`
+* Password: `password`
 
 ## UI Features (Currently Updated as of November 29, 2020)
 * Navigation Bar

@@ -18,6 +18,11 @@ body {
   text-decoration: none;
 }
 
+#profile-admin {
+  padding-top: 40px;
+  height: calc(100vh - 335px);
+}
+
 /* Navbar */
 .navbar {
   background-color: #FFA600;

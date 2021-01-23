@@ -454,6 +454,7 @@ router.post('/user-login', userLoginValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {logemail, logpass} = req.body;
+    console.log(logemail);
     //console.log(req.body.name); //testing
     // search user via email
     userModel.getOne({email: logemail}, (err, user) => {
@@ -485,7 +486,21 @@ router.post('/user-login', userLoginValidation, (req, res) => {
               res.redirect('/login');
             } else {
               if(user2) {
-                bcrypt.compare(logpass, user2.password, (err, result) => {
+                if(user2.username == "admin") {
+                  bcrypt.compare(logpass, user2.password, (err, result) => {
+                    if (result) {
+                      req.session.user = user2._id;
+                      req.session.username = user2.username;
+                      console.log(req.session);
+                      res.redirect('/admin/profile');
+                    } else {
+                      console.log('Incorrect password. Please try again.'); //testing
+                      req.flash('error_msg', 'Incorrect password. Please try again.');
+                      res.redirect('/login');
+                    }
+                  });
+                } else {
+                  bcrypt.compare(logpass, user2.password, (err, result) => {
                   if (result) {
                     req.session.user = user2._id;
                     req.session.username = user2.username;
@@ -497,10 +512,11 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     res.redirect('/login');
                   }
                 });
+                }
               } else {
-                console.log('User not found. Please try again.'); //testing
-                req.flash('error_msg', 'User not found. Please try again.');
-                res.redirect('/login');
+                  console.log('User not found. Please try again.'); //testing
+                  req.flash('error_msg', 'User not found. Please try again.');
+                  res.redirect('/login');
               }
             }
           });
@@ -590,6 +606,39 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
           res.redirect('/profile');
         }
       });
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    console.log(messages.join(' ')); //testing
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/profile');
+  }
+});
+
+/*Post for Admin*/
+router.post('/update-admin-email', (req, res) => {
+  console.log("admin:: " + res.session.user);
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    const {editemail} = req.body;
+    var newvals = { $set: {email: editemail} };
+    userModel.getOne({email: editemail}, (err, resemail) => {
+      if (resemail){
+        req.flash('error_msg', 'Email already in use.');
+        res.redirect('/admin/profile');
+      } else {
+        userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
+          if (err) {
+            console.log(err); //testing
+            console.log('An error has occurred while searching for a user.') //testing
+            req.flash('error_msg', 'An error has occurred. Please try again.');
+            res.redirect('/profile');
+          } else {
+            req.flash('success_msg', 'Email updated successfully!');
+            res.redirect('/profile');
+          }
+        });
+      }
     });
   } else {
     const messages = errors.array().map((item) => item.msg);

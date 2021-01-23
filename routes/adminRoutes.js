@@ -1,5 +1,20 @@
 const router = require('express').Router();
+const adminController = require('../controllers/adminController');
+const validationResult = require('express-validator');
 
+/*
+  Admin profile page
+*/
+router.get('/profile', (req, res) => {
+  console.log(req.session.user);
+  res.render('profile-admin', {
+    title: 'profile',
+    loggedIn: req.session.user,
+    layout: 'admin'
+  });
+});
+
+router.get('/logout-admin', adminController.logoutAdmin);
 
 /*
   Admin Homepage and Update Products Page
