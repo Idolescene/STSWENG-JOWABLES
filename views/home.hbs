@@ -20,8 +20,12 @@
     <br>
     <div class="row">
       {{#each categories}}
-      <div class="col-sm btn-features">      
-        <button onclick = 'filterBtn({{this.category}});' class="btn rounded-pill {{this.category}}btn" id = '{{this.category}}btn' value = '{{this.category}}'>{{this.category}}</a>
+      <div class="apparel-card-div col-sm btn-features">      
+        <button type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'>
+          <img src="/{{this.img}}" height="200px">
+                <p>{{this.category}}
+                </p>
+        </button>
       </div>
       {{/each}}
     </div>
@@ -35,12 +39,9 @@
 </div>
 
 <script type = 'text/javascript'>
-  function filterBtn (val) {
-    console.log('boop');
-    category = val;
-  }
-  $('#categorybtn').click(function () {
-    console.log("BOOOOOOOOOOOOO")
-    req.body.category = $('input=[id="categorybtn"]').val()
-  })
+$(document).on("click",'.categorybtn',function(e){
+  var a = $(this).attr('id');
+  alert(a)
+  location.replace('/catalogue')
+})
 </script>

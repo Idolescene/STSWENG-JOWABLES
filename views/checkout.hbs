@@ -4,6 +4,7 @@
   {{#if cartProducts}}
   <h4>{{title}}</h4>
   <br>
+  </a>
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -16,6 +17,7 @@
     </thead>
     <tbody>
       {{#each cartProducts}}
+        {{#if this.status}}
         <tr class="checkout-card">
           <th class="checkout-img-name">
             <img src="{{this.img}}" width="150px">
@@ -30,10 +32,27 @@
             </a>
           </th>
         </tr>
+        {{else}}
+        <tr class="checkout-card">
+          <th class="checkout-img-name">
+            <img src="{{this.img}}" width="150px">
+            <p>{{this.name}}</p>
+          </th>
+          <th>Medium</th>
+          <th>₱ {{this.subPrice}}</th>
+          <th>Out of Stock</th>
+          <th>
+            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+              <h1>X</h1>
+            </a>
+          </th>
+        </tr>
+        {{/if}}
       {{/each}}
     </tbody>
   </table>
   <br>
+  </a>
   <div class="container text-right">
     <div class="row">
       <div class="col-8"></div>
@@ -57,7 +76,11 @@
       </div>
     </div>
     <br>
-    <a href="/shipping" type="button" class="btn rounded-pill">Order</a>
+    {{#if checkout}}
+    <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
+    {{else}}
+    <a href='#' type = 'button' class="btn rounded-pill checkStock">Out of Stock</a>
+    {{/if}}
   </div>
   {{else}}
   <div style="height: calc(100vh - 400px);">

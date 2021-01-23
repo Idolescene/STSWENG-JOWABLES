@@ -7,14 +7,25 @@ exports.getUserCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     var user = req.session.user;
+    var checkout = true;
     if (user) {
       cartModel.getByUser(user, (err, result) => {
+        console.log(result.products)
         if (err) throw err;
+        result.products.forEach(element => {
+          if (!element.status && checkout == true)
+          {
+            checkout = false;
+            console.log('beep')
+          }
+          console.log(checkout)
+        });
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
             loggedIn: req.session.user,
-            cartProducts: null
+            cartProducts: null,
+            checkout: checkout
           });
         }
         else {
@@ -23,16 +34,19 @@ exports.getUserCart = (req, res) => {
             loggedIn: req.session.user,
             cartProducts: result.products,
             total: result.total,
-            totalWithShipping: result.totalWithShipping
+            totalWithShipping: result.totalWithShipping,
+            checkout: checkout
           });
         }
       });
     }
   }
+  
   else {
     console.log(errors);
   }
 }
+
 
 exports.getACart = (req, res) => {
   const errors = validationResult(req);
