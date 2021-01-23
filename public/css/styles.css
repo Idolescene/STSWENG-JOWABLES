@@ -280,8 +280,12 @@ body {
   color: #0a0a0ac4;
 }
 
-.fa-shopping-cart {
+.shopping-cart-icon-loggedin {
   padding-top: 12px;
+}
+
+.fa-user-circle-o, .fa-shopping-cart {
+  font-size: 24px !important;
 }
 
 .fa-trash-o {
