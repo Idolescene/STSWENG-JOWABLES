@@ -23,6 +23,11 @@ body {
   height: calc(100vh - 335px);
 }
 
+.categorybtn {
+  background-color: transparent;
+  border: none;
+}
+
 /* Navbar */
 .navbar {
   background-color: #FFA600;

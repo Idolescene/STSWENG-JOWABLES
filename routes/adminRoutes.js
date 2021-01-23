@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const adminController = require('../controllers/adminController');
+const productController = require('../controllers/productController');
 const validationResult = require('express-validator');
 
 /*
@@ -19,12 +20,7 @@ router.get('/logout-admin', adminController.logoutAdmin);
 /*
   Admin Homepage and Update Products Page
 */
-router.get('/update-products', (req, res) => {
-  res.render('update-products', {
-    title: "All Products",
-    layout: "admin"
-  });
-});
+router.get('/update-products', productController.viewAllProducts);
 
 /*
   Summary of All Orders Page

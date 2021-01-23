@@ -16,22 +16,24 @@
 
   <!-- Features --> 
   <section class="features-section text-center">
-    <h4 class="features-title">Our Styles</h4>
-    <br>
-    <div class="row">
-      {{#each categories}}
-      <div class="apparel-card-div col-sm btn-features">      
-        <button type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'>
-          <img src="/{{this.img}}" height="200px">
-                <p>{{this.category}}
-                </p>
-        </button>
+    <div class="container">
+      <h4 class="features-title">Our Styles</h4>
+      <br>
+      <div class="row">
+        {{#each categories}}
+        <div class="apparel-card-div col-sm btn-features">      
+          <button type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'>
+            <img src="/{{this.img}}" height="350px" style="padding-bottom: 20px">
+                  <h5>{{this.category}}
+                  </h5>
+          </button>
+        </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
-    <br>
-    <div class="btn-features">
-      <a href="/catalogue" type="button" class="btn rounded-pill">View Products</a>
+      <br>
+      <div class="btn-features">
+        <a href="/catalogue" type="button" class="btn rounded-pill">View Products</a>
+      </div>
     </div>
   </section><!-- End -->
 
