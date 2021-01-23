@@ -83,6 +83,89 @@ exports.getAllProducts = (req, res) => {
   }
 }
 
+// Get all products from the DB and display it in update products
+exports.viewAllProducts = (req, res) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var user = req.session.user;
+    if (user) {
+      // if user
+      cartModel.getByUser(user, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          var query = {};
+          var sort = {name: 1};
+          if (req.body.category && req.body.category != 'No Filter'){
+            query.category = req.body.category;
+          }
+          productModel.getMany(query,sort, (err, products) => {
+            if (err) throw err;
+            console.log(products);
+            var categories = [];
+            products.forEach(function(item){
+              if (!categories.includes(item.category)) {
+                categories.push(item.category);
+              }
+            });
+            products.forEach((item) => {
+              item.price = item.price.toFixed(2);
+            });
+            if(result) {
+              res.render('update-products', {
+                layout: 'admin',
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: result.products
+              });
+            }
+            else {
+              res.render('update-products', {
+                layout: 'admin',
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: null
+              });
+            }
+          });
+        }
+      });
+    }
+    else {
+      // if guest
+      var query = {};
+      var sort = {name: 1};
+      if (req.body.category && req.body.category != 'No Filter'){
+        query.category = req.body.category;
+      }
+      productModel.getMany(query,sort, (err, products) => {
+        if (err) throw err;
+        console.log(products);
+        
+        var categories = [];
+        products.forEach(function(item){
+          if (!categories.includes(item.category)) {
+            categories.push(item.category);
+          }
+        });
+        
+        products.forEach((item) => {
+          item.price = item.price.toFixed(2);
+        });
+        res.render('catalogue', {
+          loggedIn: req.session.user,
+          products: products,
+          categories: categories,
+          cartProducts: null
+        });
+      });
+    }
+  }
+}
+
 // Post method for displaying products by category
 exports.refreshProducts = (req, res) => {
   var query = {};
