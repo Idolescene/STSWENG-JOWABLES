@@ -5,10 +5,14 @@
       <!-- Left Navbar Items -->
       <ul class="navbar-nav nav">
         <li class="nav-item">
-          <a class="nav-link" href="/catalogue">Catalogue</a>
+          <a class="nav-link" href="/catalogue">
+            <h5>Catalogue</h5>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact Us</a>
+          <a class="nav-link" href="/contact">
+            <h5>Contact Us</h5>
+          </a>
         </li>
       </ul><!-- End -->
 
@@ -23,18 +27,9 @@
 
       <!-- Right Navbar Items -->
       <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <li class="nav-item">
-          <div class="navbar-search rounded-pill">
-            <form class="form-inline">
-              <input class="form-control search-bar mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </li>
         {{#if loggedIn}}
         <li class="nav-item" id="carticon">
-          <div id="userid" hidden>{{loggedIn}}</div>
-          {{> cart1}}
+          {{> cart}}
         </li>
         {{else}}
         <li class="nav-item">
