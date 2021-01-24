@@ -6,8 +6,13 @@ const productSchema = new mongoose.Schema({
   description: {type: String, required: true},
   category: {type: String, required: true},
   price: {type: Number, required: true},
-  status: {type: Boolean, required: true}, //true=available, false=out of stock
   img: {type: String, required: true},
+  stock:[
+    {
+    status: {type: Boolean,required:true},
+    size: {type: String,required:true}
+    }
+  ]
 });
 
 const productModel = mongoose.model('products', productSchema);
@@ -34,6 +39,7 @@ exports.getAll = (query, next) => {
 exports.getMany = (query,sort,next) => {
   productModel.find(query).sort(sort).exec((err, products) => {
     if (err) throw err;
+    console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
       productObjects.push(doc.toObject());
@@ -41,6 +47,24 @@ exports.getMany = (query,sort,next) => {
     next(err, productObjects);
   });
 };
+
+exports.getManyFilter = (query,sort,filter,next) => {
+  productModel.find(query).sort(sort).exec((err, products) => {
+    if (err) throw err;
+    console.log(products);
+    const productObjects = [];
+    products.forEach((doc) => {
+      doc.stock.forEach((prod) => {
+        if (prod.size == filter) {
+          if (prod.status) {
+            productObjects.push(doc.toObject());
+          }
+        }
+      })
+    });
+    next(err, productObjects);
+  });
+}
 
 // Get one product
 exports.getOne = (query, next) => {
@@ -54,6 +78,9 @@ exports.getOne = (query, next) => {
 exports.getAllIds = (query, next) => {
   productModel.find({_id: {$in: query}}).exec((err, products) => {
     if (err) throw err;
+    console.log('boop')
+    console.log(products)
+    console.log('beep')
     next(err, products);
   });
 };
