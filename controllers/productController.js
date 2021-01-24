@@ -311,6 +311,7 @@ exports.getCategories = (req,res) => {
               if(result) {
                 res.render('home', {
                   title: "Home",
+                  name: req.session.username,
                   loggedIn: req.session.user,
                   categories: sample,
                   productDetails: product,
@@ -320,6 +321,7 @@ exports.getCategories = (req,res) => {
               else {
                 res.render('home', {
                   title: "Home",
+                  name: req.session.username,
                   loggedIn: req.session.user,
                   categories: sample,
                   productDetails: null,
@@ -346,6 +348,7 @@ exports.getCategories = (req,res) => {
         });
         res.render('home', {
           title: "Home",
+          name: "login",
           loggedIn: req.session.user,
           categories: sample,
           cartProducts: null

@@ -1,5 +1,7 @@
 <div class="dropdown">
-  <i class="fa fa-shopping-cart fa-lg navbar-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+  <span class="navbar-cart">
+    <i class="fa fa-shopping-cart fa-lg shopping-cart-icon-loggedin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+  </span>
   <div class="dropdown-menu cart-drop-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
       {{#if cartProducts}}
         {{#each cartProducts}}
@@ -21,16 +23,7 @@
                 {{this.qty}}
               </td>
               <td>
-                {{this.subPrice}}
-              </td>
-              <td>
-                {{!-- <a href="/cart-product-delete/{{id}}" class="remove-product" style="color: #0a0a0a;" data-toggle="modal" data-target="#exampleModal">
-                  <h1>x</h1>
-                </a> --}}
-                <!-- Button trigger modal -->
-                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" id="deleteitemcartnavbar">
-                  <h1>X</h1>
-                </button>
+                ₱ <span>{{this.subPrice}}</span>
               </td>
             </tr>
           </tbody>
@@ -40,7 +33,7 @@
       <p>Your cart is empty :(</p>
       {{/if}}
     <div class="checkout-button text-right">
-      <a href="/checkout" type="button" class="btn rounded-pill">Checkout</a>
+      <a href="/checkout" type="button" class="btn rounded-pill">Edit Cart</a>
     </div>
   </div>
 </div>
