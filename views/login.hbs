@@ -1,0 +1,53 @@
+<br><br>
+{{> messages}}
+<div class = "row">
+  <!-- LOGIN -->
+  <div class = "column login-col">
+    <br><br><br>
+    <form action="/user-login" method="POST">
+      <div class = "login-bigtext">Login</div>
+      <br>
+      <div class = "login-smtext">Username or Email</div> <br>
+      <input type="text" class="login-form form-rounded rounded-pill border-white login-input" id="logemail" name="logemail">
+      <br><br>
+      <div class = "login-smtext">Password</div> <br>
+      <input type="password" class="login-form form-rounded rounded-pill border-white login-input" id="logpass" name="logpass">
+      <br><br>
+      <button class="btn btn-dark rounded-pill login-btn" id="logbtn">Sign In</button>
+    </form>
+  </div>
+  <!-- END -->
+
+  <!-- REGISTER -->
+  <div class = "column login-col">
+    <div class = "login-bigtext">Create Account</div>
+    <br>
+      <form action="/user-register" method="POST">
+        <div class = "login-smtext">Full Name</div> <br>
+        <input type="text" class="login-form form-rounded rounded-pill border-white login-input" id="regfn" name="regfn">
+        <br><br>
+        <div class = "login-smtext">Username</div> <br>
+        <input type="text" class="login-form form-rounded rounded-pill border-white login-input" id="regun" name="regun">
+        <br><br>
+        <div class = "login-smtext">Email</div> <br>
+        <input type="text" class="login-form form-rounded rounded-pill border-white login-input" id="regemail" name="regemail">
+        <br><br>
+        <div class = "login-smtext">Password</div> <br>
+        <input type="password" class="login-form form-rounded rounded-pill border-white login-input" id="regpass" name="regpass">
+        <br><br>
+        <div class = "login-smtext">Confirm Password</div> <br>
+        <input type="password" class="login-form form-rounded rounded-pill border-white login-input" id="regcpass" name="regcpass">
+        <br><br>
+        {{#if error_msg}}
+        <button class="btn btn-dark rounded-pill login-btn" id="regbtn" data-toggle="modal" data-target="#error-messages">Create</button>
+        {{else}}
+        <button class="btn btn-dark rounded-pill login-btn" id="regbtn">Create</button>
+        {{/if}}
+      </form>
+  </div>
+  <!-- END -->
+
+</div>
+
+
+<br><br><br><br><br><br><br><br>

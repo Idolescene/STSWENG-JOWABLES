@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <br><br>
+  <!-- Header -->
+  <header class="masthead-section text-center">
+    <div class="masthead-banner">
+      <img src="img/masthead-banner.png">
+    </div>
+    <br>
+    <div class="btn-masthead">
+      <a href="/catalogue" type="button" class="btn rounded-pill">Start Shopping</a>
+    </div>
+  </header><!-- End -->
+
+  <br><br><br>
+
+  <!-- Features --> 
+  <section class="features-section text-center">
+    <div class="container">
+      <h4 class="features-title">Our Styles</h4>
+      <br>
+      <div class="row">
+        {{#each categories}}
+        <div class="apparel-card-div col-sm btn-features">      
+          <button type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'>
+            <img src="/{{this.img}}" height="350px" style="padding-bottom: 20px">
+                  <h5>{{this.category}}
+                  </h5>
+          </button>
+        </div>
+        {{/each}}
+      </div>
+      <br>
+      <div class="btn-features">
+        <a href="/catalogue" type="button" class="btn rounded-pill">View Products</a>
+      </div>
+    </div>
+  </section><!-- End -->
+
+  <br><br><br>
+</div>
+
+<script type = 'text/javascript'>
+$(document).on("click",'.categorybtn',function(e){
+  var a = $(this).attr('id');
+  alert(a)
+  location.replace('/catalogue')
+})
+</script>

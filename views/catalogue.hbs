@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <br><br>
+  <section class="catalogue-section">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="catalogue-sidebar col-sm-3">
+        <h5>Categories</h5>
+        <ul class="list-group-flush w-75">
+          <li class="list-group-item">
+            <div class = 'form-check'>
+              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio' hidden>
+              <label for = 'noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+            </div>
+          </li>
+          {{#each categories}}
+          <li class="list-group-item">
+            <div class = 'form-check'>
+            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio' hidden>
+            <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+        <br><br>
+        <h5>Filter By</h5>
+        <ul class="list-group-flush w-75">
+          <li class="list-group-item">
+            <a href="#">No Filter</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Size: Small</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Size: Medium</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Size: Large</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Size: X-Large</a>
+          </li>
+        </ul>
+      </div><!-- End -->
+
+      <!-- Display Products -->
+      <div class="display-catalogue-div display-items col-sm-8">
+      {{>display-products}}
+      </div>
+    </div>
+  </section>
+  <br><br>
+</div>
+<script>
+function changedRadio() { 
+  $.post('/catalogue/', {
+    category: $('input[name="categoryRadio"]:checked').val(), 
+  }, function(result){
+    $(".display-items").html(result);
+  });
+}
+
+$(function() {
+  $("#noFilterRadio").prop("checked", true);
+  $("#nameRadio").prop("checked", true);
+
+  $(".categoryRadio").on("change", changedRadio);
+});
+</script>

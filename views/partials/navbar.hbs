@@ -1,0 +1,55 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" id="navbar">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <!-- Left Navbar Items -->
+        <ul class="navbar-nav nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/catalogue">
+            <h5>Catalogue</h5>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">
+            <h5>Contact Us</h5>
+          </a>
+        </li>
+      </ul><!-- End -->
+
+      <!-- Center Navbar Items -->
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+          <a class="navbar-brand" href="/">
+            <img src="./img/company-logo-horizontal-crop.png" height="70px">
+          </a>
+        </li>
+      </ul><!-- End -->
+
+      <!-- Right Navbar Items -->
+      <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        {{#if loggedIn}}
+        <li class="nav-item" id="carticon">
+          {{> cart}}
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="login">
+            <i class="fa fa-shopping-cart fa-lg navbar-cart"></i>
+          </a>
+        </li>
+        {{/if}}
+        <li class="nav-item" id="proficon">
+          {{#if loggedIn}}
+          <a class="nav-link" href="/profile">
+            <i class="fa fa-user-circle-o fa-lg"></i>
+          </a>
+          {{else}}
+          <a class="nav-link" href="/login">
+            <i class="fa fa-user-circle-o fa-lg"></i>
+          </a>
+          {{/if}}
+        </li>
+      </ul><!-- End -->
+
+      </div>
+</nav>

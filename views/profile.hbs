@@ -1,0 +1,155 @@
+<br><br>
+<div class = 'container-fluid'>
+    <div class="row">
+        <div class="col">
+            <h4>User: {{name}}</h4>
+        </div>
+        <div class="col text-right profile-logout">
+          <button data-toggle="modal" data-target="#editmodal" type="button" class="btn logout-btn rounded-pill profile-edit">
+            <strong>Edit</strong>
+          </button>
+          <a href="/logout" type="button" class="btn logout-btn rounded-pill">
+            <strong>Logout</strong>
+          </a>
+        </div>
+    </div>
+    <div class="row profile-header">
+        <h4>Date Joined: {{date}}</h4>
+    </div>
+<br><br>
+{{> messages}}
+<br><br>
+<div class = 'profile-ship-form container table-responsive profile-hidden'>
+  <table class = 'table' id='table-detail'>
+      <tr>
+          <th>Shipping Details</th>
+          <td class = 'text-right'>
+              <i onclick="showHideDetails('shiprows');" class="fa fa-plus-circle fa-2x fa-search" id = 'shipbutton'></i>
+          </td>
+      </tr>
+  </table>
+  <div class="" id="shiprows">
+    <hr>
+      <form action="/update-user-shipping" method="POST">
+        <div class="row text-center">
+          <div class="col">
+            <h5>Full Name</h5>
+            <input type="text" class="form-control rounded-pill" value="{{full}}" name="fullname">
+          </div>
+          <div class="col">
+            <h5>Contact No.</h5>
+            <input type="text" class="form-control rounded-pill" value="{{contno}}" name="contno">
+          </div>
+        </div>
+        <br>
+        <div class="row text-center" id="shiphonu">
+          <div class="col">
+            <h5>House Number, Building, Street</h5>
+            <input type="text" class="form-control rounded-pill"  value="{{hno}}" name="houseno">
+          </div>
+        </div>
+        <br>
+        <div class="row text-center" id="shipbar">
+          <div class="col">
+            <h5>Barangay</h5>
+            <input type="text" class="form-control rounded-pill"  value="{{barangay}}" name="brngy">
+          </div>
+        </div>
+        <br>
+        <div class="row text-center" id="shipcity">
+          <div class="col">
+            <h5>City</h5>
+            <input type="text" class="form-control rounded-pill"  value="{{city}}" name="city">
+          </div>
+        </div>
+        <br>
+        <div class="row text-center" id="shipprov">
+          <div class="col">
+            <h5>Province</h5>
+            <input type="text" class="form-control rounded-pill" value="{{province}}" name="prov">
+          </div>
+        </div>
+        <br>
+        <div class="text-center">
+          <button type="submit" class="btn shipping-checkout-btn rounded-pill" id="shipsubmit">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  <br>
+</div>
+<br><br><br>
+
+<div class="container">
+  <h4>Order History</h4><hr>
+  <div class = 'table-responsive profile-ship-form'>
+      <table class = 'table'>
+          <tr>
+              <td>ID</td>
+              <td>Date Ordered</td>
+              <td>Status</td>
+              <td class = 'text-right'>
+                  <i onclick="showHideOrders('orderrows');" class="fa fa-plus-circle fa-2x fa-search" id = "orderbutton"></i>
+              </td>
+          </tr>
+            {{#each orders}}
+              <tr class="orderrows">
+                  <th class="profile-id"><u>{{this.id}}</u></th>
+                  <th>{{this.date}}</th>
+                  <th>{{this.status}}</th>
+              </tr>
+            {{/each}}
+      </table>
+  </div>
+  <br>
+</div>
+</div>
+<br><br><br><br><br><br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Account Settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/update-user-email" method="POST">
+          <h5>Email</h5>
+          <input type="text" class="form-control rounded-pill"  value="{{emad}}" name="editemail">
+          <br>
+          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
+        </form>
+        <hr>
+        <form action="/update-user-password" method="POST">
+          <h5>Password</h5>
+          <input type="password" class="form-control rounded-pill" name="editpassword">
+          <br>
+          <h5>Confirm Password</h5>
+          <input type="password" class="form-control rounded-pill" name="cpassword">
+          <br>
+          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- script -->
+<script type="text/javascript">
+  function showHideDetails(e) {
+      $("#" + e).toggle();
+      $("#shipbutton").toggleClass('fa-minus-circle fa-plus-circle')
+  }
+</script>
+
+<script type="text/javascript">
+    function showHideOrders(e) {
+        $("." + e).toggle();
+        $("#orderbutton").toggleClass('fa-minus-circle fa-plus-circle')
+    }
+</script>
