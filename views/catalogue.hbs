@@ -8,14 +8,14 @@
         <ul class="list-group-flush w-75">
           <li class="list-group-item">
             <div class = 'form-check'>
-              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio' hidden>
+              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio' >
               <label for = 'noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
             </div>
           </li>
           {{#each categories}}
           <li class="list-group-item">
             <div class = 'form-check'>
-            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio' hidden>
+            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio' >
             <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
             </div>
           </li>
@@ -25,20 +25,19 @@
         <h5>Filter By</h5>
         <ul class="list-group-flush w-75">
           <li class="list-group-item">
-            <a href="#">No Filter</a>
+            <div class = 'form-check'>
+              <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = 'No Filter' id = 'sizeFilterRadio' >
+              <label for = 'sizeFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+            </div>
           </li>
+          {{#each size}}
           <li class="list-group-item">
-            <a href="#">Size: Small</a>
+            <div class = 'form-check'>
+            <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = '{{this}}' id = '{{this}}sizeRadio' >
+            <label for = '{{this}}sizeRadio' class = 'form-check-label'>{{this}}</label>
+            </div>
           </li>
-          <li class="list-group-item">
-            <a href="#">Size: Medium</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#">Size: Large</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#">Size: X-Large</a>
-          </li>
+          {{/each}}
         </ul>
       </div><!-- End -->
 
@@ -53,7 +52,8 @@
 <script>
 function changedRadio() { 
   $.post('/catalogue/', {
-    category: $('input[name="categoryRadio"]:checked').val(), 
+    category: $('input[name="categoryRadio"]:checked').val(),
+    size: $('input[name="sizeRadio"]:checked').val()
   }, function(result){
     $(".display-items").html(result);
   });
@@ -61,8 +61,9 @@ function changedRadio() {
 
 $(function() {
   $("#noFilterRadio").prop("checked", true);
-  $("#nameRadio").prop("checked", true);
+  $('#sizeFilterRadio').prop("checked",true);
 
   $(".categoryRadio").on("change", changedRadio);
+  $('.sizeRadio').on("change", changedRadio);
 });
 </script>

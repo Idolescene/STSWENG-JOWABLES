@@ -16,7 +16,7 @@
     </thead>
     <tbody>
       {{#each cartProducts}}
-        {{#if this.status}}
+        {{#if this.stock.status}}
         <tr class="checkout-card">
           <th class="checkout-img-name">
             <img src="{{this.img}}" width="150px">
