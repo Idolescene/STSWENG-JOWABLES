@@ -82,6 +82,7 @@ exports.getAllProducts = (req, res) => {
         console.log(products);
         
         var categories = [];
+        var sizes = [];
         products.forEach((item) =>{
           if (!categories.includes(item.category)) {
             categories.push(item.category);
