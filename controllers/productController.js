@@ -21,17 +21,31 @@ exports.getAllProducts = (req, res) => {
         else {
           var query = {};
           var sort = {name: 1};
+          console.log('staaarto');
           if (req.body.category && req.body.category != 'No Filter'){
             query.category = req.body.category;
           }
+          if (req.body.size && req.body.size != 'No Filter'){
+            query.stock.size = req.body.size;
+          }
+          console.log(query.category);
+          console.log(query.stock);
           productModel.getMany(query,sort, (err, products) => {
             if (err) throw err;
             console.log(products);
             var categories = [];
-            products.forEach(function(item){
+            var sizes = [];
+            products.forEach((item)=>{
+              console.log(sizes)
+              console.log('----')
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
               }
+              item.stock.forEach((item)=>{
+                if (!sizes.includes(item.size)){
+                  sizes.push(item.size)
+                }
+              })
             });
             products.forEach((item) => {
               item.price = item.price.toFixed(2);
@@ -41,7 +55,8 @@ exports.getAllProducts = (req, res) => {
                 loggedIn: req.session.user,
                 products: products,
                 categories: categories,
-                cartProducts: result.products
+                cartProducts: result.products,
+                size: sizes
               });
             }
             else {
@@ -49,7 +64,8 @@ exports.getAllProducts = (req, res) => {
                 loggedIn: req.session.user,
                 products: products,
                 categories: categories,
-                cartProducts: null
+                cartProducts: null,
+                size: sizes
               });
             }
           });
@@ -63,17 +79,24 @@ exports.getAllProducts = (req, res) => {
       if (req.body.category && req.body.category != 'No Filter'){
         query.category = req.body.category;
       }
+      if (req.body.size && req.body.size != 'No Filter'){
+        query.stock.size = req.body.size;
+      }
       productModel.getMany(query,sort, (err, products) => {
         if (err) throw err;
         console.log(products);
         
         var categories = [];
-        products.forEach(function(item){
+        products.forEach((item) =>{
           if (!categories.includes(item.category)) {
             categories.push(item.category);
           }
+          item.stock.forEach((item)=>{
+            if (!sizes.includes(item.size)){
+              sizes.push(item.size)
+            }
+          })
         });
-        
         products.forEach((item) => {
           item.price = item.price.toFixed(2);
         });
@@ -81,7 +104,8 @@ exports.getAllProducts = (req, res) => {
           loggedIn: req.session.user,
           products: products,
           categories: categories,
-          cartProducts: null
+          cartProducts: null,
+          size: sizes
         });
       });
     }
@@ -173,13 +197,19 @@ exports.viewAllProducts = (req, res) => {
 
 // Post method for displaying products by category
 exports.refreshProducts = (req, res) => {
+  console.log('bop')
   var query = {};
   var sort = {name: 1};
+  var size;
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
   }
-  console.log('beep')
-  productModel.getMany(query, sort, (err, products) => {
+  if (req.body.size && req.body.size != 'No Filter'){
+    size = req.body.size;
+  }
+  console.log(query);
+  console.log('bop')
+  productModel.getManyFilter(query, sort, size,(err, products) => {
     if (err) throw err;
     console.log(products);
     products.forEach((item) => {

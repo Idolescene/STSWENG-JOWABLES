@@ -55,8 +55,10 @@ exports.getByUser = (user, next) => {
           var totalPrice = 0;
           var totalPriceWithShipping = 0;
           var subPrice;
-          var status;
           var prodArray = [];
+          console.log('boop')
+          console.log(products)
+          console.log('beep')
           products.forEach((item) => {
             console.log(item);
             var index = cart.prod.findIndex(x => x.id.equals(item._id));
@@ -72,7 +74,8 @@ exports.getByUser = (user, next) => {
             product['qty'] = cart.prod[index].qty;
             product['id'] = item._id;
             product['slug'] = item.slug;
-            product['status'] = item.status;
+            product['status'] = item.stock.status;
+            product['size'] = item.stock.size;
             prodArray.push(product); 
           });
           console.log('before send: ' + totalPrice);
