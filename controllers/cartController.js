@@ -13,7 +13,7 @@ exports.getUserCart = (req, res) => {
         console.log(result.products)
         if (err) throw err;
         result.products.forEach(element => {
-          if (!element.status && checkout == true)
+          if (!element.stock.status && checkout == true)
           {
             checkout = false;
             console.log('beep')
