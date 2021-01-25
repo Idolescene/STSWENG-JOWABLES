@@ -1,6 +1,11 @@
 const productModel = require('../models/product');
 const cartModel = require('../models/cart');
 const {validationResult} = require('express-validator');
+const multer = require('multer');
+
+const upload = multer({
+  storage: storage
+});
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
@@ -16,17 +21,31 @@ exports.getAllProducts = (req, res) => {
         else {
           var query = {};
           var sort = {name: 1};
+          console.log('staaarto');
           if (req.body.category && req.body.category != 'No Filter'){
             query.category = req.body.category;
           }
+          if (req.body.size && req.body.size != 'No Filter'){
+            query.stock.size = req.body.size;
+          }
+          console.log(query.category);
+          console.log(query.stock);
           productModel.getMany(query,sort, (err, products) => {
             if (err) throw err;
             console.log(products);
             var categories = [];
-            products.forEach(function(item){
+            var sizes = [];
+            products.forEach((item)=>{
+              console.log(sizes)
+              console.log('----')
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
               }
+              item.stock.forEach((item)=>{
+                if (!sizes.includes(item.size)){
+                  sizes.push(item.size)
+                }
+              })
             });
             products.forEach((item) => {
               item.price = item.price.toFixed(2);
@@ -36,7 +55,8 @@ exports.getAllProducts = (req, res) => {
                 loggedIn: req.session.user,
                 products: products,
                 categories: categories,
-                cartProducts: result.products
+                cartProducts: result.products,
+                size: sizes
               });
             }
             else {
@@ -44,7 +64,8 @@ exports.getAllProducts = (req, res) => {
                 loggedIn: req.session.user,
                 products: products,
                 categories: categories,
-                cartProducts: null
+                cartProducts: null,
+                size: sizes
               });
             }
           });
@@ -58,17 +79,24 @@ exports.getAllProducts = (req, res) => {
       if (req.body.category && req.body.category != 'No Filter'){
         query.category = req.body.category;
       }
+      if (req.body.size && req.body.size != 'No Filter'){
+        query.stock.size = req.body.size;
+      }
       productModel.getMany(query,sort, (err, products) => {
         if (err) throw err;
         console.log(products);
         
         var categories = [];
-        products.forEach(function(item){
+        products.forEach((item) =>{
           if (!categories.includes(item.category)) {
             categories.push(item.category);
           }
+          item.stock.forEach((item)=>{
+            if (!sizes.includes(item.size)){
+              sizes.push(item.size)
+            }
+          })
         });
-        
         products.forEach((item) => {
           item.price = item.price.toFixed(2);
         });
@@ -76,7 +104,8 @@ exports.getAllProducts = (req, res) => {
           loggedIn: req.session.user,
           products: products,
           categories: categories,
-          cartProducts: null
+          cartProducts: null,
+          size: sizes
         });
       });
     }
@@ -168,13 +197,19 @@ exports.viewAllProducts = (req, res) => {
 
 // Post method for displaying products by category
 exports.refreshProducts = (req, res) => {
+  console.log('bop')
   var query = {};
   var sort = {name: 1};
+  var size;
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
   }
-  console.log('beep')
-  productModel.getMany(query, sort, (err, products) => {
+  if (req.body.size && req.body.size != 'No Filter'){
+    size = req.body.size;
+  }
+  console.log(query);
+  console.log('bop')
+  productModel.getManyFilter(query, sort, size,(err, products) => {
     if (err) throw err;
     console.log(products);
     products.forEach((item) => {
@@ -333,5 +368,59 @@ exports.postAProduct = (req, res) => {
   productModel.getOne({_id: id}, (err, results) => {
     console.log(results);
     res.send(results);
+  });
+};
+
+// Edit a product
+exports.editProduct = (req, res) => {
+
+  var image;
+  var {name, description, category, price} = req.body;
+  var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+  var product_id = req.params._id;
+
+  productModel.getOne({_id: product_id}, (err, product) => {
+    if(err) {
+      req.flash('error_msg', "Product not found.");
+      res.redirect('/view_all_items');
+    }
+    else {
+      if(product) {
+        if(name == "") {
+          name = product.name;
+          slug = product.slug;
+        }
+        if(description == "") {
+          description = product.description;
+        }
+        if(category == "") {
+          category = product.category;
+        }
+        if(price == "") {
+          price = product.price;
+        }
+        else {
+          price = Math.round(price * 100) / 100.0;
+        }
+        if(req.file == undefined || req.file == null || req.file == "") {
+          image = product.img;
+        }
+        else {
+          // image = "uploads/" + req.file.originalname.replace(/\s+/g, '-').toLowerCase();
+          image = "uploads/" + req.file.originalname;
+        }
+
+        productModel.updateItem(product_id, name, slug, description, category, price, image, (err, result) => {
+          if(err) {
+            req.flash('error_msg', "There was a problem updating product details. Please try again.");
+            res.redirect('/edit_item/' + product_id);
+          }
+          else {
+            req.flash('success_msg', "Successfully updated product details of " + name + ".");
+            res.redirect('/edit_item/' + product_id);
+          }
+        });
+      }
+    }
   });
 };

@@ -48,6 +48,7 @@
     "git-source": "^1.1.0",
     "jest": "^26.6.3",
     "mongoose": "^5.11.8",
+    "multer": "^1.4.2",
     "package-json": "^2.3.1",
     "supertest": "^6.0.1"
   },
