@@ -12,6 +12,15 @@
   * Ronn Christian Chua Chiaco
   * Patrick Jaspher Joya
 
+## Application Deployment
+* Application is deployed on Heroku and can be accessed with the URL [https://salawalco.herokuapp.com/]().
+
+## Admin Access
+* The admin page can be accss through the user's login/register page.
+* Username: `admin`
+* Email: `admin@email.com`
+* Password: `password`
+
 ## Set Up the Application
 * Clone repository in the command line or terminal using the command `git clone https://github.com/Idolescene/STSWENG-JOWABLES.git`.
 * Navigate to the folder `cd STSWENG-JOWABLES`
@@ -23,23 +32,3 @@
   * `body-parser`
 * Run `nodemon index.js` in the command line or terminal.
 * Open [http://localhost:3000]() in a browser to see the app running.
-
-## Admin Access
-* The admin page can be accss through the user's login/register page.
-* Username: `admin`
-* Email: `admin@email.com`
-* Password: `password`
-
-## UI Features (Currently Updated as of November 29, 2020)
-* Navigation Bar
-* Footer
-* Homepage
-* FAQs
-* Contact Us
-* Catalogue (currently fixing bugs)
-* Cart
-* Checkout
-* Shipping
-* Admin Navigation Bar
-* Update Products (Blank Page)
-* Summary of All Orders
