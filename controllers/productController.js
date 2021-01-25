@@ -1,6 +1,11 @@
 const productModel = require('../models/product');
 const cartModel = require('../models/cart');
 const {validationResult} = require('express-validator');
+const multer = require('multer');
+
+const upload = multer({
+  storage: storage
+});
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
@@ -363,5 +368,59 @@ exports.postAProduct = (req, res) => {
   productModel.getOne({_id: id}, (err, results) => {
     console.log(results);
     res.send(results);
+  });
+};
+
+// Edit a product
+exports.editProduct = (req, res) => {
+
+  var image;
+  var {name, description, category, price} = req.body;
+  var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+  var product_id = req.params._id;
+
+  productModel.getOne({_id: product_id}, (err, product) => {
+    if(err) {
+      req.flash('error_msg', "Product not found.");
+      res.redirect('/view_all_items');
+    }
+    else {
+      if(product) {
+        if(name == "") {
+          name = product.name;
+          slug = product.slug;
+        }
+        if(description == "") {
+          description = product.description;
+        }
+        if(category == "") {
+          category = product.category;
+        }
+        if(price == "") {
+          price = product.price;
+        }
+        else {
+          price = Math.round(price * 100) / 100.0;
+        }
+        if(req.file == undefined || req.file == null || req.file == "") {
+          image = product.img;
+        }
+        else {
+          // image = "uploads/" + req.file.originalname.replace(/\s+/g, '-').toLowerCase();
+          image = "uploads/" + req.file.originalname;
+        }
+
+        productModel.updateItem(product_id, name, slug, description, category, price, image, (err, result) => {
+          if(err) {
+            req.flash('error_msg', "There was a problem updating product details. Please try again.");
+            res.redirect('/edit_item/' + product_id);
+          }
+          else {
+            req.flash('success_msg', "Successfully updated product details of " + name + ".");
+            res.redirect('/edit_item/' + product_id);
+          }
+        });
+      }
+    }
   });
 };
