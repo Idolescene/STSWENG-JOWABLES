@@ -668,7 +668,7 @@ router.post('/update-admin-email', (req, res) => {
 router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
     //stuff
     res.redirect('/shipping');
   } else {
