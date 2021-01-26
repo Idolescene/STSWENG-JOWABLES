@@ -670,6 +670,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   if(errors.isEmpty()) {
     const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
     //stuff
+    req.flash('success_msg', 'Items ordered successfully!');
     res.redirect('/shipping');
   } else {
     const messages = errors.array().map((item) => item.msg);
