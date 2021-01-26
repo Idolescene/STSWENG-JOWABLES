@@ -6,14 +6,20 @@ Documentation      A test suite with a single test for a invalid shipping
 Library            SeleniumLibrary
 
 *** Variables ***
-${SERVER}            salawalco.herokuapp.com
-${BROWSER}           Chrome
-${DELAY}             0
-${VALID USER}        sophiasee@gmail.com
-${VALID PASSWORD}    12345678
-${MAIN URL}          https://${SERVER}/
-${LOGIN URL}         https://${SERVER}/profile
-${CHECKOUT URL}      https://${SERVER}/checkout
+${SERVER}                salawalco.herokuapp.com
+${BROWSER}               Chrome
+${DELAY}                 0
+${ORIGINAL EMAIL}        sophiasee@gmail.com
+${ORIGINAL PASSWORD}     12345678
+${VALID EMAIL}           sophiasee1@gmail.com
+${VALID PASSWORD}        123456789
+${INVALID EMAIL}         email@-example.com
+${INVALID PASSWORD}      123
+${NULL EMAIL}            
+${NULL PASSWORD}         
+${MAIN URL}              https://${SERVER}/
+${LOGIN URL}             https://${SERVER}/profile
+${CHECKOUT URL}          https://${SERVER}/checkout
 
 
 *** Keywords ***
@@ -47,31 +53,43 @@ Go To Profile
     Location Should Be              ${LOGIN URL}
     User Profile Should Be Accessible
 
-Input Username
-    [Arguments]        ${username}
-    Input Text                      logemail        ${username}
+Input Email in Edit Profile
+    [Arguments]        ${email}
+    Input Text                      id:editemail           ${email}
 
-Input Password
+Input Password in Edit Profile
     [Arguments]        ${password}
-    Input Text                      logpass        ${password}
+    Input Text                      id:editpassword        ${password}
 
 Click Login Button
     Click Button                    id:logbtn
 
+
 Click Profile Icon
-    Click Element                    id:proficon
+    Click Element                   id:proficon
 
-Go to Checkout
-    Click Cart Button
-    Click Checkout Button
-    Checkout Page Should Be Open
+Edit Profile    
+    Click Button                    class:profile-edit
 
-Click Cart Button
-    Click Element                    class:dropdown
+Submit New email
+    Click Button
 
-Click Checkout Button
-    Click Element                    link:Edit Cart
+Submit New Password
+    Click Button
 
-Checkout Page Should Be Open
-    Location Should Be                ${CHECKOUT URL}
-    Page Should Contain Element        link:Order
+
+Edited Successfully (Valid Email)
+    Element Text Should Be          id=success-msg                Success: Email updated successfully!
+
+Edit Should Have Failed (Invalid Email)
+    Element Text Should Be          id=error-msg                  Error: Please provide a valid email.
+
+Edit Should Have Failed (Null Email)
+    Element Text Should Be          id=error-msg                  Error: Email is required. Please provide a valid email.
+
+
+Edited Successfully (Valid Password)
+    Element Text Should Be          id=success-msg                Success: Password updated successfully!
+
+Edit Should Have Failed (Invalid or Null Password)
+    Element Text Should Be          id=error-msg                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.

@@ -1,29 +1,35 @@
 *** Settings ***
-Documentation      A test suite with a single test for a invalid shipping
+Documentation      A test suite with a single test for a INvalid editing of profile
 ...
 ...                This test has a workflow that is created using keywords
 ...                directly from SeleniumLibrary
-Suite Setup        Open Browser To Login Page
+Suite Setup        Login Successfully
 Suite Teardown     Close Browser
-Test Setup         Go To Login Page
-Test Template      Login With Invalid Credentials Should Fail
+Test Setup         Go To Profile
 Resource           resource.robot
 
 *** Test Cases ***
-Unsuccessful Shipping (Somethin)
-    Open Browser to Login Page
-    Input Username                  locked_out_user
-    Input Password                         secret_sauce
-    Click Login Button
-    Login Page Should Be Open
-    Element Text Should Be          css:*[data-test="error"]         Epic sadface: Sorry, this user has been locked out.
-    [Teardown]                      Close Browser
+Edit Invalid Email Should Fail
+    Edit Profile
+    Input Email in Edit Profile          ${INVALID EMAIL} 
+    Submit New Email
+    Edit Should Have Failed (Invalid Email)
 
-Unsuccessful Shipping (Invalid Password)
-    Open Browser to Login Page
-    Input Username                        standard_user
-    Input Password                         secret_sauce1
-    Click Login Button
-    Login Page Should Be Open
-    Element Text Should Be          css:*[data-test="error"]         Epic sadface: Username and password do not match any user in this service
-    [Teardown]                      Close Browser
+Edit Invalid Password Should Fail
+    Edit Profile
+    Input Password in Edit Profile       ${INVALID PASSWORD} 
+    Submit New Password
+    Edit Should Have Failed (Invalid or Null Password)
+
+Edit Null Email Should Fail
+    Edit Profile
+    Input Email in Edit Profile          ${NULL EMAIL} 
+    Submit New Email
+    Edit Should Have Failed (Null Email)
+
+Edit Null Password Should Fail
+    Edit Profile
+    Input Password in Edit Profile       ${NULL PASSWORD} 
+    Submit New Password
+    Edit Should Have Failed (Invalid or Null Password)
+    

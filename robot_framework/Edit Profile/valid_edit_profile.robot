@@ -8,10 +8,28 @@ Suite Teardown     Close Browser
 Test Setup         Go To Profile
 Resource           resource.robot
 
-*** Test Cases ***
-Successful Edit Username
+*** Test Cases *** 
+Edit Valid Email Should Be Successful
+    Edit Profile
+    Input Email in Edit Profile          ${VALID EMAIL} 
+    Submit New Email
+    Edited Successfully (Valid Email)
 
+Edit Valid Password Should Be Successful
+    Edit Profile
+    Input Password in Edit Profile       ${VALID PASSWORD} 
+    Submit New Password
+    Edited Successfully (Valid Password)
 
-Successful Edit Password
-    
+Revert to Original Email Should Be Successful
+    Edit Profile
+    Input Email in Edit Profile          ${ORIGINAL EMAIL} 
+    Submit New Email
+    Edited Successfully (Valid Email)
+
+Revert to Original Password Should Be Successful
+    Edit Profile
+    Input Password in Edit Profile       ${ORIGINAL PASSWORD} 
+    Submit New Password
+    Edited Successfully (Valid Password)
     
