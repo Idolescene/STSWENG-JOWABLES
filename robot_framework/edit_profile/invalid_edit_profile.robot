@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation      A test suite with a single test for a INvalid editing of profile
+Documentation      A test suite with a single test for a Invalid editing of profile
 ...
 ...                This test has a workflow that is created using keywords
 ...                directly from SeleniumLibrary

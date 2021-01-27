@@ -39,12 +39,11 @@ Login Page Should Be Open
 
 Login Successfully
     Go to Login Page
-    Input Username                  ${VALID USER}
-    Input Password                  ${VALID PASSWORD}
+    Input Email in Login                     ${ORIGINAL EMAIL}
+    Input Password in Login                  ${ORIGINAL PASSWORD}
     Click Login Button
-    Location Should Be              ${MAIN URL}
-    User Profile Should Be Accessible
-
+    Location Should Be                       ${MAIN URL}
+    
 User Profile Should Be Accessible
     Page Should Contain Element     class:profile-edit
 
@@ -53,6 +52,14 @@ Go To Profile
     Location Should Be              ${LOGIN URL}
     User Profile Should Be Accessible
 
+Input Email in Login
+    [Arguments]        ${email}
+    Input Text                      id:logemail           ${email}
+
+Input Password in Login
+    [Arguments]        ${password}
+    Input Text                     id:logpass        ${password}
+
 Input Email in Edit Profile
     [Arguments]        ${email}
     Input Text                      id:editemail           ${email}
@@ -60,6 +67,7 @@ Input Email in Edit Profile
 Input Password in Edit Profile
     [Arguments]        ${password}
     Input Text                      id:editpassword        ${password}
+    Input Text                      id:cpassword            ${password}
 
 Click Login Button
     Click Button                    id:logbtn
@@ -72,24 +80,24 @@ Edit Profile
     Click Button                    class:profile-edit
 
 Submit New email
-    Click Button
+    Click Button                    id:email-save-btn
 
 Submit New Password
-    Click Button
+    Click Button                    id:pass-save-btn
 
 
 Edited Successfully (Valid Email)
-    Element Text Should Be          id=success-msg                Success: Email updated successfully!
+    Element Text Should Be          id=success-div                Success: Email updated successfully!
 
 Edit Should Have Failed (Invalid Email)
-    Element Text Should Be          id=error-msg                  Error: Please provide a valid email.
+    Element Text Should Be          id=error-div                  Error: Please provide a valid email.
 
 Edit Should Have Failed (Null Email)
-    Element Text Should Be          id=error-msg                  Error: Email is required. Please provide a valid email.
+    Element Text Should Be          id=error-div                  Error: Email is required. Please provide a valid email.
 
 
 Edited Successfully (Valid Password)
-    Element Text Should Be          id=success-msg                Success: Password updated successfully!
+    Element Text Should Be          id=success-div                Success: Password updated successfully!
 
 Edit Should Have Failed (Invalid or Null Password)
-    Element Text Should Be          id=error-msg                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
+    Element Text Should Be          id=error-div                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
