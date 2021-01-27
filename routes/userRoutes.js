@@ -668,10 +668,49 @@ router.post('/update-admin-email', (req, res) => {
 router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
+    var uid = req.session.user;
     const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
-    //stuff
-    req.flash('success_msg', 'Items ordered successfully!');
-    res.redirect('/shipping');
+    cartModel.getByUser(uid, (err, cartinfo) => {
+      if (!cartinfo){
+        req.flash('error_msg', 'Cart does not exist.');
+        res.redirect('/shipping');
+      } else {
+        var prodarr = [];
+        var today = new Date();
+        var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+        cartinfo.products.forEach((item, i) => {
+          var prod = {
+            id: item.id,
+            qty: item.qty,
+            size: "Medium"
+          };
+          prodarr.push(prod);
+        });
+        var order = {
+          products: prodarr,
+          date: orderdate,
+          status: "Payment Received",
+          user: uid,
+          fullname: fullname,
+          contactnum: contno,
+          housenum: houseno,
+          barangay: brngy,
+          city: city,
+          province: prov,
+          payment: payment
+        }
+        orderModel.create( order, (err, result) => {
+          if (err) {
+            console.log(err); //testing
+            req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
+            res.redirect('/shipping');
+          } else {
+            req.flash('success_msg', 'Items ordered successfully!');
+            res.redirect('/shipping');
+          }
+        });
+      }
+    });
   } else {
     const messages = errors.array().map((item) => item.msg);
     console.log(messages.join(' ')); //testing
