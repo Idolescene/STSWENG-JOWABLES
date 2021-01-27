@@ -93,6 +93,10 @@ Input Password in Edit Profile
     Input Text                      id:editpassword       ${password}
     Input Text                      id:cpassword          ${password}
 
+Input Different Confirm Password in Edit Profile
+    [Arguments]        ${password}
+    Input Text                      id:cpassword          ${password}
+
 Input Full Name in Shipping Details
     [Arguments]        ${fullname}
     Input Text                      id:fullname           ${fullname}
@@ -143,18 +147,55 @@ Edited Successfully (Valid Email)
     Element Text Should Be          id=success-div                Success: Email updated successfully!
 
 Edit Should Have Failed (Invalid Email)
-    Element Text Should Be          id=error-div                  Error: Please provide a valid email.
+    Element Text Should Be          id=error-msg                  Error: Please provide a valid email.
 
 Edit Should Have Failed (Null Email)
-    Element Text Should Be          id=error-div                  Error: Email is required. Please provide a valid email.
+    Element Text Should Be          id=error-msg                  Error: Email is required. Please provide a valid email.
 
 
 Edited Successfully (Valid Password)
     Element Text Should Be          id=success-div                Success: Password updated successfully!
 
 Edit Should Have Failed (Invalid or Null Password)
-    Element Text Should Be          id=error-div                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
+    Element Text Should Be          id=error-msg                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
 
 
 Edited Shipping Details Successfully
     Element Text Should Be          id=success-div                  Success: Shipping details updated successfully!
+
+Edit Shipping Details Should Have Failed (Invalid Full Name)
+
+
+Edit Shipping Details Should Have Failed (Invalid Contact Number)
+
+
+Edit Shipping Details Should Have Failed (Invalid House Number)
+
+
+Edit Shipping Details Should Have Failed (Invalid Barangay)
+
+
+Edit Shipping Details Should Have Failed (Invalid City)
+
+
+Edit Shipping Details Should Have Failed (Invalid Province)
+
+
+Edit Shipping Details Should Have Failed (Null Full Name)
+    Element Text Should Be          id=error-msg                  Error: Full Name is required.
+
+Edit Shipping Details Should Have Failed (Null Contact Number)
+    Element Text Should Be          id=error-msg                  Error: Contact number should be 11 digits in length. Contact number should only be composed of numbers.
+
+Edit Shipping Details Should Have Failed (Null House Number)
+    Element Text Should Be          id=error-msg                 Error: House Number is required.
+
+Edit Shipping Details Should Have Failed (Null Barangay)
+    Element Text Should Be          id=error-msg                 Error: Barangay is required.
+
+Edit Shipping Details Should Have Failed (Null City)
+    Element Text Should Be          id=error-msg                 Error: City is required.
+
+Edit Shipping Details Should Have Failed (Null Province)
+    Element Text Should Be          id=error-msg                 Error: Province is required.
+

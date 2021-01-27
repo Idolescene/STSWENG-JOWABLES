@@ -25,7 +25,7 @@ const userLoginValidation = [
 const updateShippingValidation = [
   body('fullname').trim().not().isEmpty().withMessage("Full Name is required."),
   body('contno').isLength({ min: 11, max: 11 }).withMessage("Contact number should be 11 digits in length.").isInt().withMessage("Contact number should only be composed of numbers."),
-  body('houseno').trim().not().isEmpty().withMessage("House Number is required."),
+  body('houseno').trim().not().isEmpty().withMessage("House Number is required.").isAlphanumeric().withMessage('housenum must be alphanumeric') ,
   body('brngy').trim().not().isEmpty().withMessage("Barangay is required."),
   body('city').trim().not().isEmpty().withMessage("City is required."),
   body('prov').trim().not().isEmpty().withMessage("Province is required."),

@@ -11,25 +11,113 @@ Resource           resource.robot
 *** Test Cases ***
 Edit Invalid Email Should Fail
     Edit Profile
+    Set Selenium Speed                   0.5 
     Input Email in Edit Profile          ${INVALID EMAIL} 
+    Set Selenium Speed                     0
     Submit New Email
     Edit Should Have Failed (Invalid Email)
 
 Edit Invalid Password Should Fail
     Edit Profile
+    Set Selenium Speed                   0.5 
     Input Password in Edit Profile       ${INVALID PASSWORD} 
+    Set Selenium Speed                     0
     Submit New Password
     Edit Should Have Failed (Invalid or Null Password)
 
 Edit Null Email Should Fail
     Edit Profile
+    Set Selenium Speed                   0.5 
     Input Email in Edit Profile          ${NULL EMAIL} 
+    Set Selenium Speed                     0
     Submit New Email
     Edit Should Have Failed (Null Email)
 
 Edit Null Password Should Fail
     Edit Profile
+    Set Selenium Speed                   0.5 
     Input Password in Edit Profile       ${NULL PASSWORD} 
+    Set Selenium Speed                     0
     Submit New Password
     Edit Should Have Failed (Invalid or Null Password)
     
+Edit Valid Password But Not Matched With Confirm Password Should Fail
+    Edit Profile
+    Set Selenium Speed                   0.5 
+    Input Password in Edit Profile       ${VALID PASSWORD} 
+    Set Selenium Speed                     0
+    Input Different Confirm Password in Edit Profile    ${NULL PASSWORD} 
+    Submit New Password
+    Edit Should Have Failed (Invalid or Null Password)
+    
+Edit Shipping Details Should Be Successful (New Full Name)
+    Edit Shipping Details
+    Input Full Name in Shipping Details        ${VALID FULL NAME}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original Full Name)
+    Edit Shipping Details
+    Input Full Name in Shipping Details        ${ORIGINAL FULL NAME}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (New Contact Number)
+    Edit Shipping Details
+    Input Contact Number in Shipping Details        ${VALID CONTACT NUM}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original Contact Number)
+    Edit Shipping Details
+    Input Contact Number in Shipping Details        ${ORIGINAL CONTACT NUM}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (New House Number)
+    Edit Shipping Details
+    Input House Number in Shipping Details        ${VALID HOUSE NUM}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original House Number)
+    Edit Shipping Details
+    Input House Number in Shipping Details        ${ORIGINAL HOUSE NUM}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (New Barangay)
+    Edit Shipping Details
+    Input Barangay in Shipping Details        ${VALID BARANGAY}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original Barangay)
+    Edit Shipping Details
+    Input Barangay in Shipping Details        ${ORIGINAL BARANGAY}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (New City)
+    Edit Shipping Details
+    Input City in Shipping Details        ${VALID CITY}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original City)
+    Edit Shipping Details
+    Input City in Shipping Details        ${ORIGINAL CITY}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (New Province)
+    Edit Shipping Details
+    Input Province in Shipping Details        ${VALID PROVINCE}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully
+
+Edit Shipping Details Should Be Successful (Original Province)
+    Edit Shipping Details
+    Input Province in Shipping Details        ${ORIGINAL PROVINCE}
+    Submit New Shipping Details
+    Edited Shipping Details Successfully

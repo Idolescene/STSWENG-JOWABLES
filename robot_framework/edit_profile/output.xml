@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210127 22:55:33.781" rpa="false">
-<suite id="s1" name="Valid Edit Profile" source="D:\Github\STSWENG-JOWABLES\robot_framework\edit_profile\valid_edit_profile.robot">
+<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210127 23:07:43.158" rpa="false">
+<suite id="s1" name="Invalid Edit Profile" source="D:\Github\STSWENG-JOWABLES\robot_framework\edit_profile\invalid_edit_profile.robot">
 <kw name="Login Successfully" library="resource" type="setup">
 <kw name="Go to Login Page" library="resource">
 <kw name="Open Browser to Home Page" library="resource">
@@ -10,29 +10,29 @@
 <arg>${MAIN URL}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20210127 22:55:35.004" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
-<status status="PASS" starttime="20210127 22:55:35.004" endtime="20210127 22:55:48.704"></status>
+<msg timestamp="20210127 23:07:44.651" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210127 23:07:44.648" endtime="20210127 23:07:53.919"></status>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20210127 22:55:48.705" endtime="20210127 22:55:48.868"></status>
+<status status="PASS" starttime="20210127 23:07:53.922" endtime="20210127 23:07:54.508"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>${DELAY}</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:55:48.869" endtime="20210127 22:55:48.871"></status>
+<status status="PASS" starttime="20210127 23:07:54.513" endtime="20210127 23:07:54.519"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>class:masthead-banner</arg>
 </arguments>
-<msg timestamp="20210127 22:55:48.905" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
-<status status="PASS" starttime="20210127 22:55:48.871" endtime="20210127 22:55:48.906"></status>
+<msg timestamp="20210127 23:07:54.567" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210127 23:07:54.522" endtime="20210127 23:07:54.568"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:35.003" endtime="20210127 22:55:48.907"></status>
+<status status="PASS" starttime="20210127 23:07:44.648" endtime="20210127 23:07:54.569"></status>
 </kw>
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -40,10 +40,10 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210127 22:55:48.909" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:55:48.908" endtime="20210127 22:55:51.527"></status>
+<msg timestamp="20210127 23:07:54.571" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210127 23:07:54.571" endtime="20210127 23:07:57.736"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:48.907" endtime="20210127 22:55:51.527"></status>
+<status status="PASS" starttime="20210127 23:07:54.569" endtime="20210127 23:07:57.738"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -51,12 +51,12 @@
 <arguments>
 <arg>id:logbtn</arg>
 </arguments>
-<msg timestamp="20210127 22:55:51.544" level="INFO">Current page contains element 'id:logbtn'.</msg>
-<status status="PASS" starttime="20210127 22:55:51.528" endtime="20210127 22:55:51.545"></status>
+<msg timestamp="20210127 23:07:57.936" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210127 23:07:57.741" endtime="20210127 23:07:57.937"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:51.527" endtime="20210127 22:55:51.545"></status>
+<status status="PASS" starttime="20210127 23:07:57.739" endtime="20210127 23:07:57.938"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:35.003" endtime="20210127 22:55:51.545"></status>
+<status status="PASS" starttime="20210127 23:07:44.648" endtime="20210127 23:07:57.941"></status>
 </kw>
 <kw name="Input Email in Login" library="resource">
 <arguments>
@@ -68,10 +68,10 @@
 <arg>id:logemail</arg>
 <arg>${email}</arg>
 </arguments>
-<msg timestamp="20210127 22:55:51.546" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:logemail'.</msg>
-<status status="PASS" starttime="20210127 22:55:51.546" endtime="20210127 22:55:51.682"></status>
+<msg timestamp="20210127 23:07:57.953" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210127 23:07:57.949" endtime="20210127 23:07:58.149"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:51.545" endtime="20210127 22:55:51.682"></status>
+<status status="PASS" starttime="20210127 23:07:57.944" endtime="20210127 23:07:58.149"></status>
 </kw>
 <kw name="Input Password in Login" library="resource">
 <arguments>
@@ -83,10 +83,10 @@
 <arg>id:logpass</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210127 22:55:51.683" level="INFO">Typing text '12345678' into text field 'id:logpass'.</msg>
-<status status="PASS" starttime="20210127 22:55:51.682" endtime="20210127 22:55:51.815"></status>
+<msg timestamp="20210127 23:07:58.150" level="INFO">Typing text '12345678' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210127 23:07:58.150" endtime="20210127 23:07:58.255"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:51.682" endtime="20210127 22:55:51.815"></status>
+<status status="PASS" starttime="20210127 23:07:58.150" endtime="20210127 23:07:58.255"></status>
 </kw>
 <kw name="Click Login Button" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -94,22 +94,22 @@
 <arguments>
 <arg>id:logbtn</arg>
 </arguments>
-<msg timestamp="20210127 22:55:51.816" level="INFO">Clicking button 'id:logbtn'.</msg>
-<status status="PASS" starttime="20210127 22:55:51.816" endtime="20210127 22:56:00.118"></status>
+<msg timestamp="20210127 23:07:58.256" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210127 23:07:58.256" endtime="20210127 23:08:08.226"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:51.815" endtime="20210127 22:56:00.118"></status>
+<status status="PASS" starttime="20210127 23:07:58.256" endtime="20210127 23:08:08.227"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${MAIN URL}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:00.124" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
-<status status="PASS" starttime="20210127 22:56:00.118" endtime="20210127 22:56:00.124"></status>
+<msg timestamp="20210127 23:08:08.234" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210127 23:08:08.227" endtime="20210127 23:08:08.235"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:55:35.001" endtime="20210127 22:56:00.124"></status>
+<status status="PASS" starttime="20210127 23:07:44.648" endtime="20210127 23:08:08.235"></status>
 </kw>
-<test id="s1-t1" name="Edit Valid Email Should Be Successful">
+<test id="s1-t1" name="Edit Invalid Email Should Fail">
 <kw name="Go To Profile" library="resource" type="setup">
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -117,18 +117,18 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210127 22:56:00.126" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:00.126" endtime="20210127 22:56:03.829"></status>
+<msg timestamp="20210127 23:08:08.237" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210127 23:08:08.237" endtime="20210127 23:08:12.410"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:00.126" endtime="20210127 22:56:03.829"></status>
+<status status="PASS" starttime="20210127 23:08:08.236" endtime="20210127 23:08:12.411"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${LOGIN URL}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:03.838" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:56:03.829" endtime="20210127 22:56:03.838"></status>
+<msg timestamp="20210127 23:08:12.419" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
+<status status="PASS" starttime="20210127 23:08:12.411" endtime="20210127 23:08:12.419"></status>
 </kw>
 <kw name="User Profile Should Be Accessible" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -136,12 +136,12 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:03.853" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:03.839" endtime="20210127 22:56:03.853"></status>
+<msg timestamp="20210127 23:08:12.432" level="INFO">Current page contains element 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:12.420" endtime="20210127 23:08:12.432"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:03.838" endtime="20210127 22:56:03.854"></status>
+<status status="PASS" starttime="20210127 23:08:12.420" endtime="20210127 23:08:12.432"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:00.126" endtime="20210127 22:56:03.854"></status>
+<status status="PASS" starttime="20210127 23:08:08.236" endtime="20210127 23:08:12.432"></status>
 </kw>
 <kw name="Edit Profile" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -149,21 +149,21 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:03.855" level="INFO">Clicking button 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:03.855" endtime="20210127 22:56:03.938"></status>
+<msg timestamp="20210127 23:08:12.434" level="INFO">Clicking button 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:12.434" endtime="20210127 23:08:12.524"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:03.855" endtime="20210127 22:56:03.938"></status>
+<status status="PASS" starttime="20210127 23:08:12.434" endtime="20210127 23:08:12.524"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.5</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:03.942" endtime="20210127 22:56:03.943"></status>
+<status status="PASS" starttime="20210127 23:08:12.544" endtime="20210127 23:08:12.545"></status>
 </kw>
 <kw name="Input Email in Edit Profile" library="resource">
 <arguments>
-<arg>${VALID EMAIL}</arg>
+<arg>${INVALID EMAIL}</arg>
 </arguments>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -171,17 +171,17 @@
 <arg>id:editemail</arg>
 <arg>${email}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:03.945" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:editemail'.</msg>
-<status status="PASS" starttime="20210127 22:56:03.944" endtime="20210127 22:56:05.623"></status>
+<msg timestamp="20210127 23:08:12.552" level="INFO">Typing text 'email@-example.com' into text field 'id:editemail'.</msg>
+<status status="PASS" starttime="20210127 23:08:12.551" endtime="20210127 23:08:14.209"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:03.943" endtime="20210127 22:56:05.623"></status>
+<status status="PASS" starttime="20210127 23:08:12.547" endtime="20210127 23:08:14.210"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:05.624" endtime="20210127 22:56:05.624"></status>
+<status status="PASS" starttime="20210127 23:08:14.227" endtime="20210127 23:08:14.228"></status>
 </kw>
 <kw name="Submit New email" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -189,26 +189,26 @@
 <arguments>
 <arg>id:email-save-btn</arg>
 </arguments>
-<msg timestamp="20210127 22:56:05.625" level="INFO">Clicking button 'id:email-save-btn'.</msg>
-<status status="PASS" starttime="20210127 22:56:05.625" endtime="20210127 22:56:10.715"></status>
+<msg timestamp="20210127 23:08:14.230" level="INFO">Clicking button 'id:email-save-btn'.</msg>
+<status status="PASS" starttime="20210127 23:08:14.230" endtime="20210127 23:08:20.705"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:05.625" endtime="20210127 22:56:10.715"></status>
+<status status="PASS" starttime="20210127 23:08:14.229" endtime="20210127 23:08:20.706"></status>
 </kw>
-<kw name="Edited Successfully (Valid Email)" library="resource">
+<kw name="Edit Should Have Failed (Invalid Email)" library="resource">
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
 <arguments>
-<arg>id=success-div</arg>
-<arg>Success: Email updated successfully!</arg>
+<arg>id=error-msg</arg>
+<arg>Error: Please provide a valid email.</arg>
 </arguments>
-<msg timestamp="20210127 22:56:10.717" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Email updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:56:10.716" endtime="20210127 22:56:10.753"></status>
+<msg timestamp="20210127 23:08:20.717" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Please provide a valid email.'.</msg>
+<status status="PASS" starttime="20210127 23:08:20.717" endtime="20210127 23:08:20.785"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:10.716" endtime="20210127 22:56:10.753"></status>
+<status status="PASS" starttime="20210127 23:08:20.717" endtime="20210127 23:08:20.785"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:00.125" endtime="20210127 22:56:10.754" critical="yes"></status>
+<status status="PASS" starttime="20210127 23:08:08.235" endtime="20210127 23:08:20.787" critical="yes"></status>
 </test>
-<test id="s1-t2" name="Edit Valid Password Should Be Successful">
+<test id="s1-t2" name="Edit Invalid Password Should Fail">
 <kw name="Go To Profile" library="resource" type="setup">
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -216,18 +216,18 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210127 22:56:10.764" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:10.764" endtime="20210127 22:56:14.433"></status>
+<msg timestamp="20210127 23:08:20.798" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210127 23:08:20.798" endtime="20210127 23:08:24.465"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:10.763" endtime="20210127 22:56:14.433"></status>
+<status status="PASS" starttime="20210127 23:08:20.797" endtime="20210127 23:08:24.465"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${LOGIN URL}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:14.437" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:56:14.433" endtime="20210127 22:56:14.438"></status>
+<msg timestamp="20210127 23:08:24.470" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
+<status status="PASS" starttime="20210127 23:08:24.465" endtime="20210127 23:08:24.470"></status>
 </kw>
 <kw name="User Profile Should Be Accessible" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -235,12 +235,12 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:14.449" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:14.438" endtime="20210127 22:56:14.449"></status>
+<msg timestamp="20210127 23:08:24.484" level="INFO">Current page contains element 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:24.471" endtime="20210127 23:08:24.484"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:14.438" endtime="20210127 22:56:14.450"></status>
+<status status="PASS" starttime="20210127 23:08:24.470" endtime="20210127 23:08:24.484"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:10.763" endtime="20210127 22:56:14.450"></status>
+<status status="PASS" starttime="20210127 23:08:20.797" endtime="20210127 23:08:24.484"></status>
 </kw>
 <kw name="Edit Profile" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -248,21 +248,21 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:14.451" level="INFO">Clicking button 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:14.451" endtime="20210127 22:56:14.524"></status>
+<msg timestamp="20210127 23:08:24.485" level="INFO">Clicking button 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:24.485" endtime="20210127 23:08:24.567"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:14.451" endtime="20210127 22:56:14.524"></status>
+<status status="PASS" starttime="20210127 23:08:24.485" endtime="20210127 23:08:24.567"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.5</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:14.525" endtime="20210127 22:56:14.526"></status>
+<status status="PASS" starttime="20210127 23:08:24.569" endtime="20210127 23:08:24.569"></status>
 </kw>
 <kw name="Input Password in Edit Profile" library="resource">
 <arguments>
-<arg>${VALID PASSWORD}</arg>
+<arg>${INVALID PASSWORD}</arg>
 </arguments>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -270,8 +270,8 @@
 <arg>id:editpassword</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:14.529" level="INFO">Typing text '123456789' into text field 'id:editpassword'.</msg>
-<status status="PASS" starttime="20210127 22:56:14.528" endtime="20210127 22:56:16.160"></status>
+<msg timestamp="20210127 23:08:24.572" level="INFO">Typing text '123' into text field 'id:editpassword'.</msg>
+<status status="PASS" starttime="20210127 23:08:24.572" endtime="20210127 23:08:26.240"></status>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -279,17 +279,17 @@
 <arg>id:cpassword</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:16.161" level="INFO">Typing text '123456789' into text field 'id:cpassword'.</msg>
-<status status="PASS" starttime="20210127 22:56:16.160" endtime="20210127 22:56:17.838"></status>
+<msg timestamp="20210127 23:08:26.241" level="INFO">Typing text '123' into text field 'id:cpassword'.</msg>
+<status status="PASS" starttime="20210127 23:08:26.240" endtime="20210127 23:08:27.884"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:14.526" endtime="20210127 22:56:17.838"></status>
+<status status="PASS" starttime="20210127 23:08:24.570" endtime="20210127 23:08:27.885"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:17.839" endtime="20210127 22:56:17.839"></status>
+<status status="PASS" starttime="20210127 23:08:27.887" endtime="20210127 23:08:27.889"></status>
 </kw>
 <kw name="Submit New Password" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -297,26 +297,26 @@
 <arguments>
 <arg>id:pass-save-btn</arg>
 </arguments>
-<msg timestamp="20210127 22:56:17.840" level="INFO">Clicking button 'id:pass-save-btn'.</msg>
-<status status="PASS" starttime="20210127 22:56:17.840" endtime="20210127 22:56:23.642"></status>
+<msg timestamp="20210127 23:08:27.892" level="INFO">Clicking button 'id:pass-save-btn'.</msg>
+<status status="PASS" starttime="20210127 23:08:27.891" endtime="20210127 23:08:32.982"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:17.840" endtime="20210127 22:56:23.642"></status>
+<status status="PASS" starttime="20210127 23:08:27.890" endtime="20210127 23:08:32.982"></status>
 </kw>
-<kw name="Edited Successfully (Valid Password)" library="resource">
+<kw name="Edit Should Have Failed (Invalid or Null Password)" library="resource">
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
 <arguments>
-<arg>id=success-div</arg>
-<arg>Success: Password updated successfully!</arg>
+<arg>id=error-msg</arg>
+<arg>Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.</arg>
 </arguments>
-<msg timestamp="20210127 22:56:23.643" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Password updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:56:23.643" endtime="20210127 22:56:23.671"></status>
+<msg timestamp="20210127 23:08:32.986" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.'.</msg>
+<status status="PASS" starttime="20210127 23:08:32.986" endtime="20210127 23:08:33.012"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:23.643" endtime="20210127 22:56:23.671"></status>
+<status status="PASS" starttime="20210127 23:08:32.985" endtime="20210127 23:08:33.012"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:10.762" endtime="20210127 22:56:23.672" critical="yes"></status>
+<status status="PASS" starttime="20210127 23:08:20.795" endtime="20210127 23:08:33.013" critical="yes"></status>
 </test>
-<test id="s1-t3" name="Revert to Original Email Should Be Successful">
+<test id="s1-t3" name="Edit Null Email Should Fail">
 <kw name="Go To Profile" library="resource" type="setup">
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -324,18 +324,18 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210127 22:56:23.676" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:23.675" endtime="20210127 22:56:27.418"></status>
+<msg timestamp="20210127 23:08:33.021" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210127 23:08:33.021" endtime="20210127 23:08:36.545"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:23.675" endtime="20210127 22:56:27.419"></status>
+<status status="PASS" starttime="20210127 23:08:33.020" endtime="20210127 23:08:36.545"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${LOGIN URL}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:27.432" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:56:27.419" endtime="20210127 22:56:27.432"></status>
+<msg timestamp="20210127 23:08:36.551" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
+<status status="PASS" starttime="20210127 23:08:36.545" endtime="20210127 23:08:36.551"></status>
 </kw>
 <kw name="User Profile Should Be Accessible" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -343,12 +343,12 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:27.448" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:27.433" endtime="20210127 22:56:27.448"></status>
+<msg timestamp="20210127 23:08:36.562" level="INFO">Current page contains element 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:36.552" endtime="20210127 23:08:36.562"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:27.433" endtime="20210127 22:56:27.448"></status>
+<status status="PASS" starttime="20210127 23:08:36.551" endtime="20210127 23:08:36.562"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:23.675" endtime="20210127 22:56:27.448"></status>
+<status status="PASS" starttime="20210127 23:08:33.020" endtime="20210127 23:08:36.562"></status>
 </kw>
 <kw name="Edit Profile" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -356,21 +356,21 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:27.450" level="INFO">Clicking button 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:27.449" endtime="20210127 22:56:27.531"></status>
+<msg timestamp="20210127 23:08:36.563" level="INFO">Clicking button 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:36.563" endtime="20210127 23:08:36.635"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:27.449" endtime="20210127 22:56:27.532"></status>
+<status status="PASS" starttime="20210127 23:08:36.563" endtime="20210127 23:08:36.635"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.5</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:27.533" endtime="20210127 22:56:27.533"></status>
+<status status="PASS" starttime="20210127 23:08:36.639" endtime="20210127 23:08:36.640"></status>
 </kw>
 <kw name="Input Email in Edit Profile" library="resource">
 <arguments>
-<arg>${ORIGINAL EMAIL}</arg>
+<arg>${NULL EMAIL}</arg>
 </arguments>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -378,17 +378,17 @@
 <arg>id:editemail</arg>
 <arg>${email}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:27.536" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:editemail'.</msg>
-<status status="PASS" starttime="20210127 22:56:27.535" endtime="20210127 22:56:29.181"></status>
+<msg timestamp="20210127 23:08:36.643" level="INFO">Typing text '' into text field 'id:editemail'.</msg>
+<status status="PASS" starttime="20210127 23:08:36.643" endtime="20210127 23:08:38.345"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:27.535" endtime="20210127 22:56:29.181"></status>
+<status status="PASS" starttime="20210127 23:08:36.642" endtime="20210127 23:08:38.345"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:29.183" endtime="20210127 22:56:29.183"></status>
+<status status="PASS" starttime="20210127 23:08:38.346" endtime="20210127 23:08:38.346"></status>
 </kw>
 <kw name="Submit New email" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -396,26 +396,26 @@
 <arguments>
 <arg>id:email-save-btn</arg>
 </arguments>
-<msg timestamp="20210127 22:56:29.184" level="INFO">Clicking button 'id:email-save-btn'.</msg>
-<status status="PASS" starttime="20210127 22:56:29.184" endtime="20210127 22:56:35.073"></status>
+<msg timestamp="20210127 23:08:38.347" level="INFO">Clicking button 'id:email-save-btn'.</msg>
+<status status="PASS" starttime="20210127 23:08:38.347" endtime="20210127 23:08:42.900"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:29.184" endtime="20210127 22:56:35.073"></status>
+<status status="PASS" starttime="20210127 23:08:38.347" endtime="20210127 23:08:42.901"></status>
 </kw>
-<kw name="Edited Successfully (Valid Email)" library="resource">
+<kw name="Edit Should Have Failed (Null Email)" library="resource">
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
 <arguments>
-<arg>id=success-div</arg>
-<arg>Success: Email updated successfully!</arg>
+<arg>id=error-msg</arg>
+<arg>Error: Email is required. Please provide a valid email.</arg>
 </arguments>
-<msg timestamp="20210127 22:56:35.075" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Email updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:56:35.075" endtime="20210127 22:56:35.107"></status>
+<msg timestamp="20210127 23:08:42.902" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Email is required. Please provide a valid email.'.</msg>
+<status status="PASS" starttime="20210127 23:08:42.902" endtime="20210127 23:08:42.931"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:35.074" endtime="20210127 22:56:35.107"></status>
+<status status="PASS" starttime="20210127 23:08:42.901" endtime="20210127 23:08:42.931"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:23.674" endtime="20210127 22:56:35.108" critical="yes"></status>
+<status status="PASS" starttime="20210127 23:08:33.019" endtime="20210127 23:08:42.932" critical="yes"></status>
 </test>
-<test id="s1-t4" name="Revert to Original Password Should Be Successful">
+<test id="s1-t4" name="Edit Null Password Should Fail">
 <kw name="Go To Profile" library="resource" type="setup">
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -423,18 +423,18 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210127 22:56:35.119" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:35.118" endtime="20210127 22:56:38.916"></status>
+<msg timestamp="20210127 23:08:42.939" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210127 23:08:42.939" endtime="20210127 23:08:46.583"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:35.118" endtime="20210127 22:56:38.917"></status>
+<status status="PASS" starttime="20210127 23:08:42.939" endtime="20210127 23:08:46.584"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${LOGIN URL}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:38.993" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:56:38.918" endtime="20210127 22:56:38.993"></status>
+<msg timestamp="20210127 23:08:46.590" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
+<status status="PASS" starttime="20210127 23:08:46.584" endtime="20210127 23:08:46.590"></status>
 </kw>
 <kw name="User Profile Should Be Accessible" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -442,12 +442,12 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:39.109" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:38.997" endtime="20210127 22:56:39.112"></status>
+<msg timestamp="20210127 23:08:46.602" level="INFO">Current page contains element 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:46.591" endtime="20210127 23:08:46.602"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:38.994" endtime="20210127 22:56:39.115"></status>
+<status status="PASS" starttime="20210127 23:08:46.590" endtime="20210127 23:08:46.602"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:35.117" endtime="20210127 22:56:39.117"></status>
+<status status="PASS" starttime="20210127 23:08:42.938" endtime="20210127 23:08:46.602"></status>
 </kw>
 <kw name="Edit Profile" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -455,21 +455,21 @@
 <arguments>
 <arg>class:profile-edit</arg>
 </arguments>
-<msg timestamp="20210127 22:56:39.156" level="INFO">Clicking button 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:39.154" endtime="20210127 22:56:40.079"></status>
+<msg timestamp="20210127 23:08:46.603" level="INFO">Clicking button 'class:profile-edit'.</msg>
+<status status="PASS" starttime="20210127 23:08:46.603" endtime="20210127 23:08:46.684"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:39.149" endtime="20210127 22:56:40.083"></status>
+<status status="PASS" starttime="20210127 23:08:46.603" endtime="20210127 23:08:46.684"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.5</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:40.210" endtime="20210127 22:56:40.213"></status>
+<status status="PASS" starttime="20210127 23:08:46.685" endtime="20210127 23:08:46.686"></status>
 </kw>
 <kw name="Input Password in Edit Profile" library="resource">
 <arguments>
-<arg>${ORIGINAL PASSWORD}</arg>
+<arg>${NULL PASSWORD}</arg>
 </arguments>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -477,8 +477,8 @@
 <arg>id:editpassword</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:40.230" level="INFO">Typing text '12345678' into text field 'id:editpassword'.</msg>
-<status status="PASS" starttime="20210127 22:56:40.227" endtime="20210127 22:56:42.100"></status>
+<msg timestamp="20210127 23:08:46.689" level="INFO">Typing text '' into text field 'id:editpassword'.</msg>
+<status status="PASS" starttime="20210127 23:08:46.689" endtime="20210127 23:08:48.329"></status>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
@@ -486,17 +486,17 @@
 <arg>id:cpassword</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210127 22:56:42.111" level="INFO">Typing text '12345678' into text field 'id:cpassword'.</msg>
-<status status="PASS" starttime="20210127 22:56:42.107" endtime="20210127 22:56:43.994"></status>
+<msg timestamp="20210127 23:08:48.330" level="INFO">Typing text '' into text field 'id:cpassword'.</msg>
+<status status="PASS" starttime="20210127 23:08:48.329" endtime="20210127 23:08:51.162"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:40.217" endtime="20210127 22:56:43.994"></status>
+<status status="PASS" starttime="20210127 23:08:46.687" endtime="20210127 23:08:51.162"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0</arg>
 </arguments>
-<status status="PASS" starttime="20210127 22:56:43.995" endtime="20210127 22:56:43.995"></status>
+<status status="PASS" starttime="20210127 23:08:51.163" endtime="20210127 23:08:51.163"></status>
 </kw>
 <kw name="Submit New Password" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -504,1064 +504,44 @@
 <arguments>
 <arg>id:pass-save-btn</arg>
 </arguments>
-<msg timestamp="20210127 22:56:43.996" level="INFO">Clicking button 'id:pass-save-btn'.</msg>
-<status status="PASS" starttime="20210127 22:56:43.996" endtime="20210127 22:56:48.854"></status>
+<msg timestamp="20210127 23:08:51.164" level="INFO">Clicking button 'id:pass-save-btn'.</msg>
+<status status="PASS" starttime="20210127 23:08:51.164" endtime="20210127 23:08:55.651"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:43.996" endtime="20210127 22:56:48.854"></status>
+<status status="PASS" starttime="20210127 23:08:51.164" endtime="20210127 23:08:55.652"></status>
 </kw>
-<kw name="Edited Successfully (Valid Password)" library="resource">
+<kw name="Edit Should Have Failed (Invalid or Null Password)" library="resource">
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
 <arguments>
-<arg>id=success-div</arg>
-<arg>Success: Password updated successfully!</arg>
+<arg>id=error-msg</arg>
+<arg>Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.</arg>
 </arguments>
-<msg timestamp="20210127 22:56:48.856" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Password updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:56:48.855" endtime="20210127 22:56:48.886"></status>
+<msg timestamp="20210127 23:08:55.653" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.'.</msg>
+<status status="PASS" starttime="20210127 23:08:55.653" endtime="20210127 23:08:55.688"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:48.855" endtime="20210127 22:56:48.886"></status>
+<status status="PASS" starttime="20210127 23:08:55.652" endtime="20210127 23:08:55.690"></status>
 </kw>
-<status status="PASS" starttime="20210127 22:56:35.114" endtime="20210127 22:56:48.887" critical="yes"></status>
-</test>
-<test id="s1-t5" name="Edit Shipping Details Should Be Successful (New Full Name)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:56:48.896" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:48.894" endtime="20210127 22:56:52.603"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:48.894" endtime="20210127 22:56:52.603"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:56:52.611" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:56:52.603" endtime="20210127 22:56:52.611"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:56:52.626" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:56:52.612" endtime="20210127 22:56:52.626"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:52.612" endtime="20210127 22:56:52.626"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:48.893" endtime="20210127 22:56:52.626"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:56:52.628" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:56:52.627" endtime="20210127 22:56:52.696"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:52.627" endtime="20210127 22:56:52.696"></status>
-</kw>
-<kw name="Input Full Name in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID FULL NAME}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:fullname</arg>
-<arg>${fullname}</arg>
-</arguments>
-<msg timestamp="20210127 22:56:52.699" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname'.</msg>
-<status status="PASS" starttime="20210127 22:56:52.698" endtime="20210127 22:56:52.832"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:52.697" endtime="20210127 22:56:52.834"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:56:52.837" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:56:52.836" endtime="20210127 22:56:57.600"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:52.836" endtime="20210127 22:56:57.601"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:56:57.602" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:56:57.602" endtime="20210127 22:56:57.630"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:57.601" endtime="20210127 22:56:57.630"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:48.892" endtime="20210127 22:56:57.631" critical="yes"></status>
-</test>
-<test id="s1-t6" name="Edit Shipping Details Should Be Successful (Original Full Name)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:56:57.634" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:56:57.634" endtime="20210127 22:57:01.304"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:57.634" endtime="20210127 22:57:01.305"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:01.315" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:01.305" endtime="20210127 22:57:01.315"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:01.327" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:01.316" endtime="20210127 22:57:01.328"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:01.316" endtime="20210127 22:57:01.328"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:57.633" endtime="20210127 22:57:01.328"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:01.332" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:01.332" endtime="20210127 22:57:01.409"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:01.331" endtime="20210127 22:57:01.411"></status>
-</kw>
-<kw name="Input Full Name in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL FULL NAME}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:fullname</arg>
-<arg>${fullname}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:01.416" level="INFO">Typing text 'Sophia See' into text field 'id:fullname'.</msg>
-<status status="PASS" starttime="20210127 22:57:01.416" endtime="20210127 22:57:01.564"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:01.414" endtime="20210127 22:57:01.565"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:01.566" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:01.566" endtime="20210127 22:57:06.359"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:01.565" endtime="20210127 22:57:06.359"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:06.361" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:06.360" endtime="20210127 22:57:06.391"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:06.360" endtime="20210127 22:57:06.391"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:56:57.632" endtime="20210127 22:57:06.392" critical="yes"></status>
-</test>
-<test id="s1-t7" name="Edit Shipping Details Should Be Successful (New Contact Number)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:06.397" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:06.397" endtime="20210127 22:57:10.149"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:06.396" endtime="20210127 22:57:10.152"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:10.189" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:10.154" endtime="20210127 22:57:10.189"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:10.246" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:10.195" endtime="20210127 22:57:10.247"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:10.190" endtime="20210127 22:57:10.249"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:06.396" endtime="20210127 22:57:10.252"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:10.264" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:10.261" endtime="20210127 22:57:10.394"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:10.257" endtime="20210127 22:57:10.395"></status>
-</kw>
-<kw name="Input Contact Number in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID CONTACT NUM}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:contno</arg>
-<arg>${contactnum}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:10.396" level="INFO">Typing text '09123456780' into text field 'id:contno'.</msg>
-<status status="PASS" starttime="20210127 22:57:10.396" endtime="20210127 22:57:10.526"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:10.396" endtime="20210127 22:57:10.526"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:10.527" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:10.527" endtime="20210127 22:57:15.203"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:10.527" endtime="20210127 22:57:15.204"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:15.207" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:15.206" endtime="20210127 22:57:15.233"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:15.205" endtime="20210127 22:57:15.233"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:06.395" endtime="20210127 22:57:15.234" critical="yes"></status>
-</test>
-<test id="s1-t8" name="Edit Shipping Details Should Be Successful (Original Contact Number)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:15.240" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:15.239" endtime="20210127 22:57:18.774"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:15.238" endtime="20210127 22:57:18.774"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:18.783" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:18.774" endtime="20210127 22:57:18.783"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:18.791" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:18.783" endtime="20210127 22:57:18.791"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:18.783" endtime="20210127 22:57:18.791"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:15.238" endtime="20210127 22:57:18.792"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:18.796" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:18.796" endtime="20210127 22:57:18.846"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:18.795" endtime="20210127 22:57:18.846"></status>
-</kw>
-<kw name="Input Contact Number in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL CONTACT NUM}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:contno</arg>
-<arg>${contactnum}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:18.848" level="INFO">Typing text '09123456789' into text field 'id:contno'.</msg>
-<status status="PASS" starttime="20210127 22:57:18.848" endtime="20210127 22:57:18.957"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:18.847" endtime="20210127 22:57:18.958"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:18.962" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:18.961" endtime="20210127 22:57:23.812"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:18.961" endtime="20210127 22:57:23.813"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:23.815" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:23.815" endtime="20210127 22:57:23.843"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:23.815" endtime="20210127 22:57:23.843"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:15.236" endtime="20210127 22:57:23.844" critical="yes"></status>
-</test>
-<test id="s1-t9" name="Edit Shipping Details Should Be Successful (New House Number)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:23.853" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:23.853" endtime="20210127 22:57:27.476"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:23.853" endtime="20210127 22:57:27.476"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:27.485" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:27.477" endtime="20210127 22:57:27.485"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:27.494" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:27.486" endtime="20210127 22:57:27.495"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:27.486" endtime="20210127 22:57:27.495"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:23.853" endtime="20210127 22:57:27.495"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:27.497" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:27.496" endtime="20210127 22:57:27.561"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:27.496" endtime="20210127 22:57:27.561"></status>
-</kw>
-<kw name="Input House Number in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID HOUSE NUM}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:houseno</arg>
-<arg>${housenum}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:27.565" level="INFO">Typing text 'Unit 4A, Building C, Lolo Street' into text field 'id:houseno'.</msg>
-<status status="PASS" starttime="20210127 22:57:27.564" endtime="20210127 22:57:27.738"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:27.562" endtime="20210127 22:57:27.739"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:27.740" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:27.740" endtime="20210127 22:57:32.399"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:27.739" endtime="20210127 22:57:32.400"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:32.401" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:32.401" endtime="20210127 22:57:32.430"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:32.401" endtime="20210127 22:57:32.430"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:23.852" endtime="20210127 22:57:32.431" critical="yes"></status>
-</test>
-<test id="s1-t10" name="Edit Shipping Details Should Be Successful (Original House Number)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:32.436" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:32.435" endtime="20210127 22:57:36.070"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:32.435" endtime="20210127 22:57:36.070"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:36.073" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:36.070" endtime="20210127 22:57:36.074"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:36.083" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:36.075" endtime="20210127 22:57:36.083"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:36.074" endtime="20210127 22:57:36.083"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:32.435" endtime="20210127 22:57:36.083"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:36.085" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:36.084" endtime="20210127 22:57:36.134"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:36.084" endtime="20210127 22:57:36.135"></status>
-</kw>
-<kw name="Input House Number in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL HOUSE NUM}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:houseno</arg>
-<arg>${housenum}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:36.136" level="INFO">Typing text 'House #9, Building A, Streeters' into text field 'id:houseno'.</msg>
-<status status="PASS" starttime="20210127 22:57:36.136" endtime="20210127 22:57:36.273"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:36.135" endtime="20210127 22:57:36.273"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:36.276" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:36.275" endtime="20210127 22:57:41.650"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:36.274" endtime="20210127 22:57:41.651"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:41.652" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:41.652" endtime="20210127 22:57:41.676"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:41.651" endtime="20210127 22:57:41.676"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:32.434" endtime="20210127 22:57:41.677" critical="yes"></status>
-</test>
-<test id="s1-t11" name="Edit Shipping Details Should Be Successful (New Barangay)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:41.683" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:41.683" endtime="20210127 22:57:45.349"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:41.681" endtime="20210127 22:57:45.350"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:45.360" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:45.350" endtime="20210127 22:57:45.360"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:45.367" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:45.361" endtime="20210127 22:57:45.368"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:45.361" endtime="20210127 22:57:45.368"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:41.680" endtime="20210127 22:57:45.368"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:45.374" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:45.373" endtime="20210127 22:57:45.426"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:45.372" endtime="20210127 22:57:45.426"></status>
-</kw>
-<kw name="Input Barangay in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID BARANGAY}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:brngy</arg>
-<arg>${barangay}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:45.428" level="INFO">Typing text 'Barangay 112' into text field 'id:brngy'.</msg>
-<status status="PASS" starttime="20210127 22:57:45.428" endtime="20210127 22:57:45.567"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:45.427" endtime="20210127 22:57:45.567"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:45.575" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:45.573" endtime="20210127 22:57:51.415"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:45.569" endtime="20210127 22:57:51.415"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:57:51.416" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:57:51.416" endtime="20210127 22:57:51.448"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:51.416" endtime="20210127 22:57:51.448"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:41.680" endtime="20210127 22:57:51.449" critical="yes"></status>
-</test>
-<test id="s1-t12" name="Edit Shipping Details Should Be Successful (Original Barangay)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:57:51.457" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:57:51.456" endtime="20210127 22:57:55.675"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:51.455" endtime="20210127 22:57:55.676"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:55.690" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:57:55.676" endtime="20210127 22:57:55.690"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:55.721" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:57:55.691" endtime="20210127 22:57:55.721"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:55.690" endtime="20210127 22:57:55.721"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:51.455" endtime="20210127 22:57:55.721"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:57:55.723" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:57:55.723" endtime="20210127 22:57:55.809"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:55.722" endtime="20210127 22:57:55.810"></status>
-</kw>
-<kw name="Input Barangay in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL BARANGAY}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:brngy</arg>
-<arg>${barangay}</arg>
-</arguments>
-<msg timestamp="20210127 22:57:55.818" level="INFO">Typing text 'Barangay A' into text field 'id:brngy'.</msg>
-<status status="PASS" starttime="20210127 22:57:55.816" endtime="20210127 22:57:55.976"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:55.812" endtime="20210127 22:57:55.977"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:57:55.978" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:57:55.978" endtime="20210127 22:58:00.750"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:55.977" endtime="20210127 22:58:00.752"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:58:00.755" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:58:00.755" endtime="20210127 22:58:00.780"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:00.754" endtime="20210127 22:58:00.780"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:57:51.454" endtime="20210127 22:58:00.781" critical="yes"></status>
-</test>
-<test id="s1-t13" name="Edit Shipping Details Should Be Successful (New City)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:58:00.792" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:58:00.792" endtime="20210127 22:58:05.118"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:00.791" endtime="20210127 22:58:05.119"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:05.148" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:58:05.119" endtime="20210127 22:58:05.149"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:05.235" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:58:05.152" endtime="20210127 22:58:05.236"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:05.150" endtime="20210127 22:58:05.236"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:00.791" endtime="20210127 22:58:05.237"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:58:05.255" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:58:05.253" endtime="20210127 22:58:05.719"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:05.248" endtime="20210127 22:58:05.720"></status>
-</kw>
-<kw name="Input City in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID CITY}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:city</arg>
-<arg>${city}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:05.728" level="INFO">Typing text 'Quezon City' into text field 'id:city'.</msg>
-<status status="PASS" starttime="20210127 22:58:05.725" endtime="20210127 22:58:05.870"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:05.722" endtime="20210127 22:58:05.870"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:05.875" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:58:05.874" endtime="20210127 22:58:10.922"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:05.871" endtime="20210127 22:58:10.922"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:58:10.924" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:58:10.924" endtime="20210127 22:58:10.974"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:10.923" endtime="20210127 22:58:10.974"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:00.790" endtime="20210127 22:58:10.975" critical="yes"></status>
-</test>
-<test id="s1-t14" name="Edit Shipping Details Should Be Successful (Original City)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:58:10.987" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:58:10.987" endtime="20210127 22:58:14.622"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:10.986" endtime="20210127 22:58:14.623"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:14.628" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:58:14.623" endtime="20210127 22:58:14.628"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:14.638" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:58:14.629" endtime="20210127 22:58:14.638"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:14.628" endtime="20210127 22:58:14.638"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:10.986" endtime="20210127 22:58:14.638"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:58:14.640" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:58:14.639" endtime="20210127 22:58:14.693"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:14.639" endtime="20210127 22:58:14.693"></status>
-</kw>
-<kw name="Input City in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL CITY}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:city</arg>
-<arg>${city}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:14.694" level="INFO">Typing text 'Manila' into text field 'id:city'.</msg>
-<status status="PASS" starttime="20210127 22:58:14.694" endtime="20210127 22:58:14.815"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:14.693" endtime="20210127 22:58:14.815"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:14.819" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:58:14.819" endtime="20210127 22:58:19.627"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:14.818" endtime="20210127 22:58:19.627"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:58:19.630" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:58:19.630" endtime="20210127 22:58:19.661"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:19.629" endtime="20210127 22:58:19.661"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:10.985" endtime="20210127 22:58:19.662" critical="yes"></status>
-</test>
-<test id="s1-t15" name="Edit Shipping Details Should Be Successful (New Province)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:58:19.666" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:58:19.666" endtime="20210127 22:58:25.195"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:19.665" endtime="20210127 22:58:25.195"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:25.202" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:58:25.195" endtime="20210127 22:58:25.202"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:25.216" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:58:25.203" endtime="20210127 22:58:25.216"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:25.203" endtime="20210127 22:58:25.217"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:19.665" endtime="20210127 22:58:25.217"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:58:25.219" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:58:25.219" endtime="20210127 22:58:25.271"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:25.218" endtime="20210127 22:58:25.271"></status>
-</kw>
-<kw name="Input Province in Shipping Details" library="resource">
-<arguments>
-<arg>${VALID PROVINCE}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:prov</arg>
-<arg>${province}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:25.273" level="INFO">Typing text 'Tagaytay' into text field 'id:prov'.</msg>
-<status status="PASS" starttime="20210127 22:58:25.273" endtime="20210127 22:58:25.384"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:25.272" endtime="20210127 22:58:25.384"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:25.386" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:58:25.386" endtime="20210127 22:58:30.439"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:25.385" endtime="20210127 22:58:30.439"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:58:30.441" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:58:30.440" endtime="20210127 22:58:30.475"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:30.440" endtime="20210127 22:58:30.475"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:19.665" endtime="20210127 22:58:30.476" critical="yes"></status>
-</test>
-<test id="s1-t16" name="Edit Shipping Details Should Be Successful (Original Province)">
-<kw name="Go To Profile" library="resource" type="setup">
-<kw name="Click Profile Icon" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:proficon</arg>
-</arguments>
-<msg timestamp="20210127 22:58:30.488" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210127 22:58:30.488" endtime="20210127 22:58:34.959"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:30.487" endtime="20210127 22:58:34.959"></status>
-</kw>
-<kw name="Location Should Be" library="SeleniumLibrary">
-<doc>Verifies that the current URL is exactly ``url``.</doc>
-<arguments>
-<arg>${LOGIN URL}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:34.965" level="INFO">Current location is 'https://salawalco.herokuapp.com/profile'.</msg>
-<status status="PASS" starttime="20210127 22:58:34.959" endtime="20210127 22:58:34.965"></status>
-</kw>
-<kw name="User Profile Should Be Accessible" library="resource">
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>class:profile-edit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:34.976" level="INFO">Current page contains element 'class:profile-edit'.</msg>
-<status status="PASS" starttime="20210127 22:58:34.965" endtime="20210127 22:58:34.976"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:34.965" endtime="20210127 22:58:34.976"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:30.486" endtime="20210127 22:58:34.976"></status>
-</kw>
-<kw name="Edit Shipping Details" library="resource">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipbutton</arg>
-</arguments>
-<msg timestamp="20210127 22:58:34.978" level="INFO">Clicking element 'id:shipbutton'.</msg>
-<status status="PASS" starttime="20210127 22:58:34.978" endtime="20210127 22:58:35.048"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:34.977" endtime="20210127 22:58:35.049"></status>
-</kw>
-<kw name="Input Province in Shipping Details" library="resource">
-<arguments>
-<arg>${ORIGINAL PROVINCE}</arg>
-</arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<arguments>
-<arg>id:prov</arg>
-<arg>${province}</arg>
-</arguments>
-<msg timestamp="20210127 22:58:35.052" level="INFO">Typing text 'Metro Manila' into text field 'id:prov'.</msg>
-<status status="PASS" starttime="20210127 22:58:35.052" endtime="20210127 22:58:35.182"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:35.051" endtime="20210127 22:58:35.183"></status>
-</kw>
-<kw name="Submit New Shipping Details" library="resource">
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
-<arguments>
-<arg>id:shipsubmit</arg>
-</arguments>
-<msg timestamp="20210127 22:58:35.185" level="INFO">Clicking button 'id:shipsubmit'.</msg>
-<status status="PASS" starttime="20210127 22:58:35.185" endtime="20210127 22:58:39.955"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:35.184" endtime="20210127 22:58:39.955"></status>
-</kw>
-<kw name="Edited Shipping Details Successfully" library="resource">
-<kw name="Element Text Should Be" library="SeleniumLibrary">
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<arguments>
-<arg>id=success-div</arg>
-<arg>Success: Shipping details updated successfully!</arg>
-</arguments>
-<msg timestamp="20210127 22:58:39.958" level="INFO">Verifying element 'id=success-div' contains exact text 'Success: Shipping details updated successfully!'.</msg>
-<status status="PASS" starttime="20210127 22:58:39.958" endtime="20210127 22:58:39.983"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:39.957" endtime="20210127 22:58:39.983"></status>
-</kw>
-<status status="PASS" starttime="20210127 22:58:30.485" endtime="20210127 22:58:39.984" critical="yes"></status>
+<status status="PASS" starttime="20210127 23:08:42.937" endtime="20210127 23:08:55.692" critical="yes"></status>
 </test>
 <kw name="Close Browser" library="SeleniumLibrary" type="teardown">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210127 22:58:39.987" endtime="20210127 22:58:42.226"></status>
+<status status="PASS" starttime="20210127 23:08:55.699" endtime="20210127 23:08:57.998"></status>
 </kw>
-<doc>A test suite with a single test for a valid editing of profile
+<doc>A test suite with a single test for a Invalid editing of profile
 
 This test has a workflow that is created using keywords
 directly from SeleniumLibrary</doc>
-<status status="PASS" starttime="20210127 22:55:33.782" endtime="20210127 22:58:42.226"></status>
+<status status="PASS" starttime="20210127 23:07:43.165" endtime="20210127 23:08:57.998"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="16" fail="0">Critical Tests</stat>
-<stat pass="16" fail="0">All Tests</stat>
+<stat pass="4" fail="0">Critical Tests</stat>
+<stat pass="4" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="16" fail="0" id="s1" name="Valid Edit Profile">Valid Edit Profile</stat>
+<stat pass="4" fail="0" id="s1" name="Invalid Edit Profile">Invalid Edit Profile</stat>
 </suite>
 </statistics>
 <errors>
