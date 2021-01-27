@@ -2,7 +2,7 @@
 <div class = 'container-fluid'>
     <div class="row">
         <div class="col">
-            <h4>User: {{name}}</h4>
+            <h4>Full Name: {{full}}</h4>
         </div>
         <div class="col text-right profile-logout">
           <button data-toggle="modal" data-target="#editmodal" type="button" class="btn logout-btn rounded-pill profile-edit">
@@ -14,10 +14,13 @@
         </div>
     </div>
     <div class="row profile-header">
+        <h4>Username: {{name}}</h4>
+    </div>
+    <div class="row profile-header">
         <h4>Date Joined: {{date}}</h4>
     </div>
 <br><br>
-{{> messages}}
+<div id="messages">{{> messages}}</div>
 <br><br>
 <div class = 'profile-ship-form container table-responsive profile-hidden'>
   <table class = 'table' id='table-detail'>
@@ -34,39 +37,39 @@
         <div class="row text-center">
           <div class="col">
             <h5>Full Name</h5>
-            <input type="text" class="form-control rounded-pill" value="{{full}}" name="fullname">
+            <input type="text" class="form-control rounded-pill" value="{{full}}" name="fullname" id="fullname">
           </div>
           <div class="col">
             <h5>Contact No.</h5>
-            <input type="text" class="form-control rounded-pill" value="{{contno}}" name="contno">
+            <input type="text" class="form-control rounded-pill" value="{{contno}}" name="contno" id="contno">
           </div>
         </div>
         <br>
         <div class="row text-center" id="shiphonu">
           <div class="col">
             <h5>House Number, Building, Street</h5>
-            <input type="text" class="form-control rounded-pill"  value="{{hno}}" name="houseno">
+            <input type="text" class="form-control rounded-pill"  value="{{hno}}" name="houseno" id="houseno">
           </div>
         </div>
         <br>
         <div class="row text-center" id="shipbar">
           <div class="col">
             <h5>Barangay</h5>
-            <input type="text" class="form-control rounded-pill"  value="{{barangay}}" name="brngy">
+            <input type="text" class="form-control rounded-pill"  value="{{barangay}}" name="brngy" id="brngy">
           </div>
         </div>
         <br>
         <div class="row text-center" id="shipcity">
           <div class="col">
             <h5>City</h5>
-            <input type="text" class="form-control rounded-pill"  value="{{city}}" name="city">
+            <input type="text" class="form-control rounded-pill"  value="{{city}}" name="city" id="city">
           </div>
         </div>
         <br>
         <div class="row text-center" id="shipprov">
           <div class="col">
             <h5>Province</h5>
-            <input type="text" class="form-control rounded-pill" value="{{province}}" name="prov">
+            <input type="text" class="form-control rounded-pill" value="{{province}}" name="prov" id="prov">
           </div>
         </div>
         <br>
@@ -120,19 +123,19 @@
       <div class="modal-body">
         <form action="/update-user-email" method="POST">
           <h5>Email</h5>
-          <input type="text" class="form-control rounded-pill"  value="{{emad}}" name="editemail">
+          <input type="text" class="form-control rounded-pill"  value="{{emad}}" name="editemail" id="editemail">
           <br>
-          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
+          <button type="submit" class="btn logout-btn rounded-pill" id="email-save-btn">Save</button>
         </form>
         <hr>
         <form action="/update-user-password" method="POST">
           <h5>Password</h5>
-          <input type="password" class="form-control rounded-pill" name="editpassword">
+          <input type="password" class="form-control rounded-pill" name="editpassword" id="editpassword">
           <br>
           <h5>Confirm Password</h5>
-          <input type="password" class="form-control rounded-pill" name="cpassword">
+          <input type="password" class="form-control rounded-pill" name="cpassword" id="cpassword">
           <br>
-          <button type="submit" class="btn logout-btn rounded-pill">Save</button>
+          <button type="submit" class="btn logout-btn rounded-pill" id="pass-save-btn">Save</button>
         </form>
       </div>
     </div>

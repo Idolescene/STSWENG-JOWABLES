@@ -166,6 +166,7 @@ router.get('/order-information-:param', (req, res) => {
         if (result) {
           orderModel.getOne({_id: orderid}, (err, order) => {
             var prodlist = [];
+            order.products.sort();
             order.products.forEach((prod) =>{
               prodlist.push(prod.id);
             });
@@ -173,18 +174,25 @@ router.get('/order-information-:param', (req, res) => {
               var totalPrice = 0;
               var prodArray = [];
               var ordermain = order;
-              products.forEach((item, i) => {
-                var product = {
-                  name: item.name,
-                  slug: item.slug,
-                  price: item.price,
-                  description: item.description,
-                  category: item.category,
-                  status: item.status,
-                  img: item.img,
-                  qty: order.products[i].qty,
-                  size: order.products[i].size
-                };
+              products.sort();
+              order.products.forEach((item, i) => {
+                var product;
+
+                products.forEach((prod, j) => {
+                  if (prod.id == item.id){
+                      product = {
+                      name: prod.name,
+                      slug: prod.slug,
+                      price: prod.price,
+                      description: prod.description,
+                      category: prod.category,
+                      status: prod.status,
+                      img: prod.img,
+                      qty: item.qty,
+                      size: item.size
+                    };
+                  }
+                });
 
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
@@ -211,6 +219,7 @@ router.get('/order-information-:param', (req, res) => {
         else {
           orderModel.getOne({_id: orderid}, (err, order) => {
             var prodlist = [];
+            order.products.sort();
             order.products.forEach((prod) =>{
               prodlist.push(prod.id);
             });
@@ -218,18 +227,25 @@ router.get('/order-information-:param', (req, res) => {
               var totalPrice = 0;
               var prodArray = [];
               var ordermain = order;
-              products.forEach((item, i) => {
-                var product = {
-                  name: item.name,
-                  slug: item.slug,
-                  price: item.price,
-                  description: item.description,
-                  category: item.category,
-                  status: item.status,
-                  img: item.img,
-                  qty: order.products[i].qty,
-                  size: order.products[i].size
-                };
+              products.sort();
+              order.products.forEach((item, i) => {
+                var product;
+
+                products.forEach((prod, j) => {
+                  if (prod.id == item.id){
+                      product = {
+                      name: prod.name,
+                      slug: prod.slug,
+                      price: prod.price,
+                      description: prod.description,
+                      category: prod.category,
+                      status: prod.status,
+                      img: prod.img,
+                      qty: item.qty,
+                      size: item.size
+                    };
+                  }
+                });
 
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
@@ -652,8 +668,9 @@ router.post('/update-admin-email', (req, res) => {
 router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    const {fullname, contno, houseno, brngy, city, prov} = req.body;
+    const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
     //stuff
+    req.flash('success_msg', 'Items ordered successfully!');
     res.redirect('/shipping');
   } else {
     const messages = errors.array().map((item) => item.msg);
