@@ -29,6 +29,7 @@ router.post('/catalogue',productController.refreshProducts);
   Product details page for both guest and logged in users
 */
 router.get('/product_details/:slug', productController.getAProduct);
+router.post('/product_details/:slug', productController.getAProduct);
 
 /*
   Login and Registration Page

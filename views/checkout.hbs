@@ -16,13 +16,13 @@
     </thead>
     <tbody>
       {{#each cartProducts}}
-        {{#if this.stock.status}}
+        {{#if this.status}}
         <tr class="checkout-card">
           <th class="checkout-img-name">
             <img src="{{this.img}}" width="150px">
             <p>{{this.name}}</p>
           </th>
-          <th>Medium</th>
+          <th>{{this.size}}</th>
           <th>₱ {{this.subPrice}}</th>
           <th>{{this.qty}}</th>
           <th>
@@ -37,7 +37,7 @@
             <img src="{{this.img}}" width="150px">
             <p>{{this.name}}</p>
           </th>
-          <th>Medium</th>
+          <th>{{this.size}}</th>
           <th>₱ {{this.subPrice}}</th>
           <th>Out of Stock</th>
           <th>

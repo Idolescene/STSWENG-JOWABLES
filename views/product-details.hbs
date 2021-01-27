@@ -66,5 +66,13 @@
 
 $(function() {
   $("#small").prop("checked", true)
+  $(".size").on("change",changeRadio)
 });
+
+function changeRadio() { 
+  $.post('/product_details/:slug', {
+    size: $('input[name="size"]:checked').val()
+  }
+}
+
 </script>
