@@ -1,0 +1,56 @@
+<div class="container">
+  <h4>Order Information</h4><hr>
+  <div class = "profile-ship-form">
+      <table class = 'table'>
+          <tr>
+              <th>ID</th>
+              <td>{{order.id}}</td>
+          </tr>
+          <tr>
+              <th>Date Ordered</th>
+              <td>{{order.date}}</td>
+          </tr>
+          <tr>
+              <th>Status</th>
+              <td>{{order.status}}</td>
+          </tr>
+          <tr>
+              <th>Full Name</th>
+              <td>{{order.fullname}}</td>
+          </tr>
+          <tr>
+              <th>Contact Number</th>
+              <td>{{order.contactnum}}</td>
+          </tr>
+          <tr>
+              <th>Address</th>
+              <td>{{order.address}}</td>
+          </tr>
+          <tr>
+              <th>Payment Method</th>
+              <td>{{order.payment}}</td>
+          </tr>
+      </table>
+  </div>
+  <br><br>
+  <h4>Products Ordered</h4><hr>
+  <table class = 'table'>
+    {{#each products}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.size}}</td>
+        <td>{{this.qty}}</td>
+        <td>{{this.price}}</td>
+      </tr>
+    {{/each}}
+      <tr>
+        <th></th>
+        <th>{{avesize}}</th>
+        <th>{{order.totalcount}} pcs</th>
+        <th>₱ {{totalPrice}}</th>
+      </tr>
+  </table>
+  <br>
+  <button type="button" class="btn shipping-checkout-btn rounded-pill" id="orderinfoback" onclick="location.href='/profile'">Back</button>
+  <br><br><br>
+</div>

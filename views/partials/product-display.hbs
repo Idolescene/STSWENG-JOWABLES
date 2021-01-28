@@ -1,0 +1,29 @@
+<div class="row" id="product-card-row">
+  {{#if products}}
+  {{#each products}}
+  <div class="apparel-card-div col-lg-3 col-sm-6">
+    <div class="apparel-card">
+      <img src=".{{img}}" height="200px">
+      <p class="apparel-title">{{name}}</p>
+      <p>{{price}}</p>
+      <div class ='row'>
+        <div class = 'col-sm-6 text-center'>
+          <button class ='btn' type= 'button' data-toggle="modal" data-target="#editModal">
+            <a href="/edit-product/{{slug}}">
+              <i class="fa fa-edit fa-2x fa-search" style="color: #0a0a0ad4 !important;"></i>
+            </a>
+          </button>
+        </div>
+        <div class = 'col-sm-6 text-center'>
+          <button class ='btn' type= 'button' data-toggle="modal" data-target="#removeModal">
+            <a href="/delete-product/{{_id}}">
+              <i class="fa fa-remove fa-2x fa-search" style="color: #0a0a0ad4 !important;"></i>
+            </a>
+          </button>
+        </div>
+      </div>
+      </div>
+  </div>
+  {{/each}}
+  {{/if}}
+</div>
