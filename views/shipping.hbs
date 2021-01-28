@@ -2,7 +2,7 @@
 <div class="container shipping-section">
   <h5>{{title}}</h5>
   <hr>
-  {{> messages}}
+  <div id="messages">{{> messages}}</div>
   <form action="/shipping-checkout" method="POST">
     <div class="row text-center">
       <div class="col">
@@ -72,44 +72,41 @@
     <br>
     <br>
     <div class="text-center">
-      <button type="submit "class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping" > 
-        Checkout
+      <button type="button" class="btn shipping-checkout-btn rounded-pill" data-toggle="modal" data-target="#success-shipping" id="ship-btn">
+        View Cart
       </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="success-shipping" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <img src="./img/check.png" width="200px">
+            <br><br>
+            <div class="row">
+              <div class="col text-right">
+                <p>Order Number</p>
+              </div>
+              <div class="col text-left">
+                <p>0X1249481MAM</p>
+              </div>
+            </div>
+            <p>Summary of Order</p>
+            <hr>
+            <div class = 'shipping-display'>
+              {{>shipping-products}}
+            </div>
+          </div>
+          <div class="justify-content-center">
+            <button type="submit" class="btn modal-btn rounded-pill" id="checkout-btn">
+              Checkout
+            </button>
+          </div>
+          <br>
+        </div>
+      </div>
     </div>
   </form>
   <br>
   <br>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="success-shipping" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content text-center">
-      <div class="modal-body">
-        <img src="./img/check.png" width="200px">
-        <br><br>
-        <div class="row">
-          <div class="col text-right">
-            <p>Order Number</p>
-          </div>
-          <div class="col text-left">
-            <p>0X1249481MAM</p>
-          </div>
-        </div>
-        <p>Summary of Order</p>
-        <hr>
-        <div class = 'shipping-display'>
-          {{>shipping-products}}
-        </div>
-      </div>
-      <div class="justify-content-center">
-        <!--<a href="/catalogue" type = 'button' class = 'btn modal-btn rounded-pill' data-dismiss="modal">
-        </a>-->
-        <button type="button" class="btn modal-btn rounded-pill" data-dismiss="modal">
-          Continue Shopping
-        </button>
-      </div>
-      <br>
-    </div>
-  </div>
 </div>

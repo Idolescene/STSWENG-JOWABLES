@@ -1,28 +1,45 @@
-* {
+*{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html{
-    max-width: 100%;
-    overflow-x: auto;
+html {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: #FFA600 !important;
-  height: auto;
-  width: auto;
-  padding: 0;
-  max-width: 100%;
   min-width: 1800px;
   margin: 0 auto;
+}
+
+.remove-product:hover {
+  text-decoration: none;
+}
+
+#profile-admin {
+  padding-top: 40px;
+  height: calc(100vh - 335px);
+}
+
+.categorybtn {
+  background-color: transparent;
+  border: none;
 }
 
 /* Navbar */
 .navbar {
   background-color: #FFA600;
   height: 100px;
-  width: 100vw;
+  width: 100%;
   box-shadow: 0 0 8px 0 #0a0a0a90;
+  overflow: visible;
+}
+
+.navbar-collapse {
+  background-color: #FFA600 !important;
+  padding-left: 20px !important;
 }
 
 .navbar-search {
@@ -54,11 +71,14 @@ body {
   background-color: transparent !important;
 }
 
+.form-control.search-bar:focus {
+  box-shadow: none;
+}
+
 /* Footer */
 .footer-section {
   background-color: #0A0A0A;
   height: 200px;
-  width: 100%;
 }
 
 .footer-section img {
@@ -69,11 +89,11 @@ body {
 }
 
 .footer-section .social-media-section {
-  padding-left: 100px;
+  padding-left: 50px;
 }
 
 .footer-section .contact-section {
-  padding-right: 100px;
+  padding-right: 120px;
 }
 
 .footer-section .follow-title {
@@ -98,13 +118,23 @@ body {
   font-size: 22px;
 }
 
+#admin.fa-user-circle-o {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+#admin.fa-user-circle-o:hover {
+  opacity: 0.9;
+}
+
 .copyright {
   font-size: 14px;
+  color: white;
 }
 
 /* Header */
 .masthead-banner img {
-  width: 100vw;
+  width: 100%;
 }
 
 .btn-masthead .btn {
@@ -192,7 +222,7 @@ body {
 .add-to-cart-btn {
   color: #FFFFFF !important;
   padding: 10px 20px 10px 20px !important;
-  margin-left: 150px;
+  margin-left: 390px;
   border: 1px solid #fffbfb67 !important;
 }
 
@@ -205,6 +235,8 @@ body {
 }
 
 .size {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   padding: 10px 10px 10px 10px;
   margin-right: 10px;
@@ -248,8 +280,12 @@ body {
   color: #0a0a0ac4;
 }
 
-.fa-shopping-cart {
+.shopping-cart-icon-loggedin {
   padding-top: 12px;
+}
+
+.fa-user-circle-o, .fa-shopping-cart {
+  font-size: 24px !important;
 }
 
 .fa-trash-o {
@@ -274,10 +310,18 @@ body {
   color: #cfcfcf;
 }
 
-.dropdown-menu {
+.cart-drop-menu {
   min-width: 600px !important;
   background-color: #FFECCC !important;
   box-shadow: #0a0a0a50;
+}
+
+.dropdown:hover > .cart-drop-menu {
+  display: block !important;
+}
+
+.out-of-stock p{
+  padding: 5px 5px 5px 5px;
 }
 
 /* Checkout */
@@ -303,6 +347,10 @@ body {
 
 .checkout-section .btn:hover {
   color: #cfcfcf;
+}
+
+.checkout-out-of-stock {
+  padding: 5px;
 }
 
 /* Shipping */
@@ -334,13 +382,11 @@ body {
 .faq-group {
   display: flex;
   position: relative;
-  left: 35%;
-  right: 35%;
+  left: 30%;
 }
 
 .faq-header {
-  position: absolute;
-  left: 38%;
+  text-align: center;
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
@@ -362,12 +408,11 @@ body {
   text-align: justify;
   font-family: Poppins;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 28px;
   line-height: 42px;
   color: #000000;
   width: 901px;
-  height: 90px;
 }
 
 .faq-body {
@@ -379,7 +424,6 @@ body {
   line-height: 30px;
   color: #000000;
   width: 901px;
-  height: 102px;
 }
 
 /* Contact Us Page */
@@ -473,6 +517,10 @@ body {
   left: 57%;
 }
 
+.contact-section-page {
+  height: calc(100vh - 300px);
+}
+
 /* Login Page */
 .login-bigtext {
   font-family: Poppins;
@@ -510,7 +558,43 @@ body {
   background-color: #F5DDA5;
 }
 
+/*About Us*/
+.au-bigtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+}
+
+.au-smtext {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+  text-align: justify;
+}
+
+.au-center {
+  text-align: center;
+}
+
+.au-left {
+  text-align: left;
+}
+
+.about-section {
+  height: calc(100vh - 300px);
+}
+
 /* Admin - Summary of All Orders */
+.summary-orders-section {
+  padding-bottom: 200px;
+}
+
 .summary-finances,
 .summary-finances thead,
 .summary-finances tbody,
@@ -524,13 +608,19 @@ body {
   background-color: #F5DDA5;
 }
 
-.hidden-row {
+#table-detail .hidden-row {
   display: none;
 }
 
 .order-status-button {
   background-color: #0A0A0A !important;
   border: none !important;
+}
+
+.cancel-btn {
+  background-color: #006676 !important;
+  color: #ffffff !important;
+  padding: 10px 30px 10px 30px !important;
 }
 
 /*edit pages*/
@@ -561,12 +651,14 @@ body {
 .edit-titlebox {
   position: relative;
   width: 1139px;
-  height: 102px;
+  height: 40px;
   left: 28%;
   background: #FEFEFE;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
+  padding-left: 25px;
+  font-size: 20px;
 }
 
 .edit-smbox {
@@ -578,18 +670,22 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
+  padding-left: 25px;
+  font-size: 20px;
 }
 
 .edit-contentbox {
   position: relative;
   width: 1139px;
-  height: 401px;
+  height: 301px;
   left: 28%;
   background: #FEFEFE;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 50px;
   padding-left: 25px;
+  padding-top: 15px;
+  font-size: 20px;
 }
 
 .edit-btn {
@@ -599,8 +695,6 @@ body {
   left: 60%;
 }
 
-/*profile page*/
-
 .profile-form {
   width: 200px;
   height: 40px
@@ -608,6 +702,10 @@ body {
 .profile-size {
   width: 40px;
   height: 40px
+}
+
+.profile-ship-form {
+  background-color: #FFECCC;
 }
 
 .profile-modal {
@@ -620,6 +718,43 @@ body {
   color: #FFFFFF90
 }
 
-.profile-ship-form {
-  background-color: #FFECCC;
+.profile-section {
+  height: calc(100vh - 300px);
+}
+
+.about-section {
+  height: calc(100vh - 300px);
+}
+
+.contact-section-page {
+  height: calc(100vh - 300px);
+}
+
+.profile-hidden {
+ display: none;
+}
+
+.profile-header {
+  position: relative;
+  left: 14px;
+}
+
+.profile-edit {
+  position: relative;
+  right: 15px;
+}
+
+.logout-btn {
+  color: #FFFFFF !important;
+  padding: 10px 30px 10px 30px !important;
+  background-color: #0A0A0A !important;
+}
+
+.profile-logout {
+  position: relative;
+  right: 85px;
+}
+
+.profile-id {
+  color: blue;
 }

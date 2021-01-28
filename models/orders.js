@@ -17,7 +17,8 @@ const orderSchema = new mongoose.Schema({
   housenum: {type: String, required: true},
   barangay: {type: String, required: true},
   city: {type: String, required: true},
-  province: {type: String, required: true}
+  province: {type: String, required: true},
+  payment: {type: String, required: true}
 },
 {
   toObject: { virtuals: true },

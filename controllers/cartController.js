@@ -10,16 +10,13 @@ exports.getUserCart = (req, res) => {
     var checkout = true;
     if (user) {
       cartModel.getByUser(user, (err, result) => {
-        console.log(result.products)
         if (err) throw err;
+        console.log('baaaaaaa')
         result.products.forEach(element => {
-          if (!element.status && checkout == true)
-          {
-            checkout = false;
-            console.log('beep')
-          }
-          console.log(checkout)
-        });
+            if (!element.status && checkout){
+              checkout = false;
+            }
+        })
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
@@ -72,9 +69,11 @@ exports.addToCart = (req, res) => {
     var product = req.params.id;
     var user = req.session.user;
     var quantity = 1;
+    var size = req.body.size;
 
     console.log(product);
     console.log(user);
+    console.log(req.body.size)
 
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
@@ -91,7 +90,7 @@ exports.addToCart = (req, res) => {
           console.log(cart);
 
           var slug = cart.toObject().slug;
-          cartModel.addProduct(user, product, quantity, (err, cart) => {
+          cartModel.addProduct(user, product, quantity, size,(err, cart) => {
             console.log('cart(addtocart): ' + cart);
             if(err) {
               req.flash('error_msg', 'Could not add product. Please try again.');
