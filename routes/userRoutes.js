@@ -29,6 +29,7 @@ router.post('/catalogue',productController.refreshProducts);
   Product details page for both guest and logged in users
 */
 router.get('/product_details/:slug', productController.getAProduct);
+router.post('/product_details/:slug', productController.getAProduct);
 
 /*
   Login and Registration Page
@@ -166,6 +167,7 @@ router.get('/order-information-:param', (req, res) => {
         if (result) {
           orderModel.getOne({_id: orderid}, (err, order) => {
             var prodlist = [];
+            order.products.sort();
             order.products.forEach((prod) =>{
               prodlist.push(prod.id);
             });
@@ -173,18 +175,25 @@ router.get('/order-information-:param', (req, res) => {
               var totalPrice = 0;
               var prodArray = [];
               var ordermain = order;
-              products.forEach((item, i) => {
-                var product = {
-                  name: item.name,
-                  slug: item.slug,
-                  price: item.price,
-                  description: item.description,
-                  category: item.category,
-                  status: item.status,
-                  img: item.img,
-                  qty: order.products[i].qty,
-                  size: order.products[i].size
-                };
+              products.sort();
+              order.products.forEach((item, i) => {
+                var product;
+
+                products.forEach((prod, j) => {
+                  if (prod.id == item.id){
+                      product = {
+                      name: prod.name,
+                      slug: prod.slug,
+                      price: prod.price,
+                      description: prod.description,
+                      category: prod.category,
+                      status: prod.status,
+                      img: prod.img,
+                      qty: item.qty,
+                      size: item.size
+                    };
+                  }
+                });
 
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
@@ -211,6 +220,7 @@ router.get('/order-information-:param', (req, res) => {
         else {
           orderModel.getOne({_id: orderid}, (err, order) => {
             var prodlist = [];
+            order.products.sort();
             order.products.forEach((prod) =>{
               prodlist.push(prod.id);
             });
@@ -218,18 +228,25 @@ router.get('/order-information-:param', (req, res) => {
               var totalPrice = 0;
               var prodArray = [];
               var ordermain = order;
-              products.forEach((item, i) => {
-                var product = {
-                  name: item.name,
-                  slug: item.slug,
-                  price: item.price,
-                  description: item.description,
-                  category: item.category,
-                  status: item.status,
-                  img: item.img,
-                  qty: order.products[i].qty,
-                  size: order.products[i].size
-                };
+              products.sort();
+              order.products.forEach((item, i) => {
+                var product;
+
+                products.forEach((prod, j) => {
+                  if (prod.id == item.id){
+                      product = {
+                      name: prod.name,
+                      slug: prod.slug,
+                      price: prod.price,
+                      description: prod.description,
+                      category: prod.category,
+                      status: prod.status,
+                      img: prod.img,
+                      qty: item.qty,
+                      size: item.size
+                    };
+                  }
+                });
 
                 totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
@@ -652,9 +669,57 @@ router.post('/update-admin-email', (req, res) => {
 router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
-    const {fullname, contno, houseno, brngy, city, prov} = req.body;
-    //stuff
-    res.redirect('/shipping');
+    var uid = req.session.user;
+    const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
+    cartModel.getByUser(uid, (err, cartinfo) => {
+      if (!cartinfo){
+        req.flash('error_msg', 'No items in your cart.');
+        res.redirect('/shipping');
+      } else {
+        var prodarr = [];
+        var today = new Date();
+        var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+        cartinfo.products.forEach((item, i) => {
+          var prod = {
+            id: item.id,
+            qty: item.qty,
+            size: item.size
+          };
+          prodarr.push(prod);
+        });
+        var order = {
+          products: prodarr,
+          date: orderdate,
+          status: "Payment Received",
+          user: uid,
+          fullname: fullname,
+          contactnum: contno,
+          housenum: houseno,
+          barangay: brngy,
+          city: city,
+          province: prov,
+          payment: payment
+        }
+        orderModel.create( order, (err, result) => {
+          if (err) {
+            console.log(err); //testing
+            req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
+            res.redirect('/shipping');
+          } else {
+            cartModel.deleteByUser( uid, (err, result) => {
+              if (err) {
+                console.log(err); //testing
+                req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
+                res.redirect('/shipping');
+              } else {
+                req.flash('success_msg', 'Items ordered successfully!');
+                res.redirect('/shipping');
+              }
+            });
+          }
+        });
+      }
+    });
   } else {
     const messages = errors.array().map((item) => item.msg);
     console.log(messages.join(' ')); //testing
