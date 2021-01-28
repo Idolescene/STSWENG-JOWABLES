@@ -39,7 +39,8 @@
           </th>
           <th>{{this.size}}</th>
           <th>₱ {{this.subPrice}}</th>
-          <th>Out of Stock</th>
+          <th>{{this.qty}}</th>
+          {{!-- <th>Out of Stock</th> --}}
           <th>
             <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
               <h1>X</h1>
@@ -78,7 +79,7 @@
     {{#if checkout}}
     <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
     {{else}}
-    <a href='#' type = 'button' class="btn rounded-pill checkStock">Out of Stock</a>
+    <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
     {{/if}}
   </div>
   {{else}}

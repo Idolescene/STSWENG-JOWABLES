@@ -55,7 +55,7 @@ exports.getByUser = (user, next) => {
         cart.prod.forEach((item) => {
           prodIds.push(item.id);
         });
-        console.log(prodIds);
+        
         productModel.getAllIds(prodIds, (err, products) => {
           var totalPrice = 0;
           var totalPriceWithShipping = 0;
@@ -70,7 +70,7 @@ exports.getByUser = (user, next) => {
             console.log(cart.prod[index]);
             //var stat = item.stock.findIndex(x =>x.id.equals(cart.prod[index].size))
             cart.prod[index].buy.forEach((element) => {
-              
+              console.log("PRODUCTS: " + element); //testing
               var product = {};
               product['name'] = item.name;
               product['img'] = item.img;
@@ -83,7 +83,7 @@ exports.getByUser = (user, next) => {
               product['qty'] = element.qty
               product['subPrice'] = subPrice.toFixed(2);
               cartdex = item.stock.findIndex(x => x.size == element.size)
-              product['status'] = item.stock[cartdex].status
+              //product['status'] = item.stock[cartdex].status
               prodArray.push(product)
               console.log(product);
               console.log("beep");
