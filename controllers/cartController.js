@@ -11,12 +11,6 @@ exports.getUserCart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        console.log(result.products);
-        result.products.forEach(element => {
-            if (!element.status && checkout){
-              checkout = false;
-            }
-        })
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
@@ -26,6 +20,11 @@ exports.getUserCart = (req, res) => {
           });
         }
         else {
+          result.products.forEach(element => {
+            if (!element.status && checkout){
+              checkout = false;
+            }
+          })
           res.render('checkout', {
             title: "Your Cart",
             loggedIn: req.session.user,
