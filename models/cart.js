@@ -83,7 +83,9 @@ exports.getByUser = (user, next) => {
               product['qty'] = element.qty
               product['subPrice'] = subPrice.toFixed(2);
               cartdex = item.stock.findIndex(x => x.size == element.size)
-              //product['status'] = item.stock[cartdex].status
+              if (cartdex < -1) {
+                product['status'] = item.stock[cartdex].status
+              }
               prodArray.push(product)
               console.log(product);
               console.log("beep");
@@ -92,9 +94,9 @@ exports.getByUser = (user, next) => {
             })
           });
           console.log('before send: ' + totalPrice);
-          next(err, {_id: cart._id, 
-                      products: prodArray, 
-                      total: totalPrice.toFixed(2), 
+          next(err, {_id: cart._id,
+                      products: prodArray,
+                      total: totalPrice.toFixed(2),
                       totalWithShipping: totalPriceWithShipping.toFixed(2)});
         });
       }
@@ -135,7 +137,7 @@ exports.addProduct = (filter, update, qty, size, next) => {
         var buyIndex = buyArray.findIndex(x => x.size == size)
         console.log(buyIndex);
         prodArray[prodIndex].buy.forEach(element => {
-          if (element.size == size && buyIndex > -1) { 
+          if (element.size == size && buyIndex > -1) {
             if (prodArray[prodIndex].buy[buyIndex].qty + qty > 0) {
               cart.prod[prodIndex].buy[buyIndex].qty += qty;
               cart.save(next(err, cart));
