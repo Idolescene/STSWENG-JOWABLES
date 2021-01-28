@@ -368,3 +368,6 @@ exports.postAProduct = (req, res) => {
 };
 
 // Edit a product
+exports.editAProduct = (req, res) => {
+
+};
