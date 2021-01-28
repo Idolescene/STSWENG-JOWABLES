@@ -53,7 +53,6 @@ app.use((req, res, next) => {
 const userRouter = require('./routes/userRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const cartRouter = require('./routes/cartRoutes');
-const { mongo } = require('./models/connection');
 
 // use routes
 app.use('/', userRouter);
