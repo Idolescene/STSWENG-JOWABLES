@@ -1,71 +1,27 @@
-<br><br>
+<div class="container-fluid">
+  <br><br>
 
-<div class = "faq-header">
-  <strong>
-  Frequently Asked Questions (FAQ)
-  </strong>
-</div>
+  <div class = "faq-header">
+    Frequently Asked Questions (FAQ)
+  </div>
 
-<br><br>
+  <br><br><br>
 
-<!-- FAQs -->
-<!-- QA1 -->
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">Q. &nbsp;</div>
-  <div class = "faq-question">
-    What is this question?
+  <!-- FAQ -->
+  <div class="faq-view">
+    {{#each questions}}
+      <div class = "faq-group">
+       <div class = "faq-qa">Q. &nbsp</div>
+       <div class = "faq-question">{{this.question}} </div>
+      </div>
+      <div class = "faq-group">
+       <div class = "faq-qa">A. &nbsp</div>
+       <div class = "faq-body">
+         {{this.answer}}
+       </div>
+      </div>
+      <br><br>
+    {{/each}}
   </div>
+  <br><br><br><br><br><br><br><br>
 </div>
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">A. &nbsp;</div>
-  <div class = "faq-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-     eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-     in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-</div>
-<br><br><br><br>
-<!-- QA2 -->
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">Q. &nbsp;</div>
-  <div class = "faq-question">
-    What is this question?
-  </div>
-</div>
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">A. &nbsp;</div>
-  <div class = "faq-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-     eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-     in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-</div>
-<br><br><br><br>
-<!-- QA3 -->
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">Q. &nbsp;</div>
-  <div class = "faq-question">
-    What is this question?
-  </div>
-</div>
-<div class = 'faq-main-div'>
-  <div class = "faq-qa">A. &nbsp;</div>
-  <div class = "faq-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-     nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-     eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-     in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-</div>
-<br><br><br><br>
-<!-- End -->
-
-<br><br><br>

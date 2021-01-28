@@ -1,0 +1,161 @@
+<div class="container-fluid">
+  <div class="summary-orders-section">
+    <br><br>
+    <div class="container-fluid">
+      <div class="row summary-finances-title">
+        <div class="col-2">
+          <h4>{{title}}</h4>
+        </div>
+        <div class="col-8 d-flex flex-row">
+          <div class="p-2">
+            <h5>From:</h5>
+          </div>
+          <div class="p-2">
+            <input class="form-control rounded-pill date-range" type="date" id="from-date-range" name="from-date-range">
+          </div>
+          <div class="p-2">
+            <h5>To:</h5>
+          </div>
+          <div class="p-2">
+            <input class="form-control rounded-pill date-range" type="date" id="to-date-range" name="to-date-range">
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="summary-finances-div">
+        <table class="table table-borderless text-center summary-finances">
+          <thead>
+            <tr>
+              <th scope="col">Total Capital</th>
+              <th scope="col">Net Income</th>
+              <th scope="col">Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                <h2>&#8369; 50</h2>
+              </th>
+              <td>
+                <h2>&#8369; 50</h2>
+              </td>
+              <td>
+                <h2>&#8369; 50</h2>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="all-orders-div">
+        <br>
+        <h4>All Orders</h4>
+        <br>  
+        <div id="wrapper"> 
+          <table class="table table-borderless text-center table-hover all-orders" id="table-detail">
+            <thead>
+              <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+                <th scope="col">View Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0101010</td>
+                <td>John Smith</td>
+                <td>10/20/2020</td>
+                <td>&#8369; 520.00</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Processing
+                    </button>
+                    <div class="dropdown-menu drop-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Payment Received</a>
+                      <a class="dropdown-item" href="#">Shipped</a>
+                      <a class="dropdown-item" href="#">Delivered</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row1');"></i>
+                </td>
+              </tr>
+              <tr class="hidden-row" id="hidden-row1">
+                <td colspan="6" class="text-center">
+                  {{>hidden-table}}
+                </td>
+              </tr>
+              <tr>
+                <td>0101010</td>
+                <td>John Smith</td>
+                <td>10/20/2020</td>
+                <td>&#8369; 520.00</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Processing
+                    </button>
+                    <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Payment Received</a>
+                      <a class="dropdown-item" href="#">Shipped</a>
+                      <a class="dropdown-item" href="#">Delivered</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row2');"></i>
+                </td>
+              </tr>
+              <tr class="hidden-row" id="hidden-row2">
+                <td colspan="6" class="text-center">
+                  {{>hidden-table}}
+                </td>
+              </tr>
+              <tr>
+                <td>0101010</td>
+                <td>John Smith</td>
+                <td>10/20/2020</td>
+                <td>&#8369; 520.00</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Processing
+                    </button>
+                    <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Payment Received</a>
+                      <a class="dropdown-item" href="#">Shipped</a>
+                      <a class="dropdown-item" href="#">Delivered</a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row3');"></i>
+                </td>
+              </tr>
+              <tr class="hidden-row" id="hidden-row3">
+                <td colspan="6" class="text-center">
+                  {{>hidden-table}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"> 
+  function showHideDetails(row) { 
+      $("#" + row).toggle(); 
+  } 
+</script> 

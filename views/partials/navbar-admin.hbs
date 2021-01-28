@@ -5,49 +5,28 @@
         <!-- Left Navbar Items -->
         <ul class="navbar-nav nav">
         <li class="nav-item">
-          <a class="nav-link" href="/catalogue">
-            <h5>Catalogue</h5>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">
-            <h5>Contact Us</h5>
-          </a>
+          <a class="nav-link" href="/admin/update-products">Update Products</a>
         </li>
       </ul><!-- End -->
 
       <!-- Center Navbar Items -->
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
-          <a class="navbar-brand" href="/">
-            <img src="./img/company-logo-horizontal-crop.png" height="70px">
+          <a class="navbar-brand" href="#">
+            <img src="../img/company-logo-horizontal-crop.png" height="70px">
           </a>
         </li>
       </ul><!-- End -->
 
       <!-- Right Navbar Items -->
       <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        {{#if loggedIn}}
-        <li class="nav-item" id="carticon">
-          {{> cart}}
-        </li>
-        {{else}}
         <li class="nav-item">
-          <a class="nav-link" href="login">
-            <i class="fa fa-shopping-cart fa-lg navbar-cart"></i>
-          </a>
+          <a class="nav-link" href="/admin/summary-of-all-orders">Summary of All Orders</a>
         </li>
-        {{/if}}
-        <li class="nav-item" id="proficon">
-          {{#if loggedIn}}
-          <a class="nav-link" href="/profile">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/profile">
             <i class="fa fa-user-circle-o fa-lg"></i>
           </a>
-          {{else}}
-          <a class="nav-link" href="/login">
-            <i class="fa fa-user-circle-o fa-lg"></i>
-          </a>
-          {{/if}}
         </li>
       </ul><!-- End -->
 
