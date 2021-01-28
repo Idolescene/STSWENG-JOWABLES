@@ -40,7 +40,7 @@ ${NULL CITY}
 ${ORIGINAL PROVINCE}     Metro Manila
 ${VALID PROVINCE}        Tagaytay
 ${INVALID PROVINCE}      !@#!@##!
-
+${NULL PROVINCE}
 ${MAIN URL}              https://${SERVER}/
 ${LOGIN URL}             https://${SERVER}/profile
 ${CHECKOUT URL}          https://${SERVER}/checkout
@@ -159,43 +159,45 @@ Edited Successfully (Valid Password)
 Edit Should Have Failed (Invalid or Null Password)
     Element Text Should Be          id=error-msg                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
 
+Edit Should Have Failed (Not Matching Password)
+    Element Text Should Be          id=error-msg                  Error: Confirm password needs to be at least 8 characters long. Passwords need to match.
 
 Edited Shipping Details Successfully
-    Element Text Should Be          id=success-div                  Success: Shipping details updated successfully!
+    Element Text Should Be          id=success-div                Success: Shipping details updated successfully!
 
 Edit Shipping Details Should Have Failed (Invalid Full Name)
-
+    Element Text Should Be          id=error-msg                  Error: Name should only contain letters, periods and spaces.
 
 Edit Shipping Details Should Have Failed (Invalid Contact Number)
-
+    Element Text Should Be          id=error-msg                  Error: Contact number should be 11 digits in length.
 
 Edit Shipping Details Should Have Failed (Invalid House Number)
-
+    Element Text Should Be          id=error-msg                  Error: House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.
 
 Edit Shipping Details Should Have Failed (Invalid Barangay)
-
+    Element Text Should Be          id=error-msg                  Error: Barangay should only contain letters, numbers and spaces.
 
 Edit Shipping Details Should Have Failed (Invalid City)
-
+    Element Text Should Be          id=error-msg                  Error: City should only contain letters, periods, dashes and spaces.
 
 Edit Shipping Details Should Have Failed (Invalid Province)
-
+    Element Text Should Be          id=error-msg                  Error: Province should only contain letters and spaces.
 
 Edit Shipping Details Should Have Failed (Null Full Name)
-    Element Text Should Be          id=error-msg                  Error: Full Name is required.
+    Element Text Should Be          id=error-msg                  Error: Full Name is required. Name should only contain letters, periods and spaces.
 
 Edit Shipping Details Should Have Failed (Null Contact Number)
     Element Text Should Be          id=error-msg                  Error: Contact number should be 11 digits in length. Contact number should only be composed of numbers.
 
 Edit Shipping Details Should Have Failed (Null House Number)
-    Element Text Should Be          id=error-msg                 Error: House Number is required.
+    Element Text Should Be          id=error-msg                 Error: House Number is required. House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.
 
 Edit Shipping Details Should Have Failed (Null Barangay)
-    Element Text Should Be          id=error-msg                 Error: Barangay is required.
+    Element Text Should Be          id=error-msg                 Error: Barangay is required. Barangay should only contain letters, numbers and spaces.
 
 Edit Shipping Details Should Have Failed (Null City)
-    Element Text Should Be          id=error-msg                 Error: City is required.
+    Element Text Should Be          id=error-msg                 Error: City is required. City should only contain letters, periods, dashes and spaces.
 
 Edit Shipping Details Should Have Failed (Null Province)
-    Element Text Should Be          id=error-msg                 Error: Province is required.
+    Element Text Should Be          id=error-msg                 Error: Province is required. Province should only contain letters and spaces.
 

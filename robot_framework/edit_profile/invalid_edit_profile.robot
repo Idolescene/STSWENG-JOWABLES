@@ -48,76 +48,76 @@ Edit Valid Password But Not Matched With Confirm Password Should Fail
     Set Selenium Speed                     0
     Input Different Confirm Password in Edit Profile    ${NULL PASSWORD} 
     Submit New Password
-    Edit Should Have Failed (Invalid or Null Password)
+    Edit Should Have Failed (Not Matching Password)
     
-Edit Shipping Details Should Be Successful (New Full Name)
+Edit Shipping Details Should Fail (Invalid Full Name)
     Edit Shipping Details
-    Input Full Name in Shipping Details        ${VALID FULL NAME}
+    Input Full Name in Shipping Details        ${INVALID FULL NAME}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid Full Name)
 
-Edit Shipping Details Should Be Successful (Original Full Name)
+Edit Shipping Details Should Fail (Null Full Name)
     Edit Shipping Details
-    Input Full Name in Shipping Details        ${ORIGINAL FULL NAME}
+    Input Full Name in Shipping Details        ${NULL FULL NAME}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null Full Name)
 
-Edit Shipping Details Should Be Successful (New Contact Number)
+Edit Shipping Details Should Fail (Invalid Contact Number)
     Edit Shipping Details
-    Input Contact Number in Shipping Details        ${VALID CONTACT NUM}
+    Input Contact Number in Shipping Details        ${INVALID CONTACT NUM}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid Contact Number)
 
-Edit Shipping Details Should Be Successful (Original Contact Number)
+Edit Shipping Details Should Fail (Null Contact Number)
     Edit Shipping Details
-    Input Contact Number in Shipping Details        ${ORIGINAL CONTACT NUM}
+    Input Contact Number in Shipping Details        ${NULL CONTACT NUM}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null Contact Number)
 
-Edit Shipping Details Should Be Successful (New House Number)
+Edit Shipping Details Should Fail (Invalid House Number)
     Edit Shipping Details
-    Input House Number in Shipping Details        ${VALID HOUSE NUM}
+    Input House Number in Shipping Details        ${INVALID HOUSE NUM}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid House Number)
 
-Edit Shipping Details Should Be Successful (Original House Number)
+Edit Shipping Details Should Fail (Null House Number)
     Edit Shipping Details
-    Input House Number in Shipping Details        ${ORIGINAL HOUSE NUM}
+    Input House Number in Shipping Details        ${NULL HOUSE NUM}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null House Number)
 
-Edit Shipping Details Should Be Successful (New Barangay)
+Edit Shipping Details Should Fail (Invalid Barangay)
     Edit Shipping Details
-    Input Barangay in Shipping Details        ${VALID BARANGAY}
+    Input Barangay in Shipping Details        ${INVALID BARANGAY}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid Barangay)
 
-Edit Shipping Details Should Be Successful (Original Barangay)
+Edit Shipping Details Should Fail (Null Barangay)
     Edit Shipping Details
-    Input Barangay in Shipping Details        ${ORIGINAL BARANGAY}
+    Input Barangay in Shipping Details        ${NULL BARANGAY}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null Barangay)
 
-Edit Shipping Details Should Be Successful (New City)
+Edit Shipping Details Should Fail (Invalid City)
     Edit Shipping Details
-    Input City in Shipping Details        ${VALID CITY}
+    Input City in Shipping Details        ${INVALID CITY}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid City)
 
-Edit Shipping Details Should Be Successful (Original City)
+Edit Shipping Details Should Fail (Null City)
     Edit Shipping Details
-    Input City in Shipping Details        ${ORIGINAL CITY}
+    Input City in Shipping Details        ${NULL CITY}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null City)
 
-Edit Shipping Details Should Be Successful (New Province)
+Edit Shipping Details Should Fail (Invalid Province)
     Edit Shipping Details
-    Input Province in Shipping Details        ${VALID PROVINCE}
+    Input Province in Shipping Details        ${INVALID PROVINCE}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Invalid Province)
 
-Edit Shipping Details Should Be Successful (Original Province)
+Edit Shipping Details Should Fail (Null Province)
     Edit Shipping Details
-    Input Province in Shipping Details        ${ORIGINAL PROVINCE}
+    Input Province in Shipping Details        ${NULL PROVINCE}
     Submit New Shipping Details
-    Edited Shipping Details Successfully
+    Edit Shipping Details Should Have Failed (Null Province)
