@@ -673,7 +673,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
     const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
     cartModel.getByUser(uid, (err, cartinfo) => {
       if (!cartinfo){
-        req.flash('error_msg', 'Cart does not exist.');
+        req.flash('error_msg', 'No items in your cart.');
         res.redirect('/shipping');
       } else {
         var prodarr = [];
@@ -683,7 +683,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
           var prod = {
             id: item.id,
             qty: item.qty,
-            size: "Medium"
+            size: item.size
           };
           prodarr.push(prod);
         });
@@ -703,11 +703,19 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         orderModel.create( order, (err, result) => {
           if (err) {
             console.log(err); //testing
-            req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
+            req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
             res.redirect('/shipping');
           } else {
-            req.flash('success_msg', 'Items ordered successfully!');
-            res.redirect('/shipping');
+            cartModel.deleteByUser( uid, (err, result) => {
+              if (err) {
+                console.log(err); //testing
+                req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
+                res.redirect('/shipping');
+              } else {
+                req.flash('success_msg', 'Items ordered successfully!');
+                res.redirect('/shipping');
+              }
+            });
           }
         });
       }
