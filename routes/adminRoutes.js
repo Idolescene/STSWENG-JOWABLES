@@ -62,6 +62,14 @@ router.get('/edit-contact', (req, res) => {
   });
 });
 
+// router.get('/edit-product-details/:slug', (req, res) => {
+  router.get('/edit-product-details', (req, res) => {
+  res.render('edit-product', {
+    title: "Edit product details of ",
+    layout: "admin"
+  })
+})
+
 
 
 module.exports = router;
