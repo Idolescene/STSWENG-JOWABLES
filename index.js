@@ -1,4 +1,5 @@
 // imports
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -8,10 +9,11 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const {envPort, sessionKey} = require('./config');
 
 // initialize express application
 const app = express();
-const port = 3000;
+const port = envPort || 3000;
 
 app.engine('hbs', exphbs({
   extname: 'hbs',
@@ -31,7 +33,7 @@ app.use(bodyParser.urlencoded({
 
 // sessions - server configuration
 app.use(session({
-  secret: 'thisisthesecretkeytothesession',
+  secret: sessionKey,
   store: new MongoStore({mongooseConnection: mongoose.connection}),
   resave: false,
   saveUninitialized: true.valueOf,
@@ -53,7 +55,6 @@ app.use((req, res, next) => {
 const userRouter = require('./routes/userRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const cartRouter = require('./routes/cartRoutes');
-const { mongo } = require('./models/connection');
 
 // use routes
 app.use('/', userRouter);
