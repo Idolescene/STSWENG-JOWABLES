@@ -1,4 +1,5 @@
 // imports
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -8,12 +9,11 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
-
 const {envPort, sessionKey} = require('./config');
 
 // initialize express application
 const app = express();
-const port = envPort || 9090;
+const port = envPort || 3000;
 
 app.engine('hbs', exphbs({
   extname: 'hbs',
