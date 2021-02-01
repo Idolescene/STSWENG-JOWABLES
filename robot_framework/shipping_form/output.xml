@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210201 19:18:24.546" rpa="false">
+<suite id="s1" name="Valid Shipping" source="D:\Github\STSWENG-JOWABLES\robot_framework\shipping_form\valid_shipping.robot">
+<kw name="Login Successfully and Add Products to the Cart" library="resource" type="setup">
+<kw name="Login Successfully" library="resource">
+<kw name="Go to Login Page" library="resource">
+<kw name="Open Browser to Home Page" library="resource">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210201 19:18:24.755" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210201 19:18:24.755" endtime="20210201 19:18:37.861"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210201 19:18:37.862" endtime="20210201 19:18:38.000"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210201 19:18:38.001" endtime="20210201 19:18:38.001"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:masthead-banner</arg>
+</arguments>
+<msg timestamp="20210201 19:18:38.024" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210201 19:18:38.001" endtime="20210201 19:18:38.024"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:24.754" endtime="20210201 19:18:38.026"></status>
+</kw>
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210201 19:18:38.028" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210201 19:18:38.027" endtime="20210201 19:18:40.571"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:38.027" endtime="20210201 19:18:40.572"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210201 19:18:40.592" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210201 19:18:40.572" endtime="20210201 19:18:40.593"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:40.572" endtime="20210201 19:18:40.593"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:24.753" endtime="20210201 19:18:40.593"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${ORIGINAL EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210201 19:18:40.594" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210201 19:18:40.594" endtime="20210201 19:18:40.724"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:40.593" endtime="20210201 19:18:40.724"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${ORIGINAL PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210201 19:18:40.725" level="INFO">Typing text '12345678' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210201 19:18:40.725" endtime="20210201 19:18:40.835"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:40.724" endtime="20210201 19:18:40.836"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210201 19:18:40.838" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210201 19:18:40.837" endtime="20210201 19:18:46.768"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:40.836" endtime="20210201 19:18:46.768"></status>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+</arguments>
+<msg timestamp="20210201 19:18:46.776" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210201 19:18:46.769" endtime="20210201 19:18:46.778"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:24.753" endtime="20210201 19:18:46.779"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:24.752" endtime="20210201 19:18:46.779"></status>
+</kw>
+<test id="s1-t1" name="Successful Edit Shipping">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://salawalco.herokuapp.com/product_details/black-shorter-shorts</arg>
+</arguments>
+<msg timestamp="20210201 19:18:46.781" level="INFO">Opening url 'https://salawalco.herokuapp.com/product_details/black-shorter-shorts'</msg>
+<status status="PASS" starttime="20210201 19:18:46.781" endtime="20210201 19:18:51.774"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210201 19:18:51.776" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210201 19:18:51.775" endtime="20210201 19:18:51.856"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210201 19:18:51.858" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210201 19:18:51.858" endtime="20210201 19:18:57.161"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://salawalco.herokuapp.com/checkout</arg>
+</arguments>
+<msg timestamp="20210201 19:18:57.162" level="INFO">Opening url 'https://salawalco.herokuapp.com/checkout'</msg>
+<status status="PASS" starttime="20210201 19:18:57.162" endtime="20210201 19:19:00.150"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210201 19:19:00.151" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210201 19:19:00.151" endtime="20210201 19:19:04.149"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210201 19:19:04.150" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210201 19:19:04.150" endtime="20210201 19:19:04.217"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210201 19:19:04.218" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210201 19:19:04.217" endtime="20210201 19:19:04.311"></status>
+</kw>
+<status status="PASS" starttime="20210201 19:18:46.779" endtime="20210201 19:19:04.312" critical="yes"></status>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210201 19:19:04.314" endtime="20210201 19:19:07.966"></status>
+</kw>
+<doc>A test suite with a single test for a valid editing of shipping details in checkout
+
+This test has a workflow that is created using keywords
+directly from SeleniumLibrary</doc>
+<status status="PASS" starttime="20210201 19:18:24.548" endtime="20210201 19:19:07.966"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Valid Shipping">Valid Shipping</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

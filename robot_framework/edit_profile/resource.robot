@@ -67,7 +67,7 @@ Login Successfully
     Input Password in Login                  ${ORIGINAL PASSWORD}
     Click Login Button
     Location Should Be                       ${MAIN URL}
-    
+
 User Profile Should Be Accessible
     Page Should Contain Element     class:profile-edit
 
