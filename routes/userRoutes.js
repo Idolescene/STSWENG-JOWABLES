@@ -195,7 +195,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -209,7 +208,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: result.products
@@ -248,7 +247,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -262,7 +260,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: null
@@ -698,7 +696,9 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
           barangay: brngy,
           city: city,
           province: prov,
-          payment: payment
+          payment: payment,
+          totalPrice: cartinfo.total,
+          totalWithShipping: cartinfo.totalWithShipping
         }
         orderModel.create( order, (err, result) => {
           if (err) {

@@ -68,11 +68,13 @@
               </tr>
             </thead>
             <tbody>
+              {{#if orders}}
+              {{#each orders}}
               <tr>
-                <td>0101010</td>
-                <td>John Smith</td>
-                <td>10/20/2020</td>
-                <td>&#8369; 520.00</td>
+                <td>{{this.id}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.date}}</td>
+                <td>&#8369; {{this.totalPrice}}</td>
                 <td>
                   <div class="dropdown">
                     <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,6 +96,10 @@
                   {{>hidden-table}}
                 </td>
               </tr>
+              {{else}}
+              <tr><td>There are no orders available.</td></tr>
+              {{/each}}
+              {{/if}}
             </tbody>
           </table>
         </div>

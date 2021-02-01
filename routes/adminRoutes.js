@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const adminController = require('../controllers/adminController');
 const productController = require('../controllers/productController');
+const orderModel = require('../models/orders');
 const validationResult = require('express-validator');
 
 /*
@@ -26,9 +27,12 @@ router.get('/update-products', productController.viewAllProducts);
   Summary of All Orders Page
 */
 router.get('/summary-of-all-orders', (req, res) => {
-  res. render('summary-orders', {
-    title: "Summary of Finances",
-    layout: "admin"
+  orderModel.findNotCancel("", (err, orders) => {
+    res.render('summary-orders', {
+      title: "Summary of Finances",
+      layout: "admin",
+      orders: orders
+    });
   });
 });
 
@@ -39,7 +43,5 @@ router.get('/summary-of-all-orders', (req, res) => {
     layout: "admin"
   })
 })
-
-
 
 module.exports = router;

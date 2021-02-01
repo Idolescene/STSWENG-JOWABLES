@@ -18,7 +18,9 @@ const orderSchema = new mongoose.Schema({
   barangay: {type: String, required: true},
   city: {type: String, required: true},
   province: {type: String, required: true},
-  payment: {type: String, required: true}
+  payment: {type: String, required: true},
+  totalPrice: {type: Number, required: true},
+  totalWithShipping: {type: Number, required: true}
 },
 {
   toObject: { virtuals: true },
@@ -62,6 +64,19 @@ exports.getAll = (user, next) => {
     const orderObjects = [];
     orders.forEach((doc) => {
       orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+// Get all order that do not have the Cancelled status
+exports.findNotCancel = (query, next) => {
+  orderModel.find({status: {$not: {$regex: "^Cancelled$"}}}).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+      console.log(doc)
     });
     next(err, orderObjects);
   });
