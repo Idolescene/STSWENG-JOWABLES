@@ -115,16 +115,23 @@ exports.removeFromCart = (req, res) => {
       res.redirect('/login');
     }
     else {
-      cartModel.removeProduct(user, product, (err, cart) => {
-        if (err) {
-          req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
-          return res.redirect('/checkout');
-        } 
-        else {
-          req.flash('success_msg', 'You have removed a product from the cart!');
-          return res.redirect('/checkout');
-        }
-      })
+      // productModel.getOne({_id: product}, (err, result) => {
+      //   if (err) throw err;
+      //   if (result) {
+      //     console.log("-------------- PRODUCT FOUND ------------------");
+      //     console.log(result);
+      //   }
+        cartModel.removeProduct(user, product, (err, cart) => {
+          if (err) {
+            req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
+            return res.redirect('/checkout');
+          } 
+          else {
+            req.flash('success_msg', 'You have removed a product from the cart!');
+            return res.redirect('/checkout');
+          }
+        });
+      // });
     }
   }
 }

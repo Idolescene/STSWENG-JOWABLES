@@ -167,7 +167,7 @@ exports.addProduct = (filter, update, qty, size, next) => {
       }
       else {
         var newCart = {
-          prod: [{id: update, qty: qty}],
+          prod: [{id: update, qty: qty, size: size}],
           user: filter,
           checkout: false
         };
@@ -182,7 +182,7 @@ exports.removeProduct = (filter, update, next) => {
   cartModel.findOne({user: filter}).exec((err, cart) => {
     if (err) throw err;
     if (cart) {
-      console.log(cart); // testing
+      console.log("----------------- DELETE FROM CART -----------------"); // testing
       console.log(cart.prod.some(prod => prod.id == update));
       if (!cart.prod.some(prod => prod.id == update)) {
         next(err, cart);
