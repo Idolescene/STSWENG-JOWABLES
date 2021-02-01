@@ -690,7 +690,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         var order = {
           products: prodarr,
           date: orderdate,
-          status: "Payment Received",
+          status: "Processing",
           user: uid,
           fullname: fullname,
           contactnum: contno,
