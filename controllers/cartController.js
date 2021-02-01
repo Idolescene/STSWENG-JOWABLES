@@ -115,12 +115,12 @@ exports.removeFromCart = (req, res) => {
       res.redirect('/login');
     }
     else {
-      productModel.getOne({_id: product}, (err, result) => {
-        if (err) throw err;
-        if (result) {
-          console.log("-------------- PRODUCT FOUND ------------------");
-          console.log(result);
-        }
+      // productModel.getOne({_id: product}, (err, result) => {
+      //   if (err) throw err;
+      //   if (result) {
+      //     console.log("-------------- PRODUCT FOUND ------------------");
+      //     console.log(result);
+      //   }
         cartModel.removeProduct(user, product, (err, cart) => {
           if (err) {
             req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
@@ -131,7 +131,7 @@ exports.removeFromCart = (req, res) => {
             return res.redirect('/checkout');
           }
         });
-      });
+      // });
     }
   }
 }
