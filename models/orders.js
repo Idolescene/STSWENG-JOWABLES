@@ -85,6 +85,13 @@ exports.findNotCancel = (query, next) => {
   });
 };
 
+// update a order with new values based on the query
+exports.update = (query, newvalues, next) => {
+    orderModel.updateOne(query, newvalues, (err, order) => {
+        next(err, order);
+    });
+};
+
 
 /*
 // Get orders of a specific user

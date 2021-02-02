@@ -45,6 +45,7 @@ router.get('/summary-of-all-orders', (req, res) => {
       income: inc,
       capital: cap,
       revenue: rev,
+      scripts: "/js/summaryorderscript.js"
     });
   });
 });
@@ -56,5 +57,24 @@ router.get('/summary-of-all-orders', (req, res) => {
     layout: "admin"
   })
 })
+
+/*
+  POSTS
+*/
+
+//post for summary orders Page
+router.post('/update-order-status', (req, res) => {
+  var newvals = {$set: {status: req.body.neworder.status}};
+  orderModel.update({_id: req.body.neworder.id},  newvals,function(err, order){
+    if (err || order == null) {
+      req.flash('error_msg', 'An error has occurred while updating order status. Please try again.');
+      res.send("");
+    } else {
+      var message = "Order " + req.body.neworder.id + "'s status has been successfully updated to " + req.body.neworder.status + "!";
+      req.flash('success_msg', message);
+      res.send("");
+    }
+  });
+});
 
 module.exports = router;

@@ -55,6 +55,7 @@
         <br>
         <h4>All Orders</h4>
         <br>
+        {{> messages}}
         <div id="wrapper">
           <table class="table table-borderless text-center table-hover all-orders" id="table-detail">
             <thead>
@@ -76,22 +77,24 @@
                 <td>{{this.date}}</td>
                 <td>&#8369; {{this.totalPrice}}</td>
                 <td>
-                  <div class="dropdown">
-                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Processing
-                    </button>
-                    <div class="dropdown-menu drop-menu" id="order-status" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Payment Received</a>
-                      <a class="dropdown-item" href="#">Shipped</a>
-                      <a class="dropdown-item" href="#">Delivered</a>
-                    </div>
+                  <div>
+                    {{this.status}}
+                    <form>
+                      <select class="form-select form-select-sm summselect" aria-label=".form-select-sm example" id="{{this.id}}">
+                        <option disabled selected value> -- select a status -- </option>
+                        <option value="Processing">Processing</option>
+                        <option value="Payment Received">Payment Received</option>
+                        <option value="Product Ready for Shipping">Product Ready for Shipping</option>
+                        <option value="Shipped">Shipped</option>
+                      </select>
+                    </form>
                   </div>
                 </td>
                 <td>
-                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row1');"></i>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('{{this.id}}hidden');"></i>
                 </td>
               </tr>
-              <tr class="hidden-row" id="hidden-row1">
+              <tr class="hidden-row" id="{{this.id}}hidden">
                 <td colspan="6" class="text-center">
 
                   <div class="container">
@@ -119,7 +122,7 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-8 text-left">
-                          <button class="btn cancel-btn rounded-pill"><b>Cancel</b></button>
+                          <button type="button" class="btn cancel-btn rounded-pill" orderid="{{this.id}}"><b>Cancel</b></button>
                         </div>
                         <div class="col-4 text-right">
                           <div class="row">
