@@ -28,10 +28,23 @@ router.get('/update-products', productController.viewAllProducts);
 */
 router.get('/summary-of-all-orders', (req, res) => {
   orderModel.findNotCancel("", (err, orders) => {
+    var inc = 0;
+    var totalqty = 0;
+    orders.forEach((ord) =>{
+      inc = inc + ord.totalPrice;
+      ord.products.forEach((prod) => {
+        totalqty = totalqty + prod.qty;
+      });
+    });
+    var cap = totalqty * 250;
+    var rev = inc - cap;
     res.render('summary-orders', {
       title: "Summary of Finances",
       layout: "admin",
-      orders: orders
+      orders: orders,
+      income: inc,
+      capital: cap,
+      revenue: rev,
     });
   });
 });
