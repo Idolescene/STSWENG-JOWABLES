@@ -93,7 +93,56 @@
               </tr>
               <tr class="hidden-row" id="hidden-row1">
                 <td colspan="6" class="text-center">
-                  {{>hidden-table}}
+
+                  <div class="container">
+                    <table class="table text-left table-borderless" id="hidden-dropdown">
+                      <thead>
+                        <th scope="col">Product</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </thead>
+                      <tbody>
+                        {{#each this.products}}
+                        <tr>
+                            <td class="d-flex checkout-img-name">
+                              <img src=".{{this.img}}" width="150px">
+                              <p>{{this.name}}</p>
+                            </td>
+                            <td>{{this.size}}</td>
+                            <td>₱ {{this.price}}</td>
+                            <td>{{this.qty}}</td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-8 text-left">
+                          <button class="btn cancel-btn rounded-pill"><b>Cancel</b></button>
+                        </div>
+                        <div class="col-4 text-right">
+                          <div class="row">
+                            <div class="col">Total</div>
+                            <div class="col">{{this.totalPrice}}</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">Shipping Fee</div>
+                            <div class="col">+50</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <h4>Total Amount</h4>
+                            </div>
+                            <div class="col">
+                              <h4>{{this.totalWithShipping}}</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </td>
               </tr>
               {{else}}

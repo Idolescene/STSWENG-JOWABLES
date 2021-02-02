@@ -678,10 +678,14 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         var today = new Date();
         var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
         cartinfo.products.forEach((item, i) => {
+          var pr = item.subPrice / item.qty;
           var prod = {
             id: item.id,
             qty: item.qty,
-            size: item.size
+            size: item.size,
+            img: item.img,
+            name: item.name,
+            price: pr
           };
           prodarr.push(prod);
         });
