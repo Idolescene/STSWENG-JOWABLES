@@ -6,7 +6,7 @@
         <div class="col-2">
           <h4>{{title}}</h4>
         </div>
-        <div class="col-8 d-flex flex-row">
+        <div class="col-10 d-flex flex-row">
           <div class="p-2">
             <h5>From:</h5>
           </div>
@@ -18,6 +18,9 @@
           </div>
           <div class="p-2">
             <input class="form-control rounded-pill date-range" type="date" id="to-date-range" name="to-date-range">
+          </div>
+          <div class="p-2">
+            <button type="button" class="btn rounded-pill shipping-checkout-btn" id="search-date-btn">Search</button>
           </div>
         </div>
       </div>
@@ -36,13 +39,13 @@
           <tbody>
             <tr>
               <th>
-                <h2>&#8369; 50</h2>
+                <h2>&#8369; {{capital}}</h2>
               </th>
               <td>
-                <h2>&#8369; 50</h2>
+                <h2>&#8369; {{income}}</h2>
               </td>
               <td>
-                <h2>&#8369; 50</h2>
+                <h2>&#8369; {{revenue}}</h2>
               </td>
             </tr>
           </tbody>
@@ -54,8 +57,9 @@
       <div class="all-orders-div">
         <br>
         <h4>All Orders</h4>
-        <br>  
-        <div id="wrapper"> 
+        <br>
+        {{> messages}}
+        <div id="wrapper">
           <table class="table table-borderless text-center table-hover all-orders" id="table-detail">
             <thead>
               <tr>
@@ -68,84 +72,89 @@
               </tr>
             </thead>
             <tbody>
+              {{#if orders}}
+              {{#each orders}}
               <tr>
-                <td>0101010</td>
-                <td>John Smith</td>
-                <td>10/20/2020</td>
-                <td>&#8369; 520.00</td>
+                <td>{{this.id}}</td>
+                <td>{{this.fullname}}</td>
+                <td>{{this.date}}</td>
+                <td>&#8369; {{this.totalPrice}}</td>
                 <td>
-                  <div class="dropdown">
-                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Processing
-                    </button>
-                    <div class="dropdown-menu drop-menu" id="order-status" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Payment Received</a>
-                      <a class="dropdown-item" href="#">Shipped</a>
-                      <a class="dropdown-item" href="#">Delivered</a>
-                    </div>
+                  <div>
+                    {{this.status}}
+                    <form>
+                      <select class="form-select form-select-sm summselect" aria-label=".form-select-sm example" id="{{this.id}}">
+                        <option disabled selected value> -- select a status -- </option>
+                        <option value="Processing">Processing</option>
+                        <option value="Payment Received">Payment Received</option>
+                        <option value="Product Ready for Shipping">Product Ready for Shipping</option>
+                        <option value="Shipped">Shipped</option>
+                      </select>
+                    </form>
                   </div>
                 </td>
                 <td>
-                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row1');"></i>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('{{this.id}}hidden');"></i>
                 </td>
               </tr>
-              <tr class="hidden-row" id="hidden-row1">
+              <tr class="hidden-row" id="{{this.id}}hidden">
                 <td colspan="6" class="text-center">
-                  {{>hidden-table}}
-                </td>
-              </tr>
-              <tr>
-                <td>0101010</td>
-                <td>John Smith</td>
-                <td>10/20/2020</td>
-                <td>&#8369; 520.00</td>
-                <td>
-                  <div class="dropdown">
-                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Processing
-                    </button>
-                    <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Payment Received</a>
-                      <a class="dropdown-item" href="#">Shipped</a>
-                      <a class="dropdown-item" href="#">Delivered</a>
+
+                  <div class="container">
+                    <table class="table text-left table-borderless" id="hidden-dropdown">
+                      <thead>
+                        <th scope="col">Product</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </thead>
+                      <tbody>
+                        {{#each this.products}}
+                        <tr>
+                            <td class="d-flex checkout-img-name">
+                              <img src=".{{this.img}}" width="150px">
+                              <p>{{this.name}}</p>
+                            </td>
+                            <td>{{this.size}}</td>
+                            <td>₱ {{this.price}}</td>
+                            <td>{{this.qty}}</td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-8 text-left">
+                          <button type="button" class="btn cancel-btn rounded-pill" orderid="{{this.id}}"><b>Cancel</b></button>
+                        </div>
+                        <div class="col-4 text-right">
+                          <div class="row">
+                            <div class="col">Total</div>
+                            <div class="col">{{this.totalPrice}}</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">Shipping Fee</div>
+                            <div class="col">+50</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <h4>Total Amount</h4>
+                            </div>
+                            <div class="col">
+                              <h4>{{this.totalWithShipping}}</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </td>
-                <td>
-                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row2');"></i>
+
                 </td>
               </tr>
-              <tr class="hidden-row" id="hidden-row2">
-                <td colspan="6" class="text-center">
-                  {{>hidden-table}}
-                </td>
-              </tr>
-              <tr>
-                <td>0101010</td>
-                <td>John Smith</td>
-                <td>10/20/2020</td>
-                <td>&#8369; 520.00</td>
-                <td>
-                  <div class="dropdown">
-                    <button class="btn btn-secondary rounded-pill dropdown-toggle order-status-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Processing
-                    </button>
-                    <div class="dropdown-menu" id="order-status" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Payment Received</a>
-                      <a class="dropdown-item" href="#">Shipped</a>
-                      <a class="dropdown-item" href="#">Delivered</a>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <i class="fa fa-angle-down" aria-hidden="true" style="font-size: 24px;" onclick="showHideDetails('hidden-row3');"></i>
-                </td>
-              </tr>
-              <tr class="hidden-row" id="hidden-row3">
-                <td colspan="6" class="text-center">
-                  {{>hidden-table}}
-                </td>
-              </tr>
+              {{else}}
+              <tr><td>There are no orders available.</td></tr>
+              {{/each}}
+              {{/if}}
             </tbody>
           </table>
         </div>
@@ -154,8 +163,8 @@
   </div>
 </div>
 
-<script type="text/javascript"> 
-  function showHideDetails(row) { 
-      $("#" + row).toggle(); 
-  } 
-</script> 
+<script type="text/javascript">
+  function showHideDetails(row) {
+      $("#" + row).toggle();
+  }
+</script>

@@ -195,7 +195,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -209,7 +208,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: result.products
@@ -248,7 +247,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -262,7 +260,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: null
@@ -679,28 +677,36 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         var prodarr = [];
         var today = new Date();
         var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+        //var dateformatted = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         cartinfo.products.forEach((item, i) => {
+          var pr = item.subPrice / item.qty;
           var prod = {
             id: item.id,
             qty: item.qty,
-            size: item.size
+            size: item.size,
+            img: item.img,
+            name: item.name,
+            price: pr
           };
           prodarr.push(prod);
         });
         var order = {
           products: prodarr,
           date: orderdate,
-          status: "Payment Received",
+          status: "Processing",
           user: uid,
           fullname: fullname,
           contactnum: contno,
           housenum: houseno,
           barangay: brngy,
+          dateformatted: today,
           city: city,
           province: prov,
-          payment: payment
+          payment: payment,
+          totalPrice: cartinfo.total,
+          totalWithShipping: cartinfo.totalWithShipping
         }
-        orderModel.create( order, (err, result) => {
+        orderModel.create( order, (err, result1) => {
           if (err) {
             console.log(err); //testing
             req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
@@ -712,7 +718,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
                 req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
                 res.redirect('/shipping');
               } else {
-                req.flash('success_msg', 'Items ordered successfully!');
+                req.flash('success_msg', 'Items ordered successfully! Order number: ' + result1.id);
                 res.redirect('/shipping');
               }
             });
