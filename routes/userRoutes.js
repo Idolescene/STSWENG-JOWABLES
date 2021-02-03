@@ -704,7 +704,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
           totalPrice: cartinfo.total,
           totalWithShipping: cartinfo.totalWithShipping
         }
-        orderModel.create( order, (err, result) => {
+        orderModel.create( order, (err, result1) => {
           if (err) {
             console.log(err); //testing
             req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
@@ -716,7 +716,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
                 req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
                 res.redirect('/shipping');
               } else {
-                req.flash('success_msg', 'Items ordered successfully!');
+                req.flash('success_msg', 'Items ordered successfully! Order number: ' + result1.id);
                 res.redirect('/shipping');
               }
             });
