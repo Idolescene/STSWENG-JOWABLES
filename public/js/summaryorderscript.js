@@ -20,4 +20,14 @@ $(document).ready(function () {
             window.location.reload();
         });
     });
+
+    $("#search-date-btn").click(function () {
+        var dateto = $("#to-date-range").val().replace(/-/g, 'd');
+        var datefrom = $("#from-date-range").val().replace(/-/g, 'd');
+        var link = "/admin/summary-of-all-orders-" + datefrom + "-" + dateto;
+        if (dateto == "" || datefrom == "")
+          alert ("Please select start and end dates.");
+        else
+          window.location.href = link;
+    });
 });

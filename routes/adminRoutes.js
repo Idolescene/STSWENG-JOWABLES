@@ -50,6 +50,36 @@ router.get('/summary-of-all-orders', (req, res) => {
   });
 });
 
+/*
+  Summary of All Orders Page with Date Range
+*/
+router.get('/summary-of-all-orders-:param1-:param2', (req, res) => {
+  var datefrom = new Date(req.params.param1.replace(/d/g, '-'));
+  var dateto = new Date(req.params.param2.replace(/d/g, '-'));
+
+  orderModel.find({dateformatted: {$gte: datefrom, $lte: dateto}}, (err, orders) => {
+    var inc = 0;
+    var totalqty = 0;
+    orders.forEach((ord) =>{
+      inc = inc + ord.totalPrice;
+      ord.products.forEach((prod) => {
+        totalqty = totalqty + prod.qty;
+      });
+    });
+    var cap = totalqty * 250;
+    var rev = inc - cap;
+    res.render('summary-orders', {
+      title: "Summary of Finances",
+      layout: "admin",
+      orders: orders,
+      income: inc,
+      capital: cap,
+      revenue: rev,
+      scripts: "/js/summaryorderscript.js"
+    });
+  });
+});
+
 // router.get('/edit-product-details/:slug', (req, res) => {
   router.get('/edit-product-details', (req, res) => {
   res.render('edit-product', {

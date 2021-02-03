@@ -677,6 +677,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         var prodarr = [];
         var today = new Date();
         var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+        //var dateformatted = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         cartinfo.products.forEach((item, i) => {
           var pr = item.subPrice / item.qty;
           var prod = {
@@ -698,6 +699,7 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
           contactnum: contno,
           housenum: houseno,
           barangay: brngy,
+          dateformatted: today,
           city: city,
           province: prov,
           payment: payment,

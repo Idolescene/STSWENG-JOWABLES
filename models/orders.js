@@ -13,6 +13,7 @@ const orderSchema = new mongoose.Schema({
     }
   ],
   date: {type: String, required: true},
+  dateformatted: {type: Date, required: true},
   status: {type: String, required: true},
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true},
   fullname: {type: String, required: true},
@@ -67,6 +68,19 @@ exports.getAll = (user, next) => {
     const orderObjects = [];
     orders.forEach((doc) => {
       orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+// Get all orders that match the query given
+exports.find = (query, next) => {
+  orderModel.find(query).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+      console.log(doc)
     });
     next(err, orderObjects);
   });
