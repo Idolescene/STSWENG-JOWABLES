@@ -367,7 +367,66 @@ exports.postAProduct = (req, res) => {
   });
 };
 
-// Edit a product
-exports.editAProduct = (req, res) => {
-
+// GET: Edit a product
+exports.getEditProduct = (req, res) => {
+  const slug = req.params.slug;
+  productModel.getOne({slug: slug}, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      res.render('add-edit-product', {
+        layout: "admin1",
+        buttonStateEdit: "",
+        buttonStateAdd: "disabled",
+        id: result._id,
+        name: result.name,
+        description: result.description,
+        category: result.category,
+        price: result.price,
+        image: result.img
+      });
+    }
+  });
 };
+
+// POST: Edit a product
+exports.postEditProduct = (req, res) => {
+  console.log("TESTING");
+  var image;
+  var {name, description, category, price} = req.body;
+  var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+  var product_id = req.params._id;
+
+  productModel.getOne({_id: product_id}, (err, product) => {
+    if (err) {
+      req.flash('error_msg', "Product not found.");
+      res.redirect('/admin/update-products');
+    } else {
+      if (product) {
+        if(name == "") {
+          name = product.name;
+          slug = product.slug;
+        } 
+        if (description == "") {
+          description = product.description;
+        }
+        if (category == "") {
+          category = product.category;
+        }
+        if (price == "") {
+          price = product.price;
+        } else {
+          price = Math.round(price*100)/100.0;
+        }
+        productModel.updateProduct(product_id, name, slug, description, category, price, (err, result) => {
+          if (err) {
+            req.flash('error_msg', "There was a problem updating product details. Please try again.");
+            res.redirect('/admin/edit-product-details/' + slug);
+          } else {
+            req.flash('success_msg', "Successfully updated product details for " + name + ".");
+            res.redirect('/admin/edit-product-details/' + slug);
+          }
+        })
+      }
+    }
+  })
+}

@@ -62,13 +62,19 @@ router.get('/edit-contact', (req, res) => {
   });
 });
 
-// router.get('/edit-product-details/:slug', (req, res) => {
-  router.get('/edit-product-details', (req, res) => {
-  res.render('edit-product', {
-    title: "Edit product details of ",
-    layout: "admin"
-  })
-})
+/*
+  Edit A Product
+*/
+router.get('/edit-product-details/:slug', productController.getEditProduct);
+router.post('/edit-product-post/:_id', productController.postEditProduct);
+
+router.get('/add-new-product', (req, res) => {
+  res.render('add-edit-product', {
+    layout: "admin",
+    buttonStateEdit: "disabled",
+    buttonStateAdd: ""
+  });
+});
 
 
 
