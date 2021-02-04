@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <br>
+   <div class="container-fluid">
+     <a href="/admin/update-products" type="button" class="btn logout-btn rounded-pill">Back to All Products</a>
+   </div>
+  <br>
+  {{> messages}}
+  <div class="row">
+    <!-- Edit Product Details -->
+    <div class="col" style="padding-left: 15rem;">
+      <h2 class="mt-4">Edit Product Details</h2>
+      <form action="/admin/edit-product-post/{{id}}" method="POST">
+        <div class="form-group">
+          <label><b>Product Name</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="{{name}}">
+        </div>
+        <div class="form-group">
+          <label><b>Product Description</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="{{description}}">
+        </div>
+        <div class="form-group">
+          <label><b>Product Style/Category</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="{{category}}">
+        </div>
+        <div class="form-group">
+          <label><b>Price</b></label>
+          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="{{price}}">
+        </div>
+        <div class="form-group">
+          <label><b>Upload New Product Image</b></label>
+          <input type="file" class="form-control-file" id="image" name="image"=>
+        </div>
+        <div class="form-group">
+          <label><b>Quantity Per Size</b></label>
+          <div class="row">
+            <div class="col-sm-2"><b>Small</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Medium</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>X-Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>XX-Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xxlarge" name="xxlarge">
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn logout-btn rounded-pill" {{buttonStateEdit}}>Submit</button>
+      </form>
+    </div>
+
+    <!-- Add New Product -->
+    <div class="col">
+      <h2 class="mt-4">Add a New Product</h2>
+      <form action="/admin/add-product-post/{{id}}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label><b>Product Name</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="Add new product name">
+        </div>
+        <div class="form-group">
+          <label><b>Product Description</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="Add new product description">
+        </div>
+        <div class="form-group">
+          <label><b>Product Category</b></label>
+          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="Add product category">
+        </div>
+        <div class="form-group">
+          <label><b>Price</b></label>
+          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="Add product price">
+        </div>
+        <div class="form-group">
+          <label><b>Upload New Product Image</b></label>
+          <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <div class="form-group">
+          <label><b>Quantity Per Size</b></label>
+          <div class="row">
+            <div class="col-sm-2"><b>Small</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Medium</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>X-Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>XX-Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xxlarge" name="xxlarge">
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn logout-btn rounded-pill" {{buttonStateAdd}}>Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <br><br><br>
+</div>

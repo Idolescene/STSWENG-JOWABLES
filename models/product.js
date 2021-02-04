@@ -92,3 +92,14 @@ exports.getById = (query, next) => {
     next(err, product);
   });
 };
+
+// Update a product's details
+exports.updateProduct = (id, name, slug, description, category, price, next) => {
+  productModel.updateOne(
+    {_id: id},
+    {$set: {name: name, slug: slug, description: description, category: category, price: price}},
+    (err, result) => {
+      if (err) throw err;
+      next(err, result);
+    });
+};
