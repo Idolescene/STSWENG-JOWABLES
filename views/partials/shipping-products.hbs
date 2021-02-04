@@ -1,16 +1,21 @@
 {{#each cartProducts}}
 <div class="row">
+    <span>
+        <div class="col-4">
+            <img src="{{this.img}}" width="100px">
+        </div>
+    </span>
     <div class="col-4">
-    <p>{{this.name}}</p>
+        <p>{{this.name}}</p>
     </div>
     <div class="col">
-    <p>{{this.size}}</p>
+        <p>{{this.size}}</p>
     </div>
     <div class="col">
-    <p>{{this.qty}}</p>
+        <p>{{this.qty}}</p>
     </div>
     <div class="col">
-    <p>{{this.price}}</p>
+        <p>{{this.subPrice}}</p>
     </div>
 </div>
 {{/each}}
