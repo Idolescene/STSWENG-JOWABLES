@@ -12,58 +12,73 @@
       <form action="/admin/edit-product-post/{{id}}" method="POST">
         <div class="form-group">
           <label><b>Product Name</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="{{name}}">
+          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="{{name}}" {{buttonStateEdit}}>
         </div>
         <div class="form-group">
           <label><b>Product Description</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="{{description}}">
+          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="{{description}}" {{buttonStateEdit}}>
         </div>
         <div class="form-group">
           <label><b>Product Style/Category</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="{{category}}">
+          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="{{category}}" {{buttonStateEdit}}>
         </div>
         <div class="form-group">
           <label><b>Price</b></label>
-          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="{{price}}">
+          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="{{price}}" {{buttonStateEdit}}>
         </div>
         <div class="form-group">
           <label><b>Upload New Product Image</b></label>
-          <input type="file" class="form-control-file" id="image" name="image"=>
+          <input type="file" class="form-control-file" id="image" name="image" disabled>
         </div>
         <div class="form-group">
-          <label><b>Quantity Per Size</b></label>
+          <br>
+          <label><h5><b>Quantity Per Size</b></h5></label>
+          <br><br>
           <div class="row">
+            {{#if small_status}}
             <div class="col-sm-2"><b>Small</b></div>
+            <div class="col-sm-3"><b><span class="{{small_style}}">{{small_status}}</span></b></div>
+            {{else}}
+            <div class="col-sm-2"><b>Small</b></div>
+            {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
           <div class="row">
+            {{#if medium_status}}
             <div class="col-sm-2"><b>Medium</b></div>
+            <div class="col-sm-3"><b><span class="{{medium_style}}">{{medium_status}}</span></b></div>
+            {{else}}
+            <div class="col-sm-2"><b>Medium</b></div>
+            {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
           <div class="row">
+            {{#if large_status}}
             <div class="col-sm-2"><b>Large</b></div>
+            <div class="col-sm-3"><b><span class="{{large_style}}">{{large_status}}</span></b></div>
+            {{else}}
+            <div class="col-sm-2"><b>Large</b></div>
+            {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
           <div class="row">
+            {{#if xlarge_status}}
+            <div class="col-sm-2"><b>Extra Large</b></div>
+            <div class="col-sm-3"><b><span class="{{xlarge_style}}">{{xlarge_status}}</span></b></div>
+            {{else}}
             <div class="col-sm-2"><b>X-Large</b></div>
+            {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-2"><b>XX-Large</b></div>
-            <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xxlarge" name="xxlarge">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge" {{buttonStateEdit}}>
             </div>
           </div>
         </div>
@@ -75,61 +90,56 @@
     <!-- Add New Product -->
     <div class="col">
       <h2 class="mt-4">Add a New Product</h2>
-      <form action="/admin/add-product-post/{{id}}" method="POST" enctype="multipart/form-data">
+      <form action="/admin/add-product-post/{{id}}" method="POST">
         <div class="form-group">
           <label><b>Product Name</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="Add new product name">
+          <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="Add new product name" {{buttonStateAdd}} required>
         </div>
         <div class="form-group">
           <label><b>Product Description</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="Add new product description">
+          <input type="text" class="form-control w-50 rounded-pill" id="description" name="description" placeholder="Add new product description" {{buttonStateAdd}} required>
         </div>
         <div class="form-group">
           <label><b>Product Category</b></label>
-          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="Add product category">
+          <input type="text" class="form-control w-50 rounded-pill" id="category" name="category" placeholder="Add product category" {{buttonStateAdd}} required>
         </div>
         <div class="form-group">
           <label><b>Price</b></label>
-          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="Add product price">
+          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="Add product price" {{buttonStateAdd}} required>
         </div>
         <div class="form-group">
           <label><b>Upload New Product Image</b></label>
-          <input type="file" class="form-control-file" id="image" name="image">
+          <input type="file" class="form-control-file" id="image" name="image" disabled>
         </div>
         <div class="form-group">
-          <label><b>Quantity Per Size</b></label>
+          <br>
+          <label><h5><b>Quantity Per Size</b></h5></label>
+          <br><br>
           <div class="row">
             <div class="col-sm-2"><b>Small</b></div>
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small" {{buttonStateAdd}} required>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-sm-2"><b>Medium</b></div>
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium" {{buttonStateAdd}} required>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-sm-2"><b>Large</b></div>
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large" {{buttonStateAdd}}required>
             </div>
           </div>
           <br>
           <div class="row">
-            <div class="col-sm-2"><b>X-Large</b></div>
+            <div class="col-sm-2"><b>Extra Large</b></div>
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-2"><b>XX-Large</b></div>
-            <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xxlarge" name="xxlarge">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge" {{buttonStateAdd}} required>
             </div>
           </div>
         </div>

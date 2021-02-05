@@ -370,9 +370,27 @@ exports.postAProduct = (req, res) => {
 // GET: Edit a product
 exports.getEditProduct = (req, res) => {
   const slug = req.params.slug;
+  var status = [];
   productModel.getOne({slug: slug}, (err, result) => {
+    console.log('*****BEFORE: ' + result);
     if (err) throw err;
     if (result) {
+      result.stock.forEach((item) => {
+        status.push(item.status);
+      });
+
+      var status_msg = [];
+      var msg_style = [];
+      for(i=0; i<4; i++) {
+        if (status[i] == true) {
+          status_msg[i] = "Available";
+          msg_style[i] = "alert alert-success";
+        } else {
+          status_msg[i] = "Out of Stock";
+          msg_style[i] = "alert alert-danger";
+        }
+      }
+
       res.render('add-edit-product', {
         layout: "admin1",
         buttonStateEdit: "",
@@ -382,7 +400,15 @@ exports.getEditProduct = (req, res) => {
         description: result.description,
         category: result.category,
         price: result.price,
-        image: result.img
+        image: result.img,
+        small_status: status_msg[0],
+        medium_status: status_msg[1],
+        large_status: status_msg[2],
+        xlarge_status: status_msg[3],
+        small_style: msg_style[0],
+        medium_style: msg_style[1],
+        large_style: msg_style[2],
+        xlarge_style: msg_style[3]
       });
     }
   });
@@ -390,9 +416,8 @@ exports.getEditProduct = (req, res) => {
 
 // POST: Edit a product
 exports.postEditProduct = (req, res) => {
-  console.log("TESTING");
   var image;
-  var {name, description, category, price} = req.body;
+  var {name, description, category, price, small, medium, large, xlarge} = req.body;
   var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
   var product_id = req.params._id;
 
@@ -417,7 +442,52 @@ exports.postEditProduct = (req, res) => {
         } else {
           price = Math.round(price*100)/100.0;
         }
-        productModel.updateProduct(product_id, name, slug, description, category, price, (err, result) => {
+
+        if (small == "") {
+          small = product.stock[0].status;
+        } else {
+          if (small > 0) {
+            small = true;
+          } else {
+            small = false;
+          }
+        }
+        if (medium == "") {
+          medium = product.stock[1].status;
+        } else {
+          if (medium > 0) {
+            medium = true;
+          } else {
+            medium = false;
+          }
+        }
+        if (large == "") {
+          large = product.stock[2].status;
+        } else {
+          if (large > 0) {
+            large = true;
+          } else {
+            large = false;
+          }
+        }
+        if (xlarge == "") {
+          xlarge = product.stock[3].status;
+        } else {
+          if (xlarge > 0) {
+            xlarge = true;
+          } else {
+            xlarge = false;
+          }
+        }
+
+        var sizesUpdate = [
+          {size: "Small", status: small},
+          {size: "Medium", status: medium},
+          {size: "Large", status: large},
+          {size: "X-Large", status: xlarge}
+        ];
+
+        productModel.updateProduct(product_id, name, slug, description, category, price, sizesUpdate, (err, result) => {
           if (err) {
             req.flash('error_msg', "There was a problem updating product details. Please try again.");
             res.redirect('/admin/edit-product-details/' + slug);
@@ -429,4 +499,116 @@ exports.postEditProduct = (req, res) => {
       }
     }
   })
+}
+
+// GET: Add a new product
+exports.getAddProduct = (req, res) => {
+  res.render('add-edit-product', {
+    layout: "admin",
+    buttonStateEdit: "disabled",
+    buttonStateAdd: ""
+  });
+};
+
+// POST: Add a new product
+exports.postAddProduct = (req, res) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    var image;
+    var {name, description, category, price, small, medium, large, xlarge} = req.body;
+    console.log(req.body.name);
+    var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+    
+    productModel.getOne({slug: slug}, (err, result) => {
+      if (result) {
+        req.flash('error_msg', 'Product already exists.');
+        res.redirect('/admin/add-new-product');
+      } else {
+
+        if (small == "") {
+          small = product.stock[0].status;
+        } else {
+          if (small > 0) {
+            small = true;
+          } else {
+            small = false;
+          }
+        }
+        if (medium == "") {
+          medium = product.stock[1].status;
+        } else {
+          if (medium > 0) {
+            medium = true;
+          } else {
+            medium = false;
+          }
+        }
+        if (large == "") {
+          large = product.stock[2].status;
+        } else {
+          if (large > 0) {
+            large = true;
+          } else {
+            large = false;
+          }
+        }
+        if (xlarge == "") {
+          xlarge = product.stock[3].status;
+        } else {
+          if (xlarge > 0) {
+            xlarge = true;
+          } else {
+            xlarge = false;
+          }
+        }
+
+        const newProduct = {
+          name: name,
+          slug: slug,
+          description: description,
+          category: category,
+          price: Math.round(price * 100) / 100.0,
+          stock: [
+            {size: "Small", status: small},
+            {size: "Medium", status: medium},
+            {size: "Large", status: large},
+            {size: "X-Large", status: xlarge}
+          ]
+        };
+
+        productModel.create(newProduct, (err, product) => {
+          console.log(product);
+          if(err) {
+            req.flash('error_msg', 'Could not create product. Please try again.');
+            res.redirect('/admin/add-new-product');
+          }
+          else {
+            req.flash('success_msg', 'You have added a new product in the catalogue!');
+            res.redirect('/admin/add-new-product');
+          }
+        })
+      }
+    })
+  }
+}
+
+// Delete a product
+exports.deleteProduct = (req, res) => {
+  var product_id = req.params._id;
+  productModel.getOne({_id: product_id}, (err, product) => {
+    if(err) {
+      console.log(err);
+    }
+    else {
+      productModel.removeProduct({_id: product_id}, (err, product) => {
+        if(err) {
+          console.log(err);
+        }
+        else {
+          req.flash('success_msg', 'Successfully deleted a product!');
+          res.redirect('/admin/update-products');
+        }
+      })
+    }
+  });
 }

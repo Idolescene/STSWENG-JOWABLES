@@ -93,7 +93,6 @@ exports.getByUser = (user, next) => {
               console.log('wat');
             })
           });
-          console.log('before send: ' + totalPrice);
           next(err, {_id: cart._id,
                       products: prodArray,
                       total: totalPrice.toFixed(2),

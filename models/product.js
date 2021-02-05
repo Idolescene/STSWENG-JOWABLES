@@ -6,7 +6,8 @@ const productSchema = new mongoose.Schema({
   description: {type: String, required: true},
   category: {type: String, required: true},
   price: {type: Number, required: true},
-  img: {type: String, required: true},
+  // img: {type: String, required: true},
+  img: {type: String},
   stock:[
     {
     status: {type: Boolean,required:true},
@@ -94,12 +95,29 @@ exports.getById = (query, next) => {
 };
 
 // Update a product's details
-exports.updateProduct = (id, name, slug, description, category, price, next) => {
+exports.updateProduct = (id, name, slug, description, category, price, status, next) => {
   productModel.updateOne(
     {_id: id},
-    {$set: {name: name, slug: slug, description: description, category: category, price: price}},
+    {$set: {name: name, slug: slug, description: description, category: category, price: price, stock: status}},
     (err, result) => {
       if (err) throw err;
       next(err, result);
     });
+};
+
+// Create a new product
+exports.create = (obj, next) => {
+  const product = new productModel(obj);
+  product.save((err, product) => {
+    if (err) throw err;
+    next(err, product);
+  });
+};
+
+// Delete a product
+exports.removeProduct = (id, next) => {
+  productModel.deleteOne(id, (err, result) => {
+    if (err) throw err;
+    next(err, result);
+  });
 };
