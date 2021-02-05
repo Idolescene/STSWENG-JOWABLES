@@ -8,15 +8,13 @@
       <p>{{price}}</p>
       <div class ='row'>
         <div class = 'col-sm-6 text-center'>
-          <button class ='btn' type= 'button' data-toggle="modal" data-target="#editModal">
-            {{!-- <a href="/edit-product-details/{{slug}}"> --}}
-            <a href="/admin/edit-product-details">
+            <a href="/admin/edit-product-details/{{slug}}">
               <i class="fa fa-edit fa-2x fa-search" style="color: #0a0a0ad4 !important;"></i>
             </a>
           </button>
         </div>
         <div class = 'col-sm-6 text-center'>
-          <button class='btn logout-btn' type= 'button' data-toggle="modal" data-target="#removeModal">
+          <button class='btn' type= 'button' data-toggle="modal" data-target="#removeModal">
             <a href="/admin/delete-product/{{_id}}">
               <i class="fa fa-remove fa-2x fa-search" style="color: #0a0a0ad4 !important;"></i>
             </a>

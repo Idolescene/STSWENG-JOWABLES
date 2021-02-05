@@ -80,13 +80,20 @@ router.get('/summary-of-all-orders-:param1-:param2', (req, res) => {
   });
 });
 
-// router.get('/edit-product-details/:slug', (req, res) => {
-  router.get('/edit-product-details', (req, res) => {
-  res.render('edit-product', {
-    title: "Edit product details of ",
-    layout: "admin"
-  })
-})
+/*
+  Edit A Product
+*/
+router.get('/edit-product-details/:slug', productController.getEditProduct);
+
+/*
+  Add A Product
+*/
+router.get('/add-new-product', productController.getAddProduct);
+
+/*
+  Delete A Product
+*/
+router.get('/delete-product/:_id', productController.deleteProduct);
 
 /*
   POSTS
@@ -106,5 +113,8 @@ router.post('/update-order-status', (req, res) => {
     }
   });
 });
+
+router.post('/edit-product-post/:_id', productController.postEditProduct);
+router.post('/add-product-post', productController.postAddProduct);
 
 module.exports = router;
