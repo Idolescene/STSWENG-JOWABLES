@@ -2,6 +2,8 @@ const router = require('express').Router();
 const adminController = require('../controllers/adminController');
 const productController = require('../controllers/productController');
 const orderModel = require('../models/orders');
+const questionModel = require('../models/question');
+const aboutModel = require('../models/about');
 const validationResult = require('express-validator');
 const multer = require('multer');
 
@@ -107,8 +109,53 @@ router.get('/add-new-product', productController.getAddProduct);
   Delete A Product
 */
 router.get('/delete-product/:_id', productController.deleteProduct);
-
 router.get('/confirm-delete/:slug', productController.getProductToDelete);
+
+/*
+  Contact Page
+*/
+router.get('/contact-us', (req, res) => {
+  res.render('contact', {
+    title: "Contact Us",
+    fblink: "www.facebook.com/SalawalCo",
+    iglink: "www.instagram.com/SalawalCo",
+    phonenum: "+ 63 961 801 4235",
+    email: "salawalco.ph@gmail.com",
+    phone: "../img/phone-ringing.png",
+    media: "../img/social-media.png",
+    email: "../img/email.png",
+    loggedIn: req.session.user,
+    layout: "admin"
+  });
+});
+
+/*
+  About Page
+*/
+router.get('/about-us', (req, res) => {
+  aboutModel.getAll("", (err, paras) => {
+    res.render('about', {
+      title: 'About Us',
+      paras: paras,
+      loggedIn: req.session.user,
+      layout: "admin"
+    });
+  });
+})
+
+/*
+  FAQ Page
+*/
+router.get('/faq', (req, res) => {
+  questionModel.getQuestions ("", (err, questions) => {
+    res.render('faq', {
+      title: "FAQ",
+      layout: "admin",
+      loggedIn: req.session.user,
+      questions: questions
+    });
+  });
+})
 
 /*
   POSTS
