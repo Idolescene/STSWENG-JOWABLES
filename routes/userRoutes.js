@@ -24,6 +24,7 @@ router.post('/delete-product-confirmation', productController.postAProduct);
 */
 router.get('/catalogue', productController.getAllProducts);
 router.post('/catalogue',productController.refreshProducts);
+router.get('/catalogue/:category',productController.getAllProducts);
 
 /*
   Product details page for both guest and logged in users

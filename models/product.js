@@ -55,13 +55,18 @@ exports.getManyFilter = (query,sort,filter,next) => {
     console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
-      doc.stock.forEach((prod) => {
-        if (prod.size == filter) {
-          if (prod.status) {
-            productObjects.push(doc.toObject());
+      if (filter == "No Filter") {
+        productObjects.push(doc.toObject());
+      }
+      else {
+        doc.stock.forEach((prod) => {
+          if (prod.size == filter) {
+            if (prod.status) {
+              productObjects.push(doc.toObject());
+            }
           }
-        }
-      })
+        })
+      }
     });
     next(err, productObjects);
   });

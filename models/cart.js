@@ -177,7 +177,7 @@ exports.addProduct = (filter, update, qty, size, next) => {
 };
 
 // Remove a product from a user's cart
-exports.removeProduct = (filter, update, next) => {
+exports.removeProduct = (filter, update, size, next) => {
   cartModel.findOne({user: filter}).exec((err, cart) => {
     if (err) throw err;
     if (cart) {
@@ -189,15 +189,36 @@ exports.removeProduct = (filter, update, next) => {
       else {
         var prodArray = cart.prod;
         var prodIndex = prodArray.findIndex(x => x.id == update);
-        cart.prod.splice(prodIndex, 1);
-        if (cart.prod.length == 0) {
-          cartModel.deleteOne({user: filter}).exec((err, result) => {
-            if (err) throw err;
-            next(err, result);
-          });
+        var i = 0;
+        var find = false;
+        console.log ("---to delete---")
+        console.log (cart.prod[prodIndex])
+        console.log (cart.prod[prodIndex].buy)
+        cart.prod[prodIndex].buy.forEach(element => {
+          if (element.size != size && !find) {
+            i++;
+          }
+          else if (element.size == size) {
+            find = true;
+          }
+        })
+        console.log(i)
+        cart.prod[prodIndex].buy.splice(i,1)
+        console.log(cart.prod[prodIndex].buy)
+        if (cart.prod[prodIndex].buy.length == 0) {
+          cart.prod.splice(prodIndex, 1);
+          if (cart.prod.length == 0) {
+            cartModel.deleteOne({user: filter}).exec((err, result) => {
+              if (err) throw err;
+              next(err, result);
+            });
+          }
+          else {
+            cart.save(next(err, cart));
+          }
         }
         else {
-          cart.save(next(err, cart));
+          cart.save(next(err,cart));
         }
       }
     }
