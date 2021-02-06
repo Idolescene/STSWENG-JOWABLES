@@ -46,10 +46,13 @@
     "express-validator": "^6.9.2",
     "git-package-json": "^1.4.0",
     "git-source": "^1.1.0",
+    "gridfs-stream": "^1.1.1",
     "handlebars": "^4.7.6",
     "jest": "^26.6.3",
+    "method-override": "^3.0.0",
     "mongoose": "^5.11.14",
     "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.2.0",
     "package-json": "^2.3.1",
     "supertest": "^6.0.1"
   },

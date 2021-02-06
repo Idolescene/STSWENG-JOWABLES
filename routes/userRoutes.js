@@ -491,6 +491,8 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     if (result) {
                       req.session.user = user2._id;
                       req.session.username = user2.username;
+                      req.session.email = user2.email;
+                      console.log(req.session);
                       res.redirect('/admin/profile');
                     } else {
                       req.flash('error_msg', 'Incorrect password. Please try again.');
@@ -555,7 +557,7 @@ router.post('/update-user-email', updateEmailValidation, (req, res) => {
     var newvals = { $set: {email: editemail} };
     userModel.getOne({email: editemail}, (err, resemail) => {
       if (resemail){
-        req.flash('error_msg', 'Email already in use.s');
+        req.flash('error_msg', 'Email already in use.');
         res.redirect('/profile');
       } else {
         userModel.updateOne({username: req.session.username}, newvals, (err, result) => {

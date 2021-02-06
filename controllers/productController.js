@@ -1,6 +1,9 @@
 const productModel = require('../models/product');
 const cartModel = require('../models/cart');
 const {validationResult} = require('express-validator');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require("gridfs-stream");
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
@@ -27,15 +30,11 @@ exports.getAllProducts = (req, res) => {
           if (req.body.size && req.body.size != 'No Filter'){
             query.stock.size = req.body.size;
           }
-          console.log(query);
           productModel.getMany(query,sort, (err, products) => {
             if (err) throw err;
-            console.log(products);
             var categories = [];
             var sizes = [];
             products.forEach((item)=>{
-              console.log(sizes)
-              console.log('----')
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
               }
@@ -86,7 +85,6 @@ exports.getAllProducts = (req, res) => {
       }
       productModel.getMany(query,sort, (err, products) => {
         if (err) throw err;
-        console.log(products);
         
         var categories = [];
         var sizes = [];
@@ -247,7 +245,6 @@ exports.viewAllProducts = (req, res) => {
           console.log(query)
           productModel.getManyFilter(query,sort, size,(err, products) => {
             if (err) throw err;
-            console.log(products);
             var categories = [];
             products.forEach(function(item){
               if (!categories.includes(item.category)) {
@@ -258,6 +255,7 @@ exports.viewAllProducts = (req, res) => {
               item.price = item.price.toFixed(2);
             });
             if(result) {
+              console.log(result._id);
               res.render('update-products', {
                 layout: 'admin',
                 loggedIn: req.session.user,
@@ -296,7 +294,6 @@ exports.viewAllProducts = (req, res) => {
       console.log('bsd')
       productModel.getManyFilter(query,sort, size,(err, products) => {
         if (err) throw err;
-        console.log(products);
         
         var categories = [];
         products.forEach(function(item){
@@ -334,10 +331,8 @@ exports.refreshProducts = (req, res) => {
     size = req.body.size;
     category = category + " (" + req.body.size + ")"
   }
-  console.log('<------------------------------------------------------------->')
   productModel.getManyFilter(query, sort, size,(err, products) => {
     if (err) throw err;
-    console.log(products);
     products.forEach((item) => {
       item.price = item.price.toFixed(2);
     });
@@ -364,7 +359,6 @@ exports.getAProduct = (req, res) => {
         else {
           productModel.getOne({slug: req.params.slug}, (err, product) => {
             if (err) throw err;
-
             if(result) {
               res.render('product-details', {
                 loggedIn: req.session.user,
@@ -498,12 +492,26 @@ exports.postAProduct = (req, res) => {
   });
 };
 
+// multer storage
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './public/uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null,file.originalname);
+  }
+});
+
+const upload = multer({
+  storage: storage
+});
+
 // GET: Edit a product
 exports.getEditProduct = (req, res) => {
+  var image;
   const slug = req.params.slug;
   var status = [];
   productModel.getOne({slug: slug}, (err, result) => {
-    console.log('*****BEFORE: ' + result);
     if (err) throw err;
     if (result) {
       result.stock.forEach((item) => {
@@ -573,6 +581,13 @@ exports.postEditProduct = (req, res) => {
         } else {
           price = Math.round(price*100)/100.0;
         }
+        if(req.file == undefined || req.file == null || req.file == "") {
+          image = product.img;
+        }
+        else {
+          // image = "uploads/" + req.file.originalname.replace(/\s+/g, '-').toLowerCase();
+          image = "uploads/" + req.file.originalname;
+        }
 
         if (small == "") {
           small = product.stock[0].status;
@@ -618,7 +633,7 @@ exports.postEditProduct = (req, res) => {
           {size: "X-Large", status: xlarge}
         ];
 
-        productModel.updateProduct(product_id, name, slug, description, category, price, sizesUpdate, (err, result) => {
+        productModel.updateProduct(product_id, name, slug, description, category, price, image, sizesUpdate, (err, result) => {
           if (err) {
             req.flash('error_msg', "There was a problem updating product details. Please try again.");
             res.redirect('/admin/edit-product-details/' + slug);
@@ -649,6 +664,14 @@ exports.postAddProduct = (req, res) => {
     var {name, description, category, price, small, medium, large, xlarge} = req.body;
     console.log(req.body.name);
     var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+
+    image = req.file;
+    if(image == undefined || image == null || image == "") {
+      image = 'img/tote-bag-1.jpg';
+    }
+    else {
+      image = "uploads/" + req.file.originalname;
+    }
     
     productModel.getOne({slug: slug}, (err, result) => {
       if (result) {
@@ -699,6 +722,7 @@ exports.postAddProduct = (req, res) => {
           description: description,
           category: category,
           price: Math.round(price * 100) / 100.0,
+          img: image,
           stock: [
             {size: "Small", status: small},
             {size: "Medium", status: medium},
@@ -740,6 +764,28 @@ exports.deleteProduct = (req, res) => {
           res.redirect('/admin/update-products');
         }
       })
+    }
+  });
+}
+
+exports.getProductToDelete = (req, res) => {
+  productModel.getOne({slug: req.params.slug}, (err, product) => {
+    if (err) throw err;
+    if(product) {
+      var image = product.img.substring(1);
+
+      res.render('confirm-delete', {
+        loggedIn: req.session.user,
+        id: product.id,
+        name: product.name,
+        img: image,
+        desc: product.description,
+        price: product.price.toFixed(2),
+        layout: 'admin1'
+      });
+    }
+    else {
+      console.log(err);
     }
   });
 }

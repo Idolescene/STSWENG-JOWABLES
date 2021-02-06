@@ -5,20 +5,26 @@
         <h4>Logged In As: <span><strong>admin</strong></span></h4>
         <h4>Date Joined: 23/1/2021</h4>
       </div>
-      <br><br>
+      <br>
+      {{>messages}}
       <div class="admin-edit-details-div">
         <h4>Edit Account Details</h4>
         <br>
-        <form>
+        <form action="/admin/edit-admin-email/{{id}}" method="POST">
           <div class="form-group">
-            <label for="exampleInputEmail1"><h5>Email address</h5></label>
-            <input type="email" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="adminemail"><h5>Email address</h5></label>
+            <input type="email" class="form-control rounded-pill" id="adminemail" name="adminemail" placeholder="Enter new email address">
           </div>
+          <button type="submit" class="btn logout-btn rounded-pill">
+            <strong>Submit</strong>
+          </button>
+        </form>
+        <br>
+        <form action="/admin/edit-admin-password/{{id}}" method="POST">
           <div class="form-group">
-            <label for="exampleInputPassword1"><h5>Password</h5></label>
-            <input type="password" class="form-control rounded-pill" id="exampleInputPassword1" placeholder="Password">
+            <label for="adminpass"><h5>Password</h5></label>
+            <input type="password" class="form-control rounded-pill" id="adminpass" name="adminpass" placeholder="Enter new password">
           </div>
-          <br>
           <button type="submit" class="btn logout-btn rounded-pill">
             <strong>Submit</strong>
           </button>

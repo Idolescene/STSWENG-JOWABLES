@@ -3,6 +3,18 @@ const adminController = require('../controllers/adminController');
 const productController = require('../controllers/productController');
 const orderModel = require('../models/orders');
 const validationResult = require('express-validator');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './public/uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
 
 /*
   Admin profile page
@@ -11,6 +23,7 @@ router.get('/profile', (req, res) => {
   console.log(req.session.user);
   res.render('profile-admin', {
     title: 'profile',
+    id: req.session.user,
     loggedIn: req.session.user,
     layout: 'admin'
   });
@@ -95,6 +108,8 @@ router.get('/add-new-product', productController.getAddProduct);
 */
 router.get('/delete-product/:_id', productController.deleteProduct);
 
+router.get('/confirm-delete/:slug', productController.getProductToDelete);
+
 /*
   POSTS
 */
@@ -114,7 +129,12 @@ router.post('/update-order-status', (req, res) => {
   });
 });
 
-router.post('/edit-product-post/:_id', productController.postEditProduct);
-router.post('/add-product-post', productController.postAddProduct);
+router.post('/edit-product-post/:_id', upload.single('image'), productController.postEditProduct);
+
+router.post('/add-product-post', upload.single('image'), productController.postAddProduct);
+
+router.post('/edit-admin-email/:_id', adminController.postEditAdminEmail);
+
+router.post('/edit-admin-password/:_id', adminController.postEditAdminPassword);
 
 module.exports = router;
