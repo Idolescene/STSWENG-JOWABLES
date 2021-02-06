@@ -110,6 +110,11 @@ exports.removeFromCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     var product = req.params.id;
+    var size = req. params.size;
+    var prod = {
+      id: product,
+      size: size
+    }
     var user = req.session.user;
     if(!user) {
       res.redirect('/login');
@@ -121,11 +126,11 @@ exports.removeFromCart = (req, res) => {
       //     console.log("-------------- PRODUCT FOUND ------------------");
       //     console.log(result);
       //   }
-        cartModel.removeProduct(user, product, (err, cart) => {
+        cartModel.removeProduct(user, prod, (err, cart) => {
           if (err) {
             req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
             return res.redirect('/checkout');
-          } 
+          }
           else {
             req.flash('success_msg', 'You have removed a product from the cart!');
             return res.redirect('/checkout');

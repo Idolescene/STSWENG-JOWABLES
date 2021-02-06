@@ -55,7 +55,7 @@ exports.getByUser = (user, next) => {
         cart.prod.forEach((item) => {
           prodIds.push(item.id);
         });
-        
+
         productModel.getAllIds(prodIds, (err, products) => {
           var totalPrice = 0;
           var totalPriceWithShipping = 0;
@@ -182,14 +182,18 @@ exports.removeProduct = (filter, update, next) => {
     if (err) throw err;
     if (cart) {
       console.log("----------------- DELETE FROM CART -----------------"); // testing
-      console.log(cart.prod.some(prod => prod.id == update));
-      if (!cart.prod.some(prod => prod.id == update)) {
+      console.log(cart.prod.some(prod => (prod.id == update.id)));
+      if (!cart.prod.some(prod => (prod.id == update.id))) {
         next(err, cart);
       }
       else {
         var prodArray = cart.prod;
-        var prodIndex = prodArray.findIndex(x => x.id == update);
-        cart.prod.splice(prodIndex, 1);
+        var prodIndex = prodArray.findIndex(x => x.id == update.id);
+        var prodBuyArray = cart.prod[prodIndex].buy;
+        var prodBuyIndex = prodBuyArray.findIndex(x => x.size == update.size);
+        prodBuyArray.splice(prodBuyIndex, 1);
+        if (prodBuyArray.length == 0)
+          cart.prod.splice(prodIndex, 1);
         if (cart.prod.length == 0) {
           cartModel.deleteOne({user: filter}).exec((err, result) => {
             if (err) throw err;
