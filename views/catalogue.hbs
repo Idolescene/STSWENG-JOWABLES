@@ -8,32 +8,32 @@
         <ul class="list-group-flush w-75">
           <li class="list-group-item">
             <div class = 'form-check'>
-              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio' >
+              <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = 'No Filter' id = 'noFilterRadio' hidden>
               <label for = 'noFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
             </div>
           </li>
           {{#each categories}}
           <li class="list-group-item">
             <div class = 'form-check'>
-            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio' >
+            <input class = 'form-check-input categoryRadio' name = 'categoryRadio' type = 'radio' value = '{{this}}' id = '{{this}}Radio' hidden>
             <label for = '{{this}}Radio' class = 'form-check-label'>{{this}}</label>
             </div>
           </li>
           {{/each}}
         </ul>
         <br><br>
-        <h5>Filter By</h5>
+        <h5>Filter By Availability</h5>
         <ul class="list-group-flush w-75">
           <li class="list-group-item">
             <div class = 'form-check'>
-              <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = 'No Filter' id = 'sizeFilterRadio' >
+              <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = 'No Filter' id = 'sizeFilterRadio' hidden>
               <label for = 'sizeFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
             </div>
           </li>
           {{#each size}}
           <li class="list-group-item">
             <div class = 'form-check'>
-            <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = '{{this}}' id = '{{this}}sizeRadio' >
+            <input class = 'form-check-input sizeRadio' name = 'sizeRadio' type = 'radio' value = '{{this}}' id = '{{this}}sizeRadio' hidden>
             <label for = '{{this}}sizeRadio' class = 'form-check-label'>{{this}}</label>
             </div>
           </li>

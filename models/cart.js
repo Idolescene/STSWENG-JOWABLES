@@ -55,22 +55,16 @@ exports.getByUser = (user, next) => {
         cart.prod.forEach((item) => {
           prodIds.push(item.id);
         });
-        
+
         productModel.getAllIds(prodIds, (err, products) => {
           var totalPrice = 0;
           var totalPriceWithShipping = 0;
           var subPrice;
           var prodArray = [];
-          console.log('boop')
-          console.log(products)
-          console.log('beep')
           products.forEach((item) => {
-            console.log(item);
             var index = cart.prod.findIndex(x => x.id.equals(item._id));
-            console.log(cart.prod[index]);
             //var stat = item.stock.findIndex(x =>x.id.equals(cart.prod[index].size))
             cart.prod[index].buy.forEach((element) => {
-              console.log("PRODUCTS: " + element); //testing
               var product = {};
               product['name'] = item.name;
               product['img'] = item.img;
@@ -87,10 +81,6 @@ exports.getByUser = (user, next) => {
                 product['status'] = item.stock[cartdex].status
               }
               prodArray.push(product)
-              console.log(product);
-              console.log("beep");
-              console.log(prodArray);
-              console.log('wat');
             })
           });
           next(err, {_id: cart._id,
@@ -116,7 +106,6 @@ exports.addProduct = (filter, update, qty, size, next) => {
   cartModel.findOne({user: filter}).exec((err, cart) => {
     if (err) throw err;
     if (cart) {
-      console.log(cart.prod.some(prod => prod.id == update));
       if (!cart.prod.some(prod => prod.id == update)) {
         if(!cart.prod.some(prod => prod.id == update).buy) {
           var buy = {};
@@ -132,9 +121,7 @@ exports.addProduct = (filter, update, qty, size, next) => {
         var prodArray = cart.prod;
         var prodIndex = prodArray.findIndex(x => x.id == update);
         var buyArray = prodArray[prodIndex].buy
-        console.log(buyArray)
         var buyIndex = buyArray.findIndex(x => x.size == size)
-        console.log(buyIndex);
         prodArray[prodIndex].buy.forEach(element => {
           if (element.size == size && buyIndex > -1) {
             if (prodArray[prodIndex].buy[buyIndex].qty + qty > 0) {
@@ -177,27 +164,46 @@ exports.addProduct = (filter, update, qty, size, next) => {
 };
 
 // Remove a product from a user's cart
-exports.removeProduct = (filter, update, next) => {
+exports.removeProduct = (filter, update, size, next) => {
   cartModel.findOne({user: filter}).exec((err, cart) => {
     if (err) throw err;
     if (cart) {
-      console.log("----------------- DELETE FROM CART -----------------"); // testing
-      console.log(cart.prod.some(prod => prod.id == update));
       if (!cart.prod.some(prod => prod.id == update)) {
         next(err, cart);
       }
       else {
         var prodArray = cart.prod;
         var prodIndex = prodArray.findIndex(x => x.id == update);
-        cart.prod.splice(prodIndex, 1);
-        if (cart.prod.length == 0) {
-          cartModel.deleteOne({user: filter}).exec((err, result) => {
-            if (err) throw err;
-            next(err, result);
-          });
+        var i = 0;
+        var find = false;
+        console.log ("---to delete---")
+        console.log (cart.prod[prodIndex])
+        console.log (cart.prod[prodIndex].buy)
+        cart.prod[prodIndex].buy.forEach(element => {
+          if (element.size != size && !find) {
+            i++;
+          }
+          else if (element.size == size) {
+            find = true;
+          }
+        })
+        console.log(i)
+        cart.prod[prodIndex].buy.splice(i,1)
+        console.log(cart.prod[prodIndex].buy)
+        if (cart.prod[prodIndex].buy.length == 0) {
+          cart.prod.splice(prodIndex, 1);
+          if (cart.prod.length == 0) {
+            cartModel.deleteOne({user: filter}).exec((err, result) => {
+              if (err) throw err;
+              next(err, result);
+            });
+          }
+          else {
+            cart.save(next(err, cart));
+          }
         }
         else {
-          cart.save(next(err, cart));
+          cart.save(next(err,cart));
         }
       }
     }

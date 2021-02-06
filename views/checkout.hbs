@@ -3,7 +3,7 @@
   {{#if cartProducts}}
   <h4>{{title}}</h4>
   <br>
-  </a>
+  {{> messages}}
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -42,7 +42,7 @@
           <th>{{this.qty}}</th>
           {{!-- <th>Out of Stock</th> --}}
           <th>
-            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+            <a href="/delete_from_cart/{{this.id}}/{{this.size}}"  class="remove-product" style="color: #0a0a0a;">
               <h1>X</h1>
             </a>
           </th>
@@ -51,7 +51,7 @@
       {{/each}}
     </tbody>
   </table>
-  <br>
+  <br><br>
   </a>
   <div class="container text-right">
     <div class="row">
@@ -77,6 +77,7 @@
     </div>
     <br>
     {{!-- {{#if checkout}} --}}
+    <a href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
     <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
     {{!-- {{else}}
     <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
@@ -84,8 +85,9 @@
   </div>
   {{else}}
   <div style="height: calc(100vh - 400px);">
+    {{> messages}}
     <h4>Your cart is empty :(</h4>
   </div>
   {{/if}}
-  <br><br>
+  <br><br><br>
 </div>

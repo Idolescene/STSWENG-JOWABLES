@@ -50,7 +50,6 @@ exports.getACart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        console.log(result);
         res.send(result);
       });
     }
@@ -69,36 +68,36 @@ exports.addToCart = (req, res) => {
     var quantity = 1;
     var size = req.body.size;
 
-    console.log(product);
-    console.log(user);
-    console.log(req.body.size)
-
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
     }
 
     if(!user) {
-      console.log(user + ' ' + product); // testing
       res.redirect('/login');
     }
     else {
       if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
-          console.log(cart);
+          var stockIndex = cart.stock.findIndex(x => x.size == size);
+          var inStock = cart.stock[stockIndex].status;
 
           var slug = cart.toObject().slug;
-          cartModel.addProduct(user, product, quantity, size,(err, cart) => {
-            console.log('cart(addtocart): ' + cart);
-            if(err) {
-              req.flash('error_msg', 'Could not add product. Please try again.');
-              return res.redirect('/product_details/' + slug);
-            }
-            else {
-              req.flash('success_msg', 'You have added a new product to the cart!');
-              return res.redirect('/product_details/' + slug);
-            }
-          });
+          if (inStock) {
+            cartModel.addProduct(user, product, quantity, size,(err, cart) => {
+              if(err) {
+                req.flash('error_msg', 'Could not add product. Please try again.');
+                return res.redirect('/product_details/' + slug);
+              }
+              else {
+                req.flash('success_msg', 'You have added a new product to the cart!');
+                return res.redirect('/product_details/' + slug);
+              }
+            });
+          } else {
+            req.flash('error_msg', 'Product out of stock.');
+            return res.redirect('/product_details/' + slug);
+          }
         });
       }
     }
@@ -110,7 +109,10 @@ exports.removeFromCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     var product = req.params.id;
+    var size = req.params.size;
     var user = req.session.user;
+    console.log("<------->")
+    console.log(req.params)
     if(!user) {
       res.redirect('/login');
     }
@@ -121,17 +123,40 @@ exports.removeFromCart = (req, res) => {
       //     console.log("-------------- PRODUCT FOUND ------------------");
       //     console.log(result);
       //   }
-        cartModel.removeProduct(user, product, (err, cart) => {
+        cartModel.removeProduct(user, product, size, (err, cart) => {
           if (err) {
             req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
             return res.redirect('/checkout');
-          } 
+          }
           else {
             req.flash('success_msg', 'You have removed a product from the cart!');
             return res.redirect('/checkout');
           }
         });
       // });
+    }
+  }
+}
+
+// Remove all products from cart
+exports.removeAllFromCart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    var user = req.session.user;
+    if(!user) {
+      res.redirect('/login');
+    }
+    else {
+        cartModel.deleteByUser(user, (err, cart) => {
+          if (err) {
+            req.flash('error_msg', 'Something went wrong. Could not remove products. Please try again.');
+            return res.redirect('/checkout');
+          }
+          else {
+            req.flash('success_msg', 'You have removed all products from the cart!');
+            return res.redirect('/checkout');
+          }
+        });
     }
   }
 }
