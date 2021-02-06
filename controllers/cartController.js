@@ -135,3 +135,26 @@ exports.removeFromCart = (req, res) => {
     }
   }
 }
+
+// Remove all products from cart
+exports.removeAllFromCart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
+    var user = req.session.user;
+    if(!user) {
+      res.redirect('/login');
+    }
+    else {
+        cartModel.deleteByUser(user, (err, cart) => {
+          if (err) {
+            req.flash('error_msg', 'Something went wrong. Could not remove products. Please try again.');
+            return res.redirect('/checkout');
+          }
+          else {
+            req.flash('success_msg', 'You have removed all products from the cart!');
+            return res.redirect('/checkout');
+          }
+        });
+    }
+  }
+}

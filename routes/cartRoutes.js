@@ -7,4 +7,6 @@ router.post('/add_to_cart/:id/', cartController.addToCart);
 // delete an item from the cart
 router.get('/delete_from_cart/:id', cartController.removeFromCart);
 
+router.get('/delete_all_from_cart', cartController.removeAllFromCart);
+
 module.exports = router;
