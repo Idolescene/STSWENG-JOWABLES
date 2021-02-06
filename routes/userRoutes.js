@@ -409,18 +409,13 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {regfn, regun, regemail, regpass} = req.body;
-    //console.log(req.body.name); //testing
     userModel.getOne({email: regemail}, (err, result) => {
       if(result) {
-        console.log(result); //testing
-        console.log('User already exists.') //testing
         req.flash('error_msg', 'User already exists. Please login.');
         res.redirect('/login');
       } else {
         userModel.getOne({username: regun}, (err, result) => {
           if(result) {
-            console.log(result); //testing
-            console.log('User already exists.') //testing
             req.flash('error_msg', 'User already exists. Please login.');
             res.redirect('/login');
           } else {
@@ -442,12 +437,9 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
               };
               userModel.create(newUser, (err, user) => {
                 if(err) {
-                  console.log('Error creating new account.'); //testing
                   req.flash('error_msg', 'Error creating new account. Please try again.');
                   res.redirect('/login');
                 } else {
-                  console.log(user); //testing
-                  console.log("Registration successful."); //testing
                   req.flash('success_msg', 'Registration successful! Please login.');
                   res.redirect('/login');
                 }
@@ -459,7 +451,6 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/login');
   }
@@ -469,13 +460,9 @@ router.post('/user-login', userLoginValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {logemail, logpass} = req.body;
-    console.log(logemail);
-    //console.log(req.body.name); //testing
-    // search user via email
     userModel.getOne({email: logemail}, (err, user) => {
       if(err) {
         console.log(err); //testing
-        console.log('An error has occurred while searching for a user.') //testing
         res.redirect('/login');
       } else {
         if(user) {
@@ -483,10 +470,8 @@ router.post('/user-login', userLoginValidation, (req, res) => {
             if (result) {
               req.session.user = user._id;
               req.session.username = user.username;
-              console.log(req.session);
               res.redirect('/');
             } else {
-              console.log('Incorrect password. Please try again.'); //testing
               req.flash('error_msg', 'Incorrect password. Please try again.');
               res.redirect('/login');
             }
@@ -496,7 +481,6 @@ router.post('/user-login', userLoginValidation, (req, res) => {
           userModel.getOne({username: logemail}, (err, user2) => {
             if(err) {
               console.log(err); //testing
-              console.log('An error has occurred while searching for a user.') //testing
               req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
               res.redirect('/login');
             } else {
@@ -506,10 +490,8 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     if (result) {
                       req.session.user = user2._id;
                       req.session.username = user2.username;
-                      console.log(req.session);
                       res.redirect('/admin/profile');
                     } else {
-                      console.log('Incorrect password. Please try again.'); //testing
                       req.flash('error_msg', 'Incorrect password. Please try again.');
                       res.redirect('/login');
                     }
@@ -522,14 +504,12 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     console.log(req.session);
                     res.redirect('/');
                   } else {
-                    console.log('Incorrect password. Please try again.'); //testing
                     req.flash('error_msg', 'Incorrect password. Please try again.');
                     res.redirect('/login');
                   }
                 });
                 }
               } else {
-                  console.log('User not found. Please try again.'); //testing
                   req.flash('error_msg', 'User not found. Please try again.');
                   res.redirect('/login');
               }
@@ -541,7 +521,6 @@ router.post('/user-login', userLoginValidation, (req, res) => {
   } else {
     const messages = errors.array().map((item) => item.msg);
     req.flash('error_msg', messages.join(' '));
-    console.log(messages.join(' ')); //testing
     res.redirect('/login');
   }
 });
@@ -554,19 +533,15 @@ router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
     var newvals = { $set: {fullname: fullname, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
     userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
       if (err) {
-        console.log(err); //testing
-        console.log('An error has occurred while searching for a user.') //testing
         req.flash('error_msg', 'An error has occurred. Please try again.');
         res.redirect('/profile');
       } else {
-        console.log('Shipping details updated successfully!') //testing
         req.flash('success_msg', 'Shipping details updated successfully!');
         res.redirect('/profile');
       }
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -584,8 +559,6 @@ router.post('/update-user-email', updateEmailValidation, (req, res) => {
       } else {
         userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
           if (err) {
-            console.log(err); //testing
-            console.log('An error has occurred while searching for a user.') //testing
             req.flash('error_msg', 'An error has occurred. Please try again.');
             res.redirect('/profile');
           } else {
@@ -597,7 +570,6 @@ router.post('/update-user-email', updateEmailValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -612,8 +584,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
       var newvals = { $set: {password: hashed} };
       userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
         if (err) {
-          console.log(err); //testing
-          console.log('An error has occurred while searching for a user.') //testing
           req.flash('error_msg', 'An error has occurred. Please try again.');
           res.redirect('/profile');
         } else {
@@ -624,7 +594,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -632,7 +601,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
 
 /*Post for Admin*/
 router.post('/update-admin-email', (req, res) => {
-  console.log("admin:: " + res.session.user);
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {editemail} = req.body;
@@ -644,8 +612,6 @@ router.post('/update-admin-email', (req, res) => {
       } else {
         userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
           if (err) {
-            console.log(err); //testing
-            console.log('An error has occurred while searching for a user.') //testing
             req.flash('error_msg', 'An error has occurred. Please try again.');
             res.redirect('/profile');
           } else {
@@ -657,7 +623,6 @@ router.post('/update-admin-email', (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -708,13 +673,11 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
         }
         orderModel.create( order, (err, result1) => {
           if (err) {
-            console.log(err); //testing
             req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
             res.redirect('/shipping');
           } else {
             cartModel.deleteByUser( uid, (err, result) => {
               if (err) {
-                console.log(err); //testing
                 req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
                 res.redirect('/shipping');
               } else {
@@ -728,7 +691,6 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/shipping');
   }

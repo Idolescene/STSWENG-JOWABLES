@@ -50,7 +50,6 @@ exports.getACart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        console.log(result);
         res.send(result);
       });
     }
@@ -69,36 +68,36 @@ exports.addToCart = (req, res) => {
     var quantity = 1;
     var size = req.body.size;
 
-    console.log(product);
-    console.log(user);
-    console.log(req.body.size)
-
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
     }
 
     if(!user) {
-      console.log(user + ' ' + product); // testing
       res.redirect('/login');
     }
     else {
       if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
-          console.log(cart);
+          var stockIndex = cart.stock.findIndex(x => x.size == size);
+          var inStock = cart.stock[stockIndex].status;
 
           var slug = cart.toObject().slug;
-          cartModel.addProduct(user, product, quantity, size,(err, cart) => {
-            console.log('cart(addtocart): ' + cart);
-            if(err) {
-              req.flash('error_msg', 'Could not add product. Please try again.');
-              return res.redirect('/product_details/' + slug);
-            }
-            else {
-              req.flash('success_msg', 'You have added a new product to the cart!');
-              return res.redirect('/product_details/' + slug);
-            }
-          });
+          if (inStock) {
+            cartModel.addProduct(user, product, quantity, size,(err, cart) => {
+              if(err) {
+                req.flash('error_msg', 'Could not add product. Please try again.');
+                return res.redirect('/product_details/' + slug);
+              }
+              else {
+                req.flash('success_msg', 'You have added a new product to the cart!');
+                return res.redirect('/product_details/' + slug);
+              }
+            });
+          } else {
+            req.flash('error_msg', 'Product out of stock.');
+            return res.redirect('/product_details/' + slug);
+          }
         });
       }
     }
