@@ -80,7 +80,6 @@ exports.find = (query, next) => {
     const orderObjects = [];
     orders.forEach((doc) => {
       orderObjects.push(doc.toObject());
-      console.log(doc)
     });
     next(err, orderObjects);
   });
@@ -93,7 +92,6 @@ exports.findNotCancel = (query, next) => {
     const orderObjects = [];
     orders.forEach((doc) => {
       orderObjects.push(doc.toObject());
-      console.log(doc)
     });
     next(err, orderObjects);
   });
