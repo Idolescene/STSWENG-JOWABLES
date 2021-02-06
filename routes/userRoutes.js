@@ -114,6 +114,9 @@ router.get('/contact', (req, res) => {
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
               email: "salawalco.ph@gmail.com",
+              phone: "./img/phone-ringing.png",
+              media: "./img/social-media.png",
+              email: "./img/email.png",
               loggedIn: req.session.user,
               cartProducts: result.products
             });
@@ -125,6 +128,9 @@ router.get('/contact', (req, res) => {
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
               email: "salawalco.ph@gmail.com",
+              phone: "./img/phone-ringing.png",
+              media: "./img/social-media.png",
+              email: "./img/email.png",
               loggedIn: req.session.user,
               cartProducts: null
             });
