@@ -26,7 +26,7 @@ const productModel = mongoose.model('products', productSchema);
 
 // Get all products
 exports.getAll = (query, next) => {
-  productModel.find({}).exec((err, products) => {
+  productModel.find({}).populate('_id').exec((err, products) => {
     if (err) throw err;
     const productObjects = [];
     products.forEach((doc) => {
@@ -38,7 +38,7 @@ exports.getAll = (query, next) => {
 
 // Get a specific group of products
 exports.getMany = (query,sort,next) => {
-  productModel.find(query).sort(sort).exec((err, products) => {
+  productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
     console.log(products);
     const productObjects = [];
@@ -50,7 +50,7 @@ exports.getMany = (query,sort,next) => {
 };
 
 exports.getManyFilter = (query,sort,filter,next) => {
-  productModel.find(query).sort(sort).exec((err, products) => {
+  productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
     console.log(products);
     const productObjects = [];
@@ -95,10 +95,10 @@ exports.getById = (query, next) => {
 };
 
 // Update a product's details
-exports.updateProduct = (id, name, slug, description, category, price, status, next) => {
+exports.updateProduct = (id, name, slug, description, category, price, image, status, next) => {
   productModel.updateOne(
     {_id: id},
-    {$set: {name: name, slug: slug, description: description, category: category, price: price, stock: status}},
+    {$set: {name: name, slug: slug, description: description, category: category, price: price, img: image, stock: status}},
     (err, result) => {
       if (err) throw err;
       next(err, result);
