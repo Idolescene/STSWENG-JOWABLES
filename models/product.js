@@ -40,7 +40,6 @@ exports.getAll = (query, next) => {
 exports.getMany = (query,sort,next) => {
   productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
-    console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
       productObjects.push(doc.toObject());
@@ -52,16 +51,20 @@ exports.getMany = (query,sort,next) => {
 exports.getManyFilter = (query,sort,filter,next) => {
   productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
-    console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
-      doc.stock.forEach((prod) => {
-        if (prod.size == filter) {
-          if (prod.status) {
-            productObjects.push(doc.toObject());
+      if (filter == "No Filter") {
+        productObjects.push(doc.toObject());
+      }
+      else {
+        doc.stock.forEach((prod) => {
+          if (prod.size == filter) {
+            if (prod.status) {
+              productObjects.push(doc.toObject());
+            }
           }
-        }
-      })
+        })
+      }
     });
     next(err, productObjects);
   });
@@ -79,9 +82,6 @@ exports.getOne = (query, next) => {
 exports.getAllIds = (query, next) => {
   productModel.find({_id: {$in: query}}).exec((err, products) => {
     if (err) throw err;
-    console.log('boop')
-    console.log(products)
-    console.log('beep')
     next(err, products);
   });
 };

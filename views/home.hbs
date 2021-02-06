@@ -20,11 +20,15 @@
       <br>
       <div class="row">
         {{#each categories}}
-        <div class="apparel-card-div col-sm btn-features">      
+        <div class="apparel-card-div col-sm btn-features">
+          <!--
+          <a href = '/catalogue?category=${encodeURIComponent("{{this.category}}")}' type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'></button>
+            <img src="/{{this.img}}" height="350px" style="padding-bottom: 20px">
+          </a> -->
           <button type = 'button' class="categorybtn" id = '{{this.category}}' value = '{{this.category}}'>
             <img src="/{{this.img}}" height="350px" style="padding-bottom: 20px">
-                  <h5>{{this.category}}
-                  </h5>
+            <h5>{{this.category}}
+            </h5>
           </button>
         </div>
         {{/each}}
@@ -41,6 +45,9 @@
 
 <script type = 'text/javascript'>
 $(document).on("click",'.categorybtn',function(e){
-  location.replace('/catalogue')
+  console.log($(this).val())
+  var Text = $(this).val();
+  Text = Text.toLowerCase();
+  location.replace('/catalogue?category=$'+Text)
 })
 </script>

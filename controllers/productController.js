@@ -7,6 +7,9 @@ const Grid = require("gridfs-stream");
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
+  console.log("!!!!!!!!!!!!!!!!!!!!!")
+  console.log(req.body)
+  console.log(req.params)
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     var user = req.session.user;
@@ -19,8 +22,10 @@ exports.getAllProducts = (req, res) => {
         else {
           var query = {};
           var sort = {name: 1};
+          var category = "All Items"
           if (req.body.category && req.body.category != 'No Filter'){
             query.category = req.body.category;
+            category = req.body.category
           }
           if (req.body.size && req.body.size != 'No Filter'){
             query.stock.size = req.body.size;
@@ -48,7 +53,8 @@ exports.getAllProducts = (req, res) => {
                 products: products,
                 categories: categories,
                 cartProducts: result.products,
-                size: sizes
+                size: sizes,
+                category: category
               });
             }
             else {
@@ -57,7 +63,8 @@ exports.getAllProducts = (req, res) => {
                 products: products,
                 categories: categories,
                 cartProducts: null,
-                size: sizes
+                size: sizes,
+                category: category
               });
             }
           });
@@ -68,8 +75,10 @@ exports.getAllProducts = (req, res) => {
       // if guest
       var query = {};
       var sort = {name: 1};
+      var category = "All Items"
       if (req.body.category && req.body.category != 'No Filter'){
         query.category = req.body.category;
+        category = req.body.category;
       }
       if (req.body.size && req.body.size != 'No Filter'){
         query.stock.size = req.body.size;
@@ -97,13 +106,120 @@ exports.getAllProducts = (req, res) => {
           products: products,
           categories: categories,
           cartProducts: null,
-          size: sizes
+          size: sizes,
+          category: category
         });
       });
     }
   }
 }
-
+// Get all products from the DB and display it in catalogue
+/*exports.getAllProductsSorted = (req, res) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    console.log(req.params)
+    var user = req.session.user;
+    if (user) {
+      // if user
+      cartModel.getByUser(user, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          var query = {};
+          query.category = req.params.category
+          var sort = {name: 1};
+          console.log('r u here');
+          category = req.params.category
+          if (req.body.size && req.body.size != 'No Filter'){
+            query.stock.size = req.body.size;
+          }
+          console.log(query);
+          productModel.getMany(query,sort, (err, products) => {
+            if (err) throw err;
+            console.log(products);
+            var categories = [];
+            var sizes = [];
+            products.forEach((item)=>{
+              console.log(sizes)
+              console.log('----')
+              if (!categories.includes(item.category)) {
+                categories.push(item.category);
+              }
+              item.stock.forEach((item)=>{
+                if (!sizes.includes(item.size)){
+                  sizes.push(item.size)
+                }
+              })
+            });
+            products.forEach((item) => {
+              item.price = item.price.toFixed(2);
+            });
+            if(result) {
+              res.render('catalogue', {
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: result.products,
+                size: sizes,
+                category: query.category
+              });
+            }
+            else {
+              res.render('catalogue', {
+                loggedIn: req.session.user,
+                products: products,
+                categories: categories,
+                cartProducts: null,
+                size: sizes,
+                category: category
+              });
+            }
+          });
+        }
+      });
+    }
+    else {
+      // if guest
+      var query = {};
+      query.category = req.params.category;
+      var category = req.params.category;
+      var sort = {name: 1};
+      if (req.body.size && req.body.size != 'No Filter'){
+        query.stock.size = req.body.size;
+      }
+      productModel.getMany(query,sort, (err, products) => {
+        if (err) throw err;
+        console.log(products);
+        
+        var categories = [];
+        var sizes = [];
+        products.forEach((item) =>{
+          if (!categories.includes(item.category)) {
+            categories.push(item.category);
+          }
+          item.stock.forEach((item)=>{
+            if (!sizes.includes(item.size)){
+              sizes.push(item.size)
+            }
+          })
+        });
+        products.forEach((item) => {
+          item.price = item.price.toFixed(2);
+        });
+        res.render('catalogue', {
+          loggedIn: req.session.user,
+          products: products,
+          categories: categories,
+          cartProducts: null,
+          size: sizes,
+          category: category
+        });
+      });
+    }
+  }
+}
+*/
 // Get all products from the DB and display it in update products
 exports.viewAllProducts = (req, res) => {
   const errors = validationResult(req);
@@ -118,10 +234,16 @@ exports.viewAllProducts = (req, res) => {
         else {
           var query = {};
           var sort = {name: 1};
+          var size = "No Filter"
           if (req.body.category && req.body.category != 'No Filter'){
             query.category = req.body.category;
           }
-          productModel.getMany(query,sort, (err, products) => {
+          if (req.body.size && req.body.size != 'No Filter'){
+            size = req.body.size;
+          }
+          console.log("asd")
+          console.log(query)
+          productModel.getManyFilter(query,sort, size,(err, products) => {
             if (err) throw err;
             var categories = [];
             products.forEach(function(item){
@@ -159,10 +281,18 @@ exports.viewAllProducts = (req, res) => {
       // if guest
       var query = {};
       var sort = {name: 1};
-      if (req.body.category && req.body.category != 'No Filter'){
+      var size = "No Filter"
+      var category = "All Items"
+      if (req.body.category && req.body.category != 'No Filter') {
         query.category = req.body.category;
+        category = query.category
       }
-      productModel.getMany(query,sort, (err, products) => {
+      if (req.body.size && req.body.size != "No Filter") {
+        size = req.body.size;
+      }
+
+      console.log('bsd')
+      productModel.getManyFilter(query,sort, size,(err, products) => {
         if (err) throw err;
         
         var categories = [];
@@ -179,7 +309,8 @@ exports.viewAllProducts = (req, res) => {
           loggedIn: req.session.user,
           products: products,
           categories: categories,
-          cartProducts: null
+          cartProducts: null,
+          category: category
         });
       });
     }
@@ -190,12 +321,15 @@ exports.viewAllProducts = (req, res) => {
 exports.refreshProducts = (req, res) => {
   var query = {};
   var sort = {name: 1};
-  var size;
+  var size = "No Filter";
+  var category = 'All Items';
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
+    category = req.body.category;
   }
   if (req.body.size && req.body.size != 'No Filter'){
     size = req.body.size;
+    category = category + " (" + req.body.size + ")"
   }
   productModel.getManyFilter(query, sort, size,(err, products) => {
     if (err) throw err;
@@ -205,7 +339,8 @@ exports.refreshProducts = (req, res) => {
     res.render('products', {
       loggedIn: req.session.user,
       products: products,
-      layout: null
+      layout: null,
+      category: category
     });
   });
 }
