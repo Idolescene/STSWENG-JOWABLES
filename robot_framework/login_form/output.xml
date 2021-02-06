@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210206 15:44:11.561" rpa="false">
+<suite id="s1" name="Login Form" source="D:\Documents\github\stsweng\STSWENG-JOWABLES\robot_framework\login_form">
+<suite id="s1-s1" name="Invalid Login" source="D:\Documents\github\stsweng\STSWENG-JOWABLES\robot_framework\login_form\invalid_login.robot">
+<kw name="Open Browser to Home Page" library="resource" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210206 15:44:12.107" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210206 15:44:12.106" endtime="20210206 15:47:29.980"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210206 15:47:29.982" endtime="20210206 15:47:30.172"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210206 15:47:30.172" endtime="20210206 15:47:30.173"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:masthead-banner</arg>
+</arguments>
+<msg timestamp="20210206 15:47:30.197" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210206 15:47:30.173" endtime="20210206 15:47:30.198"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:44:12.106" endtime="20210206 15:47:30.198"></status>
+</kw>
+<test id="s1-s1-t1" name="Wrong Password Login">
+<kw name="Go to Login Page" library="resource" type="setup">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:47:30.203" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:47:30.203" endtime="20210206 15:47:34.085"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:30.202" endtime="20210206 15:47:34.086"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:34.131" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:34.089" endtime="20210206 15:47:34.131"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:34.087" endtime="20210206 15:47:34.132"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:30.200" endtime="20210206 15:47:34.132"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:34.138" level="INFO">Typing text 'sammy@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:47:34.137" endtime="20210206 15:47:34.485"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:34.135" endtime="20210206 15:47:34.486"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${WRONG PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:34.493" level="INFO">Typing text 'ImWrong123' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:47:34.491" endtime="20210206 15:47:34.821"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:34.488" endtime="20210206 15:47:34.822"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:34.826" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:34.825" endtime="20210206 15:47:39.163"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:34.824" endtime="20210206 15:47:39.163"></status>
+</kw>
+<kw name="Login Should Have Failed (Wrong Password)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Incorrect password. Please try again.</arg>
+</arguments>
+<msg timestamp="20210206 15:47:39.170" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Incorrect password. Please try again.'.</msg>
+<status status="PASS" starttime="20210206 15:47:39.169" endtime="20210206 15:47:39.257"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:39.165" endtime="20210206 15:47:39.257"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:30.199" endtime="20210206 15:47:39.259" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Unregistered Login">
+<kw name="Go to Login Page" library="resource" type="setup">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:47:39.272" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:47:39.270" endtime="20210206 15:47:43.045"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:39.268" endtime="20210206 15:47:43.046"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:43.094" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:43.049" endtime="20210206 15:47:43.095"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:43.047" endtime="20210206 15:47:43.095"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:39.267" endtime="20210206 15:47:43.096"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${RANDOM EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:43.102" level="INFO">Typing text 'chinnycha@yahoo.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:47:43.100" endtime="20210206 15:47:43.487"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:43.098" endtime="20210206 15:47:43.489"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:43.493" level="INFO">Typing text 'Salawal123' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:47:43.492" endtime="20210206 15:47:43.787"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:43.491" endtime="20210206 15:47:43.787"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:43.789" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:43.789" endtime="20210206 15:47:49.322"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:43.789" endtime="20210206 15:47:49.324"></status>
+</kw>
+<kw name="Login Should Have Failed (Unregistered User)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: User not found. Please try again.</arg>
+</arguments>
+<msg timestamp="20210206 15:47:49.331" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: User not found. Please try again.'.</msg>
+<status status="PASS" starttime="20210206 15:47:49.329" endtime="20210206 15:47:49.429"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:49.326" endtime="20210206 15:47:49.430"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:39.264" endtime="20210206 15:47:49.433" critical="yes"></status>
+</test>
+<test id="s1-s1-t3" name="Missing Both Credentials Login">
+<kw name="Go to Login Page" library="resource" type="setup">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:47:49.452" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:47:49.451" endtime="20210206 15:47:54.058"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:49.448" endtime="20210206 15:47:54.059"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:54.094" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:54.061" endtime="20210206 15:47:54.095"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:54.059" endtime="20210206 15:47:54.095"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:49.446" endtime="20210206 15:47:54.096"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${NULL EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:54.104" level="INFO">Typing text '' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:47:54.102" endtime="20210206 15:47:54.353"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:54.099" endtime="20210206 15:47:54.355"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${NULL PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:47:54.361" level="INFO">Typing text '' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:47:54.359" endtime="20210206 15:47:54.618"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:54.357" endtime="20210206 15:47:54.619"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:47:54.623" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:47:54.623" endtime="20210206 15:47:58.710"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:54.621" endtime="20210206 15:47:58.711"></status>
+</kw>
+<kw name="Login Should Have Failed (Null Password &amp; Email)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Username/Email is required. Password is required.</arg>
+</arguments>
+<msg timestamp="20210206 15:47:58.717" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Username/Email is required. Password is required.'.</msg>
+<status status="PASS" starttime="20210206 15:47:58.716" endtime="20210206 15:47:58.785"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:58.714" endtime="20210206 15:47:58.785"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:49.440" endtime="20210206 15:47:58.787" critical="yes"></status>
+</test>
+<test id="s1-s1-t4" name="Missing Email Login">
+<kw name="Go to Login Page" library="resource" type="setup">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:47:58.796" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:47:58.796" endtime="20210206 15:48:06.561"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:58.795" endtime="20210206 15:48:06.562"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:48:06.597" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:48:06.566" endtime="20210206 15:48:06.597"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:06.563" endtime="20210206 15:48:06.599"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:58.793" endtime="20210206 15:48:06.599"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${NULL EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:48:06.606" level="INFO">Typing text '' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:48:06.605" endtime="20210206 15:48:06.779"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:06.602" endtime="20210206 15:48:06.780"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:48:06.784" level="INFO">Typing text 'Salawal123' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:48:06.784" endtime="20210206 15:48:06.941"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:06.782" endtime="20210206 15:48:06.941"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:48:06.943" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:48:06.943" endtime="20210206 15:48:11.047"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:06.942" endtime="20210206 15:48:11.048"></status>
+</kw>
+<kw name="Login Should Have Failed (Null Email)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Username/Email is required.</arg>
+</arguments>
+<msg timestamp="20210206 15:48:11.052" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Username/Email is required.'.</msg>
+<status status="PASS" starttime="20210206 15:48:11.051" endtime="20210206 15:48:11.136"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:11.050" endtime="20210206 15:48:11.138"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:47:58.791" endtime="20210206 15:48:11.139" critical="yes"></status>
+</test>
+<test id="s1-s1-t5" name="Missing Password Login">
+<kw name="Go to Login Page" library="resource" type="setup">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:48:11.153" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:48:11.152" endtime="20210206 15:48:14.282"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:11.149" endtime="20210206 15:48:14.283"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:48:14.318" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:48:14.286" endtime="20210206 15:48:14.319"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:14.284" endtime="20210206 15:48:14.320"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:11.146" endtime="20210206 15:48:14.321"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:48:14.325" level="INFO">Typing text 'sammy@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:48:14.324" endtime="20210206 15:48:14.661"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:14.323" endtime="20210206 15:48:14.662"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${NULL PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:48:14.668" level="INFO">Typing text '' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:48:14.667" endtime="20210206 15:48:14.913"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:14.664" endtime="20210206 15:48:14.914"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:48:14.921" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:48:14.918" endtime="20210206 15:48:19.850"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:14.917" endtime="20210206 15:48:19.851"></status>
+</kw>
+<kw name="Login Should Have Failed (Null Password)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Password is required.</arg>
+</arguments>
+<msg timestamp="20210206 15:48:19.854" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Password is required.'.</msg>
+<status status="PASS" starttime="20210206 15:48:19.854" endtime="20210206 15:48:19.922"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:19.853" endtime="20210206 15:48:19.923"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:11.144" endtime="20210206 15:48:19.924" critical="yes"></status>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210206 15:48:19.933" endtime="20210206 15:48:22.162"></status>
+</kw>
+<doc>A test suite with a single test for a invalid login
+
+This test has a workflow that is created using keywords
+directly from SeleniumLibrary</doc>
+<status status="PASS" starttime="20210206 15:44:11.612" endtime="20210206 15:48:22.162"></status>
+</suite>
+<suite id="s1-s2" name="Valid Login" source="D:\Documents\github\stsweng\STSWENG-JOWABLES\robot_framework\login_form\valid_login.robot">
+<test id="s1-s2-t1" name="Valid Login with Email">
+<kw name="Open Browser to Home Page" library="resource">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210206 15:48:22.206" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210206 15:48:22.205" endtime="20210206 15:52:45.861"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210206 15:52:45.862" endtime="20210206 15:52:46.188"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210206 15:52:46.188" endtime="20210206 15:52:46.190"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:masthead-banner</arg>
+</arguments>
+<msg timestamp="20210206 15:52:46.222" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210206 15:52:46.190" endtime="20210206 15:52:46.223"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:22.204" endtime="20210206 15:52:46.223"></status>
+</kw>
+<kw name="Go to Login Page" library="resource">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:52:46.229" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:52:46.228" endtime="20210206 15:52:49.624"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:46.226" endtime="20210206 15:52:49.625"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:52:49.652" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:52:49.627" endtime="20210206 15:52:49.652"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:49.625" endtime="20210206 15:52:49.653"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:46.225" endtime="20210206 15:52:49.653"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:52:49.655" level="INFO">Typing text 'sammy@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:52:49.655" endtime="20210206 15:52:49.996"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:49.654" endtime="20210206 15:52:49.996"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:52:50.002" level="INFO">Typing text 'Salawal123' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:52:50.000" endtime="20210206 15:52:50.287"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:49.998" endtime="20210206 15:52:50.288"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:52:50.291" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:52:50.290" endtime="20210206 15:52:55.468"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:50.289" endtime="20210206 15:52:55.469"></status>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+</arguments>
+<msg timestamp="20210206 15:52:55.492" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210206 15:52:55.472" endtime="20210206 15:52:55.493"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210206 15:52:55.495" endtime="20210206 15:52:57.790"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:48:22.195" endtime="20210206 15:52:57.793" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="Valid Login with Username">
+<kw name="Open Browser to Home Page" library="resource">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210206 15:52:57.803" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210206 15:52:57.802" endtime="20210206 15:56:51.257"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210206 15:56:51.258" endtime="20210206 15:56:51.413"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210206 15:56:51.413" endtime="20210206 15:56:51.414"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:masthead-banner</arg>
+</arguments>
+<msg timestamp="20210206 15:56:51.438" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210206 15:56:51.415" endtime="20210206 15:56:51.439"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:57.800" endtime="20210206 15:56:51.439"></status>
+</kw>
+<kw name="Go to Login Page" library="resource">
+<kw name="Click Profile Icon" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:proficon</arg>
+</arguments>
+<msg timestamp="20210206 15:56:51.441" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210206 15:56:51.441" endtime="20210206 15:56:55.642"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:51.440" endtime="20210206 15:56:55.643"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:56:55.696" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:56:55.646" endtime="20210206 15:56:55.697"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:55.644" endtime="20210206 15:56:55.698"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:51.440" endtime="20210206 15:56:55.699"></status>
+</kw>
+<kw name="Input Email in Login" library="resource">
+<arguments>
+<arg>${VALID USERNAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logemail</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210206 15:56:55.704" level="INFO">Typing text 'sammygo' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210206 15:56:55.703" endtime="20210206 15:56:56.068"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:55.701" endtime="20210206 15:56:56.070"></status>
+</kw>
+<kw name="Input Password in Login" library="resource">
+<arguments>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:logpass</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20210206 15:56:56.076" level="INFO">Typing text 'Salawal123' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210206 15:56:56.074" endtime="20210206 15:56:56.403"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:56.072" endtime="20210206 15:56:56.404"></status>
+</kw>
+<kw name="Click Login Button" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:logbtn</arg>
+</arguments>
+<msg timestamp="20210206 15:56:56.407" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210206 15:56:56.407" endtime="20210206 15:57:04.761"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:56:56.406" endtime="20210206 15:57:04.762"></status>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${MAIN URL}</arg>
+</arguments>
+<msg timestamp="20210206 15:57:04.786" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210206 15:57:04.764" endtime="20210206 15:57:04.786"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210206 15:57:04.788" endtime="20210206 15:57:07.044"></status>
+</kw>
+<status status="PASS" starttime="20210206 15:52:57.797" endtime="20210206 15:57:07.046" critical="yes"></status>
+</test>
+<doc>A test suite with a single test for a valid login
+
+This test has a workflow that is created using keywords
+directly from SeleniumLibrary</doc>
+<status status="PASS" starttime="20210206 15:48:22.176" endtime="20210206 15:57:07.051"></status>
+</suite>
+<status status="PASS" starttime="20210206 15:44:11.564" endtime="20210206 15:57:07.074"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0">Critical Tests</stat>
+<stat pass="7" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" id="s1" name="Login Form">Login Form</stat>
+<stat pass="5" fail="0" id="s1-s1" name="Invalid Login">Login Form.Invalid Login</stat>
+<stat pass="2" fail="0" id="s1-s2" name="Valid Login">Login Form.Valid Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
