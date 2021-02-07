@@ -559,6 +559,7 @@ exports.postEditProduct = (req, res) => {
   var image;
   var {name, description, category, price, small, medium, large, xlarge} = req.body;
   var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+  var sstat, mstat, lstat, xlstat;
   var product_id = req.params._id;
   var small_stat, medium_stat, large_stat, xlarge_stat;
 
@@ -633,7 +634,6 @@ exports.postEditProduct = (req, res) => {
             xlarge_stat = false;
           }
         }
-
         var sizesUpdate = [
           {size: "Small", qty: small, status: small_stat},
           {size: "Medium", qty: medium, status: medium_stat},

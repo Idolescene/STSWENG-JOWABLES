@@ -84,8 +84,11 @@ exports.getByUser = (user, next) => {
               product['qty'] = element.qty
               product['subPrice'] = subPrice.toFixed(2);
               cartdex = item.stock.findIndex(x => x.size == element.size)
-              if (cartdex < -1) {
-                product['status'] = item.stock[cartdex].status
+              product['status'] = false;
+              if (cartdex > -1) {
+                if (element.qty < item.stock[cartdex].qty) {
+                  product['status'] = true;
+                }
               }
               prodArray.push(product)
             })
