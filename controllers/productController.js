@@ -5,6 +5,7 @@ const multer = require('multer');
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
+
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     var user = req.session.user;
@@ -29,6 +30,8 @@ exports.getAllProducts = (req, res) => {
             if (err) throw err;
             var categories = [];
             var sizes = [];
+            var remove = []
+            console.log(req.session.category)
             products.forEach((item)=>{
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
@@ -38,10 +41,25 @@ exports.getAllProducts = (req, res) => {
                   sizes.push(item.size)
                 }
               })
+              if (req.session.category != "All Items" && req.session.category) {
+                if (item.category != req.session.category){
+                  console.log(item)
+                  remove.push(item._id)
+                }
+              }
             });
+            req.session.category = "All Items"
+            remove.forEach((item) => {
+              var a = products.findIndex(x => x._id == item)
+              console.log(a)
+              if (a > -1) {
+                products.splice(a,1)
+              }
+            })
             products.forEach((item) => {
               item.price = item.price.toFixed(2);
             });
+            
             if(result) {
               res.render('catalogue', {
                 loggedIn: req.session.user,
@@ -317,9 +335,16 @@ exports.refreshProducts = (req, res) => {
   var sort = {name: 1};
   var size = "No Filter";
   var category = 'All Items';
+  console.log(req.body);
   if (req.body.category && req.body.category != 'No Filter'){
     query.category = req.body.category;
     category = req.body.category;
+  }
+  
+  else if (req.session.category && req.session.category != "No Filter"){
+    query.category = req.session.category
+    category = req.session.category
+    req.session.category = "Preprocess"
   }
   if (req.body.size && req.body.size != 'No Filter'){
     size = req.body.size;

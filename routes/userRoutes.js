@@ -17,6 +17,10 @@ const {userRegisterValidation, userLoginValidation, updateShippingValidation, ch
   Homepage for both guest and logged in users
 */
 router.get('/', productController.getCategories);
+router.get('/redirect/:category', (req, res) => {
+  req.session.category = req.params.category;
+  res.redirect('/catalogue')
+})
 router.post('/delete-product-confirmation', productController.postAProduct);
 
 /*

@@ -75,13 +75,13 @@
         </div>
       </div>
     </div>
-    <br>
-    {{!-- {{#if checkout}} --}}
-    <a href='/delete_all_from_cart' type = 'button' class="btn rounded-pill" id="delete-all-btn">Delete All Items</a>
-    <a href='/shipping' type = 'button' class="btn rounded-pill checkStock" id="order-btn">Order</a>
-    {{!-- {{else}}
-    <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
-    {{/if}} --}}
+    <br
+    <a id = 'delAllbtn' href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
+    <!-- {{#if checkout}} -->
+    <a id = 'shipbtn' href='/shipping' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <!-- {{else}} -->
+    <a id = 'failBtn' data-toggle="modal" data-target="#failed-checkout" type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <!--{{/if}} -->
   </div>
   <br><br><br><br><br>
   {{else}}
@@ -91,4 +91,21 @@
   </div>
   {{/if}}
   <br><br><br><br><br><br><br>
+</div>
+
+
+    
+<div class="modal fade" id = "failed-checkout" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <h3>
+          <strong>Checkout Failed. An Item is out of stock!</strong>
+        </h3>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
