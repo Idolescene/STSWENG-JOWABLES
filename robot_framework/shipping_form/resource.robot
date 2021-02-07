@@ -41,6 +41,7 @@ ${ORIGINAL PROVINCE}     Metro Manila
 ${VALID PROVINCE}        Tagaytay
 ${INVALID PROVINCE}      !@#!@##!
 ${NULL PROVINCE}
+${NONE}                  NONE
 ${MAIN URL}              https://${SERVER}/
 ${LOGIN URL}             https://${SERVER}/profile
 ${CHECKOUT URL}          https://${SERVER}/checkout
@@ -68,8 +69,11 @@ Login Successfully
     Click Login Button
     Location Should Be                       ${MAIN URL}
 
-Login Successfully and Add Products to the Cart
-    Login Successfully
+Add Products To Cart
+    Click Element                   id:nav-catalogue
+    Click Link                      id:khaki-shorter-shorts-btn
+    Click Button                   id:small
+    Click Button                   id:btnPressed
 
 User Profile Should Be Accessible
     Page Should Contain Element     class:profile-edit
@@ -79,6 +83,16 @@ Go To Profile
     Location Should Be              ${LOGIN URL}
     User Profile Should Be Accessible
 
+Go To Checkout
+    Click Element                 class:fa-shopping-cart
+    Click Link                    id:editcart-btn
+    Click Link                    class:checkStock
+
+Delete All Items in Cart
+    Click Element                 class:fa-shopping-cart
+    Click Link                    id:editcart-btn
+    Click Link                    class:deleteCart
+
 Input Email in Login
     [Arguments]        ${email}
     Input Text                      id:logemail           ${email}
@@ -87,46 +101,36 @@ Input Password in Login
     [Arguments]        ${password}
     Input Text                     id:logpass             ${password}
 
-Input Email in Edit Profile
-    [Arguments]        ${email}
-    Input Text                      id:editemail          ${email}
-
-Input Password in Edit Profile
-    [Arguments]        ${password}
-    Input Text                      id:editpassword       ${password}
-    Input Text                      id:cpassword          ${password}
-
-Input Different Confirm Password in Edit Profile
-    [Arguments]        ${password}
-    Input Text                      id:cpassword          ${password}
-
-Input Full Name in Shipping Details
+Input Full Name in Shipping Form
     [Arguments]        ${fullname}
-    Input Text                      id:fullname           ${fullname}
+    Input Text                     id:fullname-shipping  ${fullname}
 
-Input Contact Number in Shipping Details
+Input Contact Number in Shipping Form
     [Arguments]        ${contactnum}
-    Input Text                      id:contno             ${contactnum}
+    Input Text                      id:contactnum-shipping         ${contactnum} 
 
-Input House Number in Shipping Details
+Input Email Address in Shipping Form
+    [Arguments]        ${email}
+    Input Text                      id:emailadd-shipping           ${email}
+
+Input House Number in Shipping Form
     [Arguments]        ${housenum}
-    Input Text                      id:houseno             ${housenum}
+    Input Text                      id:streetadd-shipping           ${housenum}
 
-Input Barangay in Shipping Details
+Input Barangay in Shipping Form
     [Arguments]        ${barangay}
-    Input Text                      id:brngy             ${barangay}
+    Input Text                      id:barangay-shipping           ${barangay}
 
-Input City in Shipping Details
+Input City in Shipping Form
     [Arguments]        ${city}
-    Input Text                      id:city             ${city}
+    Input Text                      id:city-shipping               ${city}
 
-Input Province in Shipping Details
+Input Province in Shipping Form
     [Arguments]        ${province}
-    Input Text                      id:prov             ${province}
+    Input Text                      id:province-shipping           ${province}
 
 Click Login Button
     Click Button                    id:logbtn
-
 
 Click Profile Icon
     Click Element                   id:proficon
@@ -137,70 +141,61 @@ Edit Profile
 Edit Shipping Details
     Click Element                    id:shipbutton
 
-Submit New email
-    Click Button                    id:email-save-btn
+Submit Shipping Form
+    Click Button                            id:ship-btn
 
-Submit New Password
-    Click Button                    id:pass-save-btn
+Submit Order
+    Click Button                            id:checkout-btn
+    Set Selenium Speed              0.5
 
-Submit New Shipping Details
-    Click Button                    id:shipsubmit
-
-Edited Successfully (Valid Email)
-    Element Text Should Be          id=success-div                Success: Email updated successfully!
-
-Edit Should Have Failed (Invalid Email)
+Checkout Should Have Failed (Invalid Email Address)
     Element Text Should Be          id=error-msg                  Error: Please provide a valid email.
 
-Edit Should Have Failed (Null Email)
+Checkout Should Have Failed (Null Email Address)
     Element Text Should Be          id=error-msg                  Error: Email is required. Please provide a valid email.
 
-
-Edited Successfully (Valid Password)
-    Element Text Should Be          id=success-div                Success: Password updated successfully!
-
-Edit Should Have Failed (Invalid or Null Password)
-    Element Text Should Be          id=error-msg                  Error: Password needs to be at least 8 characters long. Confirm password needs to be at least 8 characters long.
-
-Edit Should Have Failed (Not Matching Password)
-    Element Text Should Be          id=error-msg                  Error: Confirm password needs to be at least 8 characters long. Passwords need to match.
-
-Edited Shipping Details Successfully
-    Element Text Should Be          id=success-div                Success: Shipping details updated successfully!
-
-Edit Shipping Details Should Have Failed (Invalid Full Name)
+Checkout Should Have Failed (Invalid Full Name)
     Element Text Should Be          id=error-msg                  Error: Name should only contain letters, periods and spaces.
 
-Edit Shipping Details Should Have Failed (Invalid Contact Number)
+Checkout Should Have Failed (Invalid Contact Number)
     Element Text Should Be          id=error-msg                  Error: Contact number should be 11 digits in length.
 
-Edit Shipping Details Should Have Failed (Invalid House Number)
+Checkout Should Have Failed (Invalid House Number)
     Element Text Should Be          id=error-msg                  Error: House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.
 
-Edit Shipping Details Should Have Failed (Invalid Barangay)
+Checkout Should Have Failed (Invalid Barangay)
     Element Text Should Be          id=error-msg                  Error: Barangay should only contain letters, numbers and spaces.
 
-Edit Shipping Details Should Have Failed (Invalid City)
+Checkout Should Have Failed (Invalid City)
     Element Text Should Be          id=error-msg                  Error: City should only contain letters, periods, dashes and spaces.
 
-Edit Shipping Details Should Have Failed (Invalid Province)
+Checkout Should Have Failed (Invalid Province)
     Element Text Should Be          id=error-msg                  Error: Province should only contain letters and spaces.
 
-Edit Shipping Details Should Have Failed (Null Full Name)
+Checkout Should Have Failed (Null Full Name)
     Element Text Should Be          id=error-msg                  Error: Full Name is required. Name should only contain letters, periods and spaces.
 
-Edit Shipping Details Should Have Failed (Null Contact Number)
+Checkout Should Have Failed (Null Contact Number)
     Element Text Should Be          id=error-msg                  Error: Contact number should be 11 digits in length. Contact number should only be composed of numbers.
 
-Edit Shipping Details Should Have Failed (Null House Number)
+Checkout Should Have Failed (Null House Number)
     Element Text Should Be          id=error-msg                 Error: House Number is required. House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.
 
-Edit Shipping Details Should Have Failed (Null Barangay)
+Checkout Should Have Failed (Null Barangay)
     Element Text Should Be          id=error-msg                 Error: Barangay is required. Barangay should only contain letters, numbers and spaces.
 
-Edit Shipping Details Should Have Failed (Null City)
+Checkout Should Have Failed (Null City)
     Element Text Should Be          id=error-msg                 Error: City is required. City should only contain letters, periods, dashes and spaces.
 
-Edit Shipping Details Should Have Failed (Null Province)
+Checkout Should Have Failed (Null Province)
     Element Text Should Be          id=error-msg                 Error: Province is required. Province should only contain letters and spaces.
+
+Checkout Should Have Failed (No Payment Method)
+    Element Text Should Be          id=error-msg                 Error: Please select a method of payment.
+
+Checkout Should Have Failed (No Items in Cart)
+    Element Text Should Be          id=error-msg                 Error: Error: No items in your cart.
+
+Checkout Should Be Successful
+    Element Should Contain          id=success-div           Success: Items ordered successfully! Order number: 
 

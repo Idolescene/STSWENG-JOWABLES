@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210201 19:18:24.546" rpa="false">
-<suite id="s1" name="Valid Shipping" source="D:\Github\STSWENG-JOWABLES\robot_framework\shipping_form\valid_shipping.robot">
-<kw name="Login Successfully and Add Products to the Cart" library="resource" type="setup">
-<kw name="Login Successfully" library="resource">
+<robot generator="Robot 3.2.2 (Python 3.7.4 on win32)" generated="20210207 18:03:06.827" rpa="false">
+<suite id="s1" name="Invalid Shipping" source="D:\Github\STSWENG-JOWABLES\robot_framework\shipping_form\invalid_shipping.robot">
+<kw name="Login Successfully" library="resource" type="setup">
 <kw name="Go to Login Page" library="resource">
 <kw name="Open Browser to Home Page" library="resource">
 <kw name="Open Browser" library="SeleniumLibrary">
@@ -11,29 +10,29 @@
 <arg>${MAIN URL}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20210201 19:18:24.755" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
-<status status="PASS" starttime="20210201 19:18:24.755" endtime="20210201 19:18:37.861"></status>
+<msg timestamp="20210207 18:03:07.044" level="INFO">Opening browser 'Chrome' to base url 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210207 18:03:07.043" endtime="20210207 18:03:18.000"></status>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20210201 19:18:37.862" endtime="20210201 19:18:38.000"></status>
+<status status="PASS" starttime="20210207 18:03:18.000" endtime="20210207 18:03:18.133"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>${DELAY}</arg>
 </arguments>
-<status status="PASS" starttime="20210201 19:18:38.001" endtime="20210201 19:18:38.001"></status>
+<status status="PASS" starttime="20210207 18:03:18.134" endtime="20210207 18:03:18.135"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>class:masthead-banner</arg>
 </arguments>
-<msg timestamp="20210201 19:18:38.024" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
-<status status="PASS" starttime="20210201 19:18:38.001" endtime="20210201 19:18:38.024"></status>
+<msg timestamp="20210207 18:03:18.160" level="INFO">Current page contains element 'class:masthead-banner'.</msg>
+<status status="PASS" starttime="20210207 18:03:18.135" endtime="20210207 18:03:18.160"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:24.754" endtime="20210201 19:18:38.026"></status>
+<status status="PASS" starttime="20210207 18:03:07.043" endtime="20210207 18:03:18.161"></status>
 </kw>
 <kw name="Click Profile Icon" library="resource">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -41,10 +40,10 @@
 <arguments>
 <arg>id:proficon</arg>
 </arguments>
-<msg timestamp="20210201 19:18:38.028" level="INFO">Clicking element 'id:proficon'.</msg>
-<status status="PASS" starttime="20210201 19:18:38.027" endtime="20210201 19:18:40.571"></status>
+<msg timestamp="20210207 18:03:18.165" level="INFO">Clicking element 'id:proficon'.</msg>
+<status status="PASS" starttime="20210207 18:03:18.163" endtime="20210207 18:03:20.588"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:38.027" endtime="20210201 19:18:40.572"></status>
+<status status="PASS" starttime="20210207 18:03:18.162" endtime="20210207 18:03:20.589"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -52,12 +51,12 @@
 <arguments>
 <arg>id:logbtn</arg>
 </arguments>
-<msg timestamp="20210201 19:18:40.592" level="INFO">Current page contains element 'id:logbtn'.</msg>
-<status status="PASS" starttime="20210201 19:18:40.572" endtime="20210201 19:18:40.593"></status>
+<msg timestamp="20210207 18:03:20.612" level="INFO">Current page contains element 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210207 18:03:20.591" endtime="20210207 18:03:20.612"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:40.572" endtime="20210201 19:18:40.593"></status>
+<status status="PASS" starttime="20210207 18:03:20.589" endtime="20210207 18:03:20.612"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:24.753" endtime="20210201 19:18:40.593"></status>
+<status status="PASS" starttime="20210207 18:03:07.043" endtime="20210207 18:03:20.613"></status>
 </kw>
 <kw name="Input Email in Login" library="resource">
 <arguments>
@@ -69,10 +68,10 @@
 <arg>id:logemail</arg>
 <arg>${email}</arg>
 </arguments>
-<msg timestamp="20210201 19:18:40.594" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:logemail'.</msg>
-<status status="PASS" starttime="20210201 19:18:40.594" endtime="20210201 19:18:40.724"></status>
+<msg timestamp="20210207 18:03:20.613" level="INFO">Typing text 'sophiasee@gmail.com' into text field 'id:logemail'.</msg>
+<status status="PASS" starttime="20210207 18:03:20.613" endtime="20210207 18:03:20.744"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:40.593" endtime="20210201 19:18:40.724"></status>
+<status status="PASS" starttime="20210207 18:03:20.613" endtime="20210207 18:03:20.745"></status>
 </kw>
 <kw name="Input Password in Login" library="resource">
 <arguments>
@@ -84,10 +83,10 @@
 <arg>id:logpass</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20210201 19:18:40.725" level="INFO">Typing text '12345678' into text field 'id:logpass'.</msg>
-<status status="PASS" starttime="20210201 19:18:40.725" endtime="20210201 19:18:40.835"></status>
+<msg timestamp="20210207 18:03:20.745" level="INFO">Typing text '12345678' into text field 'id:logpass'.</msg>
+<status status="PASS" starttime="20210207 18:03:20.745" endtime="20210207 18:03:20.861"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:40.724" endtime="20210201 19:18:40.836"></status>
+<status status="PASS" starttime="20210207 18:03:20.745" endtime="20210207 18:03:20.861"></status>
 </kw>
 <kw name="Click Login Button" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
@@ -95,103 +94,1856 @@
 <arguments>
 <arg>id:logbtn</arg>
 </arguments>
-<msg timestamp="20210201 19:18:40.838" level="INFO">Clicking button 'id:logbtn'.</msg>
-<status status="PASS" starttime="20210201 19:18:40.837" endtime="20210201 19:18:46.768"></status>
+<msg timestamp="20210207 18:03:20.862" level="INFO">Clicking button 'id:logbtn'.</msg>
+<status status="PASS" starttime="20210207 18:03:20.861" endtime="20210207 18:03:29.256"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:40.836" endtime="20210201 19:18:46.768"></status>
+<status status="PASS" starttime="20210207 18:03:20.861" endtime="20210207 18:03:29.256"></status>
 </kw>
 <kw name="Location Should Be" library="SeleniumLibrary">
 <doc>Verifies that the current URL is exactly ``url``.</doc>
 <arguments>
 <arg>${MAIN URL}</arg>
 </arguments>
-<msg timestamp="20210201 19:18:46.776" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
-<status status="PASS" starttime="20210201 19:18:46.769" endtime="20210201 19:18:46.778"></status>
+<msg timestamp="20210207 18:03:29.262" level="INFO">Current location is 'https://salawalco.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20210207 18:03:29.256" endtime="20210207 18:03:29.262"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:24.753" endtime="20210201 19:18:46.779"></status>
+<status status="PASS" starttime="20210207 18:03:07.043" endtime="20210207 18:03:29.262"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:24.752" endtime="20210201 19:18:46.779"></status>
-</kw>
-<test id="s1-t1" name="Successful Edit Shipping">
-<kw name="Go To" library="SeleniumLibrary">
-<doc>Navigates the current browser window to the provided ``url``.</doc>
+<test id="s1-t1" name="Unsuccessful Checkout (Invalid Full Name)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
 <arguments>
-<arg>https://salawalco.herokuapp.com/product_details/black-shorter-shorts</arg>
+<arg>id:nav-catalogue</arg>
 </arguments>
-<msg timestamp="20210201 19:18:46.781" level="INFO">Opening url 'https://salawalco.herokuapp.com/product_details/black-shorter-shorts'</msg>
-<status status="PASS" starttime="20210201 19:18:46.781" endtime="20210201 19:18:51.774"></status>
+<msg timestamp="20210207 18:03:29.264" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:03:29.264" endtime="20210207 18:03:47.246"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:03:47.247" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:03:47.247" endtime="20210207 18:03:52.235"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id:small</arg>
 </arguments>
-<msg timestamp="20210201 19:18:51.776" level="INFO">Clicking button 'id:small'.</msg>
-<status status="PASS" starttime="20210201 19:18:51.775" endtime="20210201 19:18:51.856"></status>
+<msg timestamp="20210207 18:03:52.235" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:03:52.235" endtime="20210207 18:03:52.316"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id:btnPressed</arg>
 </arguments>
-<msg timestamp="20210201 19:18:51.858" level="INFO">Clicking button 'id:btnPressed'.</msg>
-<status status="PASS" starttime="20210201 19:18:51.858" endtime="20210201 19:18:57.161"></status>
+<msg timestamp="20210207 18:03:52.317" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:03:52.316" endtime="20210207 18:03:57.184"></status>
 </kw>
-<kw name="Go To" library="SeleniumLibrary">
-<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" starttime="20210207 18:03:29.263" endtime="20210207 18:03:57.184"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
 <arguments>
-<arg>https://salawalco.herokuapp.com/checkout</arg>
+<arg>class:fa-shopping-cart</arg>
 </arguments>
-<msg timestamp="20210201 19:18:57.162" level="INFO">Opening url 'https://salawalco.herokuapp.com/checkout'</msg>
-<status status="PASS" starttime="20210201 19:18:57.162" endtime="20210201 19:19:00.150"></status>
+<msg timestamp="20210207 18:03:57.186" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:03:57.186" endtime="20210207 18:03:57.317"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:03:57.318" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:03:57.317" endtime="20210207 18:04:00.186"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>class:checkStock</arg>
 </arguments>
-<msg timestamp="20210201 19:19:00.151" level="INFO">Clicking link 'class:checkStock'.</msg>
-<status status="PASS" starttime="20210201 19:19:00.151" endtime="20210201 19:19:04.149"></status>
+<msg timestamp="20210207 18:04:00.187" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:04:00.186" endtime="20210207 18:04:03.311"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:03:57.185" endtime="20210207 18:04:03.312"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.313" level="INFO">Typing text '1110 0100 1111' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.313" endtime="20210207 18:04:03.445"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.313" endtime="20210207 18:04:03.445"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.447" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.446" endtime="20210207 18:04:03.571"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.446" endtime="20210207 18:04:03.571"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.574" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.574" endtime="20210207 18:04:03.708"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.573" endtime="20210207 18:04:03.708"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.709" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.709" endtime="20210207 18:04:03.829"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.709" endtime="20210207 18:04:03.829"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.830" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.830" endtime="20210207 18:04:03.953"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.830" endtime="20210207 18:04:03.953"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:03.954" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:03.954" endtime="20210207 18:04:04.076"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:03.954" endtime="20210207 18:04:04.076"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:04.077" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:04.077" endtime="20210207 18:04:04.196"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:04.077" endtime="20210207 18:04:04.196"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id:gcash-btn</arg>
 </arguments>
-<msg timestamp="20210201 19:19:04.150" level="INFO">Clicking button 'id:gcash-btn'.</msg>
-<status status="PASS" starttime="20210201 19:19:04.150" endtime="20210201 19:19:04.217"></status>
+<msg timestamp="20210207 18:04:04.197" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:04.197" endtime="20210207 18:04:04.272"></status>
 </kw>
+<kw name="Submit Shipping Form" library="resource">
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id:ship-btn</arg>
 </arguments>
-<msg timestamp="20210201 19:19:04.218" level="INFO">Clicking button 'id:ship-btn'.</msg>
-<status status="PASS" starttime="20210201 19:19:04.217" endtime="20210201 19:19:04.311"></status>
+<msg timestamp="20210207 18:04:04.274" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:04.274" endtime="20210207 18:04:04.352"></status>
 </kw>
-<status status="PASS" starttime="20210201 19:18:46.779" endtime="20210201 19:19:04.312" critical="yes"></status>
+<status status="PASS" starttime="20210207 18:04:04.273" endtime="20210207 18:04:04.353"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:04.354" endtime="20210207 18:04:04.354"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:04.355" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:04.355" endtime="20210207 18:04:10.821"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:10.821" endtime="20210207 18:04:10.821"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:04.354" endtime="20210207 18:04:10.822"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid Full Name)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Name should only contain letters, periods and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:04:10.824" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Name should only contain letters, periods and spaces.'.</msg>
+<status status="PASS" starttime="20210207 18:04:10.823" endtime="20210207 18:04:11.905"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:10.823" endtime="20210207 18:04:11.905"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:11.906" endtime="20210207 18:04:11.907"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:03:29.262" endtime="20210207 18:04:11.907" critical="yes"></status>
 </test>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210201 19:19:04.314" endtime="20210201 19:19:07.966"></status>
+<test id="s1-t2" name="Unsuccessful Checkout (Invalid Contact Number)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:04:11.917" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:04:11.916" endtime="20210207 18:04:17.112"></status>
 </kw>
-<doc>A test suite with a single test for a valid editing of shipping details in checkout
-
-This test has a workflow that is created using keywords
-directly from SeleniumLibrary</doc>
-<status status="PASS" starttime="20210201 19:18:24.548" endtime="20210201 19:19:07.966"></status>
-</suite>
-<statistics>
-<total>
-<stat pass="1" fail="0">Critical Tests</stat>
-<stat pass="1" fail="0">All Tests</stat>
-</total>
-<tag>
-</tag>
-<suite>
-<stat pass="1" fail="0" id="s1" name="Valid Shipping">Valid Shipping</stat>
-</suite>
-</statistics>
-<errors>
-</errors>
-</robot>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:17.112" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:17.112" endtime="20210207 18:04:20.314"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:04:20.315" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:04:20.314" endtime="20210207 18:04:20.408"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:04:20.409" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:04:20.408" endtime="20210207 18:04:25.574"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:11.916" endtime="20210207 18:04:25.574"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:04:25.576" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:04:25.575" endtime="20210207 18:04:25.657"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:25.658" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:25.658" endtime="20210207 18:04:28.655"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:04:28.655" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:04:28.655" endtime="20210207 18:04:31.769"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:25.575" endtime="20210207 18:04:31.769"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:31.771" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:31.770" endtime="20210207 18:04:31.892"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:31.770" endtime="20210207 18:04:31.893"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:31.895" level="INFO">Typing text '123131' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:31.894" endtime="20210207 18:04:32.002"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:31.894" endtime="20210207 18:04:32.002"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.004" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.004" endtime="20210207 18:04:32.134"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.003" endtime="20210207 18:04:32.134"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.135" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.135" endtime="20210207 18:04:32.263"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.135" endtime="20210207 18:04:32.263"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.265" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.265" endtime="20210207 18:04:32.370"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.264" endtime="20210207 18:04:32.370"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.373" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.372" endtime="20210207 18:04:32.483"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.371" endtime="20210207 18:04:32.483"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.484" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.484" endtime="20210207 18:04:32.596"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.483" endtime="20210207 18:04:32.596"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.598" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.597" endtime="20210207 18:04:32.674"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.678" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.677" endtime="20210207 18:04:32.754"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.676" endtime="20210207 18:04:32.755"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:32.757" endtime="20210207 18:04:32.758"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:32.761" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:32.760" endtime="20210207 18:04:40.098"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:40.100" endtime="20210207 18:04:40.101"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:32.759" endtime="20210207 18:04:40.101"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid Contact Number)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Contact number should be 11 digits in length.</arg>
+</arguments>
+<msg timestamp="20210207 18:04:40.103" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Contact number should be 11 digits in length.'.</msg>
+<status status="PASS" starttime="20210207 18:04:40.103" endtime="20210207 18:04:41.171"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:40.103" endtime="20210207 18:04:41.171"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:04:41.173" endtime="20210207 18:04:41.173"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:11.915" endtime="20210207 18:04:41.174" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Unsuccessful Checkout (Invalid Email Address)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:04:41.186" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:04:41.186" endtime="20210207 18:04:46.800"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:46.801" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:46.801" endtime="20210207 18:04:49.872"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:04:49.872" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:04:49.872" endtime="20210207 18:04:49.954"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:04:49.955" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:04:49.954" endtime="20210207 18:04:54.726"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:41.185" endtime="20210207 18:04:54.727"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:04:54.729" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:04:54.728" endtime="20210207 18:04:54.805"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:04:54.805" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:04:54.805" endtime="20210207 18:04:57.627"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:04:57.627" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:04:57.627" endtime="20210207 18:05:00.758"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:04:54.728" endtime="20210207 18:05:00.759"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:00.759" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:00.759" endtime="20210207 18:05:00.901"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:00.759" endtime="20210207 18:05:00.901"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:00.902" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:00.902" endtime="20210207 18:05:01.018"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:00.902" endtime="20210207 18:05:01.018"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.021" level="INFO">Typing text 'email@-example.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.021" endtime="20210207 18:05:01.161"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.020" endtime="20210207 18:05:01.162"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.165" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.165" endtime="20210207 18:05:01.274"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.164" endtime="20210207 18:05:01.274"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.276" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.275" endtime="20210207 18:05:01.376"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.275" endtime="20210207 18:05:01.376"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.378" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.378" endtime="20210207 18:05:01.492"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.377" endtime="20210207 18:05:01.493"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.495" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.494" endtime="20210207 18:05:01.607"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.493" endtime="20210207 18:05:01.608"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.609" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.609" endtime="20210207 18:05:01.688"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.689" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.689" endtime="20210207 18:05:01.772"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.688" endtime="20210207 18:05:01.772"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:05:01.773" endtime="20210207 18:05:01.773"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:01.774" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:01.774" endtime="20210207 18:05:09.207"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:05:09.207" endtime="20210207 18:05:09.208"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:01.773" endtime="20210207 18:05:09.208"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid Email Address)">
+<msg timestamp="20210207 18:05:09.214" level="FAIL">No keyword with name 'Checkout Should Have Failed (Invalid Email Address)' found. Did you mean:
+    resource.Edit Should Have Failed (Invalid Email Address)</msg>
+<status status="FAIL" starttime="20210207 18:05:09.214" endtime="20210207 18:05:09.214"></status>
+</kw>
+<status status="FAIL" starttime="20210207 18:04:41.184" endtime="20210207 18:05:09.215" critical="yes">No keyword with name 'Checkout Should Have Failed (Invalid Email Address)' found. Did you mean:
+    resource.Edit Should Have Failed (Invalid Email Address)</status>
+</test>
+<test id="s1-t4" name="Unsuccessful Checkout (Invalid House Number)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:05:09.229" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:05:09.229" endtime="20210207 18:05:15.403"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:15.404" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:15.403" endtime="20210207 18:05:20.076"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:05:20.076" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:05:20.076" endtime="20210207 18:05:21.672"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:05:21.672" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:05:21.672" endtime="20210207 18:05:28.052"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:09.229" endtime="20210207 18:05:28.053"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:05:28.064" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:05:28.063" endtime="20210207 18:05:29.145"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:29.145" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:29.145" endtime="20210207 18:05:33.484"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:05:33.487" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:05:33.485" endtime="20210207 18:05:38.650"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:28.060" endtime="20210207 18:05:38.650"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:38.652" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:38.652" endtime="20210207 18:05:40.306"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:38.651" endtime="20210207 18:05:40.307"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:40.313" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:40.313" endtime="20210207 18:05:41.937"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:40.312" endtime="20210207 18:05:41.939"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:41.945" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:41.944" endtime="20210207 18:05:43.606"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:41.942" endtime="20210207 18:05:43.607"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID HOUSE NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:43.609" level="INFO">Typing text '%$@#$%@$' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:43.609" endtime="20210207 18:05:45.239"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:43.608" endtime="20210207 18:05:45.239"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:45.242" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:45.241" endtime="20210207 18:05:46.874"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:45.241" endtime="20210207 18:05:46.875"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:46.879" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:46.878" endtime="20210207 18:05:48.745"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:46.877" endtime="20210207 18:05:48.748"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:05:48.761" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:05:48.760" endtime="20210207 18:05:50.525"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:48.758" endtime="20210207 18:05:50.526"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:50.528" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:50.527" endtime="20210207 18:05:53.142"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:53.143" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:53.143" endtime="20210207 18:05:55.761"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:53.143" endtime="20210207 18:05:55.762"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:05:55.765" endtime="20210207 18:05:55.765"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:05:55.768" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:05:55.767" endtime="20210207 18:06:03.136"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:03.136" endtime="20210207 18:06:03.137"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:55.767" endtime="20210207 18:06:03.139"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid House Number)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:06:03.141" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: House number should only contain letters, numbers, periods, dashes, apostrophes and spaces.'.</msg>
+<status status="PASS" starttime="20210207 18:06:03.141" endtime="20210207 18:06:04.214"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:03.141" endtime="20210207 18:06:04.214"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:04.215" endtime="20210207 18:06:04.216"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:05:09.228" endtime="20210207 18:06:04.216" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Unsuccessful Checkout (Invalid Barangay)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:06:04.225" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:06:04.225" endtime="20210207 18:06:09.674"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:09.674" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:09.674" endtime="20210207 18:06:13.021"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:06:13.021" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:06:13.021" endtime="20210207 18:06:13.121"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:06:13.122" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:06:13.121" endtime="20210207 18:06:18.405"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:04.225" endtime="20210207 18:06:18.405"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:06:18.410" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:06:18.409" endtime="20210207 18:06:18.474"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:18.475" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:18.474" endtime="20210207 18:06:21.334"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:06:21.334" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:06:21.334" endtime="20210207 18:06:24.399"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:18.406" endtime="20210207 18:06:24.399"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:24.403" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:24.403" endtime="20210207 18:06:24.553"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:24.400" endtime="20210207 18:06:24.554"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:24.556" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:24.555" endtime="20210207 18:06:24.679"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:24.555" endtime="20210207 18:06:24.679"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:24.681" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:24.680" endtime="20210207 18:06:24.826"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:24.680" endtime="20210207 18:06:24.826"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:24.827" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:24.827" endtime="20210207 18:06:24.945"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:24.826" endtime="20210207 18:06:24.945"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:24.947" level="INFO">Typing text '%$@#$' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:24.946" endtime="20210207 18:06:25.043"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:24.946" endtime="20210207 18:06:25.043"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:25.044" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:25.044" endtime="20210207 18:06:25.139"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:25.044" endtime="20210207 18:06:25.139"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:25.140" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:25.140" endtime="20210207 18:06:25.243"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:25.139" endtime="20210207 18:06:25.243"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:25.244" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:25.244" endtime="20210207 18:06:25.316"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:25.321" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:25.320" endtime="20210207 18:06:25.396"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:25.319" endtime="20210207 18:06:25.397"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:25.397" endtime="20210207 18:06:25.398"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:25.399" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:25.399" endtime="20210207 18:06:31.796"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:31.796" endtime="20210207 18:06:31.796"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:25.398" endtime="20210207 18:06:31.797"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid Barangay)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Barangay should only contain letters, numbers and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:06:31.798" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Barangay should only contain letters, numbers and spaces.'.</msg>
+<status status="PASS" starttime="20210207 18:06:31.798" endtime="20210207 18:06:32.856"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:31.798" endtime="20210207 18:06:32.857"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:32.859" endtime="20210207 18:06:32.860"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:04.224" endtime="20210207 18:06:32.862" critical="yes"></status>
+</test>
+<test id="s1-t6" name="Unsuccessful Checkout (Invalid City)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:06:32.878" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:06:32.877" endtime="20210207 18:06:38.286"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:38.287" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:38.286" endtime="20210207 18:06:41.495"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:06:41.495" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:06:41.495" endtime="20210207 18:06:41.591"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:06:41.591" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:06:41.591" endtime="20210207 18:06:46.477"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:32.875" endtime="20210207 18:06:46.477"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:06:46.478" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:06:46.478" endtime="20210207 18:06:46.556"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:46.558" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:46.556" endtime="20210207 18:06:49.403"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:06:49.403" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:06:49.403" endtime="20210207 18:06:52.536"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:46.477" endtime="20210207 18:06:52.536"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:52.537" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:52.537" endtime="20210207 18:06:52.661"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:52.537" endtime="20210207 18:06:52.661"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:52.663" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:52.663" endtime="20210207 18:06:52.775"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:52.662" endtime="20210207 18:06:52.775"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:52.779" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:52.779" endtime="20210207 18:06:52.903"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:52.778" endtime="20210207 18:06:52.903"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:52.906" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:52.905" endtime="20210207 18:06:53.021"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:52.904" endtime="20210207 18:06:53.021"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.024" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.023" endtime="20210207 18:06:53.151"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:53.022" endtime="20210207 18:06:53.151"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.152" level="INFO">Typing text '!#!$$@#' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.152" endtime="20210207 18:06:53.266"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:53.152" endtime="20210207 18:06:53.266"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.267" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.267" endtime="20210207 18:06:53.370"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:53.267" endtime="20210207 18:06:53.370"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.372" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.371" endtime="20210207 18:06:53.450"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.452" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.451" endtime="20210207 18:06:53.523"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:53.451" endtime="20210207 18:06:53.523"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:06:53.527" endtime="20210207 18:06:53.527"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:06:53.529" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:06:53.529" endtime="20210207 18:07:00.928"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:00.928" endtime="20210207 18:07:00.928"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:53.528" endtime="20210207 18:07:00.928"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid City)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: City should only contain letters, periods, dashes and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:07:00.930" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: City should only contain letters, periods, dashes and spaces.'.</msg>
+<status status="PASS" starttime="20210207 18:07:00.929" endtime="20210207 18:07:02.037"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:00.929" endtime="20210207 18:07:02.038"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:02.039" endtime="20210207 18:07:02.040"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:06:32.871" endtime="20210207 18:07:02.040" critical="yes"></status>
+</test>
+<test id="s1-t7" name="Unsuccessful Checkout (Invalid Province)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:07:02.051" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:07:02.051" endtime="20210207 18:07:07.347"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:07.348" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:07.348" endtime="20210207 18:07:10.498"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:07:10.499" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:07:10.498" endtime="20210207 18:07:10.619"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:07:10.619" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:07:10.619" endtime="20210207 18:07:15.511"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:02.048" endtime="20210207 18:07:15.512"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:07:15.515" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:07:15.515" endtime="20210207 18:07:15.590"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:15.591" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:15.591" endtime="20210207 18:07:19.567"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:07:19.568" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:07:19.568" endtime="20210207 18:07:23.439"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:15.514" endtime="20210207 18:07:23.440"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:23.442" level="INFO">Typing text 'Sophia Somethin See' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:23.442" endtime="20210207 18:07:23.587"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:23.441" endtime="20210207 18:07:23.588"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:23.591" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:23.589" endtime="20210207 18:07:23.740"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:23.589" endtime="20210207 18:07:23.740"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:23.846" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:23.845" endtime="20210207 18:07:23.977"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:23.841" endtime="20210207 18:07:23.978"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:23.983" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:23.983" endtime="20210207 18:07:24.090"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:23.982" endtime="20210207 18:07:24.090"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.098" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.095" endtime="20210207 18:07:24.207"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:24.094" endtime="20210207 18:07:24.207"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.214" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.214" endtime="20210207 18:07:24.320"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:24.211" endtime="20210207 18:07:24.320"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${INVALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.321" level="INFO">Typing text '!@#!@##!' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.321" endtime="20210207 18:07:24.504"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:24.320" endtime="20210207 18:07:24.505"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.517" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.516" endtime="20210207 18:07:24.612"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.615" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.614" endtime="20210207 18:07:24.685"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:24.614" endtime="20210207 18:07:24.685"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:24.685" endtime="20210207 18:07:24.686"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:24.687" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:24.687" endtime="20210207 18:07:31.846"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:31.846" endtime="20210207 18:07:31.846"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:24.686" endtime="20210207 18:07:31.847"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Invalid Province)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Province should only contain letters and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:07:31.849" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Province should only contain letters and spaces.'.</msg>
+<status status="PASS" starttime="20210207 18:07:31.848" endtime="20210207 18:07:32.908"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:31.848" endtime="20210207 18:07:32.908"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:32.909" endtime="20210207 18:07:32.909"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:02.047" endtime="20210207 18:07:32.910" critical="yes"></status>
+</test>
+<test id="s1-t8" name="Unsuccessful Checkout (Null Full Name)">
+<kw name="Add Products To Cart" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:nav-catalogue</arg>
+</arguments>
+<msg timestamp="20210207 18:07:32.920" level="INFO">Clicking element 'id:nav-catalogue'.</msg>
+<status status="PASS" starttime="20210207 18:07:32.920" endtime="20210207 18:07:38.827"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:khaki-shorter-shorts-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:38.828" level="INFO">Clicking link 'id:khaki-shorter-shorts-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:38.827" endtime="20210207 18:07:42.153"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:small</arg>
+</arguments>
+<msg timestamp="20210207 18:07:42.154" level="INFO">Clicking button 'id:small'.</msg>
+<status status="PASS" starttime="20210207 18:07:42.153" endtime="20210207 18:07:42.234"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:btnPressed</arg>
+</arguments>
+<msg timestamp="20210207 18:07:42.234" level="INFO">Clicking button 'id:btnPressed'.</msg>
+<status status="PASS" starttime="20210207 18:07:42.234" endtime="20210207 18:07:47.169"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:32.918" endtime="20210207 18:07:47.170"></status>
+</kw>
+<kw name="Go To Checkout" library="resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:fa-shopping-cart</arg>
+</arguments>
+<msg timestamp="20210207 18:07:47.177" level="INFO">Clicking element 'class:fa-shopping-cart'.</msg>
+<status status="PASS" starttime="20210207 18:07:47.176" endtime="20210207 18:07:47.252"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>id:editcart-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:47.253" level="INFO">Clicking link 'id:editcart-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:47.252" endtime="20210207 18:07:50.132"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:checkStock</arg>
+</arguments>
+<msg timestamp="20210207 18:07:50.132" level="INFO">Clicking link 'class:checkStock'.</msg>
+<status status="PASS" starttime="20210207 18:07:50.132" endtime="20210207 18:07:53.251"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:47.173" endtime="20210207 18:07:53.252"></status>
+</kw>
+<kw name="Input Full Name in Shipping Form" library="resource">
+<arguments>
+<arg>${NULL FULL NAME}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:fullname-shipping</arg>
+<arg>${fullname}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.256" level="INFO">Typing text '' into text field 'id:fullname-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.255" endtime="20210207 18:07:53.357"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.254" endtime="20210207 18:07:53.357"></status>
+</kw>
+<kw name="Input Contact Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:contactnum-shipping</arg>
+<arg>${contactnum}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.359" level="INFO">Typing text '09123456780' into text field 'id:contactnum-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.359" endtime="20210207 18:07:53.463"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.358" endtime="20210207 18:07:53.463"></status>
+</kw>
+<kw name="Input Email Address in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID EMAIL}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:emailadd-shipping</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.464" level="INFO">Typing text 'sophiasee1@gmail.com' into text field 'id:emailadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.464" endtime="20210207 18:07:53.595"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.463" endtime="20210207 18:07:53.595"></status>
+</kw>
+<kw name="Input House Number in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CONTACT NUM}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:streetadd-shipping</arg>
+<arg>${housenum}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.596" level="INFO">Typing text '09123456780' into text field 'id:streetadd-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.596" endtime="20210207 18:07:53.720"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.596" endtime="20210207 18:07:53.721"></status>
+</kw>
+<kw name="Input Barangay in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID BARANGAY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:barangay-shipping</arg>
+<arg>${barangay}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.723" level="INFO">Typing text 'Barangay 112' into text field 'id:barangay-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.723" endtime="20210207 18:07:53.826"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.722" endtime="20210207 18:07:53.826"></status>
+</kw>
+<kw name="Input City in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID CITY}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:city-shipping</arg>
+<arg>${city}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.827" level="INFO">Typing text 'Quezon City' into text field 'id:city-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.827" endtime="20210207 18:07:53.932"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.827" endtime="20210207 18:07:53.933"></status>
+</kw>
+<kw name="Input Province in Shipping Form" library="resource">
+<arguments>
+<arg>${VALID PROVINCE}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:province-shipping</arg>
+<arg>${province}</arg>
+</arguments>
+<msg timestamp="20210207 18:07:53.937" level="INFO">Typing text 'Tagaytay' into text field 'id:province-shipping'.</msg>
+<status status="PASS" starttime="20210207 18:07:53.937" endtime="20210207 18:07:54.045"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:53.936" endtime="20210207 18:07:54.045"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:gcash-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:54.046" level="INFO">Clicking button 'id:gcash-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:54.046" endtime="20210207 18:07:54.120"></status>
+</kw>
+<kw name="Submit Shipping Form" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:ship-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:54.121" level="INFO">Clicking button 'id:ship-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:54.121" endtime="20210207 18:07:54.194"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:54.120" endtime="20210207 18:07:54.194"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:07:54.195" endtime="20210207 18:07:54.195"></status>
+</kw>
+<kw name="Submit Order" library="resource">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:checkout-btn</arg>
+</arguments>
+<msg timestamp="20210207 18:07:54.195" level="INFO">Clicking button 'id:checkout-btn'.</msg>
+<status status="PASS" starttime="20210207 18:07:54.195" endtime="20210207 18:08:01.158"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<status status="PASS" starttime="20210207 18:08:01.158" endtime="20210207 18:08:01.161"></status>
+</kw>
+<status status="PASS" starttime="20210207 18:07:54.195" endtime="20210207 18:08:01.161"></status>
+</kw>
+<kw name="Checkout Should Have Failed (Null Full Name)" library="resource">
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>id=error-msg</arg>
+<arg>Error: Full Name is required. Name should only contain letters, periods and spaces.</arg>
+</arguments>
+<msg timestamp="20210207 18:08:01.163" level="INFO">Verifying element 'id=error-msg' contains exact text 'Error: Full Name is required. Name should only contain letters, periods and spaces.'.
