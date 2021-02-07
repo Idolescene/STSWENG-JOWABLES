@@ -8,19 +8,21 @@
   <br><br><br>
 
   <!-- FAQ -->
-  <div class="faq-view">
+  <div class="container">
     {{#each questions}}
-      <div class = "faq-group">
-       <div class = "faq-qa">Q. &nbsp</div>
-       <div class = "faq-question">{{this.question}} </div>
+    <div>
+      <div class = "row">
+       <div class = "col-lg-2 faq-qa cont-right">Q. &nbsp</div>
+       <div class = "col-lg-10 faq-question">{{this.question}} </div>
       </div>
-      <div class = "faq-group">
-       <div class = "faq-qa">A. &nbsp</div>
-       <div class = "faq-body">
+      <div class = "row">
+       <div class = "col-lg-2 faq-qa cont-right">A. &nbsp</div>
+       <div class = "col-lg-10 faq-body">
          {{this.answer}}
        </div>
       </div>
-      <br><br>
+    </div>
+    <br><br>
     {{/each}}
   </div>
   <br><br><br><br><br><br><br><br>
