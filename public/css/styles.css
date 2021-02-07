@@ -758,3 +758,7 @@ body {
 .profile-id {
   color: blue;
 }
+
+.qty-input {
+  width: 50px;
+}
