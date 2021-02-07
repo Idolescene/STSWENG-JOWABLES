@@ -9,7 +9,7 @@
     <!-- Edit Product Details -->
     <div class="col" style="padding-left: 15rem;">
       <h2 class="mt-4">Edit Product Details</h2>
-      <form action="/admin/edit-product-post/{{id}}" method="POST">
+      <form action="/admin/edit-product-post/{{id}}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label><b>Product Name</b></label>
           <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="{{name}}" {{buttonStateEdit}}>
@@ -42,7 +42,7 @@
             <div class="col-sm-2"><b>Small</b></div>
             {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small" {{buttonStateEdit}}>
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small" placeholder="{{small_size}}" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
@@ -54,7 +54,7 @@
             <div class="col-sm-2"><b>Medium</b></div>
             {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium" {{buttonStateEdit}}>
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium" placeholder="{{medium_size}}" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
@@ -66,7 +66,7 @@
             <div class="col-sm-2"><b>Large</b></div>
             {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large" {{buttonStateEdit}}>
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large" placeholder="{{large_size}}" {{buttonStateEdit}}>
             </div>
           </div>
           <br>
@@ -78,7 +78,7 @@
             <div class="col-sm-2"><b>X-Large</b></div>
             {{/if}}
             <div class="col-sm-4">
-              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge" {{buttonStateEdit}}>
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge" placeholder="{{xlarge_size}}" {{buttonStateEdit}}>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
     <!-- Add New Product -->
     <div class="col">
       <h2 class="mt-4">Add a New Product</h2>
-      <form action="/admin/add-product-post/{{id}}" method="POST">
+      <form action="/admin/add-product-post/{{id}}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label><b>Product Name</b></label>
           <input type="text" class="form-control w-50 rounded-pill" id="name" name="name" placeholder="Add new product name" {{buttonStateAdd}} required>
