@@ -72,7 +72,7 @@ router.get('/summary-of-all-orders-:param1-:param2', (req, res) => {
   var datefrom = new Date(req.params.param1.replace(/d/g, '-'));
   var dateto = new Date(req.params.param2.replace(/d/g, '-'));
 
-  orderModel.find({dateformatted: {$gte: datefrom, $lte: dateto}}, (err, orders) => {
+  orderModel.find({dateformatted: {$gte: datefrom, $lte: dateto}, status: {$not: {$regex: "^Cancelled$"}}}, (err, orders) => {
     var inc = 0;
     var totalqty = 0;
     orders.forEach((ord) =>{
