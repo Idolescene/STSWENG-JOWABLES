@@ -2,14 +2,9 @@ const productModel = require('../models/product');
 const cartModel = require('../models/cart');
 const {validationResult} = require('express-validator');
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require("gridfs-stream");
 
 // Get all products from the DB and display it in catalogue
 exports.getAllProducts = (req, res) => {
-  console.log("!!!!!!!!!!!!!!!!!!!!!")
-  console.log(req.body)
-  console.log(req.params)
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     var user = req.session.user;
@@ -241,8 +236,7 @@ exports.viewAllProducts = (req, res) => {
           if (req.body.size && req.body.size != 'No Filter'){
             size = req.body.size;
           }
-          console.log("asd")
-          console.log(query)
+          
           productModel.getManyFilter(query,sort, size,(err, products) => {
             if (err) throw err;
             var categories = [];
@@ -487,18 +481,17 @@ exports.getCategories = (req,res) => {
 exports.postAProduct = (req, res) => {
   let id = req.body.id;
   productModel.getOne({_id: id}, (err, results) => {
-    console.log(results);
     res.send(results);
   });
 };
 
-// multer storage
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, './public/uploads');
+    cb(null, 'public/uploads');
   },
   filename: function(req, file, cb) {
     cb(null,file.originalname);
+    // console.log(generateName(file.originalname));
   }
 });
 
@@ -511,11 +504,13 @@ exports.getEditProduct = (req, res) => {
   var image;
   const slug = req.params.slug;
   var status = [];
+  var size = [];
   productModel.getOne({slug: slug}, (err, result) => {
     if (err) throw err;
     if (result) {
       result.stock.forEach((item) => {
         status.push(item.status);
+        size.push(item.qty);
       });
 
       var status_msg = [];
@@ -547,7 +542,11 @@ exports.getEditProduct = (req, res) => {
         small_style: msg_style[0],
         medium_style: msg_style[1],
         large_style: msg_style[2],
-        xlarge_style: msg_style[3]
+        xlarge_style: msg_style[3],
+        small_size: size[0],
+        medium_size: size[1],
+        large_size: size[2],
+        xlarge_size: size[3]
       });
     }
   });
@@ -559,6 +558,7 @@ exports.postEditProduct = (req, res) => {
   var {name, description, category, price, small, medium, large, xlarge} = req.body;
   var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
   var product_id = req.params._id;
+  var small_stat, medium_stat, large_stat, xlarge_stat;
 
   productModel.getOne({_id: product_id}, (err, product) => {
     if (err) {
@@ -589,48 +589,54 @@ exports.postEditProduct = (req, res) => {
           image = "uploads/" + req.file.originalname;
         }
 
+        console.log("IMAGE: " + image);
+
         if (small == "") {
-          small = product.stock[0].status;
+          small_stat = product.stock[0].status;
+          small = product.stock[0].qty;
         } else {
           if (small > 0) {
-            small = true;
+            small_stat = true;
           } else {
-            small = false;
+            small_stat = false;
           }
         }
         if (medium == "") {
-          medium = product.stock[1].status;
+          medium_stat = product.stock[1].status;
+          medium = product.stock[1].qty;
         } else {
           if (medium > 0) {
-            medium = true;
+            medium_stat = true;
           } else {
-            medium = false;
+            medium_stat = false;
           }
         }
         if (large == "") {
-          large = product.stock[2].status;
+          large_stat = product.stock[2].status;
+          large = product.stock[2].qty;
         } else {
           if (large > 0) {
-            large = true;
+            large_stat = true;
           } else {
-            large = false;
+            large_stat = false;
           }
         }
         if (xlarge == "") {
-          xlarge = product.stock[3].status;
+          xlarge_stat = product.stock[3].status;
+          xlarge = product.stock[3].qty;
         } else {
           if (xlarge > 0) {
-            xlarge = true;
+            xlarge_stat = true;
           } else {
-            xlarge = false;
+            xlarge_stat = false;
           }
         }
 
         var sizesUpdate = [
-          {size: "Small", status: small},
-          {size: "Medium", status: medium},
-          {size: "Large", status: large},
-          {size: "X-Large", status: xlarge}
+          {size: "Small", qty: small, status: small_stat},
+          {size: "Medium", qty: medium, status: medium_stat},
+          {size: "Large", qty: large, status: large_stat},
+          {size: "X-Large", qty: xlarge, status: xlarge_stat}
         ];
 
         productModel.updateProduct(product_id, name, slug, description, category, price, image, sizesUpdate, (err, result) => {
@@ -662,16 +668,17 @@ exports.postAddProduct = (req, res) => {
   if (errors.isEmpty()) {
     var image;
     var {name, description, category, price, small, medium, large, xlarge} = req.body;
-    console.log(req.body.name);
     var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+    var small_stat, medium_stat, large_stat, xlarge_stat;
 
     image = req.file;
     if(image == undefined || image == null || image == "") {
-      image = 'img/tote-bag-1.jpg';
+      image = 'img/black-shorts.jpg';
     }
     else {
       image = "uploads/" + req.file.originalname;
     }
+    console.log("IMAGE: " + image);
     
     productModel.getOne({slug: slug}, (err, result) => {
       if (result) {
@@ -679,41 +686,25 @@ exports.postAddProduct = (req, res) => {
         res.redirect('/admin/add-new-product');
       } else {
 
-        if (small == "") {
-          small = product.stock[0].status;
+        if (small > 0) {
+          small_stat = true;
         } else {
-          if (small > 0) {
-            small = true;
-          } else {
-            small = false;
-          }
+          small_stat = false;
         }
-        if (medium == "") {
-          medium = product.stock[1].status;
+        if (medium > 0) {
+          medium_stat = true;
         } else {
-          if (medium > 0) {
-            medium = true;
-          } else {
-            medium = false;
-          }
+          medium_stat = false;
         }
-        if (large == "") {
-          large = product.stock[2].status;
+        if (large > 0) {
+          large_stat = true;
         } else {
-          if (large > 0) {
-            large = true;
-          } else {
-            large = false;
-          }
+          large_stat = false;
         }
-        if (xlarge == "") {
-          xlarge = product.stock[3].status;
+        if (xlarge > 0) {
+          xlarge_stat = true;
         } else {
-          if (xlarge > 0) {
-            xlarge = true;
-          } else {
-            xlarge = false;
-          }
+          xlarge_stat = false;
         }
 
         const newProduct = {
@@ -724,15 +715,14 @@ exports.postAddProduct = (req, res) => {
           price: Math.round(price * 100) / 100.0,
           img: image,
           stock: [
-            {size: "Small", status: small},
-            {size: "Medium", status: medium},
-            {size: "Large", status: large},
-            {size: "X-Large", status: xlarge}
+            {size: "Small", qty: small, status: small_stat},
+            {size: "Medium", qty: medium, status: medium_stat},
+            {size: "Large", qty: large, status: large_stat},
+            {size: "X-Large", qty: xlarge, status: xlarge_stat}
           ]
         };
 
         productModel.create(newProduct, (err, product) => {
-          console.log(product);
           if(err) {
             req.flash('error_msg', 'Could not create product. Please try again.');
             res.redirect('/admin/add-new-product');
