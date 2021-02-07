@@ -356,6 +356,7 @@ exports.getAProduct = (req, res) => {
             if(result) {
               res.render('product-details', {
                 loggedIn: req.session.user,
+                scripts: "/js/proddetailscript.js",
                 layout: 'main1',
                 productName: product.name,
                 productPrice: product.price.toFixed(2),
@@ -370,6 +371,7 @@ exports.getAProduct = (req, res) => {
             else {
               res.render('product-details', {
                 loggedIn: req.session.user,
+                scripts: "/js/proddetailscript.js",
                 layout: 'main1',
                 productName: product.name,
                 productPrice: product.price.toFixed(2),
