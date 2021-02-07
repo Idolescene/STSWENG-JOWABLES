@@ -427,8 +427,9 @@ body {
 }
 
 /* Contact Us Page */
-.cont-group {
-  display: flex;
+.cont-pic {
+  height: 110px;
+  width: 112px;
 }
 
 .cont-header {
