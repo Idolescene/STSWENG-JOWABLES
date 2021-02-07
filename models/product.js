@@ -6,24 +6,17 @@ const productSchema = new mongoose.Schema({
   description: {type: String, required: true},
   category: {type: String, required: true},
   price: {type: Number, required: true},
-  // img: {type: String, required: true},
-  img: {type: String},
+  img: {type: String, required: true},
   stock:[
     {
-    status: {type: Boolean,required:true},
-    size: {type: String,required:true},
-    qty: {type: Number, required:true}
+    status: {type: Boolean,required: true},
+    qty: {type: Number, required: true},
+    size: {type: String,required: true}
     }
   ]
 });
 
 const productModel = mongoose.model('products', productSchema);
-
-/** ADMIN FUNCTIONS **/
-// 1) Create/Add a new product
-// 2) Delete a product
-// 3) Update/Edit a product
-// 4) Change status
 
 // Get all products
 exports.getAll = (query, next) => {
