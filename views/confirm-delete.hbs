@@ -1,0 +1,35 @@
+<div class="container" style="padding:100px 0 150px 0;">
+  <h3>Confirm Deletion</h3><br>
+  <div class="alert alert-danger" role="alert">
+    <h3 class="text-center">Are you sure you want to delete this product?</h3>
+  </div>
+  <br>
+  <div class="container-fluid" style="background-color: #ffd27d !important; padding: 50px;">
+    <div class="row" >
+      <div class="col-sm-3">
+        <img src="{{img}}" width="200px">
+      </div>
+      <div class="col">
+        <h4>
+          <strong>Product Name: </strong> 
+          {{name}}
+        </h4>
+        <br>
+        <h4>
+          <strong>Product Price: </strong>
+          &#8369; {{price}}
+        </h4>
+        <br>
+        <h4>
+          <strong>Product Description: </strong>
+          {{desc}}
+        </h4>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end" style="padding-top: 50px;">
+      <a href="/admin/update-products" type="button" class="btn logout-btn rounded-pill">Cancel</a>
+      <p>&nbsp;&nbsp;</p>
+      <a href="/admin/delete-product/{{id}}" type="button" class="btn logout-btn rounded-pill">Confirm</a>
+    </div>
+  </div>
+</div>

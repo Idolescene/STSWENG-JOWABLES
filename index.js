@@ -10,6 +10,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 const {envPort, sessionKey} = require('./config');
+const methodOverride = require('method-override');
 
 // initialize express application
 const app = express();
@@ -30,6 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(methodOverride("_method"));
 
 // sessions - server configuration
 app.use(session({
