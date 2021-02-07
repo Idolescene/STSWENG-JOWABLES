@@ -76,12 +76,12 @@
       </div>
     </div>
     <br>
-    <a href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
-    {{#if checkout}}
-    <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
-    {{else}}
-    <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
-    {{/if}}
+    <a id = 'delAllbtn' href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
+    <!-- {{#if checkout}} -->
+    <a id = 'shipbtn' href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
+    <!-- {{else}} -->
+    <a id = 'failBtn' data-toggle="modal" data-target="#failed-checkout" type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <!--{{/if}} -->
   </div>
   <br><br><br><br><br>
   {{else}}
@@ -91,4 +91,39 @@
   </div>
   {{/if}}
   <br><br><br>
+</div>
+
+
+    <!-- Modal
+    <div class="modal fade" id="failed-checkout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <h3>
+              <strong>Checkout Failed. An Item is out of stock!</strong>
+            </h3>
+          </div>
+          <div class="justify-content-center">
+            <button type="button" class="btn modal-btn rounded-pill" id="modal-btn" aria-label="Close" data-dimiss="#failed-checkout">
+              Okay
+            </button>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div> -->
+    
+<div class="modal fade" id = "failed-checkout" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <h3>
+          <strong>Checkout Failed. An Item is out of stock!</strong>
+        </h3>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
