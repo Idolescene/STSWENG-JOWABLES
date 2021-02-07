@@ -74,8 +74,7 @@ exports.addToCart = (req, res) => {
 
     if(!user) {
       res.redirect('/login');
-    }
-    else {
+    } else {
       if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
@@ -84,7 +83,7 @@ exports.addToCart = (req, res) => {
             req.flash('error_msg', 'Could not add product. Please try again.');
             return res.redirect('/product_details/' + product_slug);
           }
-          else {            
+          else {
             var stockIndex = cart.stock.findIndex(x => x.size == size);
 
             if (stockIndex < 0) {
@@ -92,23 +91,57 @@ exports.addToCart = (req, res) => {
               return res.redirect('/product_details/' + product_slug);
             }
 
-            var inStock = cart.stock[stockIndex].status;
+            if (quantity <= 0) {
+              req.flash('error_msg', 'Product quantity should be greater than 0. Please try again.');
+              return res.redirect('/product_details/' + product_slug);
+            }
+            var stockqty = cart.stock[stockIndex].qty - quantity;
+            var inStock = true;
+            var hadStock = cart.stock[stockIndex].status;
+            var newStock = cart.stock;
+
+
+            if (stockqty < 0)
+              inStock = false;
+            else {
+              if (stockqty == 0)
+                newStock[stockIndex].status = false;
+              else
+                newStock[stockIndex].status = true;
+
+                newStock[stockIndex].qty = stockqty;
+            }
+
+            console.log (newStock);
 
             var slug = cart.toObject().slug;
             if (inStock) {
-              cartModel.addProduct(user, product, quantity, size,(err, cart) => {
+              productModel.updateOne({_id: product}, {$set: {stock: newStock}},(err, prod) => {
                 if(err) {
                   req.flash('error_msg', 'Could not add product. Please try again.');
                   return res.redirect('/product_details/' + slug);
                 }
                 else {
-                  req.flash('success_msg', 'You have added a new product to the cart!');
-                  return res.redirect('/product_details/' + slug);
+                  cartModel.addProduct(user, product, quantity, size,(err, cart) => {
+                    if(err) {
+                      req.flash('error_msg', 'Could not add product. Please try again.');
+                      return res.redirect('/product_details/' + slug);
+                    }
+                    else {
+                      req.flash('success_msg', 'You have added a new product to the cart!');
+                      return res.redirect('/product_details/' + slug);
+                    }
+                  });
                 }
               });
             } else {
-              req.flash('error_msg', 'Product out of stock.');
-              return res.redirect('/product_details/' + slug);
+              if (hadStock) {
+                req.flash('error_msg', 'Order quantity greater than product stock.');
+                return res.redirect('/product_details/' + slug);
+              } else {
+                req.flash('error_msg', 'Product out of stock.');
+                return res.redirect('/product_details/' + slug);
+              }
             }
           }
         });

@@ -40,6 +40,13 @@ exports.getAll = (query, next) => {
   });
 };
 
+// update a cart with new values based on the query
+exports.updateOne = (query, newvalues, next) => {
+    cartModel.updateOne(query, newvalues, (err, cart) => {
+        next(err, cart);
+    });
+};
+
 // Retrieve a user's cart
 exports.getByUser = (user, next) => {
   cartModel.findOne({user: user}).exec((err, cart) => {
