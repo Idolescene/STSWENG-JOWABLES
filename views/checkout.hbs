@@ -26,7 +26,7 @@
           <th>₱ {{this.subPrice}}</th>
           <th>{{this.qty}}</th>
           <th>
-            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+            <a href="/delete_from_cart/{{this.id}}/{{this.size}}"  class="remove-product" style="color: #0a0a0a;">
               <h1>X</h1>
             </a>
           </th>
@@ -76,12 +76,12 @@
       </div>
     </div>
     <br>
-    {{!-- {{#if checkout}} --}}
     <a href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
+    {{#if checkout}}
     <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
-    {{!-- {{else}}
+    {{else}}
     <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
-    {{/if}} --}}
+    {{/if}}
   </div>
   <br><br><br><br><br>
   {{else}}
