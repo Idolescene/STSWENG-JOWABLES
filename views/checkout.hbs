@@ -76,12 +76,12 @@
       </div>
     </div>
     <br>
-    {{!-- {{#if checkout}} --}}
     <a href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
+    {{#if checkout}}
     <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
-    {{!-- {{else}}
+    {{else}}
     <a href='#' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
-    {{/if}} --}}
+    {{/if}}
   </div>
   <br><br><br><br><br>
   {{else}}
