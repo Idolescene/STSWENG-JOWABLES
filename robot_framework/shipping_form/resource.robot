@@ -85,7 +85,9 @@ Go To Profile
 
 Go To Checkout
     Click Element                 class:fa-shopping-cart
+    Set Selenium Speed                      0.5
     Click Link                    id:editcart-btn
+    Set Selenium Speed                      0
     Click Link                    class:checkStock
 
 Delete All Items in Cart
