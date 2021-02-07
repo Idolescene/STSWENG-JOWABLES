@@ -41,7 +41,7 @@ ${ORIGINAL PROVINCE}     Metro Manila
 ${VALID PROVINCE}        Tagaytay
 ${INVALID PROVINCE}      !@#!@##!
 ${NULL PROVINCE}
-${NONE}                  NONE
+${AUTO GEN}                  NONE
 ${MAIN URL}              https://${SERVER}/
 ${LOGIN URL}             https://${SERVER}/profile
 ${CHECKOUT URL}          https://${SERVER}/checkout
@@ -194,7 +194,19 @@ Checkout Should Have Failed (No Payment Method)
     Element Text Should Be          id=error-msg                 Error: Please select a method of payment.
 
 Checkout Should Have Failed (No Items in Cart)
-    Element Text Should Be          id=error-msg                 Error: Error: No items in your cart.
+    Element Text Should Be          id=error-msg                 Error: No items in your cart.
+
+Checkout Should Have Failed (Auto-Generated House Num)
+    Element Text Should Be          id=error-msg                 Error: House Number should not be NONE.
+
+Checkout Should Have Failed (Auto-Generated Barangay)
+    Element Text Should Be          id=error-msg                 Error: Barangay should not be NONE.
+
+Checkout Should Have Failed (Auto-Generated City)
+    Element Text Should Be          id=error-msg                 Error: City should not be NONE.
+
+Checkout Should Have Failed (Auto-Generated Province)
+    Element Text Should Be          id=error-msg                 Error: Province should not be NONE.
 
 Checkout Should Be Successful
     Element Should Contain          id=success-div           Success: Items ordered successfully! Order number: 
