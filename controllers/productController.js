@@ -558,6 +558,7 @@ exports.postEditProduct = (req, res) => {
   var image;
   var {name, description, category, price, small, medium, large, xlarge} = req.body;
   var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
+  var sstat, mstat, lstat, xlstat;
   var product_id = req.params._id;
 
   productModel.getOne({_id: product_id}, (err, product) => {
@@ -590,47 +591,50 @@ exports.postEditProduct = (req, res) => {
         }
 
         if (small == "") {
+          sqty = product.stock[0].qty;
           small = product.stock[0].status;
         } else {
           if (small > 0) {
-            small = true;
+            sstat = true;
           } else {
-            small = false;
+            sstat = false;
           }
         }
         if (medium == "") {
-          medium = product.stock[1].status;
+          medium = product.stock[1].qty;
+          mstat = product.stock[1].qty;
         } else {
           if (medium > 0) {
-            medium = true;
+            mstat = true;
           } else {
-            medium = false;
+            mstat = false;
           }
         }
         if (large == "") {
-          large = product.stock[2].status;
+          lstat = product.stock[2].status;
+          large = product.stock[2].qty;
         } else {
           if (large > 0) {
-            large = true;
+            lstat = true;
           } else {
-            large = false;
+            lstat = false;
           }
         }
         if (xlarge == "") {
-          xlarge = product.stock[3].status;
+          xlstat = product.stock[3].status;
+          xlarge = product.stock[3].qty
         } else {
           if (xlarge > 0) {
-            xlarge = true;
+            xlstat = true;
           } else {
-            xlarge = false;
+            xlstat = false;
           }
         }
-
         var sizesUpdate = [
-          {size: "Small", status: small},
-          {size: "Medium", status: medium},
-          {size: "Large", status: large},
-          {size: "X-Large", status: xlarge}
+          {size: "Small", qty: small, status: sstat},
+          {size: "Medium",qty: medium, status: mstat},
+          {size: "Large", qty: large, status: lstat},
+          {size: "X-Large",qty: xlarge, status: xlarge}
         ];
 
         productModel.updateProduct(product_id, name, slug, description, category, price, image, sizesUpdate, (err, result) => {
@@ -662,6 +666,7 @@ exports.postAddProduct = (req, res) => {
   if (errors.isEmpty()) {
     var image;
     var {name, description, category, price, small, medium, large, xlarge} = req.body;
+    var sqty, mqty, lqty, xlqty;
     console.log(req.body.name);
     var slug = req.body.name.replace(/\s+/g, '-').toLowerCase();
 
@@ -684,6 +689,7 @@ exports.postAddProduct = (req, res) => {
         } else {
           if (small > 0) {
             small = true;
+
           } else {
             small = false;
           }

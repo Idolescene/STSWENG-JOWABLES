@@ -11,7 +11,8 @@ const productSchema = new mongoose.Schema({
   stock:[
     {
     status: {type: Boolean,required:true},
-    size: {type: String,required:true}
+    size: {type: String,required:true},
+    qty: {type: Number, required:true}
     }
   ]
 });
