@@ -400,7 +400,6 @@ body {
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
-  line-height: 45px;
   color: #000000;
 }
 
@@ -409,13 +408,13 @@ body {
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 28px;
-  line-height: 42px;
+  font-size: 30px;
   color: #000000;
   width: 901px;
 }
 
 .faq-body {
+  top: 12px;
   text-align: justify;
   font-family: Poppins;
   font-style: normal;
@@ -427,8 +426,9 @@ body {
 }
 
 /* Contact Us Page */
-.cont-group {
-  display: flex;
+.cont-pic {
+  height: 110px;
+  width: 112px;
 }
 
 .cont-header {
@@ -479,8 +479,7 @@ body {
 }
 
 .cont-right {
-  position: relative;
-  left: 48%;
+  text-align: right;
 }
 
 .cont-center2 {
