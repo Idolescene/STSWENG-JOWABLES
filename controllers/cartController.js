@@ -98,40 +98,20 @@ exports.addToCart = (req, res) => {
             var stockqty = cart.stock[stockIndex].qty - quantity;
             var inStock = true;
             var hadStock = cart.stock[stockIndex].status;
-            var newStock = cart.stock;
-
 
             if (stockqty < 0)
               inStock = false;
-            else {
-              if (stockqty == 0)
-                newStock[stockIndex].status = false;
-              else
-                newStock[stockIndex].status = true;
-
-                newStock[stockIndex].qty = stockqty;
-            }
-
-            console.log (newStock);
 
             var slug = cart.toObject().slug;
             if (inStock) {
-              productModel.updateOne({_id: product}, {$set: {stock: newStock}},(err, prod) => {
+              cartModel.addProduct(user, product, quantity, size,(err, cart) => {
                 if(err) {
                   req.flash('error_msg', 'Could not add product. Please try again.');
                   return res.redirect('/product_details/' + slug);
                 }
                 else {
-                  cartModel.addProduct(user, product, quantity, size,(err, cart) => {
-                    if(err) {
-                      req.flash('error_msg', 'Could not add product. Please try again.');
-                      return res.redirect('/product_details/' + slug);
-                    }
-                    else {
-                      req.flash('success_msg', 'You have added a new product to the cart!');
-                      return res.redirect('/product_details/' + slug);
-                    }
-                  });
+                  req.flash('success_msg', 'You have added a new product to the cart!');
+                  return res.redirect('/product_details/' + slug);
                 }
               });
             } else {
