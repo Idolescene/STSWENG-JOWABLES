@@ -99,6 +99,13 @@ exports.updateProduct = (id, name, slug, description, category, price, image, st
     });
 };
 
+// update a cart with new values based on the query
+exports.updateOne = (query, newvalues, next) => {
+    productModel.updateOne(query, newvalues, (err, prod) => {
+        next(err, prod);
+    });
+};
+
 // Create a new product
 exports.create = (obj, next) => {
   const product = new productModel(obj);

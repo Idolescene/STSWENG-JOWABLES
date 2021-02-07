@@ -690,6 +690,19 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
                 req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
                 res.redirect('/shipping');
               } else {
+                order.products.forEach((prod, i) => {
+                  productModel.getOne({_id: prod.id}, (err, product) => {
+                    if (err) throw err;
+                    var stockIndex = product.stock.findIndex(x => x.size == prod.size);
+                    var newStock = product.stock
+                    newStock[stockIndex].qty = newStock[stockIndex].qty - prod.qty;
+                    newStock[stockIndex].status = true;
+                    if (newStock[stockIndex].qty == 0)
+                      newStock[stockIndex].status = false;
+                    productModel.updateOne({_id: prod.id}, {$set: {stock: newStock}}, (err, newprod) => {
+                    });
+                  });
+                });
                 req.flash('success_msg', 'Items ordered successfully! Order number: ' + result1.id);
                 res.redirect('/shipping');
               }
