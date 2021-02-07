@@ -98,7 +98,7 @@ exports.getAllProducts = (req, res) => {
       }
       productModel.getMany(query,sort, (err, products) => {
         if (err) throw err;
-        
+
         var categories = [];
         var sizes = [];
         products.forEach((item) =>{
@@ -204,7 +204,7 @@ exports.getAllProducts = (req, res) => {
       productModel.getMany(query,sort, (err, products) => {
         if (err) throw err;
         console.log(products);
-        
+
         var categories = [];
         var sizes = [];
         products.forEach((item) =>{
@@ -254,7 +254,7 @@ exports.viewAllProducts = (req, res) => {
           if (req.body.size && req.body.size != 'No Filter'){
             size = req.body.size;
           }
-          
+
           productModel.getManyFilter(query,sort, size,(err, products) => {
             if (err) throw err;
             var categories = [];
@@ -306,14 +306,14 @@ exports.viewAllProducts = (req, res) => {
       console.log('bsd')
       productModel.getManyFilter(query,sort, size,(err, products) => {
         if (err) throw err;
-        
+
         var categories = [];
         products.forEach(function(item){
           if (!categories.includes(item.category)) {
             categories.push(item.category);
           }
         });
-        
+
         products.forEach((item) => {
           item.price = item.price.toFixed(2);
         });
@@ -364,7 +364,7 @@ exports.refreshProducts = (req, res) => {
   });
 }
 
-// Get a specific product from the DB and display it in product-details 
+// Get a specific product from the DB and display it in product-details
 exports.getAProduct = (req, res) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -381,11 +381,13 @@ exports.getAProduct = (req, res) => {
             if(result) {
               res.render('product-details', {
                 loggedIn: req.session.user,
+                scripts: "/js/proddetailscript.js",
                 layout: 'main1',
                 productName: product.name,
                 productPrice: product.price.toFixed(2),
                 productDesc: product.description,
                 productImg: product.img,
+                productStock: product.toObject().stock,
                 _id: product._id,
                 sizeChart: "./img/size-chart-short.jpg",
                 cartProducts: result.products
@@ -394,11 +396,13 @@ exports.getAProduct = (req, res) => {
             else {
               res.render('product-details', {
                 loggedIn: req.session.user,
+                scripts: "/js/proddetailscript.js",
                 layout: 'main1',
                 productName: product.name,
                 productPrice: product.price.toFixed(2),
                 productDesc: product.description,
                 productImg: product.img,
+                productStock: product.toObject().stock,
                 _id: product._id,
                 sizeChart: "./img/size-chart-short.jpg",
                 cartProducts: null
@@ -595,7 +599,7 @@ exports.postEditProduct = (req, res) => {
         if(name == "") {
           name = product.name;
           slug = product.slug;
-        } 
+        }
         if (description == "") {
           description = product.description;
         }
@@ -704,7 +708,7 @@ exports.postAddProduct = (req, res) => {
       image = "uploads/" + req.file.originalname;
     }
     console.log("IMAGE: " + image);
-    
+
     productModel.getOne({slug: slug}, (err, result) => {
       if (result) {
         req.flash('error_msg', 'Product already exists.');

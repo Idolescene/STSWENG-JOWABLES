@@ -117,7 +117,6 @@ router.get('/contact', (req, res) => {
               fblink: "www.facebook.com/SalawalCo",
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
-              email: "salawalco.ph@gmail.com",
               phone: "./img/phone-ringing.png",
               media: "./img/social-media.png",
               email: "./img/email.png",
@@ -131,7 +130,6 @@ router.get('/contact', (req, res) => {
               fblink: "www.facebook.com/SalawalCo",
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
-              email: "salawalco.ph@gmail.com",
               phone: "./img/phone-ringing.png",
               media: "./img/social-media.png",
               email: "./img/email.png",
@@ -149,7 +147,9 @@ router.get('/contact', (req, res) => {
         fblink: "www.facebook.com/SalawalCo",
         iglink: "www.instagram.com/SalawalCo",
         phonenum: "+ 63 961 801 4235",
-        email: "salawalco.ph@gmail.com",
+        phone: "./img/phone-ringing.png",
+        media: "./img/social-media.png",
+        email: "./img/email.png",
         loggedIn: req.session.user,
         cartProducts: null
       });
@@ -694,6 +694,19 @@ router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
                 req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
                 res.redirect('/shipping');
               } else {
+                order.products.forEach((prod, i) => {
+                  productModel.getOne({_id: prod.id}, (err, product) => {
+                    if (err) throw err;
+                    var stockIndex = product.stock.findIndex(x => x.size == prod.size);
+                    var newStock = product.stock
+                    newStock[stockIndex].qty = newStock[stockIndex].qty - prod.qty;
+                    newStock[stockIndex].status = true;
+                    if (newStock[stockIndex].qty == 0)
+                      newStock[stockIndex].status = false;
+                    productModel.updateOne({_id: prod.id}, {$set: {stock: newStock}}, (err, newprod) => {
+                    });
+                  });
+                });
                 req.flash('success_msg', 'Items ordered successfully! Order number: ' + result1.id);
                 res.redirect('/shipping');
               }
