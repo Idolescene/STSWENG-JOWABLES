@@ -6,6 +6,8 @@ const questionModel = require('../models/question');
 const aboutModel = require('../models/about');
 const validationResult = require('express-validator');
 const multer = require('multer');
+const {adminEmailValidation, adminPasswordValidation} = require('../validators.js');
+
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -180,8 +182,8 @@ router.post('/edit-product-post/:_id', upload.single('image'), productController
 
 router.post('/add-product-post', upload.single('image'), productController.postAddProduct);
 
-router.post('/edit-admin-email/:_id', adminController.postEditAdminEmail);
+router.post('/edit-admin-email/:_id', adminEmailValidation, adminController.postEditAdminEmail);
 
-router.post('/edit-admin-password/:_id', adminController.postEditAdminPassword);
+router.post('/edit-admin-password/:_id', adminPasswordValidation, adminController.postEditAdminPassword);
 
 module.exports = router;

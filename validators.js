@@ -60,4 +60,14 @@ const updateEmailValidation = [
   body('editemail').trim().not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email.")
 ];
 
-module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation, updateEmailValidation, updatePasswordValidation };
+/*Admin Update Email*/
+const adminEmailValidation = [
+  body('adminemail').trim().not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email.")
+];
+
+/*Admin Update Password*/
+const adminPasswordValidation = [
+  body('adminpass').isLength({ min: 8 }).withMessage("Password needs to be at least 8 characters long.")
+];
+
+module.exports = { userRegisterValidation, userLoginValidation, updateShippingValidation, checkoutShippingValidation, updateEmailValidation, updatePasswordValidation, adminPasswordValidation, adminEmailValidation };

@@ -86,7 +86,7 @@ exports.getByUser = (user, next) => {
               cartdex = item.stock.findIndex(x => x.size == element.size)
               product['status'] = false;
               if (cartdex > -1) {
-                if (element.qty < item.stock[cartdex].qty) {
+                if (element.qty <= item.stock[cartdex].qty) {
                   product['status'] = true;
                 }
               }
