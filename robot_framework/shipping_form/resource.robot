@@ -71,9 +71,10 @@ Login Successfully
 
 Add Products To Cart
     Click Element                   id:nav-catalogue
-    Click Link                      id:khaki-shorter-shorts-btn
-    Click Button                   id:small
-    Click Button                   id:btnPressed
+    Click Link                      id:red-shorter-shorts-btn
+    Click Button                    id:small
+    Input Text                      id:qty                        1
+    Click Button                    id:btnPressed
 
 User Profile Should Be Accessible
     Page Should Contain Element     class:profile-edit
@@ -84,16 +85,17 @@ Go To Profile
     User Profile Should Be Accessible
 
 Go To Checkout
+    Add Products To Cart
     Click Element                 class:fa-shopping-cart
-    Set Selenium Speed                      0.5
+    Set Selenium Speed            0.5
     Click Link                    id:editcart-btn
-    Set Selenium Speed                      0
+    Set Selenium Speed            0
     Click Link                    class:checkStock
 
 Delete All Items in Cart
     Click Element                 class:fa-shopping-cart
     Click Link                    id:editcart-btn
-    Click Link                    class:deleteCart
+    Click Link                    id:delAllbtn
 
 Input Email in Login
     [Arguments]        ${email}
