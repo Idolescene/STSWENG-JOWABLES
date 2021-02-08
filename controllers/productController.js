@@ -553,10 +553,8 @@ exports.getEditProduct = (req, res) => {
         }
       }
 
-      res.render('add-edit-product', {
+      res.render('edit-product', {
         layout: "admin1",
-        buttonStateEdit: "",
-        buttonStateAdd: "disabled",
         id: result._id,
         name: result.name,
         description: result.description,
@@ -683,10 +681,8 @@ exports.postEditProduct = (req, res) => {
 
 // GET: Add a new product
 exports.getAddProduct = (req, res) => {
-  res.render('add-edit-product', {
-    layout: "admin",
-    buttonStateEdit: "disabled",
-    buttonStateAdd: ""
+  res.render('add-product', {
+    layout: "admin"
   });
 };
 
@@ -790,7 +786,7 @@ exports.getProductToDelete = (req, res) => {
   productModel.getOne({slug: req.params.slug}, (err, product) => {
     if (err) throw err;
     if(product) {
-      var image = product.img.substring(1);
+      var image = product.img;
 
       res.render('confirm-delete', {
         loggedIn: req.session.user,
