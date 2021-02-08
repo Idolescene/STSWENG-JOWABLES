@@ -1,0 +1,70 @@
+<div class="container">
+  <br>
+  <a href="/admin/update-products" type="button" class="btn logout-btn rounded-pill">Back to All Products</a>
+  <br>
+  {{> messages}}
+  <div class="row">
+    <!-- Add New Product -->
+    <div class="col" style="padding-left: 15rem;">
+      <h2 class="mt-4">Add a New Product</h2>
+      <form action="/admin/add-product-post/{{id}}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label><b>Product Name</b></label>
+          <input type="text" class="form-control w-75 rounded-pill" id="name" name="name" placeholder="Add new product name" {{buttonStateAdd}} required>
+        </div>
+        <div class="form-group">
+          <label><b>Product Description</b></label>
+          <input type="text" class="form-control w-75 rounded-pill" id="description" name="description" placeholder="Add new product description" {{buttonStateAdd}} required>
+        </div>
+        <div class="form-group">
+          <label><b>Product Category</b></label>
+          <input type="text" class="form-control w-75 rounded-pill" id="category" name="category" placeholder="Add product category" {{buttonStateAdd}} required>
+        </div>
+        <div class="form-group">
+          <label><b>Price</b></label>
+          <input type="number" step="any" class="form-control w-25 rounded-pill" id="price" name="price" placeholder="Add product price" {{buttonStateAdd}} required>
+        </div>
+        <div class="form-group">
+          <label><b>Upload New Product Image</b></label>
+          <input type="file" class="form-control-file" id="image" name="image" {{buttonStateAdd}} required>
+        </div>
+        <div class="form-group">
+          <br>
+          <label><h5><b>Quantity Per Size</b></h5></label>
+          <br><br>
+          <div class="row">
+            <div class="col-sm-2"><b>Small</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="small" name="small" {{buttonStateAdd}} required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Medium</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="medium" name="medium" {{buttonStateAdd}} required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="large" name="large" {{buttonStateAdd}}required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2"><b>Extra Large</b></div>
+            <div class="col-sm-4">
+              <input type="number" step="any" class="form-control w-50 rounded-pill" id="xlarge" name="xlarge" {{buttonStateAdd}} required>
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn logout-btn rounded-pill" {{buttonStateAdd}}>Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <br><br><br>
+</div>
