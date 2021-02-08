@@ -25,19 +25,23 @@
           <div class="col">
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="size" id="small" value="Small">
-              <label class="form-check-label" for="inlineRadio1">S</label>
+              <label class="form-check-label" for="inlineRadio1" id="sm-lb"  stock="{{productStock.0.qty}}">S</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="size" id="medium" value="Medium">
-              <label class="form-check-label" for="inlineRadio2">M</label>
+              <label class="form-check-label" for="inlineRadio2" id="md-lb" stock="{{productStock.1.qty}}">M</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="size" id="large" value="Large">
-              <label class="form-check-label" for="inlineRadio2">L</label>
+              <label class="form-check-label" for="inlineRadio2" id="lg-lb" stock="{{productStock.2.qty}}">L</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="size" id="x-large" value="X-Large">
-              <label class="form-check-label" for="inlineRadio2">XL</label>
+              <label class="form-check-label" for="inlineRadio2" id="xl-lb" stock="{{productStock.3.qty}}">XL</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input qty-input" type="text" name="qty" id="qty" value="1">
+              <label class="form-check-label" >Quantity</label>
             </div>
           </div>
           <div class="col">
