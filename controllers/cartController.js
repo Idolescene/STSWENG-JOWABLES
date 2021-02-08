@@ -14,6 +14,7 @@ exports.getUserCart = (req, res) => {
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
+            scripts: "/js/checkoutscript.js",
             loggedIn: req.session.user,
             cartProducts: null,
             checkout: checkout
@@ -27,6 +28,7 @@ exports.getUserCart = (req, res) => {
           })
           res.render('checkout', {
             title: "Your Cart",
+            scripts: "/js/checkoutscript.js",
             loggedIn: req.session.user,
             cartProducts: result.products,
             total: result.total,

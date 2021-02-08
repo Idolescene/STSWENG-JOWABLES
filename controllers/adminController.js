@@ -52,7 +52,7 @@ exports.postEditAdminPassword = (req, res) => {
     const messages = errors.array().map((item) => item.msg);
     console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
-    res.redirect('/profile');
+    res.redirect('/admin/profile');
   }
 };
 
