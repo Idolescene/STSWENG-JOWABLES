@@ -5,34 +5,38 @@
             <h5>Categories</h5>
             <ul class="list-group-flush w-75">
                 <li class="list-group-item">
-                    <a href="#">All Items</a>
+                    <div class = 'form-check'>
+                        <input class = 'form-check-input adminCategoryRadio' name = 'adminCategoryRadio' type = 'radio' value = 'No Filter' id = 'adminNoFilterRadio' >
+                        <label for = 'adminNoFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+                    </div>
                 </li>
+                {{#each categories}}
                 <li class="list-group-item">
-                    <a href="#">Shorts</a>
+                    <div class = 'form-check'>
+                        <input class = 'form-check-input adminCategoryRadio' name = 'adminCategoryRadio' type = 'radio' value = '{{this}}' id = 'admin{{this}}Radio' >
+                        <label for = 'admin{{this}}Radio' class = 'form-check-label'>{{this}}</label>
+                    </div>
                 </li>
-                <li class="list-group-item">
-                    <a href="#">Shorter Shorts</a>
-                </li>
+                {{/each}}
             </ul>
             <br><br>
-            <h5>Filter By</h5>
-            <ul class="list-group-flush w-75">
-                <li class="list-group-item">
-                    <a href="#">No Filter</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#">Size: Small</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#">Size: Medium</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#">Size: Large</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#">Size: X-Large</a>
-                </li>
-            </ul>
+            <h5>Filter By Availability</h5>
+                <ul class="list-group-flush w-75">
+                    <li class="list-group-item">
+                        <div class = 'form-check'>
+                        <input class = 'form-check-input adminSizeRadio' name = 'adminSizeRadio' type = 'radio' value = 'No Filter' id = 'adminSizeFilterRadio' >
+                        <label for = 'adminSizeFilterRadio' class = 'form-check-label categoryRadio' value = 'Erase Filter'>All Items</label>
+                        </div>
+                    </li>
+                    {{#each sizes}}
+                    <li class="list-group-item">
+                        <div class = 'form-check'>
+                        <input class = 'form-check-input adminSizeRadio' name = 'adminSizeRadio' type = 'radio' value = '{{this}}' id = 'admin{{this}}sizeRadio' >
+                        <label for = 'admin{{this}}sizeRadio' class = 'form-check-label'>{{this}}</label>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
         </div>
         <div class="display-catalogue-div col-sm-8 text-center">
             <div class="row">
@@ -44,8 +48,27 @@
                 </div>
             </div>
             <br>
+            <div class = 'display-items'>
             {{>product-display}}
+            </div>
             <br>
         </div>
     </div>
 </section>
+
+<script>
+function changeRadio() { 
+    console.log("beep")
+  $.post('/admin/update-products', {
+    category: $('input[name="adminCategoryRadio"]:checked').val(),
+    size: $('input[name="adminSizeRadio"]:checked').val()
+  }, function(result){
+    $(".display-items").html(result);
+  });
+}
+
+$(function() {
+  $(".adminCategoryRadio").on("change", changeRadio);
+  $('.adminSizeRadio').on("change", changeRadio);
+});
+</script>

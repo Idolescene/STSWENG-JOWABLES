@@ -270,15 +270,21 @@ exports.viewAllProducts = (req, res) => {
           if (req.body.size && req.body.size != 'No Filter'){
             size = req.body.size;
           }
-
           productModel.getManyFilter(query,sort, size,(err, products) => {
             if (err) throw err;
             var categories = [];
+            var sizes = [];
             products.forEach(function(item){
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
               }
+              item.stock.forEach((item)=>{
+                if (!sizes.includes(item.size)){
+                  sizes.push(item.size)
+                }
+              })
             });
+            console.log(categories)
             products.forEach((item) => {
               item.price = item.price.toFixed(2);
             });
@@ -289,7 +295,8 @@ exports.viewAllProducts = (req, res) => {
                 loggedIn: req.session.user,
                 products: products,
                 categories: categories,
-                cartProducts: result.products
+                cartProducts: result.products,
+                sizes: sizes
               });
             }
             else {
@@ -357,11 +364,42 @@ exports.refreshProducts = (req, res) => {
     category = req.body.category;
   }
   
-  else if (req.session.category && req.session.category != "No Filter"){
+  else if (req.session.category && req.session.category != "All Items"){
     query.category = req.session.category
     category = req.session.category
-    req.session.category = "Preprocess"
+    req.session.category = "All Items"
   }
+  if (req.body.size && req.body.size != 'No Filter'){
+    size = req.body.size;
+    category = category + " (" + req.body.size + ")"
+  }
+  productModel.getManyFilter(query, sort, size,(err, products) => {
+    if (err) throw err;
+    products.forEach((item) => {
+      item.price = item.price.toFixed(2);
+    });
+    res.render('products', {
+      loggedIn: req.session.user,
+      products: products,
+      layout: null,
+      category: category
+    });
+  });
+}
+
+
+// Post method for displaying products by category
+exports.refreshAllProducts = (req, res) => {
+  var query = {};
+  var sort = {name: 1};
+  var size = "No Filter";
+  var category = 'All Items';
+  console.log(req.body);
+  if (req.body.category && req.body.category != 'No Filter'){
+    query.category = req.body.category;
+    category = req.body.category;
+  }
+  console.log("beep")
   if (req.body.size && req.body.size != 'No Filter'){
     size = req.body.size;
     category = category + " (" + req.body.size + ")"
