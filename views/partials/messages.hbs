@@ -1,18 +1,18 @@
 <div class="container justify-content-center text-center">
   {{#if error_msg}}
   <br>
-  <div class="row" id="error-msg-div">
+  <div class="row alert alert-danger" id="error-msg-div" role="alert">
     <h6 class="text-center" id="error-msg">
-      <strong class="alert alert-danger" role="alert"><span class="text-danger">Error: </span>{{error_msg}}</strong>
+      <strong><span class="text-danger">Error: </span>{{error_msg}}</strong>
       </h6>
   </div>
   {{/if}}
 
   {{#if success_msg}}
   <br>
-  <div class="row" id="success-msg-div">
+  <div class="row alert alert-success" id="success-msg-div" role="alert">
     <h6 class="text-center" id="success-div">
-      <strong class="alert alert-success" role="alert"><span class="text-success">Success: </span>{{success_msg}}</strong>
+      <strong><span class="text-success">Success: </span>{{success_msg}}</strong>
       </h6>
   </div>
   {{/if}}
