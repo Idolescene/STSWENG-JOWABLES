@@ -60,9 +60,6 @@ function changedRadio() {
 }
 
 $(function() {
-  $("#noFilterRadio").prop("checked", true);
-  $('#sizeFilterRadio').prop("checked",true);
-
   $(".categoryRadio").on("change", changedRadio);
   $('.sizeRadio').on("change", changedRadio);
 });
