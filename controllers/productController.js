@@ -44,6 +44,9 @@ exports.getAllProducts = (req, res) => {
                 if (item.category != req.session.category){
                   remove.push(item._id)
                 }
+                if (category != req.session.category) {
+                  category = req.session.category
+                }
               }
             });
             req.session.category = "All Items"
@@ -111,6 +114,9 @@ exports.getAllProducts = (req, res) => {
           if (req.session.category != "All Items" && req.session.category) {
             if (item.category != req.session.category){
               remove.push(item._id)
+            }
+            if (category != req.session.category) {
+              category = req.session.category
             }
           }
         });
