@@ -424,7 +424,6 @@ exports.getAProduct = (req, res) => {
           productDesc: product.description,
           productImg: product.img,
           _id: product._id,
-          sizeChart: "./img/size-chart-short.jpg",
           cartProducts: null
         });
       });
