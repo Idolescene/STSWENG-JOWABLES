@@ -5,6 +5,7 @@ const orderModel = require('../models/orders');
 const questionModel = require('../models/question');
 const aboutModel = require('../models/about');
 const validationResult = require('express-validator');
+const productModel =  require('../models/product');
 const multer = require('multer');
 const {adminEmailValidation, adminPasswordValidation} = require('../validators.js');
 
@@ -171,6 +172,36 @@ router.post('/update-order-status', (req, res) => {
       req.flash('error_msg', 'An error has occurred while updating order status. Please try again.');
       res.send("");
     } else {
+      var message = "Order " + req.body.neworder.id + "'s status has been successfully updated to " + req.body.neworder.status + "!";
+      req.flash('success_msg', message);
+      res.send("");
+    }
+  });
+});
+
+//post for summary orders Page
+router.post('/update-order-status-cancel', (req, res) => {
+  var newvals = {$set: {status: req.body.neworder.status}};
+  orderModel.update({_id: req.body.neworder.id},  newvals,function(err, order){
+    if (err || order == null) {
+      req.flash('error_msg', 'An error has occurred while updating order status. Please try again.');
+      res.send("");
+    } else {
+      orderModel.getOne({_id: req.body.neworder.id}, function(err, ord) {
+        ord.products.forEach((prod, i) => {
+          productModel.getOne({_id: prod.id}, (err, product) => {
+            if (err) throw err;
+            var stockIndex = product.stock.findIndex(x => x.size == prod.size);
+            var newStock = product.stock
+            newStock[stockIndex].qty = newStock[stockIndex].qty + prod.qty;
+            newStock[stockIndex].status = true;
+            if (newStock[stockIndex].qty == 0)
+              newStock[stockIndex].status = false;
+            productModel.updateOne({_id: prod.id}, {$set: {stock: newStock}}, (err, newprod) => {
+            });
+          });
+        });
+      });
       var message = "Order " + req.body.neworder.id + "'s status has been successfully updated to " + req.body.neworder.status + "!";
       req.flash('success_msg', message);
       res.send("");

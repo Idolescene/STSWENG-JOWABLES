@@ -16,7 +16,7 @@ $(document).ready(function () {
           id: $(this).attr("orderid")
         };
 
-        $.post("update-order-status", {neworder: order}, function(data, status){
+        $.post("update-order-status-cancel", {neworder: order}, function(data, status){
             window.location.reload();
         });
     });
