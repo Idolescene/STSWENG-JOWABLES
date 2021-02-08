@@ -10,16 +10,7 @@ exports.getUserCart = (req, res) => {
     var checkout = true;
     if (user) {
       cartModel.getByUser(user, (err, result) => {
-        console.log(result.products)
         if (err) throw err;
-        result.products.forEach(element => {
-          if (!element.stock.status && checkout == true)
-          {
-            checkout = false;
-            console.log('beep')
-          }
-          console.log(checkout)
-        });
         if (!result) {
           res.render('checkout', {
             title: "Your Cart",
@@ -29,6 +20,11 @@ exports.getUserCart = (req, res) => {
           });
         }
         else {
+          result.products.forEach(element => {
+            if (!element.status && checkout){
+              checkout = false;
+            }
+          })
           res.render('checkout', {
             title: "Your Cart",
             loggedIn: req.session.user,
@@ -41,7 +37,6 @@ exports.getUserCart = (req, res) => {
       });
     }
   }
-  
   else {
     console.log(errors);
   }
@@ -55,7 +50,6 @@ exports.getACart = (req, res) => {
     if (user) {
       cartModel.getByUser(user, (err, result) => {
         if (err) throw err;
-        console.log(result);
         res.send(result);
       });
     }
@@ -72,36 +66,64 @@ exports.addToCart = (req, res) => {
     var product = req.params.id;
     var user = req.session.user;
     var quantity = 1;
-
-    console.log(product);
-    console.log(user);
+    var size = req.body.size;
 
     if (req.body.qty){
       quantity = parseInt(req.body.qty);
     }
 
     if(!user) {
-      console.log(user + ' ' + product); // testing
       res.redirect('/login');
-    }
-    else {
+    } else {
       if (req.body.btnPressed == "Add to Cart") {
         productModel.getOne({_id: product}, (err, cart) => {
           if (err) throw err;
-          console.log(cart);
+          var product_slug = cart.slug;
+          if (!cart) {
+            req.flash('error_msg', 'Could not add product. Please try again.');
+            return res.redirect('/product_details/' + product_slug);
+          }
+          else {
+            var stockIndex = cart.stock.findIndex(x => x.size == size);
 
-          var slug = cart.toObject().slug;
-          cartModel.addProduct(user, product, quantity, (err, cart) => {
-            console.log('cart(addtocart): ' + cart);
-            if(err) {
-              req.flash('error_msg', 'Could not add product. Please try again.');
-              return res.redirect('/product_details/' + slug);
+            if (stockIndex < 0) {
+              req.flash('error_msg', 'Could not add product. Please select a size and try again.');
+              return res.redirect('/product_details/' + product_slug);
             }
-            else {
-              req.flash('success_msg', 'You have added a new product to the cart!');
-              return res.redirect('/product_details/' + slug);
+
+            if (quantity <= 0) {
+              req.flash('error_msg', 'Product quantity should be greater than 0. Please try again.');
+              return res.redirect('/product_details/' + product_slug);
             }
-          });
+            var stockqty = cart.stock[stockIndex].qty - quantity;
+            var inStock = true;
+            var hadStock = cart.stock[stockIndex].status;
+
+            if (stockqty < 0)
+              inStock = false;
+
+            var slug = cart.toObject().slug;
+            if (inStock) {
+              cartModel.addProduct(user, product, quantity, size,(err, cart) => {
+                if(err) {
+                  req.flash('error_msg', 'Could not add product. Please try again.');
+                  return res.redirect('/product_details/' + slug);
+                }
+                else {
+                  req.flash('success_msg', 'You have added a new product to the cart!');
+                  return res.redirect('/product_details/' + slug);
+                }
+              });
+            } else {
+              if (hadStock) {
+                req.flash('error_msg', 'Order quantity greater than product stock.');
+                return res.redirect('/product_details/' + slug);
+              } else {
+                req.flash('error_msg', 'Product out of stock.');
+                return res.redirect('/product_details/' + slug);
+              }
+            }
+          }
         });
       }
     }
@@ -113,21 +135,54 @@ exports.removeFromCart = (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     var product = req.params.id;
+    var size = req.params.size;
+    var user = req.session.user;
+    console.log("<------->")
+    console.log(req.params)
+    if(!user) {
+      res.redirect('/login');
+    }
+    else {
+      // productModel.getOne({_id: product}, (err, result) => {
+      //   if (err) throw err;
+      //   if (result) {
+      //     console.log("-------------- PRODUCT FOUND ------------------");
+      //     console.log(result);
+      //   }
+        cartModel.removeProduct(user, product, size, (err, cart) => {
+          if (err) {
+            req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
+            return res.redirect('/checkout');
+          }
+          else {
+            req.flash('success_msg', 'You have removed a product from the cart!');
+            return res.redirect('/checkout');
+          }
+        });
+      // });
+    }
+  }
+}
+
+// Remove all products from cart
+exports.removeAllFromCart = (req, res) => {
+  const errors = validationResult(req);
+  if(errors.isEmpty()) {
     var user = req.session.user;
     if(!user) {
       res.redirect('/login');
     }
     else {
-      cartModel.removeProduct(user, product, (err, cart) => {
-        if (err) {
-          req.flash('error_msg', 'Something went wrong. Could not remove product. Please try again.');
-          return res.redirect('/checkout');
-        } 
-        else {
-          req.flash('success_msg', 'You have removed a product from the cart!');
-          return res.redirect('/checkout');
-        }
-      })
+        cartModel.deleteByUser(user, (err, cart) => {
+          if (err) {
+            req.flash('error_msg', 'Something went wrong. Could not remove products. Please try again.');
+            return res.redirect('/checkout');
+          }
+          else {
+            req.flash('success_msg', 'You have removed all products from the cart!');
+            return res.redirect('/checkout');
+          }
+        });
     }
   }
 }

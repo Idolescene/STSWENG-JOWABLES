@@ -10,7 +10,7 @@ describe('Routes Configuration on the User Side of the Application', () => {
     .expect(200)
     .expect((req, res) => {
       title: 'Catalogue'
-    })
+    });
   });
 
   it("GET localhost:3000/contact - SUCCESS", () => {

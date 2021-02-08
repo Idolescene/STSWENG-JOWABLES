@@ -9,26 +9,41 @@
 
   <!-- Contacts -->
 
-  <div class = "cont-group">
-    <img src = "./img/phone-ringing.png" height = "110px" class = "cont-left-img">
-    <img src = "./img/social-media.png" height = "110px" class = "cont-mid-img">
-    <img src = "./img/email.png" height = "110px" class = "cont-right-img">
+  <div class="container">
+    <div class = "row">
+      <div class="col cont-calign"><img src={{phone}} class = "cont-pic"></div>
+      <div class="col cont-calign"><img src="{{media}}" class = "cont-pic "></div>
+      <div class="col cont-calign"><img src="{{email}}" class = "cont-pic "></div>
+    </div>
+    <br>
+    <div class = "row">
+      <div class = "cont-bigtext col cont-calign">Contact Number</div>
+      <div class = "cont-bigtext col cont-calign">Social Media</div>
+      <div class = "cont-bigtext col cont-calign">Email</div>
+    </div>
+    <br>
+    <div class = "row">
+      <div class = "cont-smtext col cont-calign" id="phonenum">{{phonenum}}</div>
+      <div class = "cont-medtext col cont-calign">Facebook</div>
+      <div class = "cont-smtext col cont-calign" id="email">salawalco.ph@gmail.com</div>
+    </div>
+    <div class = "row">
+      <div class = "col"></div>
+      <div class = "col cont-calign"><a href = 'http://www.facebook.com/SalawalCo' class = 'cont-smtext' id="fblink">{{fblink}}</a></div>
+      <div class = "col"></div>
+    </div>
+    <br>
+    <div class = "row">
+      <div class = "col"></div>
+      <div class = "cont-medtext col cont-calign">Instagram</div>
+      <div class = "col"></div>
+    </div>
+    <div class = "row">
+      <div class = "col"></div>
+      <div class = "col cont-calign"><a href = 'http://www.instagram.com/SalawalCo' class = 'cont-smtext' id="iglink">{{iglink}}</a></div>
+      <div class = "col"></div>
+    </div>
+
   </div>
-  <br>
-  <div class = "cont-group">
-  <div class = "cont-bigtext cont-left">Contact Number</div>
-  <div class = "cont-bigtext cont-center">Social Media</div>
-  <div class = "cont-bigtext cont-right">Email</div>
-  </div>
-  <br>
-  <div class = "cont-group">
-  <div class = "cont-smtext cont-left2" id="phonenum">{{phonenum}}</div>
-  <div class = "cont-medtext cont-center2">Facebook</div>
-  <div class = "cont-smtext cont-right2" id="email">{{email}}</div>
-  </div>
-  <div class = "cont-calign"><a href = 'http://www.facebook.com/SalawalCo' class = 'cont-smtext' id="fblink">{{fblink}}</a></div>
-  <br>
-  <div class = "cont-medtext cont-calign">Instagram</div>
-  <div class = "cont-calign"><a href = 'http://www.instagram.com/SalawalCo' class = 'cont-smtext cont-calign' id="iglink">{{iglink}}</a></div>
   <br><br><br><br><br><br>
 </div>

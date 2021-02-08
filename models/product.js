@@ -9,23 +9,18 @@ const productSchema = new mongoose.Schema({
   img: {type: String, required: true},
   stock:[
     {
-    status: {type: Boolean,required:true},
-    size: {type: String,required:true}
+    status: {type: Boolean,required: true},
+    qty: {type: Number, required: true},
+    size: {type: String,required: true}
     }
   ]
 });
 
 const productModel = mongoose.model('products', productSchema);
 
-/** ADMIN FUNCTIONS **/
-// 1) Create/Add a new product
-// 2) Delete a product
-// 3) Update/Edit a product
-// 4) Change status
-
 // Get all products
 exports.getAll = (query, next) => {
-  productModel.find({}).exec((err, products) => {
+  productModel.find({}).populate('_id').exec((err, products) => {
     if (err) throw err;
     const productObjects = [];
     products.forEach((doc) => {
@@ -37,9 +32,8 @@ exports.getAll = (query, next) => {
 
 // Get a specific group of products
 exports.getMany = (query,sort,next) => {
-  productModel.find(query).sort(sort).exec((err, products) => {
+  productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
-    console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
       productObjects.push(doc.toObject());
@@ -49,18 +43,22 @@ exports.getMany = (query,sort,next) => {
 };
 
 exports.getManyFilter = (query,sort,filter,next) => {
-  productModel.find(query).sort(sort).exec((err, products) => {
+  productModel.find(query).populate('_id').sort(sort).exec((err, products) => {
     if (err) throw err;
-    console.log(products);
     const productObjects = [];
     products.forEach((doc) => {
-      doc.stock.forEach((prod) => {
-        if (prod.size == filter) {
-          if (prod.status) {
-            productObjects.push(doc.toObject());
+      if (filter == "No Filter") {
+        productObjects.push(doc.toObject());
+      }
+      else {
+        doc.stock.forEach((prod) => {
+          if (prod.size == filter) {
+            if (prod.status) {
+              productObjects.push(doc.toObject());
+            }
           }
-        }
-      })
+        })
+      }
     });
     next(err, productObjects);
   });
@@ -78,9 +76,6 @@ exports.getOne = (query, next) => {
 exports.getAllIds = (query, next) => {
   productModel.find({_id: {$in: query}}).exec((err, products) => {
     if (err) throw err;
-    console.log('boop')
-    console.log(products)
-    console.log('beep')
     next(err, products);
   });
 };
@@ -90,5 +85,40 @@ exports.getById = (query, next) => {
   productModel.findOne({_id: query}).populate('_id').exec((err, product) => {
     if (err) throw err;
     next(err, product);
+  });
+};
+
+// Update a product's details
+exports.updateProduct = (id, name, slug, description, category, price, image, status, next) => {
+  productModel.updateOne(
+    {_id: id},
+    {$set: {name: name, slug: slug, description: description, category: category, price: price, img: image, stock: status}},
+    (err, result) => {
+      if (err) throw err;
+      next(err, result);
+    });
+};
+
+// update a cart with new values based on the query
+exports.updateOne = (query, newvalues, next) => {
+    productModel.updateOne(query, newvalues, (err, prod) => {
+        next(err, prod);
+    });
+};
+
+// Create a new product
+exports.create = (obj, next) => {
+  const product = new productModel(obj);
+  product.save((err, product) => {
+    if (err) throw err;
+    next(err, product);
+  });
+};
+
+// Delete a product
+exports.removeProduct = (id, next) => {
+  productModel.deleteOne(id, (err, result) => {
+    if (err) throw err;
+    next(err, result);
   });
 };

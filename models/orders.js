@@ -6,10 +6,14 @@ const orderSchema = new mongoose.Schema({
     {
       id: {type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true},
       qty: {type: Number, required: true},
-      size: {type: String, required: true}
+      size: {type: String, required: true},
+      img: {type: String, required: true},
+      name: {type: String, required: true},
+      price: {type: String, required: true}
     }
   ],
   date: {type: String, required: true},
+  dateformatted: {type: Date, required: true},
   status: {type: String, required: true},
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true},
   fullname: {type: String, required: true},
@@ -18,7 +22,9 @@ const orderSchema = new mongoose.Schema({
   barangay: {type: String, required: true},
   city: {type: String, required: true},
   province: {type: String, required: true},
-  payment: {type: String, required: true}
+  payment: {type: String, required: true},
+  totalPrice: {type: Number, required: true},
+  totalWithShipping: {type: Number, required: true}
 },
 {
   toObject: { virtuals: true },
@@ -65,6 +71,37 @@ exports.getAll = (user, next) => {
     });
     next(err, orderObjects);
   });
+};
+
+// Get all orders that match the query given
+exports.find = (query, next) => {
+  orderModel.find(query).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+// Get all order that do not have the Cancelled status
+exports.findNotCancel = (query, next) => {
+  orderModel.find({status: {$not: {$regex: "^Cancelled$"}}}).exec((err, orders) => {
+    if (err) throw err;
+    const orderObjects = [];
+    orders.forEach((doc) => {
+      orderObjects.push(doc.toObject());
+    });
+    next(err, orderObjects);
+  });
+};
+
+// update a order with new values based on the query
+exports.update = (query, newvalues, next) => {
+    orderModel.updateOne(query, newvalues, (err, order) => {
+        next(err, order);
+    });
 };
 
 

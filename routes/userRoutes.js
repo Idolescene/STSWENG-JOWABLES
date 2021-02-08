@@ -17,6 +17,10 @@ const {userRegisterValidation, userLoginValidation, updateShippingValidation, ch
   Homepage for both guest and logged in users
 */
 router.get('/', productController.getCategories);
+router.get('/redirect/:category', (req, res) => {
+  req.session.category = req.params.category;
+  res.redirect('/catalogue')
+})
 router.post('/delete-product-confirmation', productController.postAProduct);
 
 /*
@@ -24,11 +28,13 @@ router.post('/delete-product-confirmation', productController.postAProduct);
 */
 router.get('/catalogue', productController.getAllProducts);
 router.post('/catalogue',productController.refreshProducts);
+router.get('/catalogue/:category',productController.getAllProducts);
 
 /*
   Product details page for both guest and logged in users
 */
 router.get('/product_details/:slug', productController.getAProduct);
+router.post('/product_details/:slug', productController.getAProduct);
 
 /*
   Login and Registration Page
@@ -111,7 +117,9 @@ router.get('/contact', (req, res) => {
               fblink: "www.facebook.com/SalawalCo",
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
-              email: "salawalco.ph@gmail.com",
+              phone: "./img/phone-ringing.png",
+              media: "./img/social-media.png",
+              email: "./img/email.png",
               loggedIn: req.session.user,
               cartProducts: result.products
             });
@@ -122,7 +130,9 @@ router.get('/contact', (req, res) => {
               fblink: "www.facebook.com/SalawalCo",
               iglink: "www.instagram.com/SalawalCo",
               phonenum: "+ 63 961 801 4235",
-              email: "salawalco.ph@gmail.com",
+              phone: "./img/phone-ringing.png",
+              media: "./img/social-media.png",
+              email: "./img/email.png",
               loggedIn: req.session.user,
               cartProducts: null
             });
@@ -137,7 +147,9 @@ router.get('/contact', (req, res) => {
         fblink: "www.facebook.com/SalawalCo",
         iglink: "www.instagram.com/SalawalCo",
         phonenum: "+ 63 961 801 4235",
-        email: "salawalco.ph@gmail.com",
+        phone: "./img/phone-ringing.png",
+        media: "./img/social-media.png",
+        email: "./img/email.png",
         loggedIn: req.session.user,
         cartProducts: null
       });
@@ -194,7 +206,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -208,7 +219,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: result.products
@@ -247,7 +258,6 @@ router.get('/order-information-:param', (req, res) => {
                   }
                 });
 
-                totalPrice = totalPrice + product.price * product.qty;
                 prodArray.push(product);
               });
 
@@ -261,7 +271,7 @@ router.get('/order-information-:param', (req, res) => {
                 title: "Order Information",
                 loggedIn: req.session.user,
                 order: order.toObject(),
-                totalPrice: totalPrice,
+                totalPrice: order.totalPrice,
                 products: prodArray,
                 avesize: avesize,
                 cartProducts: null
@@ -410,18 +420,13 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {regfn, regun, regemail, regpass} = req.body;
-    //console.log(req.body.name); //testing
     userModel.getOne({email: regemail}, (err, result) => {
       if(result) {
-        console.log(result); //testing
-        console.log('User already exists.') //testing
         req.flash('error_msg', 'User already exists. Please login.');
         res.redirect('/login');
       } else {
         userModel.getOne({username: regun}, (err, result) => {
           if(result) {
-            console.log(result); //testing
-            console.log('User already exists.') //testing
             req.flash('error_msg', 'User already exists. Please login.');
             res.redirect('/login');
           } else {
@@ -443,12 +448,9 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
               };
               userModel.create(newUser, (err, user) => {
                 if(err) {
-                  console.log('Error creating new account.'); //testing
                   req.flash('error_msg', 'Error creating new account. Please try again.');
                   res.redirect('/login');
                 } else {
-                  console.log(user); //testing
-                  console.log("Registration successful."); //testing
                   req.flash('success_msg', 'Registration successful! Please login.');
                   res.redirect('/login');
                 }
@@ -460,7 +462,6 @@ router.post('/user-register', userRegisterValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/login');
   }
@@ -470,13 +471,9 @@ router.post('/user-login', userLoginValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {logemail, logpass} = req.body;
-    console.log(logemail);
-    //console.log(req.body.name); //testing
-    // search user via email
     userModel.getOne({email: logemail}, (err, user) => {
       if(err) {
         console.log(err); //testing
-        console.log('An error has occurred while searching for a user.') //testing
         res.redirect('/login');
       } else {
         if(user) {
@@ -484,10 +481,8 @@ router.post('/user-login', userLoginValidation, (req, res) => {
             if (result) {
               req.session.user = user._id;
               req.session.username = user.username;
-              console.log(req.session);
               res.redirect('/');
             } else {
-              console.log('Incorrect password. Please try again.'); //testing
               req.flash('error_msg', 'Incorrect password. Please try again.');
               res.redirect('/login');
             }
@@ -497,7 +492,6 @@ router.post('/user-login', userLoginValidation, (req, res) => {
           userModel.getOne({username: logemail}, (err, user2) => {
             if(err) {
               console.log(err); //testing
-              console.log('An error has occurred while searching for a user.') //testing
               req.flash('error_msg', 'An error has occurred while searching for a user. Please try again.');
               res.redirect('/login');
             } else {
@@ -507,10 +501,10 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     if (result) {
                       req.session.user = user2._id;
                       req.session.username = user2.username;
+                      req.session.email = user2.email;
                       console.log(req.session);
                       res.redirect('/admin/profile');
                     } else {
-                      console.log('Incorrect password. Please try again.'); //testing
                       req.flash('error_msg', 'Incorrect password. Please try again.');
                       res.redirect('/login');
                     }
@@ -523,14 +517,12 @@ router.post('/user-login', userLoginValidation, (req, res) => {
                     console.log(req.session);
                     res.redirect('/');
                   } else {
-                    console.log('Incorrect password. Please try again.'); //testing
                     req.flash('error_msg', 'Incorrect password. Please try again.');
                     res.redirect('/login');
                   }
                 });
                 }
               } else {
-                  console.log('User not found. Please try again.'); //testing
                   req.flash('error_msg', 'User not found. Please try again.');
                   res.redirect('/login');
               }
@@ -542,7 +534,6 @@ router.post('/user-login', userLoginValidation, (req, res) => {
   } else {
     const messages = errors.array().map((item) => item.msg);
     req.flash('error_msg', messages.join(' '));
-    console.log(messages.join(' ')); //testing
     res.redirect('/login');
   }
 });
@@ -555,19 +546,15 @@ router.post('/update-user-shipping', updateShippingValidation, (req, res) => {
     var newvals = { $set: {fullname: fullname, contactnum: contno, housenum: houseno, barangay: brngy, city: city, province: prov} };
     userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
       if (err) {
-        console.log(err); //testing
-        console.log('An error has occurred while searching for a user.') //testing
         req.flash('error_msg', 'An error has occurred. Please try again.');
         res.redirect('/profile');
       } else {
-        console.log('Shipping details updated successfully!') //testing
         req.flash('success_msg', 'Shipping details updated successfully!');
         res.redirect('/profile');
       }
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -580,13 +567,11 @@ router.post('/update-user-email', updateEmailValidation, (req, res) => {
     var newvals = { $set: {email: editemail} };
     userModel.getOne({email: editemail}, (err, resemail) => {
       if (resemail){
-        req.flash('error_msg', 'Email already in use.s');
+        req.flash('error_msg', 'Email already in use.');
         res.redirect('/profile');
       } else {
         userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
           if (err) {
-            console.log(err); //testing
-            console.log('An error has occurred while searching for a user.') //testing
             req.flash('error_msg', 'An error has occurred. Please try again.');
             res.redirect('/profile');
           } else {
@@ -598,7 +583,6 @@ router.post('/update-user-email', updateEmailValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -613,8 +597,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
       var newvals = { $set: {password: hashed} };
       userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
         if (err) {
-          console.log(err); //testing
-          console.log('An error has occurred while searching for a user.') //testing
           req.flash('error_msg', 'An error has occurred. Please try again.');
           res.redirect('/profile');
         } else {
@@ -625,7 +607,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -633,7 +614,6 @@ router.post('/update-user-password', updatePasswordValidation, (req, res) => {
 
 /*Post for Admin*/
 router.post('/update-admin-email', (req, res) => {
-  console.log("admin:: " + res.session.user);
   const errors = validationResult(req);
   if(errors.isEmpty()) {
     const {editemail} = req.body;
@@ -645,8 +625,6 @@ router.post('/update-admin-email', (req, res) => {
       } else {
         userModel.updateOne({username: req.session.username}, newvals, (err, result) => {
           if (err) {
-            console.log(err); //testing
-            console.log('An error has occurred while searching for a user.') //testing
             req.flash('error_msg', 'An error has occurred. Please try again.');
             res.redirect('/profile');
           } else {
@@ -658,7 +636,6 @@ router.post('/update-admin-email', (req, res) => {
     });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/profile');
   }
@@ -668,13 +645,78 @@ router.post('/update-admin-email', (req, res) => {
 router.post('/shipping-checkout', checkoutShippingValidation, (req, res) => {
   const errors = validationResult(req);
   if(errors.isEmpty()) {
+    var uid = req.session.user;
     const {fullname, contno, houseno, brngy, city, prov, payment} = req.body;
-    //stuff
-    req.flash('success_msg', 'Items ordered successfully!');
-    res.redirect('/shipping');
+    cartModel.getByUser(uid, (err, cartinfo) => {
+      if (!cartinfo){
+        req.flash('error_msg', 'No items in your cart.');
+        res.redirect('/shipping');
+      } else {
+        var prodarr = [];
+        var today = new Date();
+        var orderdate = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+        //var dateformatted = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        cartinfo.products.forEach((item, i) => {
+          var pr = item.subPrice / item.qty;
+          var prod = {
+            id: item.id,
+            qty: item.qty,
+            size: item.size,
+            img: item.img,
+            name: item.name,
+            price: pr
+          };
+          prodarr.push(prod);
+        });
+        var order = {
+          products: prodarr,
+          date: orderdate,
+          status: "Processing",
+          user: uid,
+          fullname: fullname,
+          contactnum: contno,
+          housenum: houseno,
+          barangay: brngy,
+          dateformatted: today,
+          city: city,
+          province: prov,
+          payment: payment,
+          totalPrice: cartinfo.total,
+          totalWithShipping: cartinfo.totalWithShipping
+        }
+        orderModel.create( order, (err, result1) => {
+          if (err) {
+            req.flash('error_msg', 'An error has occurred while creating your order. Please try again.');
+            res.redirect('/shipping');
+          } else {
+            cartModel.deleteByUser( uid, (err, result) => {
+              if (err) {
+                req.flash('error_msg', 'An error has occurred while finalizing your order. Please try again.');
+                res.redirect('/shipping');
+              } else {
+                order.products.forEach((prod, i) => {
+                  productModel.getOne({_id: prod.id}, (err, product) => {
+                    if (err) throw err;
+                    var stockIndex = product.stock.findIndex(x => x.size == prod.size);
+                    var newStock = product.stock
+                    newStock[stockIndex].qty = newStock[stockIndex].qty - prod.qty;
+                    newStock[stockIndex].status = true;
+                    if (newStock[stockIndex].qty == 0)
+                      newStock[stockIndex].status = false;
+                    productModel.updateOne({_id: prod.id}, {$set: {stock: newStock}}, (err, newprod) => {
+                    });
+                  });
+                });
+                req.flash('success_msg', 'Items ordered successfully! Order number: ' + result1.id);
+                res.redirect('/shipping');
+              }
+            });
+          }
+        });
+      }
+    });
   } else {
     const messages = errors.array().map((item) => item.msg);
-    console.log(messages.join(' ')); //testing
     req.flash('error_msg', messages.join(' '));
     res.redirect('/shipping');
   }

@@ -1,6 +1,6 @@
 <div class="dropdown">
-  <span class="navbar-cart">
-    <i class="fa fa-shopping-cart fa-lg shopping-cart-icon-loggedin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+  <span class="navbar-cart" id="nav-carticon">
+    <i id="nav-carticon" class="fa fa-shopping-cart fa-lg shopping-cart-icon-loggedin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
   </span>
   <div class="dropdown-menu cart-drop-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
       {{#if cartProducts}}
@@ -14,11 +14,11 @@
               <td>
                 {{this.name}}
                 <p id="itemid" hidden>{{this.id}}</p>
-                <p>Medium</p>
+                <p>{{this.size}}</p>
               </td>
               <td>
                 {{> out-of-stock}}
-              </td>  
+              </td>
               <td>
                 {{this.qty}}
               </td>
@@ -33,7 +33,7 @@
       <p>Your cart is empty :(</p>
       {{/if}}
     <div class="checkout-button text-right">
-      <a href="/checkout" type="button" class="btn rounded-pill">Edit Cart</a>
+      <a href="/checkout" type="button" class="btn rounded-pill" id="editcart-btn">Edit Cart</a>
     </div>
   </div>
 </div>

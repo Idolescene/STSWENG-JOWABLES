@@ -3,7 +3,7 @@
   {{#if cartProducts}}
   <h4>{{title}}</h4>
   <br>
-  </a>
+  {{> messages}}
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -16,17 +16,17 @@
     </thead>
     <tbody>
       {{#each cartProducts}}
-        {{#if this.stock.status}}
+        {{#if this.status}}
         <tr class="checkout-card">
           <th class="checkout-img-name">
             <img src="{{this.img}}" width="150px">
             <p>{{this.name}}</p>
           </th>
-          <th>Medium</th>
+          <th>{{this.size}}</th>
           <th>₱ {{this.subPrice}}</th>
           <th>{{this.qty}}</th>
           <th>
-            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+            <a href="/delete_from_cart/{{this.id}}/{{this.size}}"  class="remove-product" style="color: #0a0a0a;">
               <h1>X</h1>
             </a>
           </th>
@@ -37,11 +37,12 @@
             <img src="{{this.img}}" width="150px">
             <p>{{this.name}}</p>
           </th>
-          <th>Medium</th>
+          <th>{{this.size}}</th>
           <th>₱ {{this.subPrice}}</th>
-          <th>Out of Stock</th>
+          <th>{{this.qty}}</th>
+          {{!-- <th>Out of Stock</th> --}}
           <th>
-            <a href="/delete_from_cart/{{this.id}}"  class="remove-product" style="color: #0a0a0a;">
+            <a href="/delete_from_cart/{{this.id}}/{{this.size}}"  class="remove-product" style="color: #0a0a0a;">
               <h1>X</h1>
             </a>
           </th>
@@ -50,7 +51,7 @@
       {{/each}}
     </tbody>
   </table>
-  <br>
+  <br><br>
   </a>
   <div class="container text-right">
     <div class="row">
@@ -75,16 +76,36 @@
       </div>
     </div>
     <br>
-    {{#if checkout}}
-    <a href='/shipping' type = 'button' class="btn rounded-pill checkStock">Order</a>
-    {{else}}
-    <a href='#' type = 'button' class="btn rounded-pill checkStock">Out of Stock</a>
-    {{/if}}
+    <a id = 'delAllbtn' href='/delete_all_from_cart' type = 'button' class="btn rounded-pill">Delete All Items</a>
+    <!-- {{#if checkout}} -->
+    <a id = 'shipbtn' href='/shipping' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <!-- {{else}} -->
+    <a id = 'failBtn' data-toggle="modal" data-target="#failed-checkout" type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <!--{{/if}} -->
   </div>
+  <br><br><br><br><br>
   {{else}}
   <div style="height: calc(100vh - 400px);">
+    {{> messages}}
     <h4>Your cart is empty :(</h4>
   </div>
   {{/if}}
-  <br><br>
+  <br><br><br><br><br><br><br>
+</div>
+
+
+    
+<div class="modal fade" id = "failed-checkout" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <h3>
+          <strong>Checkout Failed. An Item is out of stock!</strong>
+        </h3>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
