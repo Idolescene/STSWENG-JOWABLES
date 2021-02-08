@@ -4,6 +4,15 @@
   <h4>{{title}}</h4>
   <br>
   {{> messages}}
+  <div id="checkout-alert" class="container justify-content-center text-center">
+    <br>
+    <div class="row" id="error-msg-div">
+      <h6 class="text-center" id="error-msg">
+        <strong class="alert alert-danger" role="alert"><span class="text-danger">Error: </span>Checkout Failed. An Item is out of stock!</strong>
+        </h6>
+    </div>
+  </div>
+  <br>
   <table class="table table-borderless">
     <thead>
       <tr>
@@ -80,7 +89,7 @@
     <!-- {{#if checkout}} -->
     <a id = 'shipbtn' href='/shipping' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
     <!-- {{else}} -->
-    <a id = 'failBtn' data-toggle="modal" data-target="#failed-checkout" type = 'button' class="btn rounded-pill checkStock">Checkout</a>
+    <a id = 'failBtn' type = 'button' class="btn rounded-pill checkStock">Checkout</a>
     <!--{{/if}} -->
   </div>
   <br><br><br><br><br>
@@ -94,7 +103,7 @@
 </div>
 
 
-    
+
 <div class="modal fade" id = "failed-checkout" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content text-center">
