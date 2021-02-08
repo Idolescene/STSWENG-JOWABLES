@@ -23,6 +23,13 @@ jobs:
     steps:
       - checkout
       - run: echo "this is the test job"
+  npm_install_packages:
+    docker:
+      - image: circleci/node:14.15.4
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
 
 # Orchestrate our job run sequence
 workflows:
@@ -32,3 +39,6 @@ workflows:
       - test:
           requires:
             - build
+  run_npm:
+    jobs:
+      - npm_install_packages
