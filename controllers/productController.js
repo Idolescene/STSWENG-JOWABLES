@@ -31,7 +31,6 @@ exports.getAllProducts = (req, res) => {
             var categories = [];
             var sizes = [];
             var remove = []
-            console.log(req.session.category)
             products.forEach((item)=>{
               if (!categories.includes(item.category)) {
                 categories.push(item.category);
@@ -43,7 +42,6 @@ exports.getAllProducts = (req, res) => {
               })
               if (req.session.category != "All Items" && req.session.category) {
                 if (item.category != req.session.category){
-                  console.log(item)
                   remove.push(item._id)
                 }
               }
@@ -51,7 +49,6 @@ exports.getAllProducts = (req, res) => {
             req.session.category = "All Items"
             remove.forEach((item) => {
               var a = products.findIndex(x => x._id == item)
-              console.log(a)
               if (a > -1) {
                 products.splice(a,1)
               }
@@ -101,6 +98,7 @@ exports.getAllProducts = (req, res) => {
 
         var categories = [];
         var sizes = [];
+        var remove = [];
         products.forEach((item) =>{
           if (!categories.includes(item.category)) {
             categories.push(item.category);
@@ -110,7 +108,19 @@ exports.getAllProducts = (req, res) => {
               sizes.push(item.size)
             }
           })
+          if (req.session.category != "All Items" && req.session.category) {
+            if (item.category != req.session.category){
+              remove.push(item._id)
+            }
+          }
         });
+        req.session.category = "All Items"
+        remove.forEach((item) => {
+          var a = products.findIndex(x => x._id == item)
+          if (a > -1) {
+            products.splice(a,1)
+          }
+        })
         products.forEach((item) => {
           item.price = item.price.toFixed(2);
         });
@@ -424,7 +434,6 @@ exports.getAProduct = (req, res) => {
           productDesc: product.description,
           productImg: product.img,
           _id: product._id,
-          sizeChart: "./img/size-chart-short.jpg",
           cartProducts: null
         });
       });
