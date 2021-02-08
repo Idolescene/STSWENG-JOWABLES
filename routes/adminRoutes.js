@@ -40,6 +40,7 @@ router.get('/logout-admin', adminController.logoutAdmin);
   Admin Homepage and Update Products Page
 */
 router.get('/update-products', productController.viewAllProducts);
+router.post('/update-products', productController.refreshAllProducts)
 
 /*
   Summary of All Orders Page
